@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 //test
 
-Route::get('/template',function(){
-    return view('layouts.master');
+Route::middleware(['auth:sanctum'])->group(function(){
+    Route::resource('categories', CategoriesController::class);
 });
+
+
+//Category 
