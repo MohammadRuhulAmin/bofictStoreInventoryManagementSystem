@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "vue": "^2.6.14",
-        "vue-moments-ago": "^0.2.0"
+        "vue-moments-ago": "^0.2.0",
+        "vuex": "^3.6.2"
     }
 }
