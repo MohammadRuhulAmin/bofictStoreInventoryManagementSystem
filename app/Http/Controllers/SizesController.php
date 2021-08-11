@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brand;
+use App\Models\Size;
 use Illuminate\Http\Request;
 
-class BrandsController extends Controller
+class SizesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        $brands = Brand::orderby('created_at','DESC')->get();
-        return view('brands.index',compact('brands'));
+        $sizes = Size::orderby('created_at','DESC')->get();
+        return view('sizes.index',compact('sizes'));
     }
 
     /**
@@ -25,7 +25,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        return view('brands.create');
+        return view('sizes.create');
     }
 
     /**
@@ -36,14 +36,13 @@ class BrandsController extends Controller
      */
     public function store(Request $request)
     {
-        //validation 
         $this->validate($request,[
-            'name'=>'required|min:2|max:50|unique:brands'
+            'size'=>'required|min:1|max:50|unique:sizes'
         ]);
-        $brand = new Brand();
-        $brand->name = $request->name;
-        $brand->save();
-        flash('Brand Created Successfully!')->success();
+        $size = new Size();
+        $size->size = $request->size;
+        $size->save();
+        flash('Size  Created Successfully!')->success();
         return back();
     }
 
@@ -57,7 +56,7 @@ class BrandsController extends Controller
     {
         //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -66,8 +65,8 @@ class BrandsController extends Controller
      */
     public function edit($id)
     {
-        $brand = Brand::findOrFail($id);
-        return view('brands.edit',compact('brand'));
+        $size = Size::findOrFail($id);
+        return view('sizes.edit',compact('size'));
     }
 
     /**
@@ -80,13 +79,13 @@ class BrandsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name'=>'required|min:2|max:50|unique:brands,name,'.$id
+            'size'=>'required|min:1|max:50|unique:sizes,size,'.$id
         ]);
-        $brand =  Brand::findOrFail($id);
-        $brand->name = $request->name;
-        $brand->save();
-        flash('Brand is Updated  Successfully!')->success();
-        return redirect()->route('brands.index');
+        $size =  Size::findOrFail($id);
+        $size->size = $request->size;
+        $size->save();
+        flash('Size is Updated  Successfully!')->success();
+        return redirect()->route('sizes.index');
     }
 
     /**
@@ -97,10 +96,9 @@ class BrandsController extends Controller
      */
     public function destroy($id)
     {
-        $brand = Brand::findOrFail($id);
-        $brand->delete();
-        flash('Brand is Deleted  Successfully!')->success();
-        return redirect()->route('brands.index');
-
+        $size = Size::findOrFail($id);
+        $size->delete();
+        flash('Size is Deleted  Successfully!')->success();
+        return redirect()->route('sizes.index');
     }
 }
