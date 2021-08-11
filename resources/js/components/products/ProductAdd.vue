@@ -19,6 +19,15 @@
             <Select2 v-model="form.category_id" :options="categories" ></Select2>
            <!-- :settings="{placeholder:'Select Category'}" -->
           </div>
+
+          <div class="form-group">
+            <label > Select Brand   </label>
+            <!-- <select class="form-control" v-model="form.category_id">
+                <option v-for="(item,index) in categories" :key="index" :value="item.id">{{item.name}}</option>
+            </select> -->
+            <Select2  v-model="form.brand_id" :options="brands"></Select2>
+           <!-- :settings="{placeholder:'Select Category'}" -->
+          </div>
         </div>
         <!-- /.card-body -->
 
@@ -43,18 +52,23 @@ import Select2 from 'v-select2-component';
         data(){
             return {
                form:{
-                   category_id:0
+                   category_id:0,
+                   brand_id:0,
                } 
             }
         },
         computed:{
             ...mapGetters({
-                'categories':'getCategories'
+                'categories':'getCategories',
+                'brands':'getBrands',
             })
         },
         mounted(){
             // Get Categories 
             store.dispatch(actions.GET_CATEGORIES);
+
+            // Get BRANDS
+             store.dispatch(actions.GET_BRANDS);
         }
     }
 </script>
