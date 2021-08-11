@@ -12,9 +12,12 @@
         
         <div class="card-body">
           <div class="form-group">
-            <label >Category Name </label>
-            <input type="text" class="form-control" id="" name="name" placeholder="Category Name ">
-           
+            <label > Select Category  </label>
+            <!-- <select class="form-control" v-model="form.category_id">
+                <option v-for="(item,index) in categories" :key="index" :value="item.id">{{item.name}}</option>
+            </select> -->
+            <Select2 v-model="form.category_id" :options="categories" ></Select2>
+           <!-- :settings="{placeholder:'Select Category'}" -->
           </div>
         </div>
         <!-- /.card-body -->
@@ -31,8 +34,28 @@
 </template>
 
 <script>
+import store from '../../store'
+import * as actions from '../../store/action-types';
+import { mapGetters} from 'vuex';
+import Select2 from 'v-select2-component';
     export default{
-
+        components:{Select2},
+        data(){
+            return {
+               form:{
+                   category_id:0
+               } 
+            }
+        },
+        computed:{
+            ...mapGetters({
+                'categories':'getCategories'
+            })
+        },
+        mounted(){
+            // Get Categories 
+            store.dispatch(actions.GET_CATEGORIES);
+        }
     }
 </script>
 
