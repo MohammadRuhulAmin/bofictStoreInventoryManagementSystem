@@ -5,9 +5,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
+          
+    
           <h1 class="m-0">Categories</h1>
           <br>
           <a href="{{route('categories.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New Category Item</a>
+          <example-component></example-component>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -28,7 +31,7 @@
         <h3 class="card-title">Category List  </h3>
       </div>
       <br>
-      
+     
       <table class="table table-bordered datatable">
         <thead>
             <tr>

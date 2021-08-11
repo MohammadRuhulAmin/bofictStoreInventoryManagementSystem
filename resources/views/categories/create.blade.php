@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
 <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -9,7 +10,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}"> Home </a></li>
             <li class="breadcrumb-item active">Create Category</li>
           </ol>
         </div><!-- /.col -->
@@ -24,6 +25,7 @@
     <div class="card card-primary">
       <div class="card-header">
         <h3 class="card-title">Create a New Category </h3>
+     
       </div>
       <!-- /.card-header -->
       <!-- form start -->
@@ -34,7 +36,7 @@
             <label for="exampleInputEmail1">Category Name </label>
             <input type="text" class="form-control" id="" name="name" placeholder="Category Name ">
             @if($errors->has('name'))
-                <span class="text-danger">Category Name must be Provided! &  {{$errors->first('name')}}</span>
+                <span class="text-danger">Category Name must be Provided! &  {{$errors->first('name')}} </span>
             @endif
           </div>
         </div>
