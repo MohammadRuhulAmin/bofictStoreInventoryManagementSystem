@@ -36,7 +36,11 @@
         <thead>
             <tr>
                 <th>#SL</th>
+                <th class="text-center">Image </th>
                 <th>Name</th>
+                <th>SKU</th>
+                <th>Category</th>
+                <th>Brand</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -44,8 +48,12 @@
             @if($products)
                 @foreach ($products as $key=> $product)
                     <tr>
-                        <td>{{++$key}}</td>
+                        <td class="text-center">{{++$key}}</td>
+                        <td><img width="64px" src="{{asset('storage/product_images/'.$product->image)}}"/></td>
                         <td>{{$product->name ??''}}</td>
+                        <td>{{$product->sku ??''}}</td>
+                        <td>{{$product->category->name ??''}}</td>
+                        <td>{{$product->brand->name ??''}}</td>
                         <td>
                             <a  href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 

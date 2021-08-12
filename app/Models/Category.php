@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 
 class Category extends Model
 {
@@ -13,4 +14,9 @@ class Category extends Model
     public function getTextAttribute(){
         return $this->name;
     }
+    //Relation 
+    public function product(){
+        return $this->hasMany(Product::class);
+    }
+
 }

@@ -19,8 +19,11 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('products.index',compact('products'));
+        // $products = Product::all();
+        // Eger loading 
+        $products = Product::with(['category','brand'])->get(); //  this is eager loading ....  from category & brand
+        return view('products.index',compact('products')); 
+
     }
 
     /**
