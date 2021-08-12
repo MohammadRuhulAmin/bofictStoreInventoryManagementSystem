@@ -1,14 +1,15 @@
 <template>
     <!-- general form elements -->
-   
+   <form @submit.prevent="submitForm" role="form"  method="post">
    <div class="row">
+     <show-error></show-error>
       <div class="card card-primary col-sm-6">
       <div class="card-header">
         <h3 class="card-title">Create a New Product </h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form role="form" action="" method="post">
+      
         <div class="card-body">
           <div class="form-group">
             <label > Select Category <span class="text-danger">*</span> </label>
@@ -38,7 +39,7 @@
            
              <div class="form-group">
               <label>Product Image <span class="text-danger">*</span>  </label>
-              <input type="file"  placeholder="Product Image" class="form-control">
+              <input @change="selectImage" type="file"  placeholder="Product Image" class="form-control">
             </div>
 
             <div class="form-group">
@@ -73,19 +74,20 @@
         <div class="card-footer">
             <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i>Submit</button>
         </div>
-      </form>
+     
 
     
 
       </div>
       
-        <div class="col-sm-6" v-for="(item,index) in form.items" :key="index">
+   
+          <div class="col-sm-6" >
          <div class="card card-primary card-outline">
            <div class="card-header">
               <h3 class="card-title"> Product Size </h3>
             </div>
            <div class="card-body">
-             <div class="row">
+             <div class="row mb-1" v-for="(item,index) in form.items" :key="index">
               <div class="col-sm-4">
                  <select class="form-control" v-model="item.size_id">
                  <option>Select Size</option>
@@ -99,35 +101,41 @@
                 <input type="number" class="form-control" v-model="item.quantity" placeholder="Quantity">
               </div>
               <div class="col-sm-2">
-                <button type="button" class="btn btn-danger btn-sm "><i class="fa fa-trash "></i></button>
+                <button type="button" @click="deleteItem(index)" class="btn btn-danger btn-sm "><i class="fa fa-trash "></i></button>
               </div>
 
              </div>
-               <button type="button" class="btn btn-primary btn-sm mt-3" ><i class="fa fa-plus">Add Item</i></button>
+               <button @click="addItem()" type="button" class="btn btn-primary btn-sm mt-3" ><i class="fa fa-plus">Add Item</i></button>
            </div>
         
          </div>
        </div>
   
+
+    
     
    
    
    </div>
   
-   
+    </form>
 
     
     <!-- /.card -->
 </template>
 <script>
+import ShowError from '../utils/ShowError.vue';
 import store from '../../store'
 import * as actions from '../../store/action-types';
 import { mapGetters} from 'vuex';
 import Select2 from 'v-select2-component';
 import Input from '../../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Jetstream/Input.vue';
     export default{
-        components:{Select2},
-     
+        components:{
+            Select2,
+            ShowError
+          },
+         
           data(){
             return {
                form:{
@@ -163,7 +171,41 @@ import Input from '../../../../vendor/laravel/jetstream/stubs/inertia/resources/
              store.dispatch(actions.GET_BRANDS);
                // Get SIZES
              store.dispatch(actions.GET_SIZES);
-        }
+        },
+         methods:{
+           selectImage(e){
+             this.form.image = e.target.files[0];
+           },
+            addItem(){
+              let item = {
+                      size_id:'',
+                     location:'',
+                     quantity:0
+              }
+              this.form.items.push(item);
+            },
+            deleteItem(index){
+             
+              this.form.items.splice(index,1);
+            },
+            submitForm(){
+              //  console.log(this.form); // khatni for image 
+              let data =  new FormData();
+              data.append('category_id',this.form.category_id);
+              data.append('brand_id',this.form.brand_id);
+              data.append('sku',this.form.sku);
+              data.append('name',this.form.name);
+              data.append('image',this.form.image);
+              data.append('cost_price',this.form.cost_price);
+              data.append('retail_price',this.form.retail_price);
+              data.append('year',this.form.year);
+              data.append('description',this.form.description);
+              data.append('status',this.form.status);
+              data.append('items',this.form.items);
+
+              store.dispatch(actions.ADD_PRODUCT,data);
+            }
+          },
     }
 </script>
 
