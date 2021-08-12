@@ -20,7 +20,7 @@
   <!-- /.content-header -->
 
   <!-- Main content -->
-  <div class="col-md-12">
+  <div >
     <!-- general form elements -->
         <product-add></product-add>
     <!-- /.card -->
