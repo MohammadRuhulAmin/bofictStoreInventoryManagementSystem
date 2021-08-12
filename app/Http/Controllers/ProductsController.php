@@ -116,7 +116,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        // tutorial  link https://www.youtube.com/watch?v=buuYieOT5KA&list=PLVIT7EMonV3dWOIjbQxQ2jxhywnjFb7Hy&index=28
+        $product =   Product::with(['category','brand','product_stocks.size'])->where('id',$id)->first();
+        return view('products.show',compact('product'));
     }
 
     /**
@@ -150,6 +152,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        flash('Product Deleted Successfully')->success();
+        return back();
     }
 }

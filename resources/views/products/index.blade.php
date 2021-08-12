@@ -55,13 +55,16 @@
                         <td>{{$product->category->name ??''}}</td>
                         <td>{{$product->brand->name ??''}}</td>
                         <td>
+                          <a  href="{{route('products.show',$product->id)}}" class="btn btn-sm btn-primary">
+                            <i class="fa fa-desktop"></i>  Show 
+                         </a>
                             <a  href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 
                             </a>
                             <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="product-delete-{{$product->id}}">
                               <i class="fa fa-trash"></i>  Delete
                             </a>
-                            <form id="category-delete-{{$product->id}}" action="{{route('categories.destroy',$product->id)}}" method="post">
+                            <form id="product-delete-{{$product->id}}" action="{{route('products.destroy',$product->id)}}" method="post">
                                 @csrf 
                                 @method('DELETE')
 
