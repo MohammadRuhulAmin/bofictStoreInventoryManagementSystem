@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Product;
+use App\Models\ProductSizeStock;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class ProductsController extends Controller
 {
@@ -57,7 +60,49 @@ class ProductsController extends Controller
                 'errors'=>$validate->errors()
             ],Response::HTTP_UNPROCESSABLE_ENTITY);
         }
-        return $request->all();
+
+        // Store Product 
+        $product = new Product();
+        $product->user_id = Auth::id();
+        $product->category_id = $request->category_id;
+        $product->brand_id = $request->brand_id;
+        $product->sku = $request->sku;
+        $product->name = $request->name;
+        $product->cost_price = $request->cost_price;
+        $product->retail_price = $request->retail_price;
+        $product->year = $request->year;
+        $product->description = $request->description;
+        $product->status = $request->status;
+        
+
+        // Upload Image 
+
+        if($request->hasFile('image')){
+            $image = $request->image;
+            $name = Str::random(60).'.'.$image->getClientOriginalExtension();
+            $image->storeAs('public/product_images',$name);
+            $product->image = $name;
+        }
+        // Save Product  
+        $product->save();
+
+        // Store Product Size Stock 
+        
+        if($request->items){
+            foreach(json_decode($request->items )as $item){
+                $size_stock = new ProductSizeStock();
+                $size_stock->product_id = $product->id;
+                $size_stock->size_id = $item->size_id;
+                $size_stock->location = $item->location;
+                $size_stock->quantity = $item->quantity;
+                $size_stock->save();
+            }
+        }
+
+        
+        return response()->json([
+            'success' => true,
+        ],\Illuminate\Http\Response::HTTP_OK);
     }
 
     /**
