@@ -12,11 +12,15 @@ class Product extends Model
     use HasFactory;
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
-    protected $appends = ['product_image'];
+    protected $appends = ['product_image','text'];
 
     //Image Full Path 
     public function getProductImageAttribute(){
         return asset('storage/product_images/'.$this->image);
+    }
+
+    public function getTextAttribute(){
+        return $this->name;
     }
 
 

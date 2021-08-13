@@ -3,9 +3,7 @@ import mutations from './mutations';
 import getters from './getters';
 
 const state = {
-    products:{
-
-    }
+    products:[]
 }
 
 export default{
