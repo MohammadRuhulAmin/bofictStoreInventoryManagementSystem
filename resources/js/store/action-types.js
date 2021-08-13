@@ -11,4 +11,7 @@ export const GET_SIZES = 'GET_SIZES';
 
 // For Product 
 
-export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const ADD_PRODUCT = 'ADD_PRODUCT'; 
+
+// For Editing Product 
+export const EDIT_PRODUCT = 'EDIT_PRODUCT';
