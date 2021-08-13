@@ -124,13 +124,15 @@
     
     <!-- /.card -->
 </template>
+
+
 <script>
 import ShowError from '../utils/ShowError.vue';
 import store from '../../store'
 import * as actions from '../../store/action-types';
 import { mapGetters} from 'vuex';
 import Select2 from 'v-select2-component';
-import Input from '../../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Jetstream/Input.vue';
+
     export default{
         components:{
             Select2,

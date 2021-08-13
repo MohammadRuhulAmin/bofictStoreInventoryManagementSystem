@@ -21,3 +21,6 @@ export const GET_PRODUCTS = 'GET_PRODUCTS';
 
 //Stock 
  export const SUBMIT_STOCK = 'SUBMIT_STOCK';
+
+ // Retur Product 
+ export const SUBMIT_RETURN_PRODUCT = 'SUBMIT_RETURN_PRODUCT'; 
