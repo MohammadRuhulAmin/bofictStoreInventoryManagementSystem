@@ -11,7 +11,18 @@
         <div class="card-body">
             <div class="form-group">
                 <lable>Product</lable>
-                <Select2 v-model="form.product_id":options="products" :settings="{placeholder:'Select Product'}" ></Select2>
+                <Select2 @change="selectedProduct"  v-model="form.product_id":options="products" :settings="{placeholder:'Select Product'}" ></Select2>
+            </div>
+            <div class="form-group">
+                <label>Date <span class="text-danger">*</span> </label>
+                <input type="date" class="form-control" v-model="form.date">
+            </div>
+             <div class="form-group">
+                <label>Stock Type <span class="text-danger">*</span> </label>
+                <select v-model="form.stock_type" class="form-control">
+                    <option value="in">IN</option>
+                    <option value="out">OUT</option>
+                </select>
             </div>
         </div>
         <!-- /.card-body -->  
@@ -31,25 +42,12 @@
               <h3 class="card-title"> Product Size </h3>
             </div>
            <div class="card-body">
-             <div class="row mb-1" v-for="(item,index) in form.items" :key="index">
-              <div class="col-sm-4">
-                 <select class="form-control" v-model="item.size_id">
-                 <option>Select Size</option>
-                 <option v-for="(size,index) in sizes" :value="size.id" :key="index">{{size.size}}</option>
-               </select>
-              </div>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" v-model="item.location" placeholder="location" >
-              </div>
-              <div class="col-sm-3">
-                <input type="number" class="form-control" v-model="item.quantity" placeholder="Quantity">
-              </div>
-              <div class="col-sm-2">
-                <button type="button" @click="deleteItem(index)" class="btn btn-danger btn-sm "><i class="fa fa-trash "></i></button>
-              </div>
-
-             </div>
-               <button @click="addItem()" type="button" class="btn btn-primary btn-sm mt-3" ><i class="fa fa-plus">Add Item</i></button>
+              <table class="table table-sm">
+                  <tr v-for="(item,index) in form.items" :key="index">
+                      <td>{{item.size}}</td>
+                      <td><input class="form-control" v-model="item.quantity" placeholder="Quantity"></td>
+                  </tr>
+              </table>
            </div>
         
          </div>
@@ -83,11 +81,11 @@ import Input from '../../../../vendor/laravel/jetstream/stubs/inertia/resources/
           data(){
             return {
                form:{
+                   data:'',
+                   stoke_type:'in',
                    product_id:'',
-                   items:[{
-                     size_id:'',
-                     quantity:0
-                   }],
+                   items:[]
+                   
                } 
             }
         },
@@ -101,7 +99,22 @@ import Input from '../../../../vendor/laravel/jetstream/stubs/inertia/resources/
                // Get Products
              store.dispatch(actions.GET_PRODUCTS);
         },
-         methods:{},
+         methods:{
+             selectedProduct(id){ // select2 component will return the product id  
+             this.form.items = [];
+                 let product = this.products.filter(product=>product.id == id)
+                // console.log(product);
+                product[0].product_stocks.map(stock=>{
+                    let item = {
+                        size:stock.size.size,
+                        size_id:stock.size_id,
+                        quantity: ''
+                    }
+                    this.form.items.push(item);
+                })
+
+             }
+         },
           
        
           
