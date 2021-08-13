@@ -27,7 +27,7 @@
         </div>
         <!-- /.card-body -->  
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i>Submit</button>
+            <button type="submit"  class="btn btn-primary btn-sm"><i class="fa fa-save"></i>Submit</button>
         </div>
      
 
@@ -71,7 +71,7 @@ import store from '../../store'
 import * as actions from '../../store/action-types';
 import { mapGetters} from 'vuex';
 import Select2 from 'v-select2-component';
-import Input from '../../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Jetstream/Input.vue';
+// import Input from '../../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Jetstream/Input.vue';
     export default{
         components:{
             Select2,
@@ -113,8 +113,13 @@ import Input from '../../../../vendor/laravel/jetstream/stubs/inertia/resources/
                     this.form.items.push(item);
                 })
 
-             }
+             },
+                submitForm(){
+                    store.dispatch(actions.SUBMIT_STOCK,this.form)
+                   
+                },
          },
+       
           
        
           

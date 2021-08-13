@@ -18,3 +18,6 @@ export const EDIT_PRODUCT = 'EDIT_PRODUCT';
 
 // Get Product  
 export const GET_PRODUCTS = 'GET_PRODUCTS'; 
+
+//Stock 
+ export const SUBMIT_STOCK = 'SUBMIT_STOCK';

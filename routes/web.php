@@ -49,6 +49,7 @@ Route::middleware(['auth:sanctum'])->group(function(){
     
     //Stock
     Route::get('/stocks',[StocksController::class,'stock'])->name('stock');
+    Route::post('/stocks',[StocksController::class,'stockSubmit'])->name('stockSubmit');
     
     
 
