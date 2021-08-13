@@ -44,6 +44,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="{{route('users.index')}}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>User</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{route('categories.index')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category</p>
@@ -88,7 +94,7 @@
               <li class="nav-item">
                 <a href="{{route('returnProductHistory')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p> Return Product History  </p>
+                  <p> Return Product History </p>
                 </a>
               </li>
             </ul>

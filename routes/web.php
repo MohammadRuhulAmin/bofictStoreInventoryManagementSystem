@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ReturnProductsController;
 use App\Http\Controllers\SizesController;
 use App\Http\Controllers\StocksController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum'])->group(function(){
     
+
+       // User Insertion 
+       Route::resource('users', UsersController::class);
+
+
     //Category
     Route::resource('categories', CategoriesController::class);
     Route::get('/api/categories',[CategoriesController::class,'getCategoriesJson']);
@@ -58,6 +64,8 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::post('/return-products',[ReturnProductsController::class,'returnProductSubmit'])->name('returnProductSubmit');
     Route::get('/return-products/history',[ReturnProductsController::class,'history'])->name('returnProductHistory');
     
+    
+
 
 });
 

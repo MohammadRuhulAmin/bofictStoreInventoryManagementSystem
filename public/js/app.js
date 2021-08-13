@@ -2398,7 +2398,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
- // import Input from '../../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Jetstream/Input.vue';
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
