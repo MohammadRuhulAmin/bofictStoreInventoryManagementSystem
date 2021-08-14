@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ReturnProductsController;
 use App\Http\Controllers\SizesController;
@@ -24,18 +25,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 //test
 Route::get('/user/logout',[UsersController::class,'logout'])->name('users.logout');
 
-Route::middleware(['auth:sanctum'])->group(function(){
-    
 
-       // User Insertion 
-       Route::resource('users', UsersController::class);
+
+Route::middleware(['auth:sanctum'])->group(function(){
+
+
+    // Dashboard 
+
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+
+
+    // User Insertion 
+    Route::resource('users', UsersController::class);
        
 
 
