@@ -28,7 +28,7 @@
                         <p>Users</p>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fa fa-users"></i>
                       </div>
                       <a href="{{route('users.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -43,7 +43,7 @@
                         <p>Products</p>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="fa fa-list"></i>
                       </div>
                       <a href="{{route('products.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -58,7 +58,7 @@
                         <p>Stocks</p>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-person-add"></i>
+                        <i class="fa fa-cart-plus"></i>
                       </div>
                       <a href="{{route('stockHistory')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -73,7 +73,7 @@
                         <p>Return Products </p>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="fa fa-list"></i>
                       </div>
                       <a href="{{route('returnProductHistory')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -92,7 +92,7 @@
                 <th>SKU</th>
                 <th>Category</th>
                 <th>Brand</th>
-                <th>Action</th>
+                <th class="text-center">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -100,12 +100,12 @@
                 @foreach ($recent_products as $key=> $product)
                     <tr>
                         <td class="text-center">{{++$key}}</td>
-                        <td><img width="64px" src="{{asset('storage/product_images/'.$product->image)}}"/></td>
+                        <td><img width="64px" height="64px" src="{{asset('storage/product_images/'.$product->image)}}"/></td>
                         <td>{{$product->name ??''}}</td>
                         <td>{{$product->sku ??''}}</td>
                         <td>{{$product->category->name ??''}}</td>
                         <td>{{$product->brand->name ??''}}</td>
-                        <td>
+                        <td class="text-center">
                             <a  href="{{route('products.show',$product->id)}}" class="btn btn-sm btn-primary">
                               <i class="fa fa-desktop"></i>  Show 
                            </a>

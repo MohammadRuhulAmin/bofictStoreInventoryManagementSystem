@@ -1,8 +1,8 @@
 <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+      {{config('app.name')}}
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; <a href="http://www.bof.gov.bd/">Bangladesh Ordnance Factory</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; {{date('Y')}} <a href="http://www.bof.gov.bd/">Bangladesh Ordnance Factory</a>.</strong> All rights reserved.
   </footer>

@@ -44,61 +44,61 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('dashboard')}}" class="nav-link active">
+                <a href="{{route('dashboard')}}" class="nav-link {{request()->is('dashboard*')? 'active': ''}}">
                   <i class="fa fa-home nav-icon"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('users.index')}}" class="nav-link active">
+                <a href="{{route('users.index')}}" class="nav-link  {{request()->is('users*')? 'active': ''}} ">
                   <i class="fa fa-users nav-icon"></i>
                   <p>User</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('categories.index')}}" class="nav-link active">
+                <a href="{{route('categories.index')}}" class="nav-link {{request()->is('categories*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p>Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('brands.index')}}" class="nav-link">
+                <a href="{{route('brands.index')}}" class="nav-link {{request()->is('brands*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p> Brand </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('sizes.index')}}" class="nav-link">
+                <a href="{{route('sizes.index')}}" class="nav-link {{request()->is('sizes*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p> Size </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('products.index')}}" class="nav-link">
-                  <i class="fa fa-list nav-icon"></i>
+                <a href="{{route('products.index')}}" class="nav-link {{request()->is('products*')? 'active': ''}}">
+                  <i class="fa fa-list"></i>
                   <p> Product </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('stock')}}" class="nav-link">
-                  <i class="fa fa-cart-plus nav-icon"></i>
+                <a href="{{route('stock')}}" class="nav-link{{request()->is('stock')? 'active': ''}}">
+                  <i class="fa fa-cart-plus"></i>
                   <p> Stock  </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('stockHistory')}}" class="nav-link">
-                  <i class="fa fa-list nav-icon"></i>
+                <a href="{{route('stockHistory')}}" class="nav-link {{request()->is('stocks/history')? 'active': ''}}">
+                  <i class="fa fa-list "></i>
                   <p> Stock History  </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('returnProduct')}}" class="nav-link">
-                  <i class="fa fa-file nav-icon"></i>
+                <a href="{{route('returnProduct')}}" class="nav-link {{request()->is('return-products')? 'active': ''}}">
+                  <i class="fa fa-file "></i>
                   <p> Return Product  </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('returnProductHistory')}}" class="nav-link">
+                <a href="{{route('returnProductHistory')}}" class="nav-link {{request()->is('return-products/history')? 'active': ''}}">
                   <i class="fa fa-circle nav-icon"></i>
                   <p> Return Product History </p>
                 </a>
@@ -106,7 +106,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{route('users.logout')}}" class="nav-link">
+            <a href="{{route('users.logout')}}" class="nav-link {{request()->is('users*')? 'active': ''}}">
               <i class="fa fa-sign-out"></i>
               <p>
                 Log out 
