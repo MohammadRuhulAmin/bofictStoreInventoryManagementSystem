@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 class UsersController extends Controller
 {
     /**
@@ -68,7 +69,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.edit',compact('user'));
     }
 
     /**
@@ -80,7 +82,22 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required|min:2|max:100',
+            'email'=>'required|email|unique:users,email,'.$id,
+            'password' =>'nullable|min:8|max:50|confirmed',
+           
+        ]);
+        $user =  User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if($request->has('password')){
+            $user->password = Hash::make($request->password);
+        }
+      
+        $user->save();
+        flash('User Updated Successfully!')->success();
+        return redirect()->route('users.index');
     }
 
     /**
@@ -96,5 +113,9 @@ class UsersController extends Controller
         flash('User Deleted Successfully  !')->success();
         return back();
         
+    }
+    public function logout(){
+        Auth::logout();
+        return redirect('/login');
     }
 }

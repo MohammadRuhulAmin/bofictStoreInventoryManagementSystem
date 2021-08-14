@@ -29,12 +29,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 //test
+Route::get('/user/logout',[UsersController::class,'logout'])->name('users.logout');
 
 Route::middleware(['auth:sanctum'])->group(function(){
     
 
        // User Insertion 
        Route::resource('users', UsersController::class);
+       
 
 
     //Category
