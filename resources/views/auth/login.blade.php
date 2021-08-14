@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img width="200px" src="{{asset('website_template/assets/img/BOF_LOGIN_LOGO.jpg')}}" class="img-fluid" alt="">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
