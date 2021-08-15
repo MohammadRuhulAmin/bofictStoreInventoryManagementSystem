@@ -41,7 +41,7 @@
 
       <div class="logo me-auto">
 
-        <h1><a href="index.html">Bangladesh Ordnance Factory</a></h1>
+        <h1><a href="index.html">BOF</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
