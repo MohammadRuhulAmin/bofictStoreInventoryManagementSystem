@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\SubcategoryController;
 
@@ -48,8 +49,9 @@ Route::middleware(['auth:sanctum'])->group(function(){
 
     //Category
     Route::resource('categories', CategoriesController::class);
-    Route::get('/api/categories',[CategoriesController::class,'getCategoriesJson']);
     
+      //Brand
+      Route::resource('brands', BrandsController::class);
     
     //Sub category 
     Route::resource('subcategories',SubcategoryController::class);

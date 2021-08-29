@@ -67,6 +67,12 @@
                   <p>Type</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('brands.index')}}" class="nav-link {{request()->is('brands*')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> Brand </p>
+                </a>
+              </li>
           
              
             </ul>
