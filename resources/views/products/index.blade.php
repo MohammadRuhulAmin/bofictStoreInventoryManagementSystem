@@ -37,6 +37,11 @@
             <tr>
                 <th>#SL</th>
                 <th>Name</th>
+                <th>Category</th>
+                <th>Sub Category</th>
+                <th>Brand  </th>
+                <th>Type</th>
+                <th>Item</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -46,6 +51,13 @@
                     <tr>
                         <td>{{++$key}}</td>
                         <td>{{$product->name ?? ''}}</td>
+                        <td>{{$product->category ?? ''}}</td>
+                        <td>{{$product->subcategory ?? ''}}</td>
+                        <td>{{$product->brand ?? ''}}</td>
+                        <td>{{$product->type ?? ''}}</td>
+                        <td>{{$product->item ?? ''}}</td>
+                       
+
                         <td>
                             <a  href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 
