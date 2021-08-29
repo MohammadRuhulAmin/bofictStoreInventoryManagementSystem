@@ -77,9 +77,16 @@ class ItemController extends Controller
      * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required|min:2|max:50|unique:items,name,'.$id
+        ]);
+        $item =  Item::findOrFail($id);
+        $item->name = $request->name;
+        $item->save();
+        flash('Item is Updated  Successfully!')->success();
+        return redirect()->route('items.index');
     }
 
     /**
@@ -88,8 +95,11 @@ class ItemController extends Controller
      * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function destroy($id)
     {
-        //
+        $item= Item::findOrFail($id);
+        $item->delete();
+        flash('Item is Deleted  Successfully!')->success();
+        return redirect()->route('items.index');
     }
 }

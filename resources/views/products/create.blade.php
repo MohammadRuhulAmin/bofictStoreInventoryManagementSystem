@@ -34,62 +34,63 @@
         <div class="card-body">
           <div class="form-group">
             <label for="exampleInputEmail1">Product Name </label>
-            <input type="text" class="form-control" id="" name="name" placeholder="Category Name ">
+            <input type="text" class="form-control" id="" name="name" placeholder="Product Name ">
             @if($errors->has('name'))
                 <span class="text-danger">Product Name must be Provided! &  {{$errors->first('name')}} </span>
             @endif
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Select Product  Category  </label>
-            <select class="form-control">
+            <label for="exampleInputEmail1">Select  Category  </label>
+            <select name="category" class="form-control">
                 <option></option>
                 @foreach($categories as $category)
                     <option>{{$category->name}}</option>
                 @endforeach
             </select>
-            @if($errors->has('name'))
-                <span class="text-danger">Product Name must be Provided! &  {{$errors->first('name')}} </span>
-            @endif
+            
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Select Brand   </label>
-            <select class="form-control">
+            <select name="brand" class="form-control">
                 <option></option>
                 @foreach($brands as $brand)
                     <option>{{$brand->name}}</option>
                 @endforeach
             </select>
-            @if($errors->has('name'))
-                <span class="text-danger">Product Name must be Provided! &  {{$errors->first('name')}} </span>
-            @endif
+           
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Select Sub category   </label>
-            <select class="form-control">
+            <select name="subcategory" class="form-control">
                 <option></option>
                 @foreach($subcategories as $subcategory)
                     <option>{{$subcategory->name}}</option>
                 @endforeach
             </select>
-            @if($errors->has('name'))
-                <span class="text-danger">Product Name must be Provided! &  {{$errors->first('name')}} </span>
-            @endif
+           
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Select Type   </label>
-            <select class="form-control">
+            <select name="type" class="form-control">
                 <option></option>
                 @foreach($types as $type)
                     <option>{{$type->name}}</option>
                 @endforeach
             </select>
-            @if($errors->has('name'))
-                <span class="text-danger">Product Name must be Provided! &  {{$errors->first('name')}} </span>
-            @endif
+            
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Select Item   </label>
+            <select name="item" class="form-control">
+                <option></option>
+                @foreach($items as $item)
+                    <option>{{$item->name}}</option>
+                @endforeach
+            </select>
+           
           </div>
         </div>
         <!-- /.card-body -->
-
         <div class="card-footer">
             <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i>Submit</button>
         </div>

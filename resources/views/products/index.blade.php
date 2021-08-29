@@ -45,7 +45,7 @@
                 @foreach ($products as $key=> $product)
                     <tr>
                         <td>{{++$key}}</td>
-                        <td>{{$product->name ??''}}</td>
+                        <td>{{$product->name ?? ''}}</td>
                         <td>
                             <a  href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 
@@ -53,10 +53,9 @@
                             <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="product-delete-{{$product->id}}">
                               <i class="fa fa-trash"></i>  Delete
                             </a>
-                            <form id="category-delete-{{$product->id}}" action="{{route('products.destroy',$product->id)}}" method="post">
+                            <form id="product-delete-{{$product->id}}" action="{{route('products.destroy',$product->id)}}" method="post">
                                 @csrf 
-                                @method('DELETE')
-
+                                @method('DELETE') 
                             </form>
                         </td>
                     </tr>

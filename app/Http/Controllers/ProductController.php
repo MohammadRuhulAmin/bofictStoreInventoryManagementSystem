@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Subcategory;
 use App\Models\Type;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 
@@ -34,9 +35,10 @@ class ProductController extends Controller
         $subcategories = Subcategory::orderby('created_at','DESC')->get();
         $types = Type::orderby('created_at','DESC')->get();
         $brands = Brand::orderby('created_at','DESC')->get();
+        $items = Item::orderby('created_at','DESC')->get();
         
         return view('products.create')
-        ->with(['categories'=>$categories,'subcategories'=>$subcategories,'types'=>$types,'brands'=>$brands]);
+        ->with(['categories'=>$categories,'subcategories'=>$subcategories,'types'=>$types,'brands'=>$brands,'items'=>$items]);
     }
 
     /**
@@ -47,7 +49,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+          //validation 
+          $this->validate($request,[
+            'name'=>'required|min:2|max:50|',
+            
+        ]);
+        $product = new Product();
+        
+        $product->name = $request->name;
+        $product->category = $request->category;
+        $product->subcategory= $request->subcategory;
+        $product->item = $request->item;
+        $product->type = $request->type;
+        $product->brand = $request->brand;
+        $product->save();
+        flash('Product is Created Successfully!')->success();
+        return back();
     }
 
     /**
@@ -67,9 +85,17 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $categories = Category::orderby('created_at','DESC')->get();
+        $subcategories = Subcategory::orderby('created_at','DESC')->get();
+        $types = Type::orderby('created_at','DESC')->get();
+        $brands = Brand::orderby('created_at','DESC')->get();
+        $items = Item::orderby('created_at','DESC')->get();
+        
+        $product = Product::findOrFail($id);
+        return view('products.edit',compact('product','categories','subcategories','types','items','brands'));
+       
     }
 
     /**
@@ -79,7 +105,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -90,8 +116,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        
+        $product = Product::findOrFail($id);
+        $product->delete();
+        flash('Product is Deleted  Successfully!')->success();
+        return redirect()->route('products.index');
     }
 }
