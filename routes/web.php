@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\SubcategoryController;
-
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ItemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,9 +45,6 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::resource('users', UsersController::class);
        
 
-
-
-
     //Category
     Route::resource('categories', CategoriesController::class);
     
@@ -59,7 +57,10 @@ Route::middleware(['auth:sanctum'])->group(function(){
     // Type 
     Route::resource('types',TypeController::class);
 
-    
+    //Product
+    Route::resource('products',ProductController::class);
+    //Item
+    Route::resource('items',ItemController::class);
 
 
 });

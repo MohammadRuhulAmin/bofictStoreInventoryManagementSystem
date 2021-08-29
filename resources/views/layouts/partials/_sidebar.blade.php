@@ -73,6 +73,18 @@
                   <p> Brand </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('items.index')}}" class="nav-link {{request()->is('items*')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> Item </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('products.index')}}" class="nav-link {{request()->is('products*')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> Product </p>
+                </a>
+              </li>
           
              
             </ul>
