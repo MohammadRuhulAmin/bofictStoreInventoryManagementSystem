@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-       $total_products = Product::count();
+       $total_products = 0;
        $total_users = User::count();
-       $total_stocks_in = ProductStock::where('status',ProductStock::STOCK_IN)->count();
-       $total_return_products = ReturnProduct::count();
-       $recent_products = Product::latest()->limit(10)->get();
+       $total_stocks_in = 0;
+       $total_return_products = 0;
+       $recent_products = 0;
        return view('dashboard')->with(
            [
                'total_products'=>$total_products,

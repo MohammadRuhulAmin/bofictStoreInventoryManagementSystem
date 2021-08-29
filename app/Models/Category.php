@@ -14,9 +14,7 @@ class Category extends Model
     public function getTextAttribute(){
         return $this->name;
     }
-    //Relation 
-    public function product(){
-        return $this->hasMany(Product::class);
-    }
+ 
+  
 
 }

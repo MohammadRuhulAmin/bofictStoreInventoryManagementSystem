@@ -1,14 +1,10 @@
 <?php
 
-use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\ReturnProductsController;
-use App\Http\Controllers\SizesController;
-use App\Http\Controllers\StocksController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SubcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,37 +43,20 @@ Route::middleware(['auth:sanctum'])->group(function(){
        
 
 
+
+
     //Category
     Route::resource('categories', CategoriesController::class);
     Route::get('/api/categories',[CategoriesController::class,'getCategoriesJson']);
     
     
-    //Brand
-    Route::resource('brands', BrandsController::class);
-    Route::get('/api/brands',[BrandsController::class,'getBrandsJson']);
+    //Sub category 
+    Route::resource('subcategories',SubcategoryController::class);
 
-    // Size
-    Route::resource('sizes', SizesController::class);
-    Route::get('/api/sizes',[SizesController::class,'getSizesJson']);
-
-    //Product
-    Route::resource('products',ProductsController::class);
-    Route::get('/api/products',[ProductsController::class,'getProductsJson']);
-    
-    //Stock
-    Route::get('/stocks',[StocksController::class,'stock'])->name('stock');
-    Route::post('/stocks',[StocksController::class,'stockSubmit'])->name('stockSubmit');
-    Route::get('/stocks/history',[StocksController::class,'history'])->name('stockHistory');
-    
-    //Return Products in stock 
-    Route::get('/return-products',[ReturnProductsController::class,'returnProduct'])->name('returnProduct');
-    Route::post('/return-products',[ReturnProductsController::class,'returnProductSubmit'])->name('returnProductSubmit');
-    Route::get('/return-products/history',[ReturnProductsController::class,'history'])->name('returnProductHistory');
-    
     
 
 
 });
 
 
-//Category 
+
