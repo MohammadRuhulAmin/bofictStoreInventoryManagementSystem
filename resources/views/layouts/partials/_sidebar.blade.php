@@ -61,6 +61,12 @@
                   <p>Sub Category</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('types.index')}}" class="nav-link {{request()->is('types*')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p>Type</p>
+                </a>
+              </li>
           
              
             </ul>
