@@ -16,14 +16,7 @@
   <link rel="stylesheet" href="{{asset('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 
-  <script>
-    $(document).ready(function(){
-        $("button").click(function(){
-            var rowCount = $("#productTable tr").length;
-            alert(rowCount-1); 
-        });
-    });
-</script>
+
 <style>
   .select2-container--default .select2-selection--single{
     background-color:#fff;
