@@ -20,7 +20,7 @@
     $(document).ready(function(){
         $("button").click(function(){
             var rowCount = $("#productTable tr").length;
-            alert(rowCount); 
+            alert(rowCount-1); 
         });
     });
 </script>

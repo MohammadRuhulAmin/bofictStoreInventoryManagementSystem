@@ -31,7 +31,8 @@
         <h3 class="card-title">Product  List  </h3>
       </div>
       <br>
-      
+      <button class="btn btn-success btn-sm" type="button">Get Number of Rows</button>
+      <br>
       <table class="table table-bordered datatable table-sm" id="productTable">
         <thead>
             <tr>
@@ -86,7 +87,8 @@
             @endif
         </tbody>
       </table>
-      <button class="btn btn-success" type="button">Get Number of Rows</button>
+      <br>
+      <button class="btn btn-success btn-sm" type="button">Get Number of Rows</button>
     </div>
     <!-- /.card -->
 
