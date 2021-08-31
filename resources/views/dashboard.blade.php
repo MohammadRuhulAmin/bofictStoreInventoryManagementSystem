@@ -82,50 +82,50 @@
       
     <div class="card card-primary">
         <div class="card-body">
-            
-      <table class="table table-bordered tan;e-sm datatable">
-        <thead>
-            <tr>
-                <th>#SL</th>
-                <th class="text-center">Image </th>
-                <th>Name</th>
-                <th>SKU</th>
-                <th>Category</th>
-                <th>Brand</th>
-                <th class="text-center">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if($recent_products)
-                @foreach ($recent_products as $key=> $product)
-                    <tr>
-                        <td class="text-center">{{++$key}}</td>
-                        <td><img width="64px" height="64px" src="{{asset('storage/product_images/'.$product->image)}}"/></td>
-                        <td>{{$product->name ??''}}</td>
-                        <td>{{$product->sku ??''}}</td>
-                        <td>{{$product->category->name ??''}}</td>
-                        <td>{{$product->brand->name ??''}}</td>
-                        <td class="text-center">
-                            <a  href="{{route('products.show',$product->id)}}" class="btn btn-sm btn-primary">
-                              <i class="fa fa-desktop"></i>  Show 
-                           </a>
-                              <a  href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
-                                  <i class="fa fa-edit"></i>  Edit 
-                              </a>
-                              <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="product-delete-{{$product->id}}">
-                                <i class="fa fa-trash"></i>  Delete
-                              </a>
-                              <form id="product-delete-{{$product->id}}" action="{{route('products.destroy',$product->id)}}" method="post">
-                                  @csrf 
-                                  @method('DELETE')
-  
-                              </form>
-                          </td>
-                    </tr>
-                @endforeach
-            @endif
-        </tbody>
-      </table>
+      
+          <table class="table table-bordered datatable">
+            <thead>
+                <tr>
+                    <th>#SL</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Sub Category</th>
+                    <th>Brand  </th>
+                    <th>Type</th>
+                    <th>Item</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if($products)
+                    @foreach ($products as $key=> $product)
+                        <tr>
+                            <td>{{++$key}}</td>
+                            <td>{{$product->name ?? ''}}</td>
+                            <td>{{$product->category ?? ''}}</td>
+                            <td>{{$product->subcategory ?? ''}}</td>
+                            <td>{{$product->brand ?? ''}}</td>
+                            <td>{{$product->type ?? ''}}</td>
+                            <td>{{$product->item ?? ''}}</td>
+                           
+    
+                            <td>
+                                <a  href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
+                                    <i class="fa fa-edit"></i>  Edit 
+                                </a>
+                                <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="product-delete-{{$product->id}}">
+                                  <i class="fa fa-trash"></i>  Delete
+                                </a>
+                                <form id="product-delete-{{$product->id}}" action="{{route('products.destroy',$product->id)}}" method="post">
+                                    @csrf 
+                                    @method('DELETE') 
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+            </tbody>
+          </table>
         </div>
     </div>
 </div>

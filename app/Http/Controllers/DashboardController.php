@@ -16,13 +16,18 @@ class DashboardController extends Controller
        $total_stocks_in = 0;
        $total_return_products = 0;
        $recent_products = 0;
+
+       $products = Product::orderby('created_at','DESC')->get();
+       
+
        return view('dashboard')->with(
            [
                'total_products'=>$total_products,
                'total_users'=>$total_users,
                'total_stocks_in'=>$total_stocks_in,
                'total_return_products' =>$total_return_products,
-               'recent_products' =>$recent_products
+               'recent_products' =>$recent_products,
+               'products' =>$products
            
            ]
            );

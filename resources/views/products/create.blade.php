@@ -20,7 +20,7 @@
   <!-- /.content-header -->
 
   <!-- Main content -->
-  <div class="col-md-12">
+  <div class="col-md-6">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
@@ -29,7 +29,7 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form role="form" action="{{route('products.store')}}" method="post">
+      <form role="form" action="{{route('products.store')}}" method="post" enctype = "multipart/form-data">
         @csrf 
         <div class="card-body">
           <div class="form-group">
@@ -79,6 +79,7 @@
             </select>
             
           </div>
+
           <div class="form-group">
             <label for="exampleInputEmail1">Select Item   </label>
             <select name="item" class="form-control">
@@ -89,6 +90,23 @@
             </select>
            
           </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1"> Upload Image   </label>
+            <input type="file" name="image" class="form-control">
+           
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1"> Description  </label>
+           
+            <textarea type="text" name="description" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1"> Department  </label>
+            <input type="text"  name="department" class="form-control">
+          </div>
+
+
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

@@ -32,10 +32,11 @@
       </div>
       <br>
       
-      <table class="table table-bordered datatable">
+      <table class="table table-bordered datatable table-sm">
         <thead>
             <tr>
                 <th>#SL</th>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Category</th>
                 <th>Sub Category</th>
@@ -49,7 +50,10 @@
             @if($products)
                 @foreach ($products as $key=> $product)
                     <tr>
+                      {{-- {{asset('storage/product_images/'.$product->image)}} --}}
                         <td>{{++$key}}</td>
+                        
+                        <td><img width="64px" src="{{url('storage/'.$product->image)}}"/></td>
                         <td>{{$product->name ?? ''}}</td>
                         <td>{{$product->category ?? ''}}</td>
                         <td>{{$product->subcategory ?? ''}}</td>

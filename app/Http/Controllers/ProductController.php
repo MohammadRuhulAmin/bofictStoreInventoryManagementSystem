@@ -9,6 +9,7 @@ use App\Models\Subcategory;
 use App\Models\Type;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 
 class ProductController extends Controller
@@ -49,10 +50,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
+         
           //validation 
           $this->validate($request,[
             'name'=>'required|min:2|max:50|',
+            
             
         ]);
         $product = new Product();
@@ -63,6 +65,27 @@ class ProductController extends Controller
         $product->item = $request->item;
         $product->type = $request->type;
         $product->brand = $request->brand;
+        $product->department = $request->department;
+        $product->description = $request->description;
+
+        //=================
+        if($request->hasFile('image')){
+            
+            $image = $request->file('image');
+            $fileName = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('storage/',$fileName);
+            $product->image = $fileName;
+
+            
+        }
+
+
+        //==================
+       
+        // saving images 
+        
+       
+        // Save Product  
         $product->save();
         flash('Product is Created Successfully!')->success();
         return back();
@@ -107,7 +130,43 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+           //validation 
+           $this->validate($request,[
+            'name'=>'required|min:2|max:50|',
+            
+            
+        ]);
+        $product =  Product::findOrFail($id);
+        $product->name = $request->name;
+        $product->category = $request->category;
+        $product->subcategory= $request->subcategory;
+        $product->item = $request->item;
+        $product->type = $request->type;
+        $product->brand = $request->brand;
+        $product->department = $request->department;
+        $product->description = $request->description;
+
+        //=================
+        if($request->hasFile('image')){
+            
+            $image = $request->file('image');
+            $fileName = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('storage/',$fileName);
+            $product->image = $fileName;
+
+            
+        }
+
+
+        //==================
+       
+        // saving images 
+        
+       
+        // Save Product  
+        $product->save();
+        flash('Product is Created Successfully!')->success();
+        return redirect()->route('products.index');
     }
 
     /**

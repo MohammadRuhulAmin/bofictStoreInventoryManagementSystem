@@ -29,7 +29,8 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form role="form" action="{{route('products.store')}}" method="post">
+      <form role="form" action="{{route('products.update',$product->id)}}" method="post" enctype = "multipart/form-data">
+        @method('PUT')
         @csrf 
         <div class="card-body">
           <div class="form-group">
@@ -89,6 +90,21 @@
             </select>
            
           </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1"> Upload Image   </label>
+            <input type="file" name="image" value="{{$product->image}}" placeholder="{{$product->image}}" class="form-control">
+           
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1"> Description  </label>
+           
+            <textarea type="text" name="description"  class="form-control">{{$product->description}}</textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1"> Department  </label>
+            <input type="text"  value="{{$product->department}}" name="department" class="form-control">
+          </div>
+
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

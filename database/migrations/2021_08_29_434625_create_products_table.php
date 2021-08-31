@@ -21,6 +21,10 @@ class CreateProductsTable extends Migration
             $table->string('type',50)->nullable();
             $table->string('item',50)->nullable();
             $table->string('brand',50)->nullable();
+            $table->string('image',300)->nullable();
+            $table->string('description',300)->nullable();
+            $table->string('department',50)->nullable();
+            
             $table->timestamps();
         });
     }
