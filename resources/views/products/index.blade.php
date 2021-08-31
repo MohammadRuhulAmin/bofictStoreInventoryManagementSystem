@@ -32,7 +32,7 @@
       </div>
       <br>
       
-      <table class="table table-bordered datatable table-sm">
+      <table class="table table-bordered datatable table-sm" id="productTable">
         <thead>
             <tr>
                 <th>#SL</th>
@@ -86,6 +86,7 @@
             @endif
         </tbody>
       </table>
+      <button class="btn btn-success" type="button">Get Number of Rows</button>
     </div>
     <!-- /.card -->
 
