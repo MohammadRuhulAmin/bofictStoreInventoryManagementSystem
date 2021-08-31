@@ -103,7 +103,15 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1"> Department  </label>
-            <input type="text"  name="department" class="form-control">
+            {{-- <input type="text"  name="department" class="form-control"> --}}
+            <select class="form-control" name="department">
+              <option></option>
+              <option>Bof Hq</option>
+              <option>Admin</option>
+              <option>planning</option>
+              <option>purchase</option>
+              <option>ICT</option>
+            </select>
           </div>
 
 

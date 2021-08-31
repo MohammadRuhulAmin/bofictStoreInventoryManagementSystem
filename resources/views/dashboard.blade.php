@@ -87,6 +87,8 @@
             <thead>
                 <tr>
                     <th>#SL</th>
+                    <th>Image</th>
+                    <th>Dept</th>
                     <th>Name</th>
                     <th>Category</th>
                     <th>Sub Category</th>
@@ -101,6 +103,8 @@
                     @foreach ($products as $key=> $product)
                         <tr>
                             <td>{{++$key}}</td>
+                            <td><img width="64px" src="{{url('storage/'.$product->image)}}"/></td>
+                            <td>{{$product->department}}</td>
                             <td>{{$product->name ?? ''}}</td>
                             <td>{{$product->category ?? ''}}</td>
                             <td>{{$product->subcategory ?? ''}}</td>
@@ -113,6 +117,9 @@
                                 <a  href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
                                     <i class="fa fa-edit"></i>  Edit 
                                 </a>
+                                {{-- <a href="{{route('products.show',$product->id)}}" class="btn btn-sm btn-success">
+                                  <i class="fa fa-info-circle"></i> Details
+                                </a> --}}
                                 <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="product-delete-{{$product->id}}">
                                   <i class="fa fa-trash"></i>  Delete
                                 </a>

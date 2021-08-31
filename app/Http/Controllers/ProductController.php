@@ -97,9 +97,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('products.show',compact('product'));
     }
 
     /**
@@ -153,11 +154,8 @@ class ProductController extends Controller
             $fileName = time().'.'.$image->getClientOriginalExtension();
             $request->image->move('storage/',$fileName);
             $product->image = $fileName;
-
             
         }
-
-
         //==================
        
         // saving images 

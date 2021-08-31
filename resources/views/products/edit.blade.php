@@ -102,7 +102,15 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1"> Department  </label>
-            <input type="text"  value="{{$product->department}}" name="department" class="form-control">
+            <select class="form-control" name="department">
+              <option value="{{$product->department}}"></option>
+              <option>Bof Hq</option>
+              <option>Admin</option>
+              <option>planning</option>
+              <option>purchase</option>
+              <option>ICT</option>
+            </select>
+            {{-- <input type="text"  value="{{$product->department}}" name="department" class="form-control"> --}}
           </div>
 
         </div>
