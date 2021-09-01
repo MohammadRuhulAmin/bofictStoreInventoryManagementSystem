@@ -9,6 +9,7 @@ use App\Models\Subcategory;
 use App\Models\Type;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use App\Models\Department;
 use Illuminate\Support\Str;
 
 
@@ -37,9 +38,10 @@ class ProductController extends Controller
         $types = Type::orderby('created_at','DESC')->get();
         $brands = Brand::orderby('created_at','DESC')->get();
         $items = Item::orderby('created_at','DESC')->get();
+        $departments = Department::orderby('created_at','DESC')->get();
         
         return view('products.create')
-        ->with(['categories'=>$categories,'subcategories'=>$subcategories,'types'=>$types,'brands'=>$brands,'items'=>$items]);
+        ->with(['categories'=>$categories,'subcategories'=>$subcategories,'types'=>$types,'brands'=>$brands,'items'=>$items,'departments'=>$departments]);
     }
 
     /**

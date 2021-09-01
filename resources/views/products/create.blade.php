@@ -103,58 +103,13 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1"> Department  </label>
-           
-            <select id="selectDepartment" class="form-control" name="department">
-              <option></option>
-              <option>Bof Hq</option>
-              <option>Admin</option>
-              <option>planning</option>
-              <option>purchase</option>
-              <option>ICT</option>
-              <option>PKS</option>
-              <option>Dir Admin</option>
-              <option>DD Admin </option>
-              <option>MAP</option>
-              <option>R & T </option>
-              <option>CR</option>
-              <option>Work Man Record</option>
-              <option>Stuff Record</option>
-              <option>Budget & Cash </option>
-              <option>Budget</option>
-              <option>Cash</option>
-              <option>Finance</option>
-              <option>Billing</option>
-              <option>Pension</option>
-              <option>Officer Record</option>
-              <option>Security </option>
-              <option>Medical</option>
-              <option>MAG</option>
-              <option>Miscellaleous</option>
-              <option>Welfare</option>
-              <option>Recident</option>
-              <option>Ration</option>
-              <option>Fire</option>
-              <option>Purchase</option>
-              <option>SA purchase</option>
-              <option>SAE purchase</option>
-              <option>OA purchase</option>
-              <option>Man Main Store</option>
-              <option>AM Main Store</option>
-              <option>PO Receive Control</option>
-              <option>APO  Main Store </option>
-              <option>GK Main Store</option>
-              <option>OA officer Mess</option>
-              <option>SA MT</option>
-              <option>OS MT</option>
-              <option>OIC ICT cell</option>
-              <option>SAE ICT cell</option>
-              <option>OA ICT cell</option>
-              <option>Server Room</option>
-              <option>NOC</option>
-              <option>AD Server</option>
-              <option>ERP Server</option>
-
-            </select>
+           <select id="selectDepartment" class="form-control" name="department">
+            <option></option> 
+            @foreach($departments as $department)
+              <option>{{$department->name ?? ''}}</option>
+            @endforeach
+           </select>
+      
           </div>
 
 
