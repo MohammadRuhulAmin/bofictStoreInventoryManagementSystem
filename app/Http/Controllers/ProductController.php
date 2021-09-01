@@ -165,7 +165,7 @@ class ProductController extends Controller
        
         // Save Product  
         $product->save();
-        flash('Product is Created Successfully!')->success();
+        flash('Product is Updated Successfully!')->success();
         return redirect()->route('products.index');
     }
 

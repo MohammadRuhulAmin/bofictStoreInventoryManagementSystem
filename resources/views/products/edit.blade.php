@@ -103,7 +103,7 @@
           <div class="form-group">
             <label for="exampleInputEmail1"> Department  </label>
            <select id="selectDepartment" class="form-control" name="department">
-            <option></option> 
+            <option>{{$product->department}}</option> 
             @foreach($departments as $department)
               <option>{{$department->name ?? ''}}</option>
             @endforeach
