@@ -23,9 +23,9 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                       <div class="inner">
-                        <h3>{{$total_users ?? 0}}</h3>
+                        <h3>{{$total_department ?? 0}}</h3>
         
-                        <p>Users</p>
+                        <p>Department</p>
                       </div>
                       <div class="icon">
                         <i class="fa fa-users"></i>
@@ -38,7 +38,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                       <div class="inner">
-                        <h3>{{$total_products ?? 0}}<sup style="font-size: 20px">%</sup></h3>
+                        <h3>{{$total_product ?? 0}}<sup style="font-size: 20px"></sup></h3>
         
                         <p>Products</p>
                       </div>
@@ -53,9 +53,9 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                       <div class="inner">
-                        <h3>{{$total_stocks_in  ?? 0 }}</h3>
+                        <h3>{{$total_category ?? 0 }}</h3>
         
-                        <p>Stocks</p>
+                        <p>Category </p>
                       </div>
                       <div class="icon">
                         <i class="fa fa-cart-plus"></i>
@@ -68,9 +68,9 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                       <div class="inner">
-                        <h3>{{$total_return_products ?? 0}}</h3>
+                        <h3>{{$total_brand ?? 0}}</h3>
         
-                        <p>Return Products </p>
+                        <p>Brand</p>
                       </div>
                       <div class="icon">
                         <i class="fa fa-list"></i>

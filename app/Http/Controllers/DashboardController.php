@@ -3,30 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\User;
-use App\Models\ProductStock;
-use App\Models\ReturnProduct;
+use App\Models\Department;
+use App\Models\Category;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index(){
-       $total_products = 0;
-       $total_users = User::count();
-       $total_stocks_in = 0;
-       $total_return_products = 0;
-       $recent_products = 0;
+       $total_department = Department::count();
+       $total_category = Category::count();
+     
+       $total_product = Product::count();
+        $total_brand = Brand::count();
 
        $products = Product::orderby('created_at','DESC')->get();
        
 
        return view('dashboard')->with(
            [
-               'total_products'=>$total_products,
-               'total_users'=>$total_users,
-               'total_stocks_in'=>$total_stocks_in,
-               'total_return_products' =>$total_return_products,
-               'recent_products' =>$recent_products,
+               'total_department'=>$total_department,
+                'total_brand' =>$total_brand,
+               'total_product' =>$total_product,
+                'total_category' =>$total_category,
                'products' =>$products
            
            ]

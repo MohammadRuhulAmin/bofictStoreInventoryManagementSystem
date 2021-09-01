@@ -118,9 +118,9 @@ class ProductController extends Controller
         $types = Type::orderby('created_at','DESC')->get();
         $brands = Brand::orderby('created_at','DESC')->get();
         $items = Item::orderby('created_at','DESC')->get();
-        
+        $departments = Department::orderby('created_at','DESC')->get();
         $product = Product::findOrFail($id);
-        return view('products.edit',compact('product','categories','subcategories','types','items','brands'));
+        return view('products.edit',compact('product','categories','subcategories','types','items','brands','departments'));
        
     }
 
