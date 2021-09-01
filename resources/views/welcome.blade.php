@@ -84,7 +84,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container">
-      <h1>Welcome to BOF</h1>
+      <h1>Bangladesh Ordnance Factories</h1>
       <h2> "No corruption will be tolerated in the relief distribution" Prime Minister Sheikh Hasina </h2>
       <a href="#about" class="btn-get-started scrollto">Inventory Management System</a>
     </div>
