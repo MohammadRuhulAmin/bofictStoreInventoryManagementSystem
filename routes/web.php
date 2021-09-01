@@ -9,6 +9,7 @@ use App\Http\Controllers\TypeController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\DepartmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,6 +62,9 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::resource('products',ProductController::class);
     //Item
     Route::resource('items',ItemController::class);
+
+    //Department 
+    Route::resource('departments',DepartmentController::class);
 
 
 });

@@ -46,4 +46,59 @@
         });
     });
 </script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+<script type="text/javascript">
+  
+      $("#selectCategory").select2({
+            placeholder: "Select Category",
+            allowClear: true
+        });
+</script>
+
+<script type="text/javascript">
+  
+    $("#selectSubCategory").select2({
+          placeholder: "Select Sub category",
+          allowClear: true
+      });
+</script>
+
+<script type="text/javascript">
+  
+    $("#selectType").select2({
+          placeholder: "Select Type",
+          allowClear: true
+      });
+</script>
+
+<script type="text/javascript">
+  
+    $("#selectItem").select2({
+          placeholder: "Select an Item ",
+          allowClear: true
+      });
+</script>
+<script type="text/javascript">
+  
+    $("#selectBrand").select2({
+          placeholder: "Select Brand",
+          allowClear: true
+      });
+</script>
+
+<script type="text/javascript">
+  
+    $("#selectDepartment").select2({
+          placeholder: "Select a Department",
+          allowClear: true
+      });
+</script>
+
+
+
 @stack('scripts')

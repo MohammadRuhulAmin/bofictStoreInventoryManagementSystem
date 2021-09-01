@@ -74,6 +74,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{route('departments.index')}}" class="nav-link {{request()->is('departments*')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> Department </p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{route('items.index')}}" class="nav-link {{request()->is('items*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p> Item </p>

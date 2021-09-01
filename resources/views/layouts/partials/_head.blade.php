@@ -17,6 +17,10 @@
   <link rel="stylesheet" href="{{asset('admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 
 
+
+ {{-- jquery Select2 option  start --}}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+{{-- end --}}
 <style>
   .select2-container--default .select2-selection--single{
     background-color:#fff;
