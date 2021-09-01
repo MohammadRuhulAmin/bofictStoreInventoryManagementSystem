@@ -4,5 +4,5 @@
       {{config('app.name')}}
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; {{date('Y')}} <a href="http://www.bof.gov.bd/">Bangladesh Ordnance Factory</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; {{date('Y')}} <a href="http://www.bof.gov.bd/">Bangladesh Ordnance Factories</a>.</strong> All rights reserved.
   </footer>
