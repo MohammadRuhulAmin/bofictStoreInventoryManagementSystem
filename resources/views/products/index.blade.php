@@ -29,10 +29,13 @@
     <div class="card card-primary">
       <div class="card-header">
         <h3 class="card-title">Product  List  </h3>
+       
       </div>
-      <br>
-    
-      <br>
+      
+      <div class="float-right">
+        <a href="{{route('product.excel')}}" class="btn btn-warning">Download as Excel File </a>
+
+      </div>
       <table  class="table table-bordered datatable table-sm" id="productTable">
         <thead>
             <tr>

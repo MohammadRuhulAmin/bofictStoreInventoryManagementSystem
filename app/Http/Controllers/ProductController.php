@@ -11,6 +11,8 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Models\Department;
 use Illuminate\Support\Str;
+use App\Exports\ProductExport;
+use Excel;
 
 
 class ProductController extends Controller
@@ -182,5 +184,12 @@ class ProductController extends Controller
         $product->delete();
         flash('Product is Deleted  Successfully!')->success();
         return redirect()->route('products.index');
+    }
+    public function exportIntoExcel(){
+        return Excel::download(new ProductExport,'productList.xlsx');
+
+    }
+    public function exportIntoCSV(){
+        return Excel::download(new ProductExport,'productList.csv');
     }
 }

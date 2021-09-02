@@ -66,7 +66,9 @@ Route::middleware(['auth:sanctum'])->group(function(){
     //Department 
     Route::resource('departments',DepartmentController::class);
 
-
+    // Export data table to excel  && csv file of Product 
+    Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('product.excel');
+    Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('product.csv');
 });
 
 
