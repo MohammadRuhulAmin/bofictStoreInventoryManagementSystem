@@ -15,7 +15,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::orderby('created_at','DESC')->get();
-        return view('users.index',compact('users'));
+        return view('admin.users.index',compact('users'));
     }
 
     /**
@@ -25,7 +25,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('admin.users.create');
     }
 
     /**
@@ -70,7 +70,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit',compact('user'));
+        return view('admin.users.edit',compact('user'));
     }
 
     /**

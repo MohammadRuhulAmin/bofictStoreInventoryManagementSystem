@@ -15,7 +15,7 @@ class SubcategoryController extends Controller
     public function index()
     {
         $subcategories = Subcategory::orderby('created_at','DESC')->get();
-        return view('subcategories.index',compact('subcategories'));
+        return view('admin.subcategories.index',compact('subcategories'));
     }
 
     /**
@@ -25,7 +25,7 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        return view('subcategories.create');
+        return view('admin.subcategories.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class SubcategoryController extends Controller
     public function edit($id)
     {
         $subcategory = Subcategory::findOrFail($id);
-        return view('subcategories.edit',compact('subcategory'));
+        return view('admin.subcategories.edit',compact('subcategory'));
     }
 
     /**

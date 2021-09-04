@@ -17,7 +17,7 @@ class BrandsController extends Controller
     public function index()
     {
         $brands = Brand::orderby('created_at','DESC')->get();
-        return view('brands.index',compact('brands'));
+        return view('admin.brands.index',compact('brands'));
     }
 
     /**
@@ -27,7 +27,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        return view('brands.create');
+        return view('admin.brands.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class BrandsController extends Controller
     public function edit($id)
     {
         $brand = Brand::findOrFail($id);
-        return view('brands.edit',compact('brand'));
+        return view('admin.brands.edit',compact('brand'));
     }
 
     /**

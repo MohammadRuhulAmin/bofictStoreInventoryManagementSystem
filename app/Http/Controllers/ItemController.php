@@ -15,7 +15,7 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::orderby('created_at','DESC')->get();
-        return view('items.index',compact('items'));
+        return view('admin.items.index',compact('items'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('items.create');
+        return view('admin.items.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class ItemController extends Controller
     public function edit($id)
     {
         $item = Item::findOrFail($id);
-        return view('items.edit',compact('item'));
+        return view('admin.items.edit',compact('item'));
     }
 
     /**

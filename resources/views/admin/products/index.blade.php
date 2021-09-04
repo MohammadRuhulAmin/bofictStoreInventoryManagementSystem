@@ -31,11 +31,13 @@
         <h3 class="card-title">Product  List  </h3>
        
       </div>
-      
+      <br>
       <div class="float-right">
+        
         <a href="{{route('product.excel')}}" class="btn btn-warning">Download as Excel File </a>
-
+        <a href="{{route('product.csv')}}" class="btn btn-primary">Download as CSV FIle  </a>
       </div>
+      <br>
       <table  class="table table-bordered datatable table-sm" id="productTable">
         <thead>
             <tr>
@@ -61,7 +63,6 @@
                         <td><img width="64px" src="{{url('storage/'.$product->image)}}"/></td>
                         <td>{{$product->department ?? ''}}
                         <td>{{$product->name ?? ''}}</td>
-                        
                         <td>{{$product->category ?? ''}}</td>
                         <td>{{$product->subcategory ?? ''}}</td>
                         <td>{{$product->brand ?? ''}}</td>
@@ -84,7 +85,6 @@
                                 @method('DELETE') 
                             </form>
                         </td>
-
                     </tr>
                 @endforeach
             @endif

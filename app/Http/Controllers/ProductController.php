@@ -25,7 +25,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::orderby('created_at','DESC')->get();
-        return view('products.index',compact('products'));
+        return view('admin.products.index',compact('products'));
     }
 
     /**
@@ -42,7 +42,7 @@ class ProductController extends Controller
         $items = Item::orderby('created_at','DESC')->get();
         $departments = Department::orderby('created_at','DESC')->get();
         
-        return view('products.create')
+        return view('admin.products.create')
         ->with(['categories'=>$categories,'subcategories'=>$subcategories,'types'=>$types,'brands'=>$brands,'items'=>$items,'departments'=>$departments]);
     }
 
@@ -58,8 +58,6 @@ class ProductController extends Controller
           //validation 
           $this->validate($request,[
             'name'=>'required|min:2|max:50|',
-            
-            
         ]);
         $product = new Product();
         
@@ -104,7 +102,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        return view('products.show',compact('product'));
+        return view('admin.products.show',compact('product'));
     }
 
     /**
@@ -122,7 +120,7 @@ class ProductController extends Controller
         $items = Item::orderby('created_at','DESC')->get();
         $departments = Department::orderby('created_at','DESC')->get();
         $product = Product::findOrFail($id);
-        return view('products.edit',compact('product','categories','subcategories','types','items','brands','departments'));
+        return view('admin.products.edit',compact('product','categories','subcategories','types','items','brands','departments'));
        
     }
 

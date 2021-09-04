@@ -16,7 +16,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::orderby('created_at','DESC')->get();
-        return view('categories.index',compact('categories'));
+        return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -68,7 +68,7 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('categories.edit',compact('category'));
+        return view('admin.categories.edit',compact('category'));
     }
 
     /**

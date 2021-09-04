@@ -15,8 +15,7 @@ class TypeController extends Controller
     public function index()
     {
         $types = Type::orderby('created_at','DESC')->get();
-       
-        return view('types.index',compact('types'));
+        return view('admin.types.index',compact('types'));
     }
 
     /**
@@ -26,7 +25,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('types.create');
+        return view('admin.types.create');
     }
 
     /**
@@ -68,7 +67,7 @@ class TypeController extends Controller
     public function edit($id)
     {
         $type = Type::findOrFail($id);
-        return view('types.edit',compact('type'));
+        return view('admin.types.edit',compact('type'));
     }
 
     /**

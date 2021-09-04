@@ -15,7 +15,7 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::orderby('created_at','DESC')->get();
-        return view('departments.index',compact('departments'));
+        return view('admin.departments.index',compact('departments'));
     }
 
     /**
@@ -25,7 +25,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('departments.create');
+        return view('admin.departments.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class DepartmentController extends Controller
     {
         
         $department = Department::findOrFail($id);
-        return view('departments.edit',compact('department'));
+        return view('admin.departments.edit',compact('department'));
     }
 
     /**
