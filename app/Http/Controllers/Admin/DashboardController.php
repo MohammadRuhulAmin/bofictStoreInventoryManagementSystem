@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\Department;
-use App\Models\Category;
-use App\Models\Brand;
+use App\Models\Admin\Product;
+use App\Models\Admin\Department;
+use App\Models\Admin\Category;
+use App\Models\Admin\Brand;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller

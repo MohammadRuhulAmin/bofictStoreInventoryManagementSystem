@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Department;
+use App\Models\Admin\Department;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller

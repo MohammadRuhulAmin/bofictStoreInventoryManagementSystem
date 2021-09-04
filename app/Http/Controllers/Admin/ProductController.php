@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\Brand;
-use App\Models\Subcategory;
-use App\Models\Type;
-use App\Models\Item;
+use App\Models\Admin\Product;
+use App\Models\Admin\Category;
+use App\Models\Admin\Brand;
+use App\Models\Admin\Subcategory;
+use App\Models\Admin\Type;
+use App\Models\Admin\Item;
 use Illuminate\Http\Request;
-use App\Models\Department;
+use App\Models\Admin\Department;
 use Illuminate\Support\Str;
 use App\Exports\ProductExport;
 use Excel;

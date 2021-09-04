@@ -1,16 +1,20 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Admin\Product;
 
-class Brand extends Model
+class Category extends Model
 {
     use HasFactory;
     protected $appends = ['text'];
+
     public function getTextAttribute(){
         return $this->name;
     }
+ 
+  
 
 }

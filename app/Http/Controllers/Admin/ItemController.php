@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Item;
+use App\Models\Admin\Item;
 use Illuminate\Http\Request;
+
 
 class ItemController extends Controller
 {
