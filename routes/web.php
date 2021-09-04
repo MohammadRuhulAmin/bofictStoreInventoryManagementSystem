@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\DepartmentController;
+
+use App\Http\Controllers\LandingPageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,43 +35,36 @@ Route::get('/', function () {
 //test
 Route::get('/user/logout',[UsersController::class,'logout'])->name('users.logout');
 
+// Dashboard redirect after checking who is user or admin 
+Route::get('/redirects',[LandingPageController::class,'redirectUser']);
 
 
-Route::middleware(['auth:sanctum'])->group(function(){
-
-
-    // Dashboard 
-
-    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
-
-
-    // User Insertion 
-    Route::resource('users', UsersController::class);
-       
-
-    //Category
-    Route::resource('categories', CategoriesController::class);
-    
-      //Brand
+Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
+  
+   // admin prefix
+    Route::prefix('admin')->group(function(){
+       // Dashboard 
+       Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+         // User Insertion 
+      Route::resource('users', UsersController::class);
+       //Category
+      Route::resource('categories', CategoriesController::class);
+       //Brand
       Route::resource('brands', BrandsController::class);
-    
-    //Sub category 
-    Route::resource('subcategories',SubcategoryController::class);
-
-    // Type 
-    Route::resource('types',TypeController::class);
-
-    //Product
-    Route::resource('products',ProductController::class);
-    //Item
-    Route::resource('items',ItemController::class);
-
-    //Department 
-    Route::resource('departments',DepartmentController::class);
-
-    // Export data table to excel  && csv file of Product 
-    Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('product.excel');
-    Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('product.csv');
+     //Sub category 
+      Route::resource('subcategories',SubcategoryController::class);
+     // Type 
+     Route::resource('types',TypeController::class);
+     //Product
+     Route::resource('products',ProductController::class);
+     //Item
+     Route::resource('items',ItemController::class);
+     //Department 
+      Route::resource('departments',DepartmentController::class);
+      // Export data table to excel  && csv file of Product 
+      Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('product.excel');
+      Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('product.csv');
+    });
 });
 
 
