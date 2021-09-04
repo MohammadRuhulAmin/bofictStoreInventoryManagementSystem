@@ -26,7 +26,11 @@
         <form method="post" enctype="multipart/form-data" action="{{route('product.import')}}">
             @csrf 
             <div class="form-group">
-              <h3>Import CSV / Excel  File</h3>
+              
+              <div >
+                <h3>Import CSV / Excel  File</h3>
+                <p class="text-danger">Note : ** In table heading , Must : provide [ name , category , subcategory , type , item , brand , description , department] </p>
+              </div>
               <label for="file" class="form-control">Import an CVS / Excel  File</label>
               <input type="file" class="form-control" name="cvsFile"/>
             </div>
