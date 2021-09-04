@@ -1,5 +1,6 @@
 <?php
 
+//for admin
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UsersController;
@@ -10,8 +11,10 @@ use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\DepartmentController;
-
 use App\Http\Controllers\LandingPageController;
+
+// for user 
+use App\Http\Controllers\User\ViewerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +43,6 @@ Route::get('/redirects',[LandingPageController::class,'redirectUser']);
 
 
 Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
-  
    // admin prefix
     Route::prefix('admin')->group(function(){
        // Dashboard 
@@ -67,5 +69,24 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
     });
 });
 
+// Routes for users 
 
 
+Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
+  // user prefix
+   Route::prefix('user')->group(function(){
+      
+    // user dashboard
+    Route::get('/dashboard',[ViewerController::class,'dashboard'])->name('user.dashboard');
+    // Product Index 
+      
+      Route::get('/products',[ViewerController::class,'index'])->name('product.index');
+      
+      // show product details 
+      Route::get('/product/details/{id}',[ViewerController::class,'details'])->name('product.show');
+
+      // Export data table to excel  && csv file of Product 
+      Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('product.excel');
+      Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('product.csv');
+   });
+});

@@ -12,8 +12,7 @@ class LandingPageController extends Controller
             return redirect('admin/dashboard');
         }
         if($role === "user"){
-            return  "user module !";
-            //return redirect()->route('dashboard');
+            return redirect('user/dashboard');
         }
     }
 }

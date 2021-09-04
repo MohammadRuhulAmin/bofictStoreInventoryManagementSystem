@@ -42,55 +42,88 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+          
             <ul class="nav nav-treeview">
+              @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('dashboard')}}" class="nav-link {{request()->is('dashboard*')? 'active': ''}}">
                   <i class="fa fa-home nav-icon"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
+              @endif
+              @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('categories.index')}}" class="nav-link {{request()->is('categories*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p>Category</p>
                 </a>
               </li>
+              @endif
+              @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('subcategories.index')}}" class="nav-link {{request()->is('subcategories*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p>Sub Category</p>
                 </a>
               </li>
+              @endif
+              @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('types.index')}}" class="nav-link {{request()->is('types*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p>Type</p>
                 </a>
               </li>
+              @endif
+              @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('brands.index')}}" class="nav-link {{request()->is('brands*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p> Brand </p>
                 </a>
               </li>
+              @endif 
+              @if(auth()->user()->role ==="admin")
               <li class="nav-item">
                 <a href="{{route('departments.index')}}" class="nav-link {{request()->is('departments*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p> Department </p>
                 </a>
               </li>
+              @endif
+              @if(auth()->user()->role ==="admin")
               <li class="nav-item">
                 <a href="{{route('items.index')}}" class="nav-link {{request()->is('items*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p> Item </p>
                 </a>
+                @endif
               </li>
+              @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('products.index')}}" class="nav-link {{request()->is('products*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p> Product </p>
                 </a>
               </li>
+              @endif
+              @if(auth()->user()->role === "user")
+              <li class="nav-item">
+                <a href="{{route('user.dashboard')}}" class="nav-link {{request()->is('dashboard*')? 'active': ''}}">
+                  <i class="fa fa-home nav-icon"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              @endif
+              @if(auth()->user()->role === "user")
+              <li class="nav-item">
+                <a href="{{route('product.index')}}" class="nav-link {{request()->is('product.index')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> Product </p>
+                </a>
+              </li>
+              @endif
             </ul>
           </li>
           <li class="nav-item">
