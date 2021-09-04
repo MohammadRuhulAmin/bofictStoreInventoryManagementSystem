@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BrandsController;
-use App\Http\Controllers\TypeController;
-use App\Http\Controllers\SubcategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ItemController;
-use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\Admin\BrandsController;
+use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ItemController;
+use App\Http\Controllers\Admin\DepartmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
