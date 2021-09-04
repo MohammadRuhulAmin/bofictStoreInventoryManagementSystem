@@ -13,6 +13,7 @@ use App\Models\Admin\Department;
 use Illuminate\Support\Str;
 use App\Exports\ProductExport;
 use Excel;
+use App\Imports\ProductImport;
 
 
 class ProductController extends Controller
@@ -190,4 +191,14 @@ class ProductController extends Controller
     public function exportIntoCSV(){
         return Excel::download(new ProductExport,'productList.csv');
     }
+    public function importCvsFileToDatabase(Request $request){
+        //validation 
+        $this->validate($request,[
+            'cvsFile'=>'required',
+        ]);
+        Excel::import(new ProductImport,$request->cvsFile);
+        flash('Excel File is Imported ,   Successfully!')->success();
+        return redirect()->route('products.index');
+    }
+
 }

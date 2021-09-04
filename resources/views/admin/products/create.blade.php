@@ -20,6 +20,25 @@
   <!-- /.content-header -->
 
   <!-- Main content -->
+  <div>
+    
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" action="{{route('product.import')}}">
+            @csrf 
+            <div class="form-group">
+              <h3>Import CSV / Excel  File</h3>
+              <label for="file" class="form-control">Import an CVS / Excel  File</label>
+              <input type="file" class="form-control" name="cvsFile"/>
+            </div>
+            @if($errors->has('cvsFile'))
+              <span class="text-danger">Please insert a valid Excel / CSV File with the Proper file extention &  {{$errors->first('cvsFile')}} </span>
+            @endif
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i>Submit</button>
+          </div>
+        </form>
+    </div>
+  </div>
   <div class="col-md-12">
     <!-- general form elements -->
     <div class="card card-primary">

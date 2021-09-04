@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    protected $fillable = ['name','category','subcategory','type','item','description','department'];
     public static function getProductList(){
         $products = Product::get()->toArray();
         return $products;

@@ -66,6 +66,9 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       // Export data table to excel  && csv file of Product 
       Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('product.excel');
       Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('product.csv');
+       // Import data from excel file 
+       Route::post('/import-excel-file',[ProductController::class,'importCvsFileToDatabase'])->name('product.import');
+   
     });
 });
 
@@ -88,5 +91,6 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
       // Export data table to excel  && csv file of Product 
       Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('product.excel');
       Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('product.csv');
-   });
+     
+    });
 });
