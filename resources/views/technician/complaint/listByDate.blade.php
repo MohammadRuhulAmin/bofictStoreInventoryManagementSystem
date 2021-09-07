@@ -22,25 +22,7 @@
   </div>
   <!-- /.content-header -->
  <br>
-<div class="card card-primary">
-  <form method="post" action="{{route('complaints.listByDate')}}">
-    @csrf 
-  <div class="card-header">
-    <div class="card-title"><p>Select Date for  Complient List </p></div>
-  </div>
-  <div class="card-body">
-    
-  <select name="listByDate" class="form-control" id="selectComplaintDate" >
-    @foreach($complaints as $cDate)
-     <option>{{$cDate->date}}</option>
-    @endforeach
-  </select>
-  </div>
- <div class="card-footer">
-   <button class="btn btn-success"><i class="fas fa-search"></i> Search </button>
- </div>
-  </form>
-</div>
+  <h3 align="center">Date {{$specificDate}}</h3>
  <br>
   <!-- Main content -->
   <div class="col-md-12">

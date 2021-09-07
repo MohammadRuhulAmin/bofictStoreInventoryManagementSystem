@@ -99,4 +99,12 @@
       });
 </script>
 
+<script type="text/javascript">
+  
+    $("#selectComplaintDate").select2({
+          placeholder: "Select a Department",
+          allowClear: true
+      });
+</script>
+
 @stack('scripts')

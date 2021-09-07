@@ -152,4 +152,11 @@ class ComplaintsController extends Controller
         flash('Complaint  is Deleted  Successfully!')->success();
         return redirect()->route('complaints.index');
     }
+
+    public function listByDate(Request $request){
+        $specificDate = $request->listByDate;
+        $complaints = Complaint::where(['date'=>$request->listByDate])->get();
+        return view('technician.complaint.listByDate',compact('complaints','specificDate'));
+    }
+
 }

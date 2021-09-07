@@ -111,6 +111,7 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
     Route::get('/dashboard',[TechDashboardController::class,'dashboard'])->name('technician.dashboard');
     // Complaint 
      Route::resource('/complaints',ComplaintsController::class);
+     Route::post('/complaints/complaints-list-byDate',[ComplaintsController::class,'listByDate'])->name('complaints.listByDate');
 
      
     });
