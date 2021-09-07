@@ -34,9 +34,7 @@ class ViewerController extends Controller
         $subcategoryList =Subcategory::orderby('created_at','DESC')->get();
         $typeList = Type::orderby('created_at','DESC')->get();
         $itemList = Item::orderby('created_at','DESC')->get();
-        $brandList = Brand::orderby('created_at','DESC')->get();
-
-        
+        $brandList = Brand::orderby('created_at','DESC')->get();   
        return view('user.dashboard')->with(
            [
                'total_department'=>$total_department,
@@ -53,7 +51,6 @@ class ViewerController extends Controller
            ]
            );
     }
-
     public function searchProduct(Request $request){
      
         $department = $request->department;
@@ -173,20 +170,9 @@ class ViewerController extends Controller
             flash('No Such product in Database ')->error();
             return back();
         }
-
-
-
-
-
-
-        
-
-        
-
-        
-
     }
 
+    
     public function searchProductName(Request $request){
         $this->validate($request,[
             'productName' =>'required',
