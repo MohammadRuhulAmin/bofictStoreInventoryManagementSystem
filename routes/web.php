@@ -45,6 +45,7 @@ Route::get('/redirects',[LandingPageController::class,'redirectUser']);
 Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
    // admin prefix
     Route::prefix('admin')->group(function(){
+    
        // Dashboard 
        Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
          // User Insertion 
@@ -64,16 +65,15 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
      //Department 
       Route::resource('departments',DepartmentController::class);
       // Export data table to excel  && csv file of Product 
-      Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('product.excel');
-      Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('product.csv');
+      Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('admin.product.excel');
+      Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('admin.product.csv');
        // Import data from excel file 
-       Route::post('/import-excel-file',[ProductController::class,'importCvsFileToDatabase'])->name('product.import');
+       Route::post('/import-excel-file',[ProductController::class,'importCvsFileToDatabase'])->name('admin.product.import');
    
     });
 });
 
 // Routes for users 
-
 
 Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
   // user prefix
@@ -82,15 +82,17 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
     // user dashboard
     Route::get('/dashboard',[ViewerController::class,'dashboard'])->name('user.dashboard');
     // Product Index 
-      
       Route::get('/products',[ViewerController::class,'index'])->name('product.index');
-      
       // show product details 
       Route::get('/product/details/{id}',[ViewerController::class,'details'])->name('product.show');
-
       // Export data table to excel  && csv file of Product 
-      Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('product.excel');
-      Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('product.csv');
+      Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('user.product.excel');
+      Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('user.product.csv');
+
+      Route::post('/product/search',[ViewerController::class,'searchProduct'])->name('user.search.products');
+
+      Route::post('/product/search/name',[ViewerController::class,'searchProductName'])->name('user.search.specificProduct');
+
      
     });
 });

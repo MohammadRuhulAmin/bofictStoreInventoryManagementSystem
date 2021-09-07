@@ -12,7 +12,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item active">Product List </li>
+            <li class="breadcrumb-item active">Search Product List </li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -25,15 +25,14 @@
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Product  List  </h3>
+        <h3 class="card-title">Search Product  List  </h3>
        
       </div>
       <br>
       
       <div class="float-right">
         
-        <a href="{{route('user.product.excel')}}" class="btn btn-warning">Download as Excel File </a>
-        <a href="{{route('user.product.csv')}}" class="btn btn-primary">Download as CSV FIle  </a>
+       
       </div>
       <br>
       <table  class="table table-bordered datatable table-sm" id="productTable">
@@ -52,12 +51,10 @@
             </tr>
         </thead>
         <tbody>
-            @if($products)
-                @foreach ($products as $key=> $product)
+            @if($productList)
+                @foreach ($productList as $key=> $product)
                     <tr>
-                     
                         <td>{{++$key}}</td>
-                        
                         <td><img width="64px" src="{{url('storage/'.$product->image)}}"/></td>
                         <td>{{$product->department ?? ''}}
                         <td>{{$product->name ?? ''}}</td>
@@ -66,10 +63,7 @@
                         <td>{{$product->brand ?? ''}}</td>
                         <td>{{$product->type ?? ''}}</td>
                         <td>{{$product->item ?? ''}}</td>
-                       
-
                         <td>
-                           
                             <a href="{{route('product.show',$product->id)}}" class="btn btn-sm btn-success">
                               <i class="fa fa-info-circle"></i> Details
                             </a>
@@ -80,10 +74,13 @@
         </tbody>
       </table>
       <br>
-     
+      <div class="card-footer">
+        <a class="btn btn-sm btn-success" href="{{route('user.dashboard')}}"><i class="fa fa-arrow-left"></i>Back</a>
+        
+    </div>
     </div>
     <!-- /.card -->
-
+    
 
   </div>
   <!-- /.content -->    

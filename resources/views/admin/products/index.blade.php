@@ -34,8 +34,8 @@
       <br>
       <div class="float-right">
         
-        <a href="{{route('product.excel')}}" class="btn btn-warning">Download as Excel File </a>
-        <a href="{{route('product.csv')}}" class="btn btn-primary">Download as CSV FIle  </a>
+        <a href="{{route('admin.product.excel')}}" class="btn btn-warning">Download as Excel File </a>
+        <a href="{{route('admin.product.csv')}}" class="btn btn-primary">Download as CSV FIle  </a>
       </div>
       <br>
       <table  class="table table-bordered datatable table-sm" id="productTable">
@@ -59,8 +59,9 @@
                     <tr>
                       {{-- {{asset('storage/product_images/'.$product->image)}} --}}
                         <td>{{++$key}}</td>
-                        
-                        <td><img width="64px" src="{{url('storage/'.$product->image)}}"/></td>
+                        <td>
+                          <img width="64px" src="{{url('storage/'.$product->image)}}"/>
+                        </td>
                         <td>{{$product->department ?? ''}}
                         <td>{{$product->name ?? ''}}</td>
                         <td>{{$product->category ?? ''}}</td>

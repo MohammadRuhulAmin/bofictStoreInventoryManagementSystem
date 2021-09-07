@@ -23,7 +23,7 @@
   <div>
     
     <div class="card-body">
-        <form method="post" enctype="multipart/form-data" action="{{route('product.import')}}">
+        <form method="post" enctype="multipart/form-data" action="{{route('admin.product.import')}}">
             @csrf 
             <div class="form-group">
               

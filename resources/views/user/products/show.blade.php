@@ -10,7 +10,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{route('dashboard')}}"> Home </a></li>
+            <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}"> Home </a></li>
             <li class="breadcrumb-item active">product details</li>
           </ol>
         </div><!-- /.col -->
@@ -43,6 +43,7 @@
                                     <td>Subcategory   </td>
                                     <td>{{$product->subcategory}}</td>
                                 </tr>
+
                                 <tr>
                                     <td> Brand</td>
                                     <td>{{$product->brand}}</td>
@@ -67,7 +68,9 @@
                            </table>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-sm btn-success" href="{{route('product.index')}}"><i class="fa fa-arrow-left"></i>Back</a>
+                            
+                            <a class="btn btn-sm btn-success" href="{{route('user.dashboard')}}"><i class="fa fa-arrow-left"></i>Back</a>
+                            <a class="btn btn-sm btn-success float-right" href="{{route('product.index')}}">Go to Product List <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
