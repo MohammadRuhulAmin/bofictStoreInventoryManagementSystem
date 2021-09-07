@@ -14,7 +14,11 @@ use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\LandingPageController;
 
 // for user 
-use App\Http\Controllers\User\ViewerController;
+use App\Http\Controllers\User\ViewerController; 
+
+// for technicians
+use App\Http\Controllers\Technician\TechDashboardController;
+use App\Http\Controllers\Technician\ComplaintsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,6 +96,21 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
       Route::post('/product/search',[ViewerController::class,'searchProduct'])->name('user.search.products');
 
       Route::post('/product/search/name',[ViewerController::class,'searchProductName'])->name('user.search.specificProduct');
+
+     
+    });
+});
+
+//  Routes for technicians 
+
+Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
+  // user prefix
+   Route::prefix('technician')->group(function(){
+      
+    // user dashboard
+    Route::get('/dashboard',[TechDashboardController::class,'dashboard'])->name('technician.dashboard');
+    // Complaint 
+     Route::resource('/complaints',ComplaintsController::class);
 
      
     });

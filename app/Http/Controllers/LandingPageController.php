@@ -8,11 +8,18 @@ class LandingPageController extends Controller
 {
     public function redirectUser(){
         $role = auth()->user()->role;
+        
         if($role === "admin"){
             return redirect('admin/dashboard');
         }
-        if($role === "user"){
+        
+        if($role  === "user"){
             return redirect('user/dashboard');
         }
+        
+        if($role  ===  "technician"){
+            return redirect('technician/dashboard');
+        }
+
     }
 }

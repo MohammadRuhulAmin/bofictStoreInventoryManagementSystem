@@ -124,6 +124,14 @@
                 </a>
               </li>
               @endif
+              @if(auth()->user()->role === "technician")
+              <li class="nav-item">
+                <a href="{{route('complaints.index')}}" class="nav-link {{request()->is('complaint*')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> Complaint </p>
+                </a>
+              </li>
+              @endif
             </ul>
           </li>
           <li class="nav-item">

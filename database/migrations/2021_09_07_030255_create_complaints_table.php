@@ -15,19 +15,19 @@ class CreateComplaintsTable extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');
-            $table->string('date',50);
-            $table->string('time',50);
-            $table->string('complaintName',50);
-            $table->string('complaintDesignation',100);
-            $table->longText('complaintDescription');
-            $table->string('complaintReceiverName',50);
-            $table->string('complaintSolverTechnicianName',50);
-            $table->string('complaintSolutionDate',50);
-            $table->longText('complaintSolutionDescription');
+            
+            $table->string('date',50)->nullable();
+            $table->string('time',50)->nullable();
+            $table->string('complaintName',50)->nullable();
+            $table->string('complaintDesignation',100)->nullable();
+            $table->longText('complaintDescription')->nullable();
+            $table->string('complaintReceiverName',50)->nullable();
+            $table->string('complaintSolverTechnicianName',50)->nullable();
+            $table->string('complaintSolutionDate',50)->nullable();
+            $table->longText('complaintSolutionDescription')->nullable();
             $table->string('ic')->nullable();
             $table->string('oic')->nullable();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+           
             $table->timestamps();
         });
     }
