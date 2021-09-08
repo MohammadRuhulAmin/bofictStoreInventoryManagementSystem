@@ -56,6 +56,7 @@
             <tr>
                 <th>#SL</th>
                <th>C ID </th>
+               <th>P. Name</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>Cnt Name</th>
@@ -76,6 +77,7 @@
                     <tr>
                         <td>{{++$key}}</td>
                           <td>{{$complaint->id}}</td>
+                          <td>{{$complaint->productName}}</td>
                         <td>{{$complaint->date ??''}}</td>
                         <td>{{$complaint->time ?? ''}}</td>
                         <td>{{$complaint->complaintName ?? ''}}</td>

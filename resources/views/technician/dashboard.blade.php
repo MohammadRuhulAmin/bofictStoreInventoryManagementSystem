@@ -11,11 +11,14 @@
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('technician.dashboard')}}"> Home </a></li>
             <li class="breadcrumb-item active">Dashboard </li>
+           
           </ol>
+          
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
+  
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -81,6 +84,8 @@
       
           
     <!-- Main content -->
+    <br>
+    <a href="{{route('complaints.create')}}" class="btn btn-sm btn-warning m-3"><i class="fa fa-plus"></i>Add  New Complaints</a>
     <div class="col-md-12">
       <!-- general form elements -->
       <div class="card card-primary">
@@ -96,6 +101,7 @@
               <tr>
                   <th>#SL</th>
                  <th>C ID </th>
+                 <th>P. Name </th>
                   <th>Date</th>
                   <th>Time</th>
                   <th>Cnt Name</th>
@@ -116,6 +122,7 @@
                       <tr>
                           <td>{{++$key}}</td>
                             <td>{{$complaint->id}}</td>
+                            <td>{{$complaint->productName}}</td>
                           <td>{{$complaint->date ??''}}</td>
                           <td>{{$complaint->time ?? ''}}</td>
                           <td>{{$complaint->complaintName ?? ''}}</td>
@@ -131,14 +138,14 @@
                               <a  href="{{route('complaints.edit',$complaint->id)}}" class="btn btn-sm btn-info">
                                   <i class="fa fa-edit"></i>  Edit 
                               </a>
-                              <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="complaint-delete-{{$complaint->id}}">
+                              {{-- <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="complaint-delete-{{$complaint->id}}">
                                 <i class="fa fa-trash"></i>  Delete
                               </a>
   
                               <form id="complaint-delete-{{$complaint->id}}" action="{{route('complaints.destroy',$complaint->id)}}" method="post">
                                   @csrf 
                                   @method('DELETE')
-                              </form>
+                              </form> --}}
                           </td>
                       </tr>
                   @endforeach

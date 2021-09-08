@@ -26,12 +26,23 @@
         <h3 class="card-title">Create a New Complaint  </h3>
       </div>
       <!-- /.card-header -->
-      
       <!-- form start -->
       <form role="form" action="{{route('complaints.store')}}" method="post">
         @csrf 
         <div class="card-body">
             
+          <div class="form-group">
+            <label for="productName"> Product Name / Custom Id :  </label>
+            <select class="form-control"  id="selectProductName" name="productName">
+              <option></option>
+              @foreach($products as $product)
+                <option>{{$product->name}}</option>
+              @endforeach
+            </select>
+            @if($errors->has('productName'))
+                <span class="text-danger">Date  must be Provided! &  {{$errors->first('date')}}</span>
+            @endif
+          </div>
           <div class="form-group">
             <label for="exampleInputEmail1"> Date  </label>
             <input type="date" class="form-control" id="" name="date">

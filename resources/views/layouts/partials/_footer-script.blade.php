@@ -102,7 +102,15 @@
 <script type="text/javascript">
   
     $("#selectComplaintDate").select2({
-          placeholder: "Select a Department",
+          placeholder: "Select a complaint date",
+          allowClear: true
+      });
+</script>
+
+<script type="text/javascript">
+  
+    $("#selectProductName").select2({
+          placeholder: "Select a Product Name",
           allowClear: true
       });
 </script>

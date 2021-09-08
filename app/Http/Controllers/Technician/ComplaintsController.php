@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Technician;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Technician\Complaint;
+use App\Models\Admin\Product;
 
 class ComplaintsController extends Controller
 {
@@ -17,6 +18,7 @@ class ComplaintsController extends Controller
     {
         $complaints = Complaint::orderby('created_at','DESC')->get();
         return view('technician.complaint.index',compact('complaints'));
+
     }
 
     /**
@@ -26,9 +28,9 @@ class ComplaintsController extends Controller
      */
     public function create()
     {
-        return view('technician.complaint.create');
+        $products = Product::orderby('created_at','DESC')->get();
+        return view('technician.complaint.create',compact('products'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,9 +39,9 @@ class ComplaintsController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request;
-       
+        
         $this->validate($request,[
+            'productName'=>'required', // this is product id or product name ! actually
             'date'=>'required',
             'time'=>'required',
             'complaintName' =>'required',
@@ -51,8 +53,14 @@ class ComplaintsController extends Controller
             'complaintSolutionDescription' =>'required',
 
         ]);
+        $product = Product::where(['name'=>$request->productName])->first();
+        //--------------------------------
+       
+
+        //-------------------------------
         $complaint = new Complaint();
-      
+        $complaint->productName = $request->productName;
+        $complaint->product_id  = $product->id; 
         $complaint->date = $request->date;
         $complaint->time = $request->time;
         $complaint->complaintName = $request->complaintName;
@@ -120,7 +128,7 @@ class ComplaintsController extends Controller
 
         ]);
         $complaint = Complaint::findOrFail($id);
-
+        
         $complaint->date = $request->date;
         $complaint->time = $request->time;
         $complaint->complaintName = $request->complaintName;
