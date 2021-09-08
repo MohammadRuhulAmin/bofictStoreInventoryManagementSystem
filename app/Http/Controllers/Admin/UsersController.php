@@ -6,6 +6,7 @@ use App\Models\Admin\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Technician\Complaint;
 class UsersController extends Controller
 {
     /**
@@ -119,4 +120,26 @@ class UsersController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+    public function toTechnician($id){
+        $user = User::findOrFail($id);
+        $user->role = "technician";
+        $user->save();
+        flash('User Permission Has changed to Technician  Successfully  !')->success();
+        return back();
+    }
+    public function toUser($id){
+        $user = User::findOrFail($id);
+        $user->role = "user";
+        $user->save();
+        flash('User Permission Has changed to Regular User  Successfully  !')->success();
+        return back();
+    }
+    public function detailsOfUser($id){
+        $userInformation = User::findOrFail($id);
+        $complaintsOfProduct = Complaint::where(['complaintSolverTechnicianName'=>$userInformation->name])->get();
+        return view('admin.users.details',compact('userInformation','complaintsOfProduct'));
+        
+    }
+
 }

@@ -54,6 +54,14 @@
               @endif
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
+                <a href="{{route('users.index')}}" class="nav-link {{request()->is('users*')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> Users </p>
+                </a>
+              </li>
+              @endif
+              @if(auth()->user()->role === "admin")
+              <li class="nav-item">
                 <a href="{{route('categories.index')}}" class="nav-link {{request()->is('categories*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p>Category</p>

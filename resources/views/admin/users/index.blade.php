@@ -33,10 +33,11 @@
         <thead>
             <tr>
                 <th>#SL</th>
+                <th>Role </th>
                 <th>Name</th>
                 <th>Email</th>
-                <th> Created At </th>
-                <th>Action</th>
+                <th> Change Permission To </th>
+                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -44,19 +45,28 @@
                 @foreach ($users as $key=> $user)
                     <tr>
                         <td>{{++$key}}</td>
+                        <td>{{$user->role}}</td>
                         <td>{{$user->name ??''}}</td>
                         <td>{{$user->email ??''}} @if(auth()->user()->id == $user->id ) <span class="badge bg-danger"> Admin </span> @endif </td>
-                        <td>{{$user->created_at ?? ''}}</td>
+                        <td class="text-center">
+                          
+                          <a href="{{route('users.toTechnician',$user->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-male"></i> Technician </a>
+                          <a href="{{route('users.toUser',$user->id)}}" class="btn btn-sm btn-success"><i class="fas fa-user"></i>User </a>
+                        </td>
 
                         <td>
                             <a  href="{{route('users.edit',$user->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 
                             </a>
-                            @if(auth()->user()->id != $user->id)
-                            <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="category-delete-{{$user->id}}">
+                            {{-- --}}
+                            <a  href="{{route('users.details',$user->id)}} " class="btn btn-sm btn-success">
+                              <i class="fa fa-edit"></i>  Details
+                          </a>
+                            @if($user->role !== "admin")
+                            <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="user-delete-{{$user->id}}">
                               <i class="fa fa-trash"></i>  Delete
                             </a>
-                            <form id="category-delete-{{$user->id}}" action="{{route('users.destroy',$user->id)}}" method="post">
+                            <form id="user-delete-{{$user->id}}" action="{{route('users.destroy',$user->id)}}" method="post">
                                 @csrf 
                                 @method('DELETE')
 

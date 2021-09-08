@@ -54,6 +54,9 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
          // User Insertion 
       Route::resource('users', UsersController::class);
+      Route::get('/users/{id}/to-technician/',[UsersController::class,'toTechnician'])->name('users.toTechnician');
+      Route::get('/users/{id}/to-user/',[UsersController::class,'toUser'])->name('users.toUser');
+      Route::get('/users/{id}/details',[UsersController::class,'detailsOfUser'])->name('users.details');
        //Category
       Route::resource('categories', CategoriesController::class);
        //Brand
