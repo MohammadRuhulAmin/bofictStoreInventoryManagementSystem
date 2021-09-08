@@ -114,5 +114,11 @@
           allowClear: true
       });
 </script>
-
+<script type="text/javascript">
+  
+    $("#selectTechnician").select2({
+          placeholder: "Select The Name of the Technician",
+          allowClear: true
+      });
+</script>
 @stack('scripts')

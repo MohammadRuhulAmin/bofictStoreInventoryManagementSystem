@@ -87,7 +87,12 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">  Complaint Solver Technician Name     </label>
-            <input type="text" class="form-control" id=""  name="complaintSolverTechnicianName">
+            <select class="form-control" name="complaintSolverTechnicianName" id="selectTechnician">
+              <option></option>
+              @foreach($technicians as $tech)
+                <option>{{$tech}}</option>
+              @endforeach
+            </select>
             @if($errors->has('complaintSolverTechnicianName'))
                 <span class="text-danger">Solver  must be Provided! &  {{$errors->first('complaintSolverTechnicianName')}}</span>
             @endif

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Technician\Complaint;
 use App\Models\Admin\Product;
+use App\Models\Admin\User;
 
 class ComplaintsController extends Controller
 {
@@ -36,8 +37,15 @@ class ComplaintsController extends Controller
      */
     public function create()
     {
+        $fetchTechnicians = User::where(['role'=>'technician'])->get();
+        $tempTech = array();
+        foreach($fetchTechnicians as $key=>$value){
+             $tempTech[] = $value->name ;
+        }
+        
+        $technicians =  array_unique($tempTech);
         $products = Product::orderby('created_at','DESC')->get();
-        return view('technician.complaint.create',compact('products'));
+        return view('technician.complaint.create',compact('products','technicians'));
     }
     /**
      * Store a newly created resource in storage.
