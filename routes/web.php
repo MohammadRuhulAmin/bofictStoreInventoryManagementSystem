@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\LandingPageController;
-
+use App\Http\Controllers\Admin\AdminComplaintsController;
 // for user 
 use App\Http\Controllers\User\ViewerController; 
 
@@ -66,6 +66,9 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
      Route::resource('products',ProductController::class);
      //Item
      Route::resource('items',ItemController::class);
+     //complaints
+     Route::resource('admin_complaints',AdminComplaintsController::class);
+     Route::post('/complaints/complaints-list-byDate',[AdminComplaintsController::class,'listByDate'])->name('admin_complaints.listByDate');
      //Department 
       Route::resource('departments',DepartmentController::class);
       // Export data table to excel  && csv file of Product 
@@ -110,8 +113,8 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
     // user dashboard
     Route::get('/dashboard',[TechDashboardController::class,'dashboard'])->name('technician.dashboard');
     // Complaint 
-     Route::resource('/complaints',ComplaintsController::class);
-     Route::post('/complaints/complaints-list-byDate',[ComplaintsController::class,'listByDate'])->name('complaints.listByDate');
+     Route::resource('technician_complaints',ComplaintsController::class);
+     Route::post('/complaints/complaints-list-byDate',[ComplaintsController::class,'listByDate'])->name('technician_complaints.listByDate');
 
      
     });

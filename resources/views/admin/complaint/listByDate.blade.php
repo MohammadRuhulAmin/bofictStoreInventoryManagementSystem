@@ -8,12 +8,12 @@
           <h1 class="m-0">Complaints</h1>
         
           <br>
-          <a href="{{route('technician_complaints.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New Complaints</a>
+          <a href="{{route('admin_complaints.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New Complaints</a>
         </div><!-- /.col -->
        
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{route('technician.dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
             <li class="breadcrumb-item active">Complaint List </li>
           </ol>
         </div><!-- /.col -->
@@ -72,17 +72,17 @@
                         <td>{{$complaint->ic ?? ''}}</td>
                         <td>{{$complaint->oic ?? ''}}</td>
                         <td>
-                            <a  href="{{route('technician_complaints.edit',$complaint->id)}}" class="btn btn-sm btn-info">
+                            <a  href="{{route('admin_complaints.edit',$complaint->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 
                             </a>
-                            {{-- <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="Tcomplaint-delete-{{$complaint->id}}">
+                            <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="complaint-delete-{{$complaint->id}}">
                               <i class="fa fa-trash"></i>  Delete
                             </a>
-
-                            <form id="Tcomplaint-delete-{{$complaint->id}}" action="{{route('technician_complaints.destroy',$complaint->id)}}" method="post">
+                            
+                            <form id="complaint-delete-{{$complaint->id}}" action="{{route('admin_complaints.destroy',$complaint->id)}}" method="post">
                                 @csrf 
                                 @method('DELETE')
-                            </form> --}}
+                            </form>
                         </td>
                     </tr>
                 @endforeach

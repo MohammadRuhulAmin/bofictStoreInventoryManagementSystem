@@ -8,7 +8,7 @@
           <h1 class="m-0">Complaints</h1>
         
           <br>
-          <a href="{{route('complaints.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New Complaints</a>
+          <a href="{{route('technician_complaints.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New Complaints</a>
         </div><!-- /.col -->
        
         <div class="col-sm-6">
@@ -23,18 +23,18 @@
   <!-- /.content-header -->
  <br>
 <div class="card card-primary">
-  <form method="post" action="{{route('complaints.listByDate')}}">
+  <form method="post" action="{{route('technician_complaints.listByDate')}}">
     @csrf 
   <div class="card-header">
     <div class="card-title"><p>Select Date for  Complient List </p></div>
   </div>
   <div class="card-body">
     
-  <select name="listByDate" class="form-control" id="selectComplaintDate" >
-    @foreach($complaints as $cDate)
-     <option>{{$cDate->date}}</option>
-    @endforeach
-  </select>
+    <select name="listByDate" class="form-control" id="selectComplaintDate" >
+      @foreach($datesList as $cDate)
+       <option>{{$cDate}}</option>
+      @endforeach
+    </select>
   </div>
  <div class="card-footer">
    <button class="btn btn-success"><i class="fas fa-search"></i> Search </button>
@@ -90,17 +90,18 @@
                         <td>{{$complaint->ic ?? ''}}</td>
                         <td>{{$complaint->oic ?? ''}}</td>
                         <td>
-                            <a  href="{{route('complaints.edit',$complaint->id)}}" class="btn btn-sm btn-info">
+                         
+                            <a  href="{{route('technician_complaints.edit',$complaint->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 
                             </a>
-                            <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="complaint-delete-{{$complaint->id}}">
+                            {{-- <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="Tcomplaint-delete-{{$complaint->id}}">
                               <i class="fa fa-trash"></i>  Delete
                             </a>
 
-                            <form id="complaint-delete-{{$complaint->id}}" action="{{route('complaints.destroy',$complaint->id)}}" method="post">
+                            <form id="Tcomplaint-delete-{{$complaint->id}}" action="{{route('technician_complaints.destroy',$complaint->id)}}" method="post">
                                 @csrf 
                                 @method('DELETE')
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
                 @endforeach

@@ -1,13 +1,12 @@
 <?php
-
-namespace App\Http\Controllers\Technician;
+// for admin controller 
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Technician\Complaint;
 use App\Models\Admin\Product;
-
-class ComplaintsController extends Controller
+use App\Models\Technician\Complaint;
+class AdminComplaintsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,9 +23,7 @@ class ComplaintsController extends Controller
         }
         //return $tempDate;
         $datesList =  array_unique($tempDate);
-        
-        return view('technician.complaint.index',compact('complaints','datesList'));
-
+        return view('admin.complaint.index',compact('complaints','datesList'));
     }
 
     /**
@@ -37,8 +34,9 @@ class ComplaintsController extends Controller
     public function create()
     {
         $products = Product::orderby('created_at','DESC')->get();
-        return view('technician.complaint.create',compact('products'));
+        return view('admin.complaint.create',compact('products'));
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -47,7 +45,6 @@ class ComplaintsController extends Controller
      */
     public function store(Request $request)
     {
-        
         $this->validate($request,[
             'productName'=>'required', // this is product id or product name ! actually
             'date'=>'required',
@@ -85,10 +82,6 @@ class ComplaintsController extends Controller
         $complaint->save();
         flash('Complaint Created Successfully!')->success();
         return back();
-        
-
-
-        
     }
 
     /**
@@ -111,7 +104,7 @@ class ComplaintsController extends Controller
     public function edit($id)
     {
         $complaint = Complaint::findOrFail($id);
-        return view('technician.complaint.edit',compact('complaint'));
+        return view('admin.complaint.edit',compact('complaint'));
     }
 
     /**
@@ -152,7 +145,7 @@ class ComplaintsController extends Controller
         $complaint->oic = $request->oic;
         $complaint->save();
         flash('Complaint Updated Successfully!')->success();
-        return redirect()->route('technician_complaints.index');
+        return redirect()->route('admin_complaints.index');
     }
 
     /**
@@ -166,13 +159,11 @@ class ComplaintsController extends Controller
         $complaint = Complaint::findOrFail($id);
         $complaint->delete();
         flash('Complaint  is Deleted  Successfully!')->success();
-        return redirect()->route('technician_complaints.index');
+        return redirect()->route('admin_complaints.index');
     }
-
     public function listByDate(Request $request){
         $specificDate = $request->listByDate;
         $complaints = Complaint::where(['date'=>$request->listByDate])->get();
-        return view('technician.complaint.listByDate',compact('complaints','specificDate'));
+        return view('admin.complaint.listByDate',compact('complaints','specificDate'));
     }
-
 }

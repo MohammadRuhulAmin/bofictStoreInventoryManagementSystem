@@ -108,6 +108,14 @@
                 </a>
               </li>
               @endif
+              @if(auth()->user()->role === "admin")
+              <li class="nav-item">
+                <a href="{{route('admin_complaints.index')}}" class="nav-link {{request()->is('complaint*')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> Complaint </p>
+                </a>
+              </li>
+              @endif
               @if(auth()->user()->role === "user")
               <li class="nav-item">
                 <a href="{{route('user.dashboard')}}" class="nav-link {{request()->is('dashboard*')? 'active': ''}}">
@@ -134,7 +142,7 @@
               @endif
               @if(auth()->user()->role === "technician")
               <li class="nav-item">
-                <a href="{{route('complaints.index')}}" class="nav-link {{request()->is('complaint*')? 'active': ''}}">
+                <a href="{{route('technician_complaints.index')}}" class="nav-link {{request()->is('complaint*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
                   <p> Complaint </p>
                 </a>

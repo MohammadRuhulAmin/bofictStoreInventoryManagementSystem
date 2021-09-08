@@ -9,7 +9,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{route('technician.dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
             <li class="breadcrumb-item active">Create Complaint</li>
           </ol>
         </div><!-- /.col -->
@@ -27,7 +27,7 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form role="form" action="{{route('technician_complaints.store')}}" method="post">
+      <form role="form" action="{{route('admin_complaints.store')}}" method="post">
         @csrf 
         <div class="card-body">
             

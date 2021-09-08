@@ -85,7 +85,7 @@
           
     <!-- Main content -->
     <br>
-    <a href="{{route('complaints.create')}}" class="btn btn-sm btn-warning m-3"><i class="fa fa-plus"></i>Add  New Complaints</a>
+    <a href="{{route('technician_complaints.create')}}" class="btn btn-sm btn-warning m-3"><i class="fa fa-plus"></i>Add  New Complaints</a>
     <div class="col-md-12">
       <!-- general form elements -->
       <div class="card card-primary">
@@ -135,7 +135,7 @@
                           <td>{{$complaint->ic ?? ''}}</td>
                           <td>{{$complaint->oic ?? ''}}</td>
                           <td>
-                              <a  href="{{route('complaints.edit',$complaint->id)}}" class="btn btn-sm btn-info">
+                              <a  href="{{route('technician_complaints.edit',$complaint->id)}}" class="btn btn-sm btn-info">
                                   <i class="fa fa-edit"></i>  Edit 
                               </a>
                               {{-- <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="complaint-delete-{{$complaint->id}}">

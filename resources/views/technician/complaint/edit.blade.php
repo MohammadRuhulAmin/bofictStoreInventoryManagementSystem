@@ -28,7 +28,7 @@
       <!-- /.card-header -->
       
       <!-- form start -->
-      <form role="form" action="{{route('complaints.update',$complaint->id)}}" method="post">
+      <form role="form" action="{{route('technician_complaints.update',$complaint->id)}}" method="post">
         @csrf 
         @method('PUT')
         <div class="card-body">
