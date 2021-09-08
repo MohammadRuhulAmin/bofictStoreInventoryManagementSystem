@@ -31,6 +31,7 @@
   <div class="card-body">
     
     <select name="listByDate" class="form-control" id="selectComplaintDate" >
+      <option></option>
       @foreach($datesList as $cDate)
        <option>{{$cDate}}</option>
       @endforeach

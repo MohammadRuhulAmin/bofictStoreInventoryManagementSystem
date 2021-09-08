@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use App\Exports\ProductExport;
 use Excel;
 use App\Imports\ProductImport;
+use App\Models\Technician\Complaint;
 
 
 class ProductController extends Controller
@@ -102,8 +103,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id);
-        return view('admin.products.show',compact('product'));
+        $product = Product::findOrFail($id); 
+       // $complaintsOfProducts = Complaint::where('product_id',$id);
+       //complaints
+       $complaintsOfProduct = Product::findOrFail($id)->complaints;
+       return view('admin.products.show',compact('product','complaintsOfProduct'));
     }
 
     /**

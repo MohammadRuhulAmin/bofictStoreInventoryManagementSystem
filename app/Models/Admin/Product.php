@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models\Admin;
-use App\Models\Techinician\Complaint;
+use App\Models\Technician\Complaint;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Support\Facades\DB;
@@ -16,6 +16,6 @@ class Product extends Model
     }
 
     public function complaints(){
-        $this->hasMany(Complaint::class);
+       return $this->hasMany(Complaint::class);
     }
 }

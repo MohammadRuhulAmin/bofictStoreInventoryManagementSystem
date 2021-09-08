@@ -8,7 +8,7 @@
           <h1 class="m-0">Complaints</h1>
         
           <br>
-          <a href="{{route('complaints.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New Complaints</a>
+          <a href="{{route('admin_complaints.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New Complaints</a>
         </div><!-- /.col -->
        
         <div class="col-sm-6">
@@ -31,6 +31,7 @@
   <div class="card-body">
     
   <select name="listByDate" class="form-control" id="selectComplaintDate" >
+    <option></option>
     @foreach($datesList as $cDate)
      <option>{{$cDate}}</option>
     @endforeach
@@ -50,7 +51,6 @@
         <h3 class="card-title">Complaint  List  </h3>
       </div>
       <br>
-      
       <table class="table table-bordered datatable">
         <thead>
             <tr>
