@@ -1,7 +1,7 @@
 <?php
 // for admin controller 
 namespace App\Http\Controllers\Admin;
-
+use App\Models\Admin\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
@@ -33,8 +33,15 @@ class AdminComplaintsController extends Controller
      */
     public function create()
     {
+        $fetchTechnicians = User::where(['role'=>'technician'])->get();
+        $tempTech = array();
+        foreach($fetchTechnicians as $key=>$value){
+             $tempTech[] = $value->name ;
+        }
+        
+        $technicians =  array_unique($tempTech);
         $products = Product::orderby('created_at','DESC')->get();
-        return view('admin.complaint.create',compact('products'));
+        return view('admin.complaint.create',compact('products','technicians'));
     }
 
     /**
@@ -162,8 +169,15 @@ class AdminComplaintsController extends Controller
         return redirect()->route('admin_complaints.index');
     }
     public function listByDate(Request $request){
-        $specificDate = $request->listByDate;
-        $complaints = Complaint::where(['date'=>$request->listByDate])->get();
+        
+        if($request->listByDate !== null){
+            $specificDate = $request->listByDate;
+           
+        }
+        else{
+            $specificDate = date('Y-m-d');
+        }
+        $complaints = Complaint::where(['date'=>$specificDate])->get();
         return view('admin.complaint.listByDate',compact('complaints','specificDate'));
     }
 }

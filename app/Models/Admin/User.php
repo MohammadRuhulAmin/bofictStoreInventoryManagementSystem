@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\Admin;
+use App\Models\Admin\Product;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -49,7 +50,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+    
     /**
      * The accessors to append to the model's array form.
      *
@@ -58,4 +59,7 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 }
