@@ -32,10 +32,10 @@
       <table class="table table-bordered datatable">
         <thead>
             <tr>
-                <th>#SL</th>
+                <th>#SL  </th>
                 <th>Role </th>
-                <th>Name</th>
-                <th>Email</th>
+                <th>Name </th>
+                <th>Email </th>
                 <th> Change Permission To </th>
                  <th>Action</th>
             </tr>
@@ -49,12 +49,10 @@
                         <td>{{$user->name ??''}}</td>
                         <td>{{$user->email ??''}} @if(auth()->user()->id == $user->id ) <span class="badge bg-danger"> Admin </span> @endif </td>
                         <td class="text-center">
-                          
                           <a href="{{route('users.toTechnician',$user->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-male"></i> Technician </a>
                           <a href="{{route('users.toUser',$user->id)}}" class="btn btn-sm btn-success"><i class="fas fa-user"></i>User </a>
                           <a href="{{route('users.toAdmin',$user->id)}}" class="btn btn-sm btn-danger"><i class="fas fa-user"></i>Admin </a>
                         </td>
-
                         <td>
                             <a  href="{{route('users.edit',$user->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 
@@ -82,6 +80,5 @@
     </div>
     <!-- /.card -->
   </div>
-  <!-- /.content -->
-    
+  <!-- /.content -->    
 @endsection

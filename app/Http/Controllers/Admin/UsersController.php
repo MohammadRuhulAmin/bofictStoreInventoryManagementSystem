@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Technician\Complaint;
+use Illuminate\Support\Facades\Session;
 class UsersController extends Controller
 {
     /**
@@ -154,7 +155,9 @@ class UsersController extends Controller
         return back();
     }
     public function detailsOfUser($id){
+       
         $userInformation = User::findOrFail($id);
+        session()->put(['detailsOfUserName'=>$userInformation->name]);
         $complaintsOfProduct = Complaint::where(['complaintSolverTechnicianName'=>$userInformation->name])->get();
         return view('admin.users.details',compact('userInformation','complaintsOfProduct'));
         

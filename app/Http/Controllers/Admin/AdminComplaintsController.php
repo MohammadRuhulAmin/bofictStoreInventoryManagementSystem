@@ -137,7 +137,6 @@ class AdminComplaintsController extends Controller
 
         ]);
         $complaint = Complaint::findOrFail($id);
-        
         $complaint->date = $request->date;
         $complaint->time = $request->time;
         $complaint->complaintName = $request->complaintName;
@@ -182,9 +181,13 @@ class AdminComplaintsController extends Controller
         return view('admin.complaint.listByDate',compact('complaints','specificDate'));
     }
     public function technicianSlnListByYear(Request $request){
-        $complaintsByYear =  Complaint::where('complaintSolverTechnicianName' , 'Ashraf_tech')->whereYear('created_at','=',$request->year)->get();
-        session()->put(['complaintsByYear' => $complaintsByYear]);
-        return redirect()->route('admin_complaints.listByYear.get');
+        if(Session::has('detailsOfUserName')){
+            $technicianName = session::get('detailsOfUserName');
+            $complaintsByYear =  Complaint::where('complaintSolverTechnicianName' ,$technicianName)->whereYear('created_at','=',$request->year)->get();
+            session()->put(['complaintsByYear' => $complaintsByYear]);
+            return redirect()->route('admin_complaints.listByYear.get');
+        }
+        
         //return view('admin.users.detailsByYear',compact('complaintsByYear'));
     }
     public function technicianSlnListByYearGet(){
@@ -197,12 +200,16 @@ class AdminComplaintsController extends Controller
     }
     
     public function technicianSlnListByYearMonth(Request $request){
-        $complaintsByYearMonth =  Complaint::where('complaintSolverTechnicianName' , 'Ashraf_tech')
-          ->whereYear('created_at','=',$request->byYear)
-          ->whereMonth('created_at','=' ,$request->byMonth)
-          ->get();
-          session()->put(['complaintsByYearMonth' =>$complaintsByYearMonth]);
-          return redirect()->route('admin_complaints.listByYearMonth.get');
+        if(Session::has('detailsOfUserName')){
+            $technicianName = session::get('detailsOfUserName');
+            $complaintsByYearMonth =  Complaint::where('complaintSolverTechnicianName' ,$technicianName)
+            ->whereYear('created_at','=',$request->byYear)
+            ->whereMonth('created_at','=' ,$request->byMonth)
+            ->get();
+            session()->put(['complaintsByYearMonth' =>$complaintsByYearMonth]);
+            return redirect()->route('admin_complaints.listByYearMonth.get');
+        }
+       
           //return view('admin.users.detailsByYearMonth',compact('complaintsByYearMonth'));
           
     }
