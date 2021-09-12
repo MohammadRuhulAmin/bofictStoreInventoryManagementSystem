@@ -180,4 +180,19 @@ class AdminComplaintsController extends Controller
         $complaints = Complaint::where(['date'=>$specificDate])->get();
         return view('admin.complaint.listByDate',compact('complaints','specificDate'));
     }
+    public function technicianSlnListByYear(Request $request){
+        $complaintsByYear =  Complaint::where('complaintSolverTechnicianName' , 'Ashraf_tech')->whereYear('created_at','=',$request->year)->get();
+     
+        return view('admin.users.detailsByYear',compact('complaintsByYear'));
+    }
+    
+    public function technicianSlnListByYearMonth(Request $request){
+        
+        $complaintsByYearMonth =  Complaint::where('complaintSolverTechnicianName' , 'Ashraf_tech')
+          ->whereYear('created_at','=',$request->byYear)
+          ->whereMonth('created_at','=' ,$request->byMonth)
+          ->get();
+          return view('admin.users.detailsByYearMonth',compact('complaintsByYearMonth'));
+          
+    }
 }

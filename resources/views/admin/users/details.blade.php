@@ -48,68 +48,74 @@
       </div>
     </div>
     <div class="col-sm-4">
-      <div class="card">
+      <form method="post" action="{{route('admin_complaints.listByYear')}}">
+        @csrf 
+      <div class="card">  
         <div class="card-body">
          <div class="row">
-            <div class="col-6">
+            <div class="col-12">
               <div>
                 <h5 class="card-title">Search By Year </h5>
-                <select class="form-control">
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
+                <select name="year"  class="form-control">
+                  <option>2021</option>
+                  <option>2022</option>
+                  <option>2023</option>
+                  <option>2024</option>
+                  <option>2025</option>
                 </select>
-              <a href="#" class="btn btn-primary">Search </a>
+              
+              <button class="btn btn-primary"><i class="fas fa-search"></i> Search </button>
               </div>
             </div>
-            <div class="col-6">
-              <div>
-                <h5 class="card-title">Search By Year </h5>
-                <select class="form-control">
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
-                </select>
-              <a href="#" class="btn btn-primary">Search </a>
-              </div>
-            </div>
+           
          </div>
         </div>
       </div>
+      </form>
     </div>
     <div class="col-sm-4">
+      <form action="{{route('admin_complaints.listByYearMonth')}}" method="post">
+        @csrf 
       <div class="card">
         <div class="card-body">
          <div class="row">
             <div class="col-6">
               <div>
-                <h5 class="card-title">Search By Year </h5>
-                <select class="form-control">
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
+                <h5 class="card-title">Select Month </h5>
+                <select name="byMonth" class="form-control">
+                  <option value="{{"1"}}">January </option>
+                  <option value="{{"2"}}">February</option>
+                  <option value="{{"3"}}">March</option>
+                  <option value="{{"4"}}">April</option>
+                  <option value="{{"5"}}">May </option>
+                  <option value="{{"6"}}">June</option>
+                  <option value="{{"7"}}">July</option>
+                  <option value="{{"8"}}">August</option>
+                  <option value="{{"9"}}">September</option>
+                  <option value="{{"10"}}">October</option>
+                  <option value="{{"11"}}">November</option>
+                  <option value="{{"12"}}">December</option>
                 </select>
-              <a href="#" class="btn btn-primary">Search </a>
+                
+                <button class="btn btn-primary"> <i class="fas fa-search"></i> Search </button>
               </div>
             </div>
             <div class="col-6">
               <div>
-                <h5 class="card-title">Search By Year </h5>
-                <select class="form-control">
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
-                  <option>2010-12-1</option>
+                <h5 class="card-title">Select Year  </h5>
+                <select name="byYear" class="form-control">
+                  <option>2020</option>
+                  <option>2021</option>
+                  <option>2022</option>
+                  <option>2023</option>
                 </select>
-              <a href="#" class="btn btn-primary">Search </a>
+             
               </div>
             </div>
          </div>
         </div>
       </div>
+      </form>
     </div>
   </div>
   <br><br>

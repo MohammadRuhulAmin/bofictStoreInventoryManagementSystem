@@ -38,18 +38,29 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $totalUser = User::count() + 1; // for getting the next id.. 
         $this->validate($request,[
             'name'=>'required|min:2|max:100',
-            'email'=>'required|email|unique:users',
-            'password'=>'required|min:8|max:50|confirmed'
+            'designation'=>'required',
+            'password'=>'required|min:3|max:50'
         ]);
         $user = new User();
         $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->save();
-        flash('User created Successfully!')->success();
-        return redirect()->route('users.index');
+        $user->designation = $request->designation;
+        $user->email = $user->name."_".$user->designation."_".$totalUser."@bof.org";
+        $user->password = Hash::make($request->password);
+        $checkEmail = User::where(['email' =>$user->email])->count();
+        if($checkEmail == 0){
+            $user->save();
+            flash('User created Successfully!')->success();
+            return redirect()->route('users.index');
+        }
+        else{
+            flash('User Has already Created By This Mail !')->error();
+            return redirect()->route('users.index');
+        }
+        
     }
 
     /**

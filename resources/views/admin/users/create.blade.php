@@ -40,10 +40,10 @@
             @endif
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">User Email <span class="text-danger">*</span>  </label>
-            <input type="email"  class="form-control" id="" name="email" placeholder="User Email  ">
+            <label for="exampleInputEmail1">User  Designation <span class="text-danger">*</span>  </label>
+            <input type="text"  class="form-control" id="" name="designation"  placeholder="User Designation  ">
             @if($errors->has('email'))
-                <span class="text-danger">Email  must be Provided! &  {{$errors->first('email')}} </span>
+                <span class="text-danger">Email  must be Provided! &  {{$errors->first('designation')}} </span>
             @endif
           </div>
           <div class="form-group">
@@ -53,11 +53,11 @@
                 <span class="text-danger">Password  must be Provided! &  {{$errors->first('password')}} </span>
             @endif
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="exampleInputEmail1">Confirm Password <span class="text-danger">*</span>  </label>
-            <input type="password"  class="form-control" id="" name="password_confirmation" placeholder="User Email  ">
+            <input type="password"  class="form-control" id="" name="password_confirmation" placeholder="Confirm the Password  ">
           
-          </div>
+          </div> --}}
         </div>
         <!-- /.card-body -->
 

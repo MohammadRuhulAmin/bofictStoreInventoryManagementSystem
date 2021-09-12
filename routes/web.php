@@ -71,7 +71,13 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
      Route::resource('items',ItemController::class);
      //complaints
      Route::resource('admin_complaints',AdminComplaintsController::class);
-     Route::post('/complaints/complaints-list-byDate',[AdminComplaintsController::class,'listByDate'])->name('admin_complaints.listByDate');
+     Route::get('/complaints/complaints-list-byDate',[AdminComplaintsController::class,'listByDate'])->name('admin_complaints.listByDate'); // c 
+
+     Route::post('/complaints/listBy-year/',[AdminComplaintsController::class,'technicianSlnListByYear'])->name('admin_complaints.listByYear');
+    
+     
+     //admin_complaints.listByYearMonth
+     Route::post('/complaints/listBy-year-month',[AdminComplaintsController::class , 'technicianSlnListByYearMonth'])->name('admin_complaints.listByYearMonth');
      //Department 
       Route::resource('departments',DepartmentController::class);
       // Export data table to excel  && csv file of Product 
@@ -79,7 +85,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('admin.product.csv');
        // Import data from excel file 
        Route::post('/import-excel-file',[ProductController::class,'importCvsFileToDatabase'])->name('admin.product.import');
-   
+       
     });
 });
 
@@ -102,8 +108,7 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
       Route::post('/product/search',[ViewerController::class,'searchProduct'])->name('user.search.products');
 
       Route::post('/product/search/name',[ViewerController::class,'searchProductName'])->name('user.search.specificProduct');
-
-     
+      
     });
 });
 
