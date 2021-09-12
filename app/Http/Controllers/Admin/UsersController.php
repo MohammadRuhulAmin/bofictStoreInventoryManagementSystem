@@ -146,6 +146,13 @@ class UsersController extends Controller
         flash('User Permission Has changed to Regular User  Successfully  !')->success();
         return back();
     }
+    public function toAdmin($id){
+        $user = User::findOrFail($id);
+        $user->role = "admin";
+        $user->save();
+        flash('User Permission Has changed to Admin  Successfully  !')->success();
+        return back();
+    }
     public function detailsOfUser($id){
         $userInformation = User::findOrFail($id);
         $complaintsOfProduct = Complaint::where(['complaintSolverTechnicianName'=>$userInformation->name])->get();

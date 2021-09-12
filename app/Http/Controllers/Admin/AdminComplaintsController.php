@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
 use App\Models\Technician\Complaint;
+use Illuminate\Support\Facades\Session;
 class AdminComplaintsController extends Controller
 {
     /**
@@ -182,17 +183,36 @@ class AdminComplaintsController extends Controller
     }
     public function technicianSlnListByYear(Request $request){
         $complaintsByYear =  Complaint::where('complaintSolverTechnicianName' , 'Ashraf_tech')->whereYear('created_at','=',$request->year)->get();
-     
-        return view('admin.users.detailsByYear',compact('complaintsByYear'));
+        session()->put(['complaintsByYear' => $complaintsByYear]);
+        return redirect()->route('admin_complaints.listByYear.get');
+        //return view('admin.users.detailsByYear',compact('complaintsByYear'));
+    }
+    public function technicianSlnListByYearGet(){
+        if(Session::has('complaintsByYear')){
+            $complaintsByYear = session::get('complaintsByYear');
+            return view('admin.users.detailsByYear',compact('complaintsByYear'));
+        }
+        else return  "no data found";
+      
     }
     
     public function technicianSlnListByYearMonth(Request $request){
-        
         $complaintsByYearMonth =  Complaint::where('complaintSolverTechnicianName' , 'Ashraf_tech')
           ->whereYear('created_at','=',$request->byYear)
           ->whereMonth('created_at','=' ,$request->byMonth)
           ->get();
-          return view('admin.users.detailsByYearMonth',compact('complaintsByYearMonth'));
+          session()->put(['complaintsByYearMonth' =>$complaintsByYearMonth]);
+          return redirect()->route('admin_complaints.listByYearMonth.get');
+          //return view('admin.users.detailsByYearMonth',compact('complaintsByYearMonth'));
           
+    }
+    public function technicianSlnListByYearMonthGet(){
+        if(Session::has('complaintsByYearMonth')){
+            $complaintsByYearMonth = session::get('complaintsByYearMonth');
+            return view('admin.users.detailsByYearMonth',compact('complaintsByYearMonth'));
+        }
+        else{
+            return "no data found";
+        }
     }
 }

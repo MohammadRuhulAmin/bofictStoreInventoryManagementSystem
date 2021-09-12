@@ -53,11 +53,11 @@
                 <span class="text-danger">Password  must be Provided! &  {{$errors->first('password')}} </span>
             @endif
           </div>
-          {{-- <div class="form-group">
-            <label for="exampleInputEmail1">Confirm Password <span class="text-danger">*</span>  </label>
-            <input type="password"  class="form-control" id="" name="password_confirmation" placeholder="Confirm the Password  ">
-          
-          </div> --}}
+          <div class="form-group">
+            <label for="exampleInputEmail1">User Email  <span class="text-danger">*</span>  </label>
+            {{-- <input type="password"  class="form-control" id="" name="password_confirmation" placeholder="Confirm the Password  "> --}}
+            <b>User Email will be automatically Generated ! Go to Index </b>
+          </div>
         </div>
         <!-- /.card-body -->
 

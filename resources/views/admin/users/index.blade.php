@@ -52,6 +52,7 @@
                           
                           <a href="{{route('users.toTechnician',$user->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-male"></i> Technician </a>
                           <a href="{{route('users.toUser',$user->id)}}" class="btn btn-sm btn-success"><i class="fas fa-user"></i>User </a>
+                          <a href="{{route('users.toAdmin',$user->id)}}" class="btn btn-sm btn-danger"><i class="fas fa-user"></i>Admin </a>
                         </td>
 
                         <td>

@@ -56,6 +56,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::resource('users', UsersController::class);
       Route::get('/users/{id}/to-technician/',[UsersController::class,'toTechnician'])->name('users.toTechnician');
       Route::get('/users/{id}/to-user/',[UsersController::class,'toUser'])->name('users.toUser');
+      Route::get('/users/{id}/to-admin/',[UsersController::class,'toAdmin'])->name('users.toAdmin');
       Route::get('/users/{id}/details',[UsersController::class,'detailsOfUser'])->name('users.details');
        //Category
       Route::resource('categories', CategoriesController::class);
@@ -69,15 +70,16 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
      Route::resource('products',ProductController::class);
      //Item
      Route::resource('items',ItemController::class);
-     //complaints
+     //complaints 
      Route::resource('admin_complaints',AdminComplaintsController::class);
-     Route::get('/complaints/complaints-list-byDate',[AdminComplaintsController::class,'listByDate'])->name('admin_complaints.listByDate'); // c 
+     Route::post('/complaints/complaints-list-byDate',[AdminComplaintsController::class,'listByDate'])->name('admin_complaints.listByDate');
 
      Route::post('/complaints/listBy-year/',[AdminComplaintsController::class,'technicianSlnListByYear'])->name('admin_complaints.listByYear');
-    
-     
+     Route::get('/complaints/listBy-year/get',[AdminComplaintsController::class,'technicianSlnListByYearGet'])->name('admin_complaints.listByYear.get');
+  
      //admin_complaints.listByYearMonth
      Route::post('/complaints/listBy-year-month',[AdminComplaintsController::class , 'technicianSlnListByYearMonth'])->name('admin_complaints.listByYearMonth');
+     Route::get('/complaints/listBy-year-month/get',[AdminComplaintsController::class , 'technicianSlnListByYearMonthGet'])->name('admin_complaints.listByYearMonth.get');
      //Department 
       Route::resource('departments',DepartmentController::class);
       // Export data table to excel  && csv file of Product 
@@ -104,9 +106,7 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
       // Export data table to excel  && csv file of Product 
       Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('user.product.excel');
       Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('user.product.csv');
-
       Route::post('/product/search',[ViewerController::class,'searchProduct'])->name('user.search.products');
-
       Route::post('/product/search/name',[ViewerController::class,'searchProductName'])->name('user.search.specificProduct');
       
     });
@@ -122,8 +122,6 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
     Route::get('/dashboard',[TechDashboardController::class,'dashboard'])->name('technician.dashboard');
     // Complaint 
      Route::resource('technician_complaints',ComplaintsController::class);
-     Route::post('/complaints/complaints-list-byDate',[ComplaintsController::class,'listByDate'])->name('technician_complaints.listByDate');
-
-     
+     Route::post('/complaints/complaints-list-byDate',[ComplaintsController::class,'listByDate'])->name('technician_complaints.listByDate');     
     });
 });
