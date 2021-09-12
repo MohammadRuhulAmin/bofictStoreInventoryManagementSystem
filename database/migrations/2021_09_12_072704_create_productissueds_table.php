@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDesignationToUsersTable extends Migration
+class CreateProductissuedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddDesignationToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('designation')->after('name')->nullable();
+        Schema::create('productissueds', function (Blueprint $table) {
+            $table->id();
+            $table->string('name',100);
+            $table->string('designation',100);
+          
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddDesignationToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColum('designation');
-        });
+        Schema::dropIfExists('productissueds');
     }
 }

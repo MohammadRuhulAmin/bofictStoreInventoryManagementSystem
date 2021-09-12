@@ -169,10 +169,8 @@ class AdminComplaintsController extends Controller
         return redirect()->route('admin_complaints.index');
     }
     public function listByDate(Request $request){
-        
         if($request->listByDate !== null){
             $specificDate = $request->listByDate;
-           
         }
         else{
             $specificDate = date('Y-m-d');
@@ -210,7 +208,7 @@ class AdminComplaintsController extends Controller
             return redirect()->route('admin_complaints.listByYearMonth.get');
         }
        
-          //return view('admin.users.detailsByYearMonth',compact('complaintsByYearMonth'));
+        
           
     }
     public function technicianSlnListByYearMonthGet(){

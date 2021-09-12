@@ -124,6 +124,14 @@
                 </a>
               </li>
               @endif
+              @if(auth()->user()->role === "admin")
+              <li class="nav-item">
+                <a href="{{route('productIssuesUsers.index')}}" class="nav-link {{request()->is('productIssuesUsers*')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> Product Issued To </p>
+                </a>
+              </li>
+              @endif
               @if(auth()->user()->role === "user")
               <li class="nav-item">
                 <a href="{{route('user.dashboard')}}" class="nav-link {{request()->is('dashboard*')? 'active': ''}}">

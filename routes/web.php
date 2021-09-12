@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\AdminComplaintsController;
+use App\Http\Controllers\Admin\ProductissuedController;
+
 // for user 
 use App\Http\Controllers\User\ViewerController; 
 
@@ -87,6 +89,9 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('admin.product.csv');
        // Import data from excel file 
        Route::post('/import-excel-file',[ProductController::class,'importCvsFileToDatabase'])->name('admin.product.import');
+
+       // product issue users 
+       Route::resource('productIssuesUsers',ProductissuedController::class);
        
     });
 });

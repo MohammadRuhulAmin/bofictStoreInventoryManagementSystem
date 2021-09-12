@@ -40,6 +40,7 @@
                  <th>Action</th>
             </tr>
         </thead>
+
         <tbody>
             @if($users)
                 @foreach ($users as $key=> $user)
@@ -53,11 +54,11 @@
                           <a href="{{route('users.toUser',$user->id)}}" class="btn btn-sm btn-success"><i class="fas fa-user"></i>User </a>
                           <a href="{{route('users.toAdmin',$user->id)}}" class="btn btn-sm btn-danger"><i class="fas fa-user"></i>Admin </a>
                         </td>
+                        
                         <td>
                             <a  href="{{route('users.edit',$user->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 
                             </a>
-                            {{-- --}}
                             <a  href="{{route('users.details',$user->id)}} " class="btn btn-sm btn-success">
                               <i class="fa fa-edit"></i>  Details
                           </a>
@@ -68,7 +69,6 @@
                             <form id="user-delete-{{$user->id}}" action="{{route('users.destroy',$user->id)}}" method="post">
                                 @csrf 
                                 @method('DELETE')
-
                             </form>
                             @endif 
                         </td>
