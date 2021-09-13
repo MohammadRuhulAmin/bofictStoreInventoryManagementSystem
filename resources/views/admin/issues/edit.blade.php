@@ -32,6 +32,13 @@
         @method('PUT')
         <div class="card-body">
           <div class="form-group">
+            <label for="exampleInputEmail1">Bof Id  </label>
+            <input type="text" class="form-control" id="" name="bofid" placeholder="Bof Id" value="{{$productIssueUser->bofid}}">
+            @if($errors->has('bofid'))
+                <span class="text-danger">Bof Id  must be Provided! </span>
+            @endif
+          </div>
+          <div class="form-group">
             <label for="exampleInputEmail1">Name of Product User  </label>
             <input type="text" class="form-control" id="" name="name" placeholder="Name of Product User" value="{{$productIssueUser->name}}">
             @if($errors->has('name'))

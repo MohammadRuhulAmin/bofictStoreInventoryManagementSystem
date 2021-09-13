@@ -15,9 +15,9 @@ class CreateProductissuedsTable extends Migration
     {
         Schema::create('productissueds', function (Blueprint $table) {
             $table->id();
+            $table->string('bofid',50);
             $table->string('name',100);
             $table->string('designation',100);
-          
             $table->timestamps();
         });
     }

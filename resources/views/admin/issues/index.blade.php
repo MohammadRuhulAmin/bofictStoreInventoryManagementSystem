@@ -7,7 +7,8 @@
         <div class="col-sm-6">
           <h1 class="m-0">Issue </h1>
           <br>
-          <a href="{{route('productIssuesUsers.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New  Product Issue user  </a>
+          <a href="{{route('productIssuesUsers.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New  Product Issue user  </a> 
+    
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -19,7 +20,7 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
- 
+
   <!-- Main content -->
   <div class="col-md-12">
     <!-- general form elements -->
@@ -33,6 +34,7 @@
         <thead>
             <tr>
                 <th>#SL</th>
+                <th>Bof Id </th>
                 <th>Name</th>
                 <th>Designation</th>
                 <th>Action</th>
@@ -43,6 +45,7 @@
                 @foreach ($productIssuesUsers as $key=> $pin)
                     <tr>
                         <td>{{++$key}}</td>
+                        <td>{{$pin->bofid}}</td>
                         <td>{{$pin->name ??''}}</td>
                         <td>{{$pin->designation??''}}</td>
                         <td>

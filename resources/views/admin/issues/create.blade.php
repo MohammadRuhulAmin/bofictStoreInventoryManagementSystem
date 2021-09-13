@@ -17,7 +17,26 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
-
+  <div class="card-body">
+    <form method="post" enctype="multipart/form-data" action="{{route('admin.productUsersInfo.import')}}">
+        @csrf 
+        <div class="form-group">
+          
+          <div >
+            <h3>Import CSV / Excel  File</h3>
+            <p class="text-danger">Note : **  In table heading , Must : provide [ first colum empty  ,bofid , name  ,designation ]   </p>
+          </div>
+          <label for="file" class="form-control">Import an CVS / Excel  File</label>
+          <input type="file" class="form-control" name="cvsFile"/>
+        </div>
+        @if($errors->has('cvsFile'))
+          <span class="text-danger">Please insert a valid Excel / CSV File with the Proper file extention &  {{$errors->first('cvsFile')}} </span>
+        @endif
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i>Submit</button>
+      </div>
+    </form>
+</div>
   <!-- Main content -->
   <div class="col-md-12">
     <!-- general form elements -->
@@ -30,6 +49,13 @@
       <form role="form" action="{{route('productIssuesUsers.store')}}" method="post">
         @csrf 
         <div class="card-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Bof Id  </label>
+            <input type="text" class="form-control" id="" name="bofid" placeholder="Bof Id" value="{{old('bofId')}}">
+            @if($errors->has('bofid'))
+                <span class="text-danger">Bof Id  must be Provided! </span>
+            @endif
+          </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Product User  Name </label>
             <input type="text" class="form-control" id="" name="name" placeholder="Product User  Name " value="{{old('name')}}">

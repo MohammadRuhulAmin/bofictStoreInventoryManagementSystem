@@ -88,10 +88,12 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('admin.product.excel');
       Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('admin.product.csv');
        // Import data from excel file 
-       Route::post('/import-excel-file',[ProductController::class,'importCvsFileToDatabase'])->name('admin.product.import');
+       Route::post('/import-excel-file/products',[ProductController::class,'importCvsFileToDatabase'])->name('admin.product.import');
 
        // product issue users 
        Route::resource('productIssuesUsers',ProductissuedController::class);
+       Route::post('/import-excel-file/productUsers',[ProductissuedController::class,'importProductUsers'])->name('admin.productUsersInfo.import');
+       
        
     });
 });
