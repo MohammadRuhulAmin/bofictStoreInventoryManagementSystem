@@ -32,18 +32,19 @@
         <div class="card-body">
           <div class="form-group">
             <label for="exampleInputEmail1">Product User  Name </label>
-            <input type="text" class="form-control" id="" name="name" placeholder="Product User  Name ">
+            <input type="text" class="form-control" id="" name="name" placeholder="Product User  Name " value="{{old('name')}}">
             @if($errors->has('name'))
-                <span class="text-danger">Product User  Name must be Provided! &  {{$errors->first('name')}}</span>
+                <span class="text-danger">Product User  Name must be Provided! </span>
             @endif
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Product User  Designation  </label>
-            <input type="text" class="form-control" id="" name="designation" placeholder="Designation  ">
-            @if($errors->has('name'))
-                <span class="text-danger">Designation  Name must be Provided! &  {{$errors->first('designation')}}</span>
+            <input type="text" class="form-control" id="" name="designation" placeholder="Designation" value="{{old('designation')}}">
+            @if($errors->has('designation'))
+                <span class="text-danger">Designation  Name must be Provided! </span>
             @endif
           </div>
+
         </div>
         <!-- /.card-body -->
 

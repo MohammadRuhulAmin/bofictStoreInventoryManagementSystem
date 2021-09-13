@@ -36,6 +36,10 @@ class ProductissuedController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name'=>'required|min:2|max:50|unique:productissueds',
+            'designation'=>'required',
+        ]);
         $productIssueUser = new Productissued();
         $productIssueUser->name = $request->name;
         $productIssueUser->designation = $request->designation;
@@ -61,9 +65,11 @@ class ProductissuedController extends Controller
      * @param  \App\Models\Productissued  $productissued
      * @return \Illuminate\Http\Response
      */
-    public function edit(Productissued $productissued)
+    public function edit($id)
     {
-        //
+     
+        $productIssueUser = Productissued::findOrFail($id);
+        return view('admin.issues.edit',compact('productIssueUser'));
     }
 
     /**
@@ -73,9 +79,22 @@ class ProductissuedController extends Controller
      * @param  \App\Models\Productissued  $productissued
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Productissued $productissued)
+    public function update(Request $request, $id)
     {
-        //
+        
+          //validation 
+          $this->validate($request,[
+            'name'=>'required|min:2|max:50',
+            'designation'=>'required',
+        ]);
+        $productIssueUser = Productissued::findOrFail($id);
+        $productIssueUser->name = $request->name;
+        $productIssueUser->designation = $request->designation;
+
+        $productIssueUser->save();
+        flash('Existing Product User , updated  Successfully!')->success();
+        return redirect()->route('productIssuesUsers.index');
+
     }
 
     /**
@@ -84,8 +103,12 @@ class ProductissuedController extends Controller
      * @param  \App\Models\Productissued  $productissued
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Productissued $productissued)
+    public function destroy($id)
     {
-        //
+        $productIssueUser = Productissued::findOrFail($id);
+        $productIssueUser->delete();
+        flash('Existing Product User is Deleted !')->success();
+        return redirect()->route('productIssuesUsers.index');
+
     }
 }
