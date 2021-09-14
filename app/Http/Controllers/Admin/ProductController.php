@@ -103,11 +103,13 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        //$productUsersList = Productissued::findOrFail();
         $product = Product::findOrFail($id); 
+        $productUserList = $product->productissueds; // the users of $id product ! 
        // $complaintsOfProducts = Complaint::where('product_id',$id);
        //complaints
        $complaintsOfProduct = Product::findOrFail($id)->complaints;
-       return view('admin.products.show',compact('product','complaintsOfProduct'));
+       return view('admin.products.show',compact('product','complaintsOfProduct','productUserList'));
     }
 
     /**

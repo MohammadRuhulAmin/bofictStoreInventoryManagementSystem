@@ -51,51 +51,60 @@
   </div>
   
 
-  <div class="row m-3">
-  @foreach($productInfo as $pif)
-  
-    <div class="col-lg-4">
-      <div class="card text-white bg-dark mb-3" style="max-width: 35rem;">
-        <div class="card-header">Product Id <span class="text-success float-right" > {{$pif->name}}</span></div>
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <table class="table table-sm table-striped text-justify">
-            <tr>
-                <td> Category  </td>
-                <td>{{$pif->category}}</td>
-            </tr>
-            <tr>
-                <td> Sub Category  </td>
-                <td>{{$pif->subcategory}}</td>
-            </tr>
-            <tr>
-                <td> Type  </td>
-                <td>{{$pif->type}}</td>
-            </tr>
-            <tr>
-                <td> item   </td>
-                <td>{{$pif->item}}</td>
-            </tr>
-            <tr>
-                <td> Brand  </td>
-                <td >{{$pif->brand}}</td>
-            </tr>
-            <tr>
-                <td> Department  </td>
-                <td>{{$pif->department}}</td>
-            </tr>
-           
-
-            <tr>
-                <td> Repairement Life cycle </td>
-                <td><a href="{{route('assignProductWithUsers.repairmentHistoryProduct',$pif->id)}}" class=" btn btn-sm btn-warning"> <i class="fas fa-info"></i> Details </a></td> 
-            </tr>
-        </table>
+  <div class="card m-3">
+      <div class="card-header">
+          <div class="card-title">Products List of the User </div>
+      </div>
+      <div class="card-body">
+        <div class="row m-3">
+          @foreach($productInfo as $pif)
+          
+            <div class="col-lg-4">
+              <div class="card  mb-3" style="max-width: 35rem;">
+                <div class="card-header">Product Id <span class="text-success float-right" > {{$pif->name}}</span></div>
+                <div class="card-body">
+                  <h5 class="card-title"></h5>
+                  <table class="table table-sm table-striped text-justify">
+                    <tr>
+                        <td> Category  </td>
+                        <td>{{$pif->category}}</td>
+                    </tr>
+                    <tr>
+                        <td> Sub Category  </td>
+                        <td>{{$pif->subcategory}}</td>
+                    </tr>
+                    <tr>
+                        <td> Type  </td>
+                        <td>{{$pif->type}}</td>
+                    </tr>
+                    <tr>
+                        <td> item   </td>
+                        <td>{{$pif->item}}</td>
+                    </tr>
+                    <tr>
+                        <td> Brand  </td>
+                        <td >{{$pif->brand}}</td>
+                    </tr>
+                    <tr>
+                        <td> Department  </td>
+                        <td>{{$pif->department}}</td>
+                    </tr>
+                   
+        
+                    <tr>
+                        <td> Repairement Life cycle </td>
+                        <td><a href="{{route('assignProductWithUsers.repairmentHistoryProduct',$pif->id)}}" class=" btn btn-sm btn-warning"> <i class="fas fa-info"></i> Details </a></td> 
+                    </tr>
+                </table>
+                </div>
+              </div>
+            </div>
+          
+          @endforeach
         </div>
       </div>
-    </div>
+  </div>
+
   
-  @endforeach
-</div>
 @endsection
 
