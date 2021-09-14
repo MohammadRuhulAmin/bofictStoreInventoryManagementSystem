@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Product;
 use App\Models\Admin\Productissued;
+use App\Models\Technician\Complaint;
 
 use Illuminate\Http\Request;
 
@@ -101,5 +102,11 @@ class AssignProductToUser extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function productRepairementHistory($id){
+       
+        $complaintsOfProduct = Complaint::where('product_id',$id)->orderby('created_at','DESC')->get();
+        return view('admin.issues.repairementHistory',compact('complaintsOfProduct'));
+       
     }
 }

@@ -95,8 +95,9 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        Route::post('/import-excel-file/productUsers',[ProductissuedController::class,'importProductUsers'])->name('admin.productUsersInfo.import');
       
        // assigning product with user 
-       Route::resource('assignProductWithUsers',AssignProductToUser::class);
-       
+       Route::resource('assignProductWithUsers',AssignProductToUser::class); 
+       Route::get('/assignProductWithUsers/{id}/details-of-product-repairment-history',[AssignProductToUser::class,'productRepairementHistory'])->name('assignProductWithUsers.repairmentHistoryProduct');
+ 
     });
 });
 

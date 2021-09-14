@@ -20,7 +20,6 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
-
   <!-- Main content -->
   <div class="col-md-12">
     <!-- general form elements -->
@@ -29,7 +28,6 @@
         <h3 class="card-title">Product Issue  User List   </h3>
       </div>
       <br>
-      
       <table class="table table-bordered datatable">
         <thead>
             <tr>
@@ -59,7 +57,6 @@
                             <form id="pin-delete-{{$pin->id}}" action="{{route('productIssuesUsers.destroy',$pin->id)}}" method="post">
                                 @csrf 
                                 @method('DELETE')
-
                             </form>
                         </td>
                     </tr>
@@ -69,10 +66,7 @@
       </table>
     </div>
     <!-- /.card -->
-
-
   </div>
   <!-- /.content -->
-    
   
 @endsection

@@ -12,6 +12,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item active">Product Issue  User List  </li>
             <li class="breadcrumb-item active">Issue Details   </li>
           </ol>
         </div><!-- /.col -->
@@ -35,8 +36,8 @@
                 <td>{{$productUserInfo->bofid}}</td>
             </tr>
             <tr>
-                <td>Email </td>
-                <td>{{$productUserInfo->designation  }}</td>
+                <td> Designation  </td>
+                <td><span class="badge badge-success">{{$productUserInfo->designation  }}</span></td>
             </tr>
             <tr>
                 <td>Total Products Used  </td>
@@ -83,9 +84,10 @@
                 <td> Department  </td>
                 <td>{{$pif->department}}</td>
             </tr>
+
             <tr>
                 <td> Repairement Life cycle </td>
-                <td><a href="#" class=" btn btn-sm btn-warning  "> <i class="fas fa-info"></i> Details </a></td> 
+                <td><a href="{{route('assignProductWithUsers.repairmentHistoryProduct',$pif->id)}}" class=" btn btn-sm btn-warning"> <i class="fas fa-info"></i> Details </a></td> 
             </tr>
         </table>
         </div>
