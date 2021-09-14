@@ -121,4 +121,19 @@
           allowClear: true
       });
 </script>
+
+<script type="text/javascript">
+  
+    $("#selectProductUserId").select2({
+          placeholder: "Select the User with specific id",
+          allowClear: true
+      });
+</script>
+<script type="text/javascript">
+  
+    $("#selectProductId").select2({
+          placeholder: "Select the Product id",
+          allowClear: true
+      });
+</script>
 @stack('scripts')

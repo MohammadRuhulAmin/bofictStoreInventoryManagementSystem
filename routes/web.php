@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\AdminComplaintsController;
 use App\Http\Controllers\Admin\ProductissuedController;
+use App\Http\Controllers\Admin\AssignProductToUser;
 
 // for user 
 use App\Http\Controllers\User\ViewerController; 
@@ -51,7 +52,6 @@ Route::get('/redirects',[LandingPageController::class,'redirectUser']);
 Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
    // admin prefix
     Route::prefix('admin')->group(function(){
-    
        // Dashboard 
        Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
          // User Insertion 
@@ -93,7 +93,9 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        // product issue users 
        Route::resource('productIssuesUsers',ProductissuedController::class);
        Route::post('/import-excel-file/productUsers',[ProductissuedController::class,'importProductUsers'])->name('admin.productUsersInfo.import');
-       
+      
+       // assigning product with user 
+       Route::resource('assignProductWithUsers',AssignProductToUser::class);
        
     });
 });
@@ -115,6 +117,7 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
       Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('user.product.csv');
       Route::post('/product/search',[ViewerController::class,'searchProduct'])->name('user.search.products');
       Route::post('/product/search/name',[ViewerController::class,'searchProductName'])->name('user.search.specificProduct');
+      
       
     });
 });

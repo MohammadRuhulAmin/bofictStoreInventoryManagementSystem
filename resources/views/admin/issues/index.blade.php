@@ -8,7 +8,7 @@
           <h1 class="m-0">Issue </h1>
           <br>
           <a href="{{route('productIssuesUsers.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New  Product Issue user  </a> 
-    
+          <a href="{{route('assignProductWithUsers.index')}}" class="btn btn-sm btn-warning"><i class="fa fa-plus"></i>Assign product with User   </a> 
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -52,6 +52,7 @@
                             <a  href="{{route('productIssuesUsers.edit',$pin->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 
                             </a>
+                            <a href="{{route('assignProductWithUsers.show',$pin->id)}}" class="btn btn-sm btn-success"> <i class="fas fa-info" ></i> Details </a>
                             <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="pin-delete-{{$pin->id}}">
                               <i class="fa fa-trash"></i>  Delete
                             </a>

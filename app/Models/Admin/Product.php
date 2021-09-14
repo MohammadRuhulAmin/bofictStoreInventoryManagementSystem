@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 use App\Models\Technician\Complaint;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Admin\Productissued;
 // use Illuminate\Support\Facades\DB;
 class Product extends Model
 {
@@ -17,5 +18,8 @@ class Product extends Model
 
     public function complaints(){
        return $this->hasMany(Complaint::class);
+    }
+    public function productissueds(){
+        return $this->belongsToMany(Productissued::class,'product_productissudes');
     }
 }

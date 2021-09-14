@@ -1,12 +1,12 @@
 <?php
 // for admin controller 
 namespace App\Http\Controllers\Admin;
-use App\Models\Admin\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
 use App\Models\Technician\Complaint;
 use Illuminate\Support\Facades\Session;
+use App\Models\Admin\User;
 class AdminComplaintsController extends Controller
 {
     /**
