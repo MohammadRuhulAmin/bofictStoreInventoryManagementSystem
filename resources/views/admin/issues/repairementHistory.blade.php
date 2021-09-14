@@ -21,7 +21,34 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header --> 
-  
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> Summary   </h5>
+          <table class="table table-sm">
+            <tr>
+                <td>Product Status </td>
+                <td class="text-success"> <span class="badge badge-success"> Active </span> </td>
+            </tr>
+            <tr>
+                <td> Total Repairments   </td>
+                <td>{{$complaintsCount}}</td>
+            </tr>
+            <tr>
+                <td>   </td>
+                <td><span class="badge badge-success"></span></td>
+            </tr>
+            <tr>
+                <td>  </td>
+                <td><span class="badge badge-info"></span></td>
+            </tr>   
+          </table>
+         
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row m-3">
   @foreach($complaintsOfProduct as $cop)
   
@@ -30,7 +57,7 @@
         <div class="card-header">Date : {{$cop->date}}</div>
         <div class="card-body">
           <h5 class="card-title"></h5>
-          <table class="table table-sm table-striped text-justify">
+          <table  class="table table-sm table-striped text-justify" >
             <tr>
                 <td> Complaint Date : </td>
                 <td>{{$cop->date}}</td>

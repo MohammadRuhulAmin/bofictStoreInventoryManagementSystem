@@ -65,7 +65,7 @@ class AssignProductToUser extends Controller
     {
         $productUserInfo = Productissued::where(['id'=>$id])->first();
         $productInfo = $productUserInfo->products;
-        $totalProductUsed =  $productUserInfo->products->count();
+        $totalProductUsed =  $productUserInfo->products->count(); 
         return view('admin.issues.detailsOfProductUser',compact('productUserInfo','productInfo','totalProductUsed'));
         
     }
@@ -106,7 +106,8 @@ class AssignProductToUser extends Controller
     public function productRepairementHistory($id){
        
         $complaintsOfProduct = Complaint::where('product_id',$id)->orderby('created_at','DESC')->get();
-        return view('admin.issues.repairementHistory',compact('complaintsOfProduct'));
+        $complaintsCount = Complaint::where('product_id',$id)->count();
+        return view('admin.issues.repairementHistory',compact('complaintsOfProduct','complaintsCount'));
        
     }
 }

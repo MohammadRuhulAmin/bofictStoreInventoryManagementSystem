@@ -84,6 +84,7 @@
                 <td> Department  </td>
                 <td>{{$pif->department}}</td>
             </tr>
+           
 
             <tr>
                 <td> Repairement Life cycle </td>
