@@ -25,6 +25,7 @@ class ProductExport implements FromCollection,WithHeadings
             'type',
             'item',
             'brand',
+            'image',
             'description',
             'department',
             'created_at',
