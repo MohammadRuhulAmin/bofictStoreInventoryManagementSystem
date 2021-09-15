@@ -28,8 +28,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="card card-primary card-outline">
-                        <h5 class="card-title">Product Information</h5>
+                    <div class="card card-primary">
+                       <div class="card-header"> <h5 class="card-title">Product Information</h5></div>
                         <div class="card-body">
                            <table class="table table-sm table-bordered">
                                 <tr>
@@ -74,8 +74,8 @@
                 </div>
     
                 <div class="col-sm-6">
-                    <div class="card card-primary card-outline">
-                        <h5 class="card-title">Product Image </h5>
+                    <div class="card card-primary ">
+                        <div class="card-header"> <h5 class="card-title">Product Image </h5></div>
                         <div class="card-body text-center">
                             <img width="300px" src="{{url('storage/'.$product->image)}}" alt="No Image"/>
                         </div>
@@ -86,9 +86,9 @@
             </div>
         </div>
     </div>
-    <div class="card m-3">
+    <div class="card card-primary m-3">
         <div class="card-header">
-            <p class="">Product User List </p>
+            <h5 class="card-title">Product User List</h5>
         </div>
         <div class="card-body">
             <div class="row m-3">
@@ -118,7 +118,7 @@
             </div>
         </div>
     </div>
-    <div class="card m-3">
+    <div class="card card-primary  m-3">
         <div class="card-header">
             <h3 class="card-title card-primary">Product Repairment List / Life Cycle </h3>
         </div>

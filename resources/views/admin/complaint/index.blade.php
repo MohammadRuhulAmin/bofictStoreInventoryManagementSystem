@@ -6,7 +6,6 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0">Complaints</h1>
-        
           <br>
           <a href="{{route('admin_complaints.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New Complaints</a>
         </div><!-- /.col -->
@@ -22,26 +21,31 @@
   </div>
   <!-- /.content-header -->
  <br>
-<div class="card card-primary">
-  <form method="post" action="{{route('admin_complaints.listByDate')}}">
-    @csrf 
-  <div class="card-header">
-    <div class="card-title"><p>Select Date for  Complient List </p></div>
-  </div>
-  <div class="card-body">
-    
-  <select name="listByDate" class="form-control" id="selectComplaintDate" >
-    <option></option>
-    @foreach($datesList as $cDate)
-     <option>{{$cDate}}</option>
-    @endforeach
-  </select>
-  </div>
- <div class="card-footer">
-   <button class="btn btn-success"><i class="fas fa-search"></i> Search </button>
- </div>
-  </form>
-</div>
+ <form method="post" action="{{route('admin_complaints.listByDate')}}">
+      @csrf 
+    <div class="col-sm-5 ">
+      <div class="card card-primary m-3 pull-right">
+        <div class="card-header">
+          <h5 class="card-title"><p>Select Date for  Complient List </p></h5>
+        </div>
+          
+          
+          <div class="card-body">
+            
+          <select name="listByDate" class="form-control" id="selectComplaintDate" >
+            <option></option>
+            @foreach($datesList as $cDate)
+            <option>{{$cDate}}</option>
+            @endforeach
+          </select>
+          </div>
+        <div class="card-footer">
+          <button class="btn btn-success"><i class="fas fa-search"></i> Search </button>
+        </div>
+          
+      </div>
+    </div>
+</form>
  <br>
   <!-- Main content -->
   <div class="col-md-12">

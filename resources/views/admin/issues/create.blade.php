@@ -18,13 +18,17 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
+  <div class="card card-primary m-3">
+    <div class="card-header">
+      <h3 class="card-title">Import CSV / Excel  File</h3>
+    </div>
   <div class="card-body">
     <form method="post" enctype="multipart/form-data" action="{{route('admin.productUsersInfo.import')}}">
         @csrf 
         <div class="form-group">
           
-          <div >
-            <h3>Import CSV / Excel  File</h3>
+          <div>
+           
             <p class="text-danger">Note : **  In table heading , Must : provide [ first colum empty  ,bofid , name  ,designation ]   </p>
           </div>
           <label for="file" class="form-control">Import an CVS / Excel  File</label>
@@ -37,6 +41,7 @@
           <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i>Submit</button>
       </div>
     </form>
+</div>
 </div>
   <!-- Main content -->
   <div class="col-md-12">

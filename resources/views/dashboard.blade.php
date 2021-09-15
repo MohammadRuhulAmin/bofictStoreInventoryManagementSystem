@@ -109,7 +109,10 @@
                   </div>
             </div>
       
-    <div class="card card-primary">
+    <div class="card  card-primary m-3">
+      <div class="card-header">
+        <h5> Recent Product List </h5>
+      </div>
         <div class="card-body">
       
           <table class="table table-bordered datatable">
