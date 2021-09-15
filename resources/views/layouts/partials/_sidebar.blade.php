@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="http://www.bof.gov.bd/" class="brand-link">
       <img src="{{asset('website_template/assets/img/BOF_LOGIN_LOGO.jpg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="text-sm">Bangladesh Ordnance Factory </span>
+      <span class="text-sm">Bangladesh Ordnance Factories </span>
     </a>
 
     <!-- Sidebar -->
@@ -28,13 +28,12 @@
           </div>
         </div>
       </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-       
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -43,7 +42,6 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-
             <ul class="nav nav-treeview">
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
@@ -61,41 +59,76 @@
                 </a>
               </li>
               @endif
-              
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
-                <a href="{{route('categories.index')}}" class="nav-link {{request()->is('categories*')? 'active': ''}}">
-                  <i class="fa fa-list nav-icon"></i>
-                  <p>Category</p>
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-tree"></i>
+                  <p>
+                    Product Information
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  @if(auth()->user()->role === "admin")
+                  <li class="nav-item">
+                    <a href="{{route('categories.index')}}" class="nav-link {{request()->is('categories*')? 'active': ''}}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Category</p>
+                    </a>
+                  </li>
+                  @endif
+                  @if(auth()->user()->role === "admin")
+                  <li class="nav-item">
+                    <a href="{{route('subcategories.index')}}" class="nav-link {{request()->is('subcategories*')? 'active': ''}}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Sub Category</p>
+                    </a>
+                  </li>
+                 @endif
+                 @if(auth()->user()->role === "admin")
+                 <li class="nav-item">
+                   <a href="{{route('types.index')}}" class="nav-link {{request()->is('types*')? 'active': ''}}">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>Type</p>
+                   </a>
+                 </li>
+                 @endif
+                 @if(auth()->user()->role === "admin")
+                 <li class="nav-item">
+                   <a href="{{route('brands.index')}}" class="nav-link {{request()->is('brands*')? 'active': ''}}">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p> Brand </p>
+                   </a>
+                 </li> 
+                 @endif 
+                 
+                 @if(auth()->user()->role === "user")
+                 <li class="nav-item">
+                   <a href="{{route('product.index')}}" class="nav-link {{request()->is('product.index')? 'active': ''}}">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p> Product </p>
+                   </a>
+                 </li>
+                 @endif
+                 @if(auth()->user()->role ==="admin")
+                 <li class="nav-item">
+                   <a href="{{route('items.index')}}" class="nav-link {{request()->is('items*')? 'active': ''}}">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p> Item </p>
+                   </a>
+                   @endif
+                </ul>
               </li>
-              @endif
-              
-              @if(auth()->user()->role === "admin")
-              <li class="nav-item">
-                <a href="{{route('subcategories.index')}}" class="nav-link {{request()->is('subcategories*')? 'active': ''}}">
-                  <i class="fa fa-list nav-icon"></i>
-                  <p>Sub Category</p>
-                </a>
-              </li>
-              @endif
-             
-              @if(auth()->user()->role === "admin")
-              <li class="nav-item">
-                <a href="{{route('types.index')}}" class="nav-link {{request()->is('types*')? 'active': ''}}">
-                  <i class="fa fa-list nav-icon"></i>
-                  <p>Type</p>
-                </a>
-              </li>
-              @endif
-              @if(auth()->user()->role === "admin")
-              <li class="nav-item">
-                <a href="{{route('brands.index')}}" class="nav-link {{request()->is('brands*')? 'active': ''}}">
-                  <i class="fa fa-list nav-icon"></i>
-                  <p> Brand </p>
-                </a>
-              </li> 
               @endif 
+              @if(auth()->user()->role === "admin")
+                 <li class="nav-item">
+                   <a href="{{route('products.index')}}" class="nav-link {{request()->is('products*')? 'active': ''}}">
+                     <i class="fa fa-list nav-icon"></i>
+                     <p> Product </p>
+                   </a>
+                 </li>
+                 @endif
+              
               @if(auth()->user()->role ==="admin")
               <li class="nav-item">
                 <a href="{{route('departments.index')}}" class="nav-link {{request()->is('departments*')? 'active': ''}}">
@@ -104,22 +137,8 @@
                 </a>
               </li>
               @endif
-              @if(auth()->user()->role ==="admin")
-              <li class="nav-item">
-                <a href="{{route('items.index')}}" class="nav-link {{request()->is('items*')? 'active': ''}}">
-                  <i class="fa fa-list nav-icon"></i>
-                  <p> Item </p>
-                </a>
-                @endif
+            
               </li>
-              @if(auth()->user()->role === "admin")
-              <li class="nav-item">
-                <a href="{{route('products.index')}}" class="nav-link {{request()->is('products*')? 'active': ''}}">
-                  <i class="fa fa-list nav-icon"></i>
-                  <p> Product </p>
-                </a>
-              </li>
-              @endif
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('admin_complaints.index')}}" class="nav-link {{request()->is('complaint*')? 'active': ''}}">
@@ -144,14 +163,7 @@
                 </a>
               </li>
               @endif
-              @if(auth()->user()->role === "user")
-              <li class="nav-item">
-                <a href="{{route('product.index')}}" class="nav-link {{request()->is('product.index')? 'active': ''}}">
-                  <i class="fa fa-list nav-icon"></i>
-                  <p> Product </p>
-                </a>
-              </li>
-              @endif
+             
               @if(auth()->user()->role === "technician")
               <li class="nav-item">
                 <a href="{{route('technician.dashboard')}}" class="nav-link {{request()->is('technician.dashboard')? 'active': ''}}">
