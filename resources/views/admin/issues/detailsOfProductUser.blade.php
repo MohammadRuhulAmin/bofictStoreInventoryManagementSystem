@@ -12,7 +12,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item active">Product Issue  User List  </li>
+            <li class="breadcrumb-item active"><a href="{{route('productIssuesUsers.index')}}"> Product Issue  User List </a>  </li>
             <li class="breadcrumb-item active">Issue Details   </li>
           </ol>
         </div><!-- /.col -->
@@ -23,9 +23,10 @@
  
   <div class="row">
     <div class="col-sm-4">
-      <div class="card">
+      <div class="card card-primary m-3">
+        <div class="card-header"><h5 class="card-title">Issue Information  </h5></div>
         <div class="card-body">
-          <h5 class="card-title">Issue Information  </h5>
+          
           <table class="table table-sm">
             <tr>
                 <td>Name  </td>
@@ -51,9 +52,9 @@
   </div>
   
 
-  <div class="card m-3">
+  <div class="card card-primary m-3">
       <div class="card-header">
-          <div class="card-title">Products List of the User </div>
+          <h3 class="card-title">Products List of the User </h3>
       </div>
       <div class="card-body">
         <div class="row m-3">

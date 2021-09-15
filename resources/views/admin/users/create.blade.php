@@ -11,6 +11,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}"> Home </a></li>
+            <li class="breadcrumb-item active"><a href="{{route('users.index')}}"> Users List  </a>  </li>
             <li class="breadcrumb-item active">Create User </li>
           </ol>
         </div><!-- /.col -->
@@ -22,7 +23,7 @@
   <!-- Main content -->
   <div class="col-md-12">
     <!-- general form elements -->
-    <div class="card card-primary">
+    <div class="card card-primary m-3">
       <div class="card-header">
         <h3 class="card-title">Create a New User </h3>
      

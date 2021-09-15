@@ -10,6 +10,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('subcategories.index')}}"> Subcategory List  </a></li>
             <li class="breadcrumb-item active"> Sub category Edit</li>
           </ol>
         </div><!-- /.col -->
