@@ -31,6 +31,7 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
+       
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -42,7 +43,7 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          
+
             <ul class="nav nav-treeview">
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
@@ -60,6 +61,7 @@
                 </a>
               </li>
               @endif
+              
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('categories.index')}}" class="nav-link {{request()->is('categories*')? 'active': ''}}">
@@ -68,6 +70,7 @@
                 </a>
               </li>
               @endif
+              
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('subcategories.index')}}" class="nav-link {{request()->is('subcategories*')? 'active': ''}}">
@@ -76,6 +79,7 @@
                 </a>
               </li>
               @endif
+             
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('types.index')}}" class="nav-link {{request()->is('types*')? 'active': ''}}">
@@ -90,7 +94,7 @@
                   <i class="fa fa-list nav-icon"></i>
                   <p> Brand </p>
                 </a>
-              </li>
+              </li> 
               @endif 
               @if(auth()->user()->role ==="admin")
               <li class="nav-item">

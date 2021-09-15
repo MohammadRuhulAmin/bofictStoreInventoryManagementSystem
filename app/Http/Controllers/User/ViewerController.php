@@ -173,7 +173,7 @@ class ViewerController extends Controller
     }
 
     
-    public function searchProductName(Request $request){
+    public function searchProductName(Request $request){ 
         $this->validate($request,[
             'productName' =>'required',
         ]);
