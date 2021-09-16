@@ -172,6 +172,7 @@
                 </a>
               </li>
               @endif
+
               @if(auth()->user()->role === "technician")
               <li class="nav-item">
                 <a href="{{route('technician_complaints.index')}}" class="nav-link {{request()->is('complaint*')? 'active': ''}}">

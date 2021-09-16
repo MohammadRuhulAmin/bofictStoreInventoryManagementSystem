@@ -31,8 +31,9 @@
         <h3 class="card-title">Category List  </h3>
       </div>
       <br>
-     
-      <table class="table table-bordered datatable">
+         
+      <table id="example1" class="table table-bordered datatable">
+        
         <thead>
             <tr>
                 <th>#SL</th>
