@@ -59,7 +59,7 @@ class ProductController extends Controller
          
           //validation 
           $this->validate($request,[
-            'name'=>'required|min:2|max:50|',
+            'name'=>'required|min:2|max:50|unique:products',
         ]);
         $product = new Product();
         
