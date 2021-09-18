@@ -15,7 +15,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\AdminComplaintsController;
 use App\Http\Controllers\Admin\ProductissuedController;
 use App\Http\Controllers\Admin\AssignProductToUser;
-
+use App\Http\Controllers\Admin\StockController;
 // for user 
 use App\Http\Controllers\User\ViewerController; 
 
@@ -97,6 +97,9 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        // assigning product with user 
        Route::resource('assignProductWithUsers',AssignProductToUser::class); 
        Route::get('/assignProductWithUsers/{id}/details-of-product-repairment-history',[AssignProductToUser::class,'productRepairementHistory'])->name('assignProductWithUsers.repairmentHistoryProduct');
+
+       //Product Stock 
+       Route::resource('stocks',StockController::class);
  
     });
 });

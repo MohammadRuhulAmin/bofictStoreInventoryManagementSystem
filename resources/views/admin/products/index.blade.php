@@ -22,18 +22,15 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
- 
   <!-- Main content -->
   <div class="col-md-12">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
         <h3 class="card-title">Product  List  </h3>
-       
       </div>
       <br>
       <div class="float-right">
-        
         <a href="{{route('admin.product.excel')}}" class="btn btn-warning">Download as Excel File </a>
         <a href="{{route('admin.product.csv')}}" class="btn btn-primary">Download as CSV FIle  </a>
       </div>
@@ -75,8 +72,6 @@
                         <td>{{$product->brand ?? ''}}</td>
                         <td>{{$product->type ?? ''}}</td>
                         <td>{{$product->item ?? ''}}</td>
-                       
-
                         <td>
                             <a  href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 
@@ -101,8 +96,6 @@
      
     </div>
     <!-- /.card -->
-
-
   </div>
   <!-- /.content -->    
   

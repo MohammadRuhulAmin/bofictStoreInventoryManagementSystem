@@ -110,13 +110,15 @@
                    </a>
                  </li>
                  @endif
+                 
                  @if(auth()->user()->role ==="admin")
                  <li class="nav-item">
                    <a href="{{route('items.index')}}" class="nav-link {{request()->is('items*')? 'active': ''}}">
                      <i class="far fa-circle nav-icon"></i>
                      <p> Item </p>
                    </a>
-                   @endif
+                   @endif 
+                   
                 </ul>
               </li>
               @endif 
@@ -127,7 +129,8 @@
                      <p> Product </p>
                    </a>
                  </li>
-                 @endif
+              @endif
+             
               
               @if(auth()->user()->role ==="admin")
               <li class="nav-item">
@@ -155,6 +158,15 @@
                 </a>
               </li>
               @endif
+              @if(auth()->user()->role === "admin")
+              <li class="nav-item">
+                <a href="{{route('stocks.index')}}" class="nav-link {{request()->is('stocks*')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> Stock </p>
+                </a>
+              </li>
+              @endif
+              
               @if(auth()->user()->role === "user")
               <li class="nav-item">
                 <a href="{{route('user.dashboard')}}" class="nav-link {{request()->is('dashboard*')? 'active': ''}}">
