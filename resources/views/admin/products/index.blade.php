@@ -60,7 +60,13 @@
                       {{-- {{asset('storage/product_images/'.$product->image)}} --}}
                         <td>{{++$key}}</td>
                         <td>
+                          @if($product->image !== null)
                           <img width="64px" src="{{url('storage/'.$product->image)}}"/>
+                             
+                          @else 
+                            <p class="text-danger">No Img </p>
+                           @endif
+                          
                         </td>
                         <td>{{$product->department ?? ''}}
                         <td>{{$product->name ?? ''}}</td>

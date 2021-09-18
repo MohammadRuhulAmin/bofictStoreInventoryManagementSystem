@@ -77,7 +77,12 @@
                     <div class="card card-primary ">
                         <div class="card-header"> <h5 class="card-title">Product Image </h5></div>
                         <div class="card-body text-center">
-                            <img width="300px" src="{{url('storage/'.$product->image)}}" alt="No Image"/>
+                              @if($product->image !== null)
+                              <img width="300px" src="{{url('storage/'.$product->image)}}"/>
+                                 
+                              @else 
+                                <p class="text-danger">No Img </p>
+                               @endif
                         </div>
                     </div>
                        
