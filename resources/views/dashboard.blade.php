@@ -135,7 +135,15 @@
                     @foreach ($products as $key=> $product)
                         <tr>
                             <td>{{++$key}}</td>
-                            <td><img width="64px" src="{{url('storage/'.$product->image)}}"/></td>
+                            <td>
+                              @if($product->image !== null)
+                              <img width="64px" src="{{url('storage/'.$product->image)}}"/>
+                                 
+                              @else 
+                                <p class="text-danger">No Img </p>
+                               @endif
+                              
+                            </td>
                             <td>{{$product->department}}</td>
                             <td>{{$product->name ?? ''}}</td>
                             <td>{{$product->category ?? ''}}</td>
