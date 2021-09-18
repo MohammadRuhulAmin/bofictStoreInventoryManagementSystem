@@ -161,7 +161,7 @@
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('stocks.index')}}" class="nav-link {{request()->is('stocks*')? 'active': ''}}">
-                  <i class="fa fa-list nav-icon"></i>
+                  <i class="fas fa-align-left nav-icon"></i>
                   <p> Stock </p>
                 </a>
               </li>

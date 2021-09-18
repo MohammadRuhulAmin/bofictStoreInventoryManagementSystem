@@ -51,9 +51,9 @@ Route::get('/redirects',[LandingPageController::class,'redirectUser']);
 
 Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
    // admin prefix
-    Route::prefix('admin')->group(function(){
+      Route::prefix('admin')->group(function(){
        // Dashboard 
-       Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+      Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
          // User Insertion 
       Route::resource('users', UsersController::class);
       Route::get('/users/{id}/to-technician/',[UsersController::class,'toTechnician'])->name('users.toTechnician');
@@ -67,21 +67,21 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
      //Sub category 
       Route::resource('subcategories',SubcategoryController::class);
      // Type 
-     Route::resource('types',TypeController::class);
+      Route::resource('types',TypeController::class);
      //Product
-     Route::resource('products',ProductController::class);
+      Route::resource('products',ProductController::class);
      //Item
-     Route::resource('items',ItemController::class);
+      Route::resource('items',ItemController::class);
      //complaints 
-     Route::resource('admin_complaints',AdminComplaintsController::class);
-     Route::post('/complaints/complaints-list-byDate',[AdminComplaintsController::class,'listByDate'])->name('admin_complaints.listByDate');
+      Route::resource('admin_complaints',AdminComplaintsController::class);
+      Route::post('/complaints/complaints-list-byDate',[AdminComplaintsController::class,'listByDate'])->name('admin_complaints.listByDate');
 
-     Route::post('/complaints/listBy-year/',[AdminComplaintsController::class,'technicianSlnListByYear'])->name('admin_complaints.listByYear');
-     Route::get('/complaints/listBy-year/get',[AdminComplaintsController::class,'technicianSlnListByYearGet'])->name('admin_complaints.listByYear.get');
+      Route::post('/complaints/listBy-year/',[AdminComplaintsController::class,'technicianSlnListByYear'])->name('admin_complaints.listByYear');
+      Route::get('/complaints/listBy-year/get',[AdminComplaintsController::class,'technicianSlnListByYearGet'])->name('admin_complaints.listByYear.get');
   
      //admin_complaints.listByYearMonth
-     Route::post('/complaints/listBy-year-month',[AdminComplaintsController::class , 'technicianSlnListByYearMonth'])->name('admin_complaints.listByYearMonth');
-     Route::get('/complaints/listBy-year-month/get',[AdminComplaintsController::class , 'technicianSlnListByYearMonthGet'])->name('admin_complaints.listByYearMonth.get');
+      Route::post('/complaints/listBy-year-month',[AdminComplaintsController::class , 'technicianSlnListByYearMonth'])->name('admin_complaints.listByYearMonth');
+      Route::get('/complaints/listBy-year-month/get',[AdminComplaintsController::class , 'technicianSlnListByYearMonthGet'])->name('admin_complaints.listByYearMonth.get');
      //Department 
       Route::resource('departments',DepartmentController::class);
       // Export data table to excel  && csv file of Product 
