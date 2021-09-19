@@ -15,17 +15,19 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->string('item',50);
-            $table->string('details',100)->nullable();
-            $table->date('date');
-            $table->bigInteger('inclusion');
-            $table->bigInteger('exclusion');
+            $table->string('accessoryName',100)->nullable();
+            $table->string('accessoryFirstProperty',100)->nullable();
+            $table->string('accessorySecondProperty',100)->nullable();
+            $table->string('accessoryThirdProperty',100)->nullable();
+            $table->date('date')->nullable();
+            $table->bigInteger('inclusion')->nullable();
+            $table->bigInteger('exclusion')->nullable();
+            $table->bigInteger('stockBalance')->nullable();
             $table->string('maintanance',100)->nullable();
-            $table->bigInteger('storeBalance');
             $table->bigInteger('issueNo')->nullable();
-            $table->string('issuedTo',200);
-            $table->string('branch',200);
-            $table->string('remarks')->nullable();
+            $table->string('issuedTo',200)->nullable();
+            $table->string('branch',200)->nullable();
+            $table->string('remarks',200)->nullable();
             $table->timestamps();
         });
     }

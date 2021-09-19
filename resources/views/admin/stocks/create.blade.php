@@ -35,24 +35,45 @@
         <div class="card-body">
             <div class="form-group">
               <label for="exampleInputEmail1">Accessory  <span class="text-danger">*</span></label>
-              {{-- <input type="text" class="form-control" id="" name="item" placeholder="Item Name "> --}}
-              <select name="item" id="selectItemForStockEntry" class="form-control">
+              <select name="accessoryName" id="selectAccessoryName" class="form-control">
                 <option></option>
                 @foreach($accessories as $accessory)
                   <option>{{$accessory->accessoryName}}</option>
                 @endforeach
               </select>
-              @if($errors->has('item'))
-                  <span class="text-danger">Item  Name must be Provided! &  {{$errors->first('item')}} </span>
+
+              @if($errors->has('accessoryName'))
+                  <span class="text-danger">Accessory  Name must be Provided! &  {{$errors->first('accessoryName')}} </span>
               @endif
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Item Details <span class="text-danger">*</span>  </label>
-              <input type="text" class="form-control" id="" name="details" placeholder="Item Details ">
-              @if($errors->has('details'))
-                  <span class="text-danger">Item Details must be Provided! &  {{$errors->first('details')}} </span>
-              @endif
+              <label for="exampleInputEmail1">First Priority  <span class="text-danger"></span></label>
+              <select name="accessoryFirstProperty" id="selectAccessoryFirstProperty" class="form-control">
+                <option></option>
+                @foreach($accessories as $accessory)
+                  <option>{{$accessory->accessoryFirstProperty}}</option>
+                @endforeach
+              </select>
             </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Second Priority  <span class="text-danger"></span></label>
+              <select name="accessorySecondProperty" id="selectAccessorySecondProperty" class="form-control">
+                <option></option>
+                @foreach($accessories as $accessory)
+                  <option>{{$accessory->accessorySecondProperty}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Third Priority  <span class="text-danger"></span></label>
+              <select name="accessoryThirdProperty" id="selectAccessoryThirdProperty" class="form-control">
+                <option></option>
+                @foreach($accessories as $accessory)
+                  <option>{{$accessory->accessoryThirdProperty}}</option>
+                @endforeach
+              </select>
+            </div>
+            
             <div class="form-group">
               <label for="exampleInputEmail1">Date <span class="text-danger">*</span> </label>
               <input type="date" class="form-control" id="" name="date" placeholder="Date">
@@ -61,31 +82,31 @@
               @endif
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Inclusion <span class="text-danger">*</span></label>
+              <label for="exampleInputEmail1">Inclusion </label>
               <input type="number" class="form-control" id="" name="inclusion" placeholder="Inclusion">
-              @if($errors->has('inclusion'))
+              {{-- @if($errors->has('inclusion'))
                   <span class="text-danger">Item Details must be Provided! &  {{$errors->first('inclusion')}} </span>
-              @endif
+              @endif --}}
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Exclusion <span class="text-danger">*</span>  </label>
+              <label for="exampleInputEmail1">Exclusion   </label>
               <input type="number" class="form-control" id="" name="exclusion" placeholder="Exclusion">
-              @if($errors->has('exclusion'))
+              {{-- @if($errors->has('exclusion'))
                   <span class="text-danger">Item Details must be Provided! &  {{$errors->first('exclusion')}} </span>
-              @endif
+              @endif --}}
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Maintanance </label>
               <input type="text" class="form-control" id="" name="maintanance" placeholder="Maintanance">
               
             </div> 
-            <div class="form-group">
+            {{-- <div class="form-group">
               <label for="exampleInputEmail1">Store Balance <span class="text-danger">*</span> </label>
               <input type="number" class="form-control" id="" name="storeBalance" placeholder="Store Balance">
               @if($errors->has('storeBalance'))
                   <span class="text-danger">Item Details must be Provided! &  {{$errors->first('storeBalance')}} </span>
               @endif
-            </div>
+            </div> --}}
             <div class="form-group">
               <label for="exampleInputEmail1"> Issue No / Letter  </label>
               <input type="text" class="form-control" id="" name="issueNo" placeholder="Issue No">
@@ -118,13 +139,8 @@
             <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i>Submit</button>
         </div>
       </form>
-      
     </div>
     <!-- /.card -->
-
-
   </div>
   <!-- /.content -->
-    
-  
 @endsection

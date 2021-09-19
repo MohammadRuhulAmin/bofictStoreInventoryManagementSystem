@@ -137,8 +137,26 @@
       });
 </script>
 <script type="text/javascript">
-    $("#selectItemForStockEntry").select2({
-        placeholder:"Select Product Item ",
+    $("#selectAccessoryName").select2({
+        placeholder:"Select Accessory  Item ",
+        allowClear:true 
+    })
+</script>
+<script type="text/javascript">
+    $("#selectAccessoryFirstProperty").select2({
+        placeholder:"Select Accessory First Property if needed ",
+        allowClear:true 
+    })
+</script>
+<script type="text/javascript">
+    $("#selectAccessorySecondProperty").select2({
+        placeholder:"Select Accessory Second Property if needed ",
+        allowClear:true 
+    })
+</script>
+<script type="text/javascript">
+    $("#selectAccessoryThirdProperty").select2({
+        placeholder:"Select Accessory Third Property if needed ",
         allowClear:true 
     })
 </script>

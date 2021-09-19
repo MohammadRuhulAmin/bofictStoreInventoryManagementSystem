@@ -42,10 +42,14 @@
             @endif
 
           </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Accessory First Property </label>
+          {{-- <div class="form-group">
+            <label for="exampleInputEmail1">Accessory First Property</label>
             <input type="text" class="form-control" id="" name="accessoryFirstProperty" value={{$accessoryItem->accessoryFirstProperty}}  placeholder="Accessory First Property " >
-          </div>
+          </div> --}}
+          <div class="form-group">
+            <label for="exampleInputEmail1">Accessory First  Property </label>
+            <input type="text" class="form-control" id="" name="accessoryFirstProperty" placeholder="Accessory First Property " value={{$accessoryItem->accessoryFirstProperty}}>
+        </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Accessory Second Property </label>
                 <input type="text" class="form-control" id="" name="accessorySecondProperty" placeholder="Accessory Second Property " value={{$accessoryItem->accessorySecondProperty}}>

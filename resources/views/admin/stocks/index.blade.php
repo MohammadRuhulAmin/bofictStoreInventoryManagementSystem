@@ -35,7 +35,10 @@
             <tr>
                 <th>#SL</th>
                 <th>Date</th>
-                <th>Item </th>
+                <th>Accessory Name </th>
+                <th>First Property</th>
+                <th>Second Property</th>
+                <th>Third Property</th>
                 <th>Inclusion</th>
                 <th>Exclusion</th>
                 <th>Maintanance</th>
@@ -57,7 +60,10 @@
                     <tr>
                         <td>{{++$key}}</td>
                         <td>{{$stock->date ??''}}</td>
-                        <td>{{$stock->item ?? ''}}</td>
+                        <td>{{$stock->accessoryName?? ''}}</td>
+                        <td>{{$stock->accessoryFirstProperty?? ''}}</td>
+                        <td>{{$stock->accessorySecondProperty?? ''}}</td>
+                        <td>{{$stock->accessoryThirdProperty?? ''}}</td>
                         <td>{{$stock->inclusion ?? ''}}</td>
                         <td>{{$stock->exclusion ?? ''}}</td>
                         <td>{{$stock->maintanance ?? ''}}</td>
@@ -66,6 +72,7 @@
                         <td>{{$stock->issuedTo ?? ''}}</td>
                         <td>{{$stock->branch ?? ''}}</td>
                         <td>{{$stock->remarks ?? ''}}</td>
+                        
                         <td>
                             <a  href="{{route('stocks.edit',$stock->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 

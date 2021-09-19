@@ -38,20 +38,28 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request;
+        // return $request; 
+ 
         $this->validate($request,[
-            'item'=>'required',
-            'details' =>'required',
+            'accessoryName'=>'required',
             'date'=>'required',
-            'inclusion'=>'required',
-            'exclusion'=>'required',
-            'storeBalance' =>'required',
             'issuedTo' =>'required',
             'branch' =>'required',
-
         ]);
         $stock = new Stock();
-        $stock->create($request->all());
+        $stock->accessoryName = $request->accessoryName;
+        $stock->accessoryFirstProperty = $request->accessoryFirstProperty;
+        $stock->accessorySecondProperty = $request->accessorySecondProperty;
+        $stock->accessoryThirdProperty = $request->accessoryThirdProperty;
+        $stock->date = $request->date;
+        $stock->inclusion = $request->inclusion;
+        $stock->exclusion = $request->exclusion;
+        $stock->maintanance = $request->maintanance;
+        $stock->issueNo = $request->issueNo;
+        $stock->issuedTo = $request->issuedTo;
+        $stock->branch = $request->branch;
+        $stock->remarks = $request->remarks;
+        $stock->save();
         flash('Product item is  Recorded in Stock!')->success();
         return back();
     }
@@ -76,8 +84,9 @@ class StockController extends Controller
      */
     public function edit($id)
     {
+        $accessories = Accessory::orderBy('created_at','DESC')->get();
         $stock = Stock::findOrFail($id);
-        return view('admin.stocks.edit',compact('stock'));
+        return view('admin.stocks.edit',compact('stock','accessories'));
     }
 
     /**
@@ -90,20 +99,29 @@ class StockController extends Controller
     public function update(Request $request, $id)
     {
        
-        $this->validate($request,[
-            'item'=>'required',
-            'details' =>'required',
-            'date'=>'required',
-            'inclusion'=>'required',
-            'exclusion'=>'required',
-            'storeBalance' =>'required',
-            'issuedTo' =>'required',
-            'branch' =>'required',
-
+     // return $request; 
+ 
+     $this->validate($request,[
+        'accessoryName'=>'required',
+        'date'=>'required',
+        'issuedTo' =>'required',
+        'branch' =>'required',
         ]);
-        $stock = Stock::findOrFail($id);
-        $stock->update($request->all());
-        flash('Product item is  Updated  in Stock!')->success();
+        $stock =  Stock::findOrFail($id);
+        $stock->accessoryName = $request->accessoryName;
+        $stock->accessoryFirstProperty = $request->accessoryFirstProperty;
+        $stock->accessorySecondProperty = $request->accessorySecondProperty;
+        $stock->accessoryThirdProperty = $request->accessoryThirdProperty;
+        $stock->date = $request->date;
+        $stock->inclusion = $request->inclusion;
+        $stock->exclusion = $request->exclusion;
+        $stock->maintanance = $request->maintanance;
+        $stock->issueNo = $request->issueNo;
+        $stock->issuedTo = $request->issuedTo;
+        $stock->branch = $request->branch;
+        $stock->remarks = $request->remarks;
+        $stock->save();
+        flash('Product item is  Recorded in Stock!')->success();
         return redirect()->route('stocks.index');
     }
 

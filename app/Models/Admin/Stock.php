@@ -33,4 +33,5 @@ class Stock extends Model
         'branch',
         'remarks'
     ];
+    
 }

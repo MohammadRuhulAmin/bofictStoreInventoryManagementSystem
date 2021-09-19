@@ -35,7 +35,7 @@ class AccessoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'accessoryName' =>'required',
+            'accessoryName' =>'required|unique:accessories',
         ]);
         $accessory = new Accessory();
         $accessory->create($request->all());
