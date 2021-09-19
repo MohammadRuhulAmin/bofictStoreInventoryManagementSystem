@@ -67,7 +67,7 @@
                         <td>{{$stock->inclusion ?? ''}}</td>
                         <td>{{$stock->exclusion ?? ''}}</td>
                         <td>{{$stock->maintanance ?? ''}}</td>
-                        <td>{{$stock->storeBalance ?? ''}}</td>
+                        <td>{{$stock->stockBalance ?? ''}}</td>
                         <td>{{$stock->issueNo ?? ''}}</td>
                         <td>{{$stock->issuedTo ?? ''}}</td>
                         <td>{{$stock->branch ?? ''}}</td>

@@ -43,8 +43,8 @@ class StockController extends Controller
         $this->validate($request,[
             'accessoryName'=>'required',
             'date'=>'required',
-            'issuedTo' =>'required',
-            'branch' =>'required',
+            // 'issuedTo' =>'required',
+            // 'branch' =>'required',
         ]);
         $stock = new Stock();
         $stock->accessoryName = $request->accessoryName;
@@ -59,9 +59,84 @@ class StockController extends Controller
         $stock->issuedTo = $request->issuedTo;
         $stock->branch = $request->branch;
         $stock->remarks = $request->remarks;
-        $stock->save();
-        flash('Product item is  Recorded in Stock!')->success();
-        return back();
+         // total inclusion summation 
+         if(empty($request->accessoryFirstProperty)  && empty($request->accessorySecondProperty)  && empty($request->accessoryThirdProperty)){
+             $stockItemInclusionDB = Stock::where(['accessoryName'=>$request->accessoryName])->get();
+             $totalInclusion = 0;
+             for($i = 0;$i<count($stockItemInclusionDB);$i++){
+                 $totalInclusion += $stockItemInclusionDB[$i]->inclusion;
+             }
+             $totalExclusion = 0;
+             for($i = 0;$i<count($stockItemInclusionDB);$i++){
+                 $totalExclusion += $stockItemInclusionDB[$i]->exclusion;
+             }
+            
+             $totalStock = ($totalInclusion+  $stock->inclusion ) - ($totalExclusion + $stock->exclusion);
+             $stock->stockBalance = $totalStock; 
+             $stock->save();
+            flash('Product item is  Recorded in Stock!')->success();
+            return back();
+         }
+         if(!empty($request->accessoryFirstProperty)  && empty($request->accessorySecondProperty)  && empty($request->accessoryThirdProperty)){
+            $stockItemInclusionDB = Stock::where(['accessoryName'=>$request->accessoryName ,'accessoryFirstProperty'=>$request->accessoryFirstProperty])->get();
+            $totalInclusion = 0;
+            for($i = 0;$i<count($stockItemInclusionDB);$i++){
+                $totalInclusion += $stockItemInclusionDB[$i]->inclusion;
+            }
+            $totalExclusion = 0;
+            for($i = 0;$i<count($stockItemInclusionDB);$i++){
+                $totalExclusion += $stockItemInclusionDB[$i]->exclusion;
+            }
+           
+            $totalStock = ($totalInclusion+  $stock->inclusion ) - ($totalExclusion + $stock->exclusion);
+            $stock->stockBalance = $totalStock; 
+            $stock->save();
+           flash('Product item is  Recorded in Stock!')->success();
+           return back();
+        }
+        if(!empty($request->accessoryFirstProperty)  && !empty($request->accessorySecondProperty)  && empty($request->accessoryThirdProperty)){
+            $stockItemInclusionDB = Stock::where(['accessoryName'=>$request->accessoryName ,
+            'accessoryFirstProperty'=>$request->accessoryFirstProperty ,
+            'accessorySecondProperty' =>$request->accessorySecondProperty
+            ])->get();
+            $totalInclusion = 0;
+            for($i = 0;$i<count($stockItemInclusionDB);$i++){
+                $totalInclusion += $stockItemInclusionDB[$i]->inclusion;
+            }
+            $totalExclusion = 0;
+            for($i = 0;$i<count($stockItemInclusionDB);$i++){
+                $totalExclusion += $stockItemInclusionDB[$i]->exclusion;
+            }
+           
+            $totalStock = ($totalInclusion+  $stock->inclusion ) - ($totalExclusion + $stock->exclusion);
+            $stock->stockBalance = $totalStock; 
+            $stock->save();
+           flash('Product item is  Recorded in Stock!')->success();
+           return back();
+        }
+        if(!empty($request->accessoryFirstProperty)  && !empty($request->accessorySecondProperty)  && !empty($request->accessoryThirdProperty)){
+            $stockItemInclusionDB = Stock::where(['accessoryName'=>$request->accessoryName ,
+            'accessoryFirstProperty'=>$request->accessoryFirstProperty ,
+            'accessorySecondProperty' =>$request->accessorySecondProperty,
+            'accessoryThirdProperty' =>$request->accessoryThirdProperty,
+            ])->get();
+            $totalInclusion = 0;
+            for($i = 0;$i<count($stockItemInclusionDB);$i++){
+                $totalInclusion += $stockItemInclusionDB[$i]->inclusion;
+            }
+            $totalExclusion = 0;
+            for($i = 0;$i<count($stockItemInclusionDB);$i++){
+                $totalExclusion += $stockItemInclusionDB[$i]->exclusion;
+            }
+           
+            $totalStock = ($totalInclusion+  $stock->inclusion ) - ($totalExclusion + $stock->exclusion);
+            $stock->stockBalance = $totalStock; 
+            $stock->save();
+           flash('Product item is  Recorded in Stock!')->success();
+           return back();
+        }
+
+        
     }
 
 
@@ -99,13 +174,13 @@ class StockController extends Controller
     public function update(Request $request, $id)
     {
        
-     // return $request; 
+      
  
      $this->validate($request,[
         'accessoryName'=>'required',
         'date'=>'required',
-        'issuedTo' =>'required',
-        'branch' =>'required',
+        // 'issuedTo' =>'required',
+        // 'branch' =>'required',
         ]);
         $stock =  Stock::findOrFail($id);
         $stock->accessoryName = $request->accessoryName;

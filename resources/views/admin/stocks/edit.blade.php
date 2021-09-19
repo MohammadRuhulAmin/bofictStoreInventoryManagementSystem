@@ -78,9 +78,9 @@
             <div class="form-group">
               <label for="exampleInputEmail1">Date <span class="text-danger">*</span> </label>
               <input type="date" class="form-control" id="" name="date" placeholder="Date" value="{{$stock->date}}">
-              @if($errors->has('date'))
+              {{-- @if($errors->has('date'))
                   <span class="text-danger">Item Details must be Provided! &  {{$errors->first('date')}} </span>
-              @endif
+              @endif --}}
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Inclusion </label>
@@ -106,16 +106,16 @@
             <div class="form-group">
               <label for="exampleInputEmail1"> Issued To <span class="text-danger">*</span></label>
               <input type="text" class="form-control" id="" name="issuedTo" placeholder="Issued To" value="{{$stock->issuedTo}}">
-              @if($errors->has('issuedTo'))
+              {{-- @if($errors->has('issuedTo'))
                   <span class="text-danger">Item Details must be Provided! &  {{$errors->first('issuedTo')}} </span>
-              @endif
+              @endif --}}
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Branch <span class="text-danger">*</span> </label>
               <input type="text" class="form-control" id="" name="branch" placeholder="Branch " value="{{$stock->branch}}">
-              @if($errors->has('branch'))
+              {{-- @if($errors->has('branch'))
                   <span class="text-danger">Branch Must be Provided!   {{$errors->first('branch')}} </span>
-              @endif
+              @endif --}}
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Remarks </label>
