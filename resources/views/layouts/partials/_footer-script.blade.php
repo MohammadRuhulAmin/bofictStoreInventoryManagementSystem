@@ -136,4 +136,10 @@
           allowClear: true
       });
 </script>
+<script type="text/javascript">
+    $("#selectItemForStockEntry").select2({
+        placeholder:"Select Product Item ",
+        allowClear:true 
+    })
+</script>
 @stack('scripts')

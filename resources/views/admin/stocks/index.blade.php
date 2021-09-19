@@ -22,7 +22,6 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
- 
   <!-- Main content -->
   <div class="col-md-12">
     <!-- general form elements -->
@@ -51,7 +50,7 @@
             {{--  --}}
             {{-- $table->string('item',50);
             $table->string('details',100)->nullable(); --}}
-            
+
         <tbody>
             @if($stocks)
                 @foreach ($stocks as $key=> $stock)
@@ -86,10 +85,6 @@
       </table>
     </div>
     <!-- /.card -->
-
-
   </div>
   <!-- /.content -->
-    
-  
 @endsection

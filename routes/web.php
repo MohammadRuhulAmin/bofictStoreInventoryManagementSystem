@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminComplaintsController;
 use App\Http\Controllers\Admin\ProductissuedController;
 use App\Http\Controllers\Admin\AssignProductToUser;
 use App\Http\Controllers\Admin\StockController;
+use App\Http\Controllers\Admin\AccessoryController;
 // for user 
 use App\Http\Controllers\User\ViewerController; 
 
@@ -100,6 +101,9 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
 
        //Product Stock 
        Route::resource('stocks',StockController::class);
+
+       //Accessories Stock 
+       Route::resource('accessories', AccessoryController::class);
  
     });
 });

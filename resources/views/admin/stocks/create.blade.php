@@ -35,7 +35,13 @@
         <div class="card-body">
             <div class="form-group">
               <label for="exampleInputEmail1">Item <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" id="" name="item" placeholder="Item Name ">
+              {{-- <input type="text" class="form-control" id="" name="item" placeholder="Item Name "> --}}
+              <select name="item" id="selectItemForStockEntry" class="form-control">
+                <option></option>
+                @foreach($itemList as $item)
+                  <option>{{$item->name}}</option>
+                @endforeach
+              </select>
               @if($errors->has('item'))
                   <span class="text-danger">Item  Name must be Provided! &  {{$errors->first('item')}} </span>
               @endif
