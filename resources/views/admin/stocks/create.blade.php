@@ -34,12 +34,12 @@
         @csrf 
         <div class="card-body">
             <div class="form-group">
-              <label for="exampleInputEmail1">Item <span class="text-danger">*</span></label>
+              <label for="exampleInputEmail1">Accessory  <span class="text-danger">*</span></label>
               {{-- <input type="text" class="form-control" id="" name="item" placeholder="Item Name "> --}}
               <select name="item" id="selectItemForStockEntry" class="form-control">
                 <option></option>
-                @foreach($itemList as $item)
-                  <option>{{$item->name}}</option>
+                @foreach($accessories as $accessory)
+                  <option>{{$accessory->accessoryName}}</option>
                 @endforeach
               </select>
               @if($errors->has('item'))
@@ -78,7 +78,7 @@
               <label for="exampleInputEmail1">Maintanance </label>
               <input type="text" class="form-control" id="" name="maintanance" placeholder="Maintanance">
               
-            </div>
+            </div> 
             <div class="form-group">
               <label for="exampleInputEmail1">Store Balance <span class="text-danger">*</span> </label>
               <input type="number" class="form-control" id="" name="storeBalance" placeholder="Store Balance">

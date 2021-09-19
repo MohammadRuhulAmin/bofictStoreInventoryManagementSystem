@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Stock;
-use App\Models\Admin\Item;
+use App\Models\Admin\Accessory;
 class StockController extends Controller
 {
     /**
@@ -26,8 +26,8 @@ class StockController extends Controller
      */
     public function create()
     {
-        $itemList = Item::orderBy('created_at','DESC')->get();
-        return view('admin.stocks.create',compact('itemList'));
+        $accessories = Accessory::orderBy('created_at','DESC')->get();
+        return view('admin.stocks.create',compact('accessories'));
     }
 
     /**
