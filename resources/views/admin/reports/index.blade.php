@@ -29,28 +29,64 @@
       <div class="card-header">
         <h3 class="card-title">Generate Report  </h3>
       </div>
-      <form action="{{route('report.GenerateByCategory')}}" method="post">
-        @csrf 
-        <div class="card card-primary m-3">
-          <div class="card-header">
-            <h6 class="card-text">Generate Report of Product By Category Wise </h6>
+      <div class="card-body">
+       
+          <div class="card card-primary m-3">
+            <form action="{{route('report.GenerateByCategory')}}" method="post">
+              @csrf 
+              <div class="card-header">
+                <h6 class="card-text">Generate Report of Product By Category Wise </h6>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label> Select Category </label>
+                <select name="SearchByCategory" class="form-control">
+                  <option></option>
+                  @foreach ($categories as $category )
+                      <option>{{$category->name}}</option>
+                  @endforeach
+                </select>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-success"><i class="fa fa-download"></i>Download Excel</button>
+                <button class="btn btn-success"><i class="fas fa-file-pdf"></i>Download PDF</button>
+              </div>
+            </form>
           </div>
-          <div class="card-body">
-            <select name="SearchByCategory" class="form-control">
-              <option></option>
-              @foreach ($categories as $category )
-                  <option>{{$category->name}}</option>
-              @endforeach
-            </select>
+          <div class="card card-primary m-3">
+            <form action="{{route('report.GenerateByCategorySubcategory')}}"  method="post">
+              @csrf 
+              <div class="card-header card-primary">
+                <h6 class="card-text">Generate Report of Product By Category & Subcategory Wise  </h6>
+              </div>
+              <div class="card-body">
+               <div class="form-group">
+                <label> Select Category </label>
+                <select name="SearchByCategory" class="form-control">
+                  <option></option>
+                  @foreach ($categories as $category )
+                      <option>{{$category->name}}</option>
+                  @endforeach
+                </select>
+               </div>
+               <div class="form-group">
+                <label> Select Sub Category</label>
+                <select name="SearchBySubCategory" class="form-control">
+                  <option></option>
+                  @foreach ($subcategories as $subcategory )
+                      <option>{{$subcategory->name}}</option>
+                  @endforeach
+                </select>
+               </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-success"><i class="fa fa-download"></i>Download Excel</button>
+                <button class="btn btn-success"><i class="fas fa-file-pdf"></i>Download PDF</button>
+              </div>
+            </form>
           </div>
-  
-          <div class="card-footer">
-            <button class="btn btn-success"><i class="fa fa-download"></i>Download Excel</button>
-            <button class="btn btn-success"><i class="fas fa-file-pdf"></i>Download PDF</button>
-          </div>
-      </form>
-      
-
+      </div>
       </div>
     </div>
     <!-- /.card -->

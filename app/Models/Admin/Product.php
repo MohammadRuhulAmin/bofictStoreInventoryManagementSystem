@@ -9,9 +9,7 @@ use App\Models\Admin\Productissued;
 use Illuminate\Support\Facades\Session;
 class Product extends Model
 {
-    
-    use HasFactory;
-    
+    use HasFactory;   
     protected $fillable = ['name','category','subcategory','type','item','description','department'];
     public static function getProductList(){
         $products = Product::get()->toArray();
@@ -24,6 +22,13 @@ class Product extends Model
         $products = Product::where('category',$categoryName)->get()->toArray();
         return $products; 
     }
+    public static function getProductListByCategorySubcategory(){
+        $categoryName = Session::get('categoryName');
+        $subCategoryName = Session::get('subCategoryName');
+        // return $categoryName ." ". $subCategoryName;
+        $products = Product::where(['category'=>$categoryName ,'subCategoryName' =>$subCategoryName])->get()->toArray();
+        return $products;
+    }
 
     public function complaints(){
        return $this->hasMany(Complaint::class);
@@ -31,4 +36,5 @@ class Product extends Model
     public function productissueds(){
         return $this->belongsToMany(Productissued::class,'product_productissudes');
     }
+    
 }

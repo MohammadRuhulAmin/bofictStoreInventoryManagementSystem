@@ -111,6 +111,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        //Report Generator 
        Route::get('/reports',[ReportGeneratorController::class,'index'])->name('report.index');
        Route::post('/reports/bycategory',[ReportGeneratorController::class,'exportReportByCategory'])->name('report.GenerateByCategory');
+       Route::post('/reports/bycategory&SubCategory',[ReportGeneratorController::class,'exportReportByCategorySubCategory'])->name('report.GenerateByCategorySubcategory');
     });
 });
 
