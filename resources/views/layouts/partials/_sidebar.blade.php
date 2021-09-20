@@ -175,6 +175,14 @@
                 </a>
               </li>
               @endif
+              @if(auth()->user()->role === "admin")
+              <li class="nav-item">
+                <a href="{{route('report.index')}}" class="nav-link">
+                  <i class="fas fa-align-right nav-icon"></i>
+                  <p>Report Generator</p>
+                </a>
+              </li>
+              @endif
               
               @if(auth()->user()->role === "user")
               <li class="nav-item">

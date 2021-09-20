@@ -5,17 +5,18 @@ namespace App\Exports;
 use App\Models\Admin\Product;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-class ProductExport implements FromCollection,WithHeadings
+class ProductExportByCategory implements FromCollection,WithHeadings
 {
+
+   
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
         //return Product::all();
-        return collect(Product::getProductList());
+        return collect(Product::getProductListByCategory());
     }
-    
     public function headings():array{
         return[
             'id',
@@ -29,7 +30,9 @@ class ProductExport implements FromCollection,WithHeadings
             'description',
             'department',
             'created_at',
-            'updated_at',
+            'updated_at'
+            
+
         ];
     }
 }

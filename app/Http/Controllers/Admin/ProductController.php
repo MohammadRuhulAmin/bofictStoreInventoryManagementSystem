@@ -11,10 +11,12 @@ use App\Models\Admin\Item;
 use Illuminate\Http\Request;
 use App\Models\Admin\Department;
 use Illuminate\Support\Str;
-use App\Exports\ProductExport;
-use Excel;
 use App\Imports\ProductImport;
 use App\Models\Technician\Complaint;
+use Illuminate\Support\Facades\Session;
+use App\Exports\ProductExportByCategory;
+use Excel;
+use App\Exports\ProductExport;
 
 
 class ProductController extends Controller
@@ -26,8 +28,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $categoriesList = Category::orderby('created_at','DESC')->get();
         $products = Product::orderby('created_at','DESC')->get();
-        return view('admin.products.index',compact('products'));
+        return view('admin.products.index',compact('products','categoriesList'));
     }
 
     /**
@@ -205,6 +208,12 @@ class ProductController extends Controller
         Excel::import(new ProductImport,$request->cvsFile);
         flash('Excel File is Imported ,   Successfully!')->success();
         return redirect()->route('products.index');
+    }
+    public function exportByCategory(Request $request){
+        
+        session()->put(['categoryName'=>$request->SearchByCategory]);
+        return Excel::download(new ProductExportByCategory($request->name),'productListByCategory.xlsx');
+        //return $request->all();
     }
 
 }

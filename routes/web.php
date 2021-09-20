@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\ProductissuedController;
 use App\Http\Controllers\Admin\AssignProductToUser;
 use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\Admin\AccessoryController;
+use App\Http\Controllers\Admin\ReportGeneratorController;
 // for user 
 use App\Http\Controllers\User\ViewerController; 
 
@@ -88,6 +89,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       // Export data table to excel  && csv file of Product 
       Route::get('/export-excel/excel',[ProductController::class,'exportIntoExcel'])->name('admin.product.excel');
       Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('admin.product.csv');
+      
        // Import data from excel file 
        Route::post('/import-excel-file/products',[ProductController::class,'importCvsFileToDatabase'])->name('admin.product.import');
 
@@ -104,7 +106,11 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
 
        //Accessories Stock 
        Route::resource('accessories', AccessoryController::class);
- 
+       
+
+       //Report Generator 
+       Route::get('/reports',[ReportGeneratorController::class,'index'])->name('report.index');
+       Route::post('/reports/bycategory',[ReportGeneratorController::class,'exportReportByCategory'])->name('report.GenerateByCategory');
     });
 });
 

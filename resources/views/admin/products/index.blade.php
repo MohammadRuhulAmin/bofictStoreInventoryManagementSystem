@@ -11,6 +11,7 @@
           <br>
           <a href="{{route('products.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add New Product Item</a>
           
+          
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -30,9 +31,21 @@
         <h3 class="card-title">Product  List  </h3>
       </div>
       <br>
-      <div class="float-right">
-        <a href="{{route('admin.product.excel')}}" class="btn btn-warning">Download as Excel File </a>
-        <a href="{{route('admin.product.csv')}}" class="btn btn-primary">Download as CSV FIle  </a>
+      
+      <br>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Download All Products List </h5>
+            </div>
+            <div class="card-body">
+              <a href="{{route('admin.product.excel')}}" class="btn btn-warning">Download as Excel File </a>
+              <a href="{{route('admin.product.csv')}}" class="btn btn-primary">Download as CSV FIle  </a>
+            </div>
+          </div>
+        </div>
+       
       </div>
       <br>
       <table  class="table table-bordered datatable table-sm" id="productTable">
@@ -49,6 +62,7 @@
                 <th>Item</th>
                 <th>Action</th>
             </tr>
+
         </thead>
         <tbody>
             @if($products)
@@ -59,13 +73,12 @@
                         <td>
                           @if($product->image !== null)
                           <img width="64px" src="{{url('storage/'.$product->image)}}"/>
-                             
                           @else 
                             <p class="text-danger">No Img </p>
                            @endif
                           
                         </td>
-                        <td>{{$product->department ?? ''}}
+                        <td>{{$product->department ?? ''}}</td>
                         <td>{{$product->name ?? ''}}</td>
                         <td>{{$product->category ?? ''}}</td>
                         <td>{{$product->subcategory ?? ''}}</td>
@@ -84,7 +97,7 @@
                             </a>
                             <form id="product-delete-{{$product->id}}" action="{{route('products.destroy',$product->id)}}" method="post">
                                 @csrf 
-                                @method('DELETE') 
+                                @method('DELETE')
                             </form>
                         </td>
                     </tr>

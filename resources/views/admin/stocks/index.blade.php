@@ -8,8 +8,9 @@
           
     
           <h1 class="m-0">Stocks +</h1>
-          <br>
+          <br> 
           <a href="{{route('stocks.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add New Stock Item </a>
+          <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-history" aria-hidden="true"></i>Generate Report </a>
           
         </div><!-- /.col -->
         <div class="col-sm-6">
@@ -27,7 +28,7 @@
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Stocks List  </h3>
+        <h3 class="card-title"> Stocks List  </h3>
       </div>
       <br>
       <table id="example1" class="table table-bordered datatable">
@@ -50,9 +51,7 @@
                 <th>Action</th>
             </tr>
         </thead>
-            {{--  --}}
-            {{-- $table->string('item',50);
-            $table->string('details',100)->nullable(); --}}
+         
 
         <tbody>
             @if($stocks)

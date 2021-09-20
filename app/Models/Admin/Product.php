@@ -6,14 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\Productissued;
 // use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 class Product extends Model
 {
+    
     use HasFactory;
     
     protected $fillable = ['name','category','subcategory','type','item','description','department'];
     public static function getProductList(){
         $products = Product::get()->toArray();
+        //$products=Product::where('category','Desktop')->get()->toArray();
         return $products;
+    }
+    public static function getProductListByCategory(){
+        $categoryName = Session::get('categoryName');
+        
+        $products = Product::where('category',$categoryName)->get()->toArray();
+        return $products; 
     }
 
     public function complaints(){
