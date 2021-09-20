@@ -5,7 +5,7 @@ use App\Models\Technician\Complaint;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\Productissued;
-// use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB; 
 use Illuminate\Support\Facades\Session;
 class Product extends Model
 {
@@ -29,7 +29,6 @@ class Product extends Model
         $products = Product::where(['category'=>$categoryName ,'subCategoryName' =>$subCategoryName])->get()->toArray();
         return $products;
     }
-
     public function complaints(){
        return $this->hasMany(Complaint::class);
     }

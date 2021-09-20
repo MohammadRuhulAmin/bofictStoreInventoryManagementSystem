@@ -40,12 +40,15 @@
               <div class="card-body">
                 <div class="form-group">
                   <label> Select Category </label>
-                <select name="SearchByCategory" class="form-control">
+                <select name="SearchByCategory_1" class="form-control">
                   <option></option>
                   @foreach ($categories as $category )
                       <option>{{$category->name}}</option>
                   @endforeach
                 </select>
+                @if($errors->has('SearchByCategory_1'))
+                <span class="text-danger">Category Name must be Provided! &  {{$errors->first('SearchByCategory')}} </span>
+              @endif
                 </div>
               </div>
               <div class="card-footer">
@@ -63,21 +66,27 @@
               <div class="card-body">
                <div class="form-group">
                 <label> Select Category </label>
-                <select name="SearchByCategory" class="form-control">
+                <select name="SearchByCategory_2" class="form-control">
                   <option></option>
                   @foreach ($categories as $category )
                       <option>{{$category->name}}</option>
                   @endforeach
                 </select>
+                @if($errors->has('SearchByCategory_2'))
+                  <span class="text-danger">Category Name must be Provided!   {{$errors->first('SearchByCategory_2')}} </span>
+                @endif
                </div>
                <div class="form-group">
                 <label> Select Sub Category</label>
-                <select name="SearchBySubCategory" class="form-control">
+                <select name="SearchBySubCategory_2" class="form-control">
                   <option></option>
                   @foreach ($subcategories as $subcategory )
                       <option>{{$subcategory->name}}</option>
                   @endforeach
                 </select>
+                @if($errors->has('SearchBySubCategory_2'))
+                <span class="text-danger">SubCategory Name must be Provided!{{$errors->first('SearchBySubCategory_2')}} </span>
+                @endif
                </div>
               </div>
               <div class="card-footer">

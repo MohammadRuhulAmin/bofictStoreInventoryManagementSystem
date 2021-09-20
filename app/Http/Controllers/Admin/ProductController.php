@@ -212,7 +212,7 @@ class ProductController extends Controller
     public function exportByCategory(Request $request){
         
         session()->put(['categoryName'=>$request->SearchByCategory]);
-        return Excel::download(new ProductExportByCategory($request->name),'productListByCategory.xlsx');
+        return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
         //return $request->all();
     }
 

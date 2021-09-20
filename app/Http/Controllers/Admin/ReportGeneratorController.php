@@ -20,12 +20,19 @@ class ReportGeneratorController extends Controller
     }
 
     public function exportReportByCategory(Request $request){
-        session()->put(['categoryName'=>$request->SearchByCategory]);
-        return Excel::download(new ProductExportByCategory($request->name),'productListByCategory.xlsx');
+        $this->validate($request,[
+            'SearchByCategory_1'=>'required',
+        ]);
+        session()->put(['categoryName'=>$request->SearchByCategory_1]);
+        return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
     }
     public function exportReportByCategorySubCategory(Request $request){
-        session()->put(['categoryName'=>$request->SearchByCategory]);
-        session()->put(['subCategoryName'=>$request->SearchBySubCategory]);
-        return Excel::download(new ProductExportByCategory($request->name),'productListByCategory.xlsx');
+        $this->validate($request,[
+            'SearchByCategory_2'=>'required',
+            'SearchBySubCategory_2'=>'required',
+        ]);
+        session()->put(['categoryName'=>$request->SearchByCategory_2]);
+        session()->put(['subCategoryName'=>$request->SearchBySubCategory_2]);
+        return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
     }
 }
