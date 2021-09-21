@@ -110,11 +110,14 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
 
        //Report Generator 
        Route::get('/reports',[ReportGeneratorController::class,'index'])->name('report.index');
-       Route::post('/reports/bycategory',[ReportGeneratorController::class,'exportReportByCategory'])->name('report.GenerateByCategory');
+       Route::post('/reports/bycategory/to-excel',[ReportGeneratorController::class,'exportReportByCategory'])->name('report.GenerateByCategory');
+       Route::post('/reports/bycategory/to-pdf',[ReportGeneratorController::class,'exportReportByCategoryToPDF'])->name('report.GenerateByCategoryToPDF');
+       
        Route::post('/reports/bycategory&SubCategory',[ReportGeneratorController::class,'exportReportByCategorySubCategory'])->name('report.GenerateByCategorySubcategory');
-    });
-});
+       
 
+      });
+});
 // Routes for users 
 
 Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
@@ -132,8 +135,6 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
       Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('user.product.csv');
       Route::post('/product/search',[ViewerController::class,'searchProduct'])->name('user.search.products');
       Route::post('/product/search/name',[ViewerController::class,'searchProductName'])->name('user.search.specificProduct');
-      
-      
     });
 });
 

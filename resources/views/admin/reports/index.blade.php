@@ -29,10 +29,10 @@
       <div class="card-header">
         <h3 class="card-title">Generate Report  </h3>
       </div>
+
       <div class="card-body">
-       
           <div class="card card-primary m-3">
-            <form action="{{route('report.GenerateByCategory')}}" method="post">
+            <form  method="post">
               @csrf 
               <div class="card-header">
                 <h6 class="card-text">Generate Report of Product By Category Wise </h6>
@@ -47,18 +47,19 @@
                   @endforeach
                 </select>
                 @if($errors->has('SearchByCategory_1'))
-                <span class="text-danger">Category Name must be Provided! &  {{$errors->first('SearchByCategory')}} </span>
-              @endif
+                  <span class="text-danger">Category Name must be Provided! &  {{$errors->first('SearchByCategory')}} </span>
+                @endif
                 </div>
               </div>
               <div class="card-footer">
-                <button class="btn btn-success"><i class="fa fa-download"></i>Download Excel</button>
-                <button class="btn btn-success"><i class="fas fa-file-pdf"></i>Download PDF</button>
+                <button class="btn btn-success" type="submit" formaction="{{route('report.GenerateByCategory')}}"><i class="fa fa-download"></i>Download Excel</button>
+                <button class="btn btn-success" type="submit" formaction="{{route('report.GenerateByCategoryToPDF')}}" ><i class="fas fa-file-pdf"></i>Download PDF</button> 
               </div>
             </form>
+            
           </div>
           <div class="card card-primary m-3">
-            <form action="{{route('report.GenerateByCategorySubcategory')}}"  method="post">
+            <form  method="post">
               @csrf 
               <div class="card-header card-primary">
                 <h6 class="card-text">Generate Report of Product By Category & Subcategory Wise  </h6>
@@ -72,7 +73,7 @@
                       <option>{{$category->name}}</option>
                   @endforeach
                 </select>
-                @if($errors->has('SearchByCategory_2'))
+                @if($errors->has('SearchByCategory_2')) 
                   <span class="text-danger">Category Name must be Provided!   {{$errors->first('SearchByCategory_2')}} </span>
                 @endif
                </div>
@@ -90,7 +91,7 @@
                </div>
               </div>
               <div class="card-footer">
-                <button class="btn btn-success"><i class="fa fa-download"></i>Download Excel</button>
+                <button class="btn btn-success" type="submit" formaction="{{route('report.GenerateByCategorySubcategory')}}" ><i class="fa fa-download"></i>Download Excel</button>
                 <button class="btn btn-success"><i class="fas fa-file-pdf"></i>Download PDF</button>
               </div>
             </form>

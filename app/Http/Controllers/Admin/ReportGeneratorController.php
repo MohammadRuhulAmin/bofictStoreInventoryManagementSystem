@@ -7,11 +7,20 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Category;
 use App\Models\Admin\Subcategory;
 use App\Exports\ProductExportByCategory;
-use Excel;
+use App\Exports\ProductExportByCategorySubCategory;
+// use Excel;
+use Maatwebsite\Excel\Excel;
 use App\Exports\ProductExport;
 
 class ReportGeneratorController extends Controller
 {
+    // for using constroctor 
+    private $excel;
+    public function __construct(Excel $excel){
+        $this->excel = $excel;
+    }
+
+    //
     public function index(){
         
         $categories = Category::orderby('created_at','DESC')->get();
@@ -24,15 +33,30 @@ class ReportGeneratorController extends Controller
             'SearchByCategory_1'=>'required',
         ]);
         session()->put(['categoryName'=>$request->SearchByCategory_1]);
-        return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
+        return $this->excel->download(new ProductExportByCategory,'productList.xlsx');
+        //return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
     }
+    
+    public function exportReportByCategoryToPDF(Request $request){
+        $this->validate($request,[
+            'SearchByCategory_1'=>'required',
+        ]);
+        session()->put(['categoryName'=>$request->SearchByCategory_1]);
+        return $this->excel->download(new ProductExportByCategory,'productList.pdf',Excel::DOMPDF);
+
+    }
+
+
+
     public function exportReportByCategorySubCategory(Request $request){
         $this->validate($request,[
             'SearchByCategory_2'=>'required',
             'SearchBySubCategory_2'=>'required',
         ]);
+
         session()->put(['categoryName'=>$request->SearchByCategory_2]);
         session()->put(['subCategoryName'=>$request->SearchBySubCategory_2]);
-        return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
+        //return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
+        return $this->excel->download(new ProductExportByCategorySubCategory(),'productList.xlsx');
     }
 }
