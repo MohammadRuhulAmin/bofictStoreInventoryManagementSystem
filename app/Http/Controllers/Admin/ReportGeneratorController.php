@@ -43,11 +43,7 @@ class ReportGeneratorController extends Controller
         ]);
         session()->put(['categoryName'=>$request->SearchByCategory_1]);
         return $this->excel->download(new ProductExportByCategory,'productList.pdf',Excel::DOMPDF);
-
     }
-
-
-
     public function exportReportByCategorySubCategory(Request $request){
         $this->validate($request,[
             'SearchByCategory_2'=>'required',
@@ -59,4 +55,17 @@ class ReportGeneratorController extends Controller
         //return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
         return $this->excel->download(new ProductExportByCategorySubCategory(),'productList.xlsx');
     }
+    public function exportReportByCategorySubCategoryToPDF(Request $request){
+        $this->validate($request,[
+            'SearchByCategory_2'=>'required',
+            'SearchBySubCategory_2'=>'required',
+        ]);
+
+        session()->put(['categoryName'=>$request->SearchByCategory_2]);
+        session()->put(['subCategoryName'=>$request->SearchBySubCategory_2]);
+        //return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
+        return $this->excel->download(new ProductExportByCategorySubCategory,'productList.pdf',Excel::DOMPDF);
+    }
+
+
 }

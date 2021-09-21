@@ -112,9 +112,9 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        Route::get('/reports',[ReportGeneratorController::class,'index'])->name('report.index');
        Route::post('/reports/bycategory/to-excel',[ReportGeneratorController::class,'exportReportByCategory'])->name('report.GenerateByCategory');
        Route::post('/reports/bycategory/to-pdf',[ReportGeneratorController::class,'exportReportByCategoryToPDF'])->name('report.GenerateByCategoryToPDF');
-       
+      
        Route::post('/reports/bycategory&SubCategory',[ReportGeneratorController::class,'exportReportByCategorySubCategory'])->name('report.GenerateByCategorySubcategory');
-       
+       Route::post('/reports/byCategory&SubCategory/to-pdf',[ReportGeneratorController::class,'exportReportByCategorySubCategoryToPDF'])->name('report.GenerateByCategorySubcategoryToPDF');
 
       });
 });

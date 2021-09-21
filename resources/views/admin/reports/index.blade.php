@@ -30,6 +30,7 @@
         <h3 class="card-title">Generate Report  </h3>
       </div>
 
+
       <div class="card-body">
           <div class="card card-primary m-3">
             <form  method="post">
@@ -56,7 +57,6 @@
                 <button class="btn btn-success" type="submit" formaction="{{route('report.GenerateByCategoryToPDF')}}" ><i class="fas fa-file-pdf"></i>Download PDF</button> 
               </div>
             </form>
-            
           </div>
           <div class="card card-primary m-3">
             <form  method="post">
@@ -92,7 +92,7 @@
               </div>
               <div class="card-footer">
                 <button class="btn btn-success" type="submit" formaction="{{route('report.GenerateByCategorySubcategory')}}" ><i class="fa fa-download"></i>Download Excel</button>
-                <button class="btn btn-success"><i class="fas fa-file-pdf"></i>Download PDF</button>
+                <button class="btn btn-success" type="submit" formaction="{{route('report.GenerateByCategorySubcategoryToPDF')}}" ><i class="fas fa-file-pdf"></i>Download PDF</button>
               </div>
             </form>
           </div>

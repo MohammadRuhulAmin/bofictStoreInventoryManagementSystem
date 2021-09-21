@@ -22,15 +22,11 @@ class Product extends Model
         $products = Product::where('category',$categoryName)->get()->toArray();
         return $products; 
     }
-
-
     public static function getProductListByCategoryToPDF(){
         $categoryName = Session::get('categoryName');
         $products = Product::where('category',$categoryName)->get()->toArray();
         return $products; 
     }
-
-
 
     public static function getProductListByCategorySubcategory(){
         $categoryName = Session::get('categoryName');
@@ -39,6 +35,19 @@ class Product extends Model
         $products = Product::where(['category'=>$categoryName ,'subcategory' =>$subCategoryName])->get()->toArray();
         return $products;
     }
+    
+
+    public static function getProductListByCategorySubCategoryToPdf(){
+        $categoryName = Session::get('categoryName');
+        $subCategoryName = Session::get('subCategoryName');
+        // return $categoryName ." ". $subCategoryName;
+        $products = Product::where(['category'=>$categoryName ,'subcategory' =>$subCategoryName])->get()->toArray();
+        return $products;
+    }
+
+
+
+    
     
 
     public function complaints(){

@@ -18,7 +18,6 @@ class ProductExpCat implements FromCollection,
     public function collection()
     {
         return collect(Product::getProductListByCategoryToPdf());
-        
     }
     public function headings():array{
         return[
@@ -34,8 +33,6 @@ class ProductExpCat implements FromCollection,
             'department',
             'created_at',
             'updated_at'
-            
-
         ];
     }
 }
