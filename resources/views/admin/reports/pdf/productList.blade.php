@@ -5,18 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bangladesh Ordnance Factories</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+          text-align: center;
+        }
+        </style>
 </head>
+
 <body>
         <div style="text-align:center">
             <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
             <h3>{{$title}}</h3>
-            <b> {{$OIC}}</b><br>
-            <b>{{$IC}}</b>
-
+            
         </div>
-        <br> 
+        <table  >
+            <tr>
+                <td>Date : </td>
+                <td> {{\Carbon\Carbon::now()->format('d-m-Y')}}</td>
+            </tr>
+            <tr>
+                <td>Category :  </td>
+                <td>{{$category}}</td>
+            </tr>
+            <tr>
+                <td>Total Product : </td>
+                <td>{{$TotalProduct}}</td>
+            </tr>
+            <tr>
+                <td>Current Stock : </td>
+                <td>522</td>
+            </tr>
+        </table>
         <br>
-        <table  align="center" style="border-spacing: 0;" border="1px" >
+        <table  align="center" style="border-spacing: 0;" border="1px"  >
             <tr>
                 <td>#</td>
                 <td>Name</td>

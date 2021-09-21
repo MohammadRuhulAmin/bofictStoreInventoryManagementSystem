@@ -49,8 +49,10 @@ class ReportGeneratorController extends Controller
             'title' =>'Bangladesh Ordnance Factories',
             'OIC' => 'OIC : Major Khondakar Mohammad Rakibul Hasan',
             'IC' => 'IC : SAE Nurul Bari',
+            'TotalProduct' =>count($productsList),
             'productsList' =>$productsList,
-        ]; 
+            'category' =>$categoryName 
+        ];
          
         $pdf = PDF::loadView('admin.reports.pdf.productList',$data);
         return $pdf->download('productList.pdf');
