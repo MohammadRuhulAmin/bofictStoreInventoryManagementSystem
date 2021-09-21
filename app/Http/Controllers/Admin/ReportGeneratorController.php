@@ -8,6 +8,8 @@ use App\Models\Admin\Category;
 use App\Models\Admin\Subcategory;
 use App\Exports\ProductExportByCategory;
 use App\Exports\ProductExportByCategorySubCategory;
+use App\Models\Admin\Product;
+use PDF; 
 // use Excel;
 use Maatwebsite\Excel\Excel;
 use App\Exports\ProductExport;
@@ -41,9 +43,21 @@ class ReportGeneratorController extends Controller
         $this->validate($request,[
             'SearchByCategory_1'=>'required',
         ]);
-        session()->put(['categoryName'=>$request->SearchByCategory_1]);
-        return $this->excel->download(new ProductExportByCategory,'productList.pdf',Excel::DOMPDF);
+        $categoryName = $request->SearchByCategory_1;
+        $productsList = Product::where('category',$categoryName)->get();
+        $data = [
+            'title' =>'Bangladesh Ordnance Factories',
+            'OIC' => 'OIC : Major Khondakar Mohammad Rakibul Hasan',
+            'IC' => 'IC : SAE Nurul Bari',
+            'productsList' =>$productsList,
+        ]; 
+         
+        $pdf = PDF::loadView('admin.reports.pdf.productList',$data);
+        return $pdf->download('productList.pdf');
     }
+
+
+
     public function exportReportByCategorySubCategory(Request $request){
         $this->validate($request,[
             'SearchByCategory_2'=>'required',

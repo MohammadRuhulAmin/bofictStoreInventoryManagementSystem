@@ -45,7 +45,9 @@ class Product extends Model
         return $products;
     }
 
-
+    protected $hidden =[
+        'created_at','updated_at','id','image'
+    ];
 
     
     
