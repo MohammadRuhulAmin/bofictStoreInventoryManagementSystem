@@ -47,6 +47,7 @@ class ReportGeneratorController extends Controller
         $productsList = Product::where('category',$categoryName)->get();
         $data = [
             'title' =>'Bangladesh Ordnance Factories',
+            'Dept' => 'Department Of ICT Cell',
             'OIC' => 'OIC : Major Khondakar Mohammad Rakibul Hasan',
             'IC' => 'IC : SAE Nurul Bari',
             'TotalProduct' =>count($productsList),

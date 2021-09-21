@@ -18,6 +18,7 @@
         <div style="text-align:center">
             <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
             <h3>{{$title}}</h3>
+            <b>{{$Dept}}</b>
             
         </div>
         <table  >
@@ -34,14 +35,14 @@
                 <td>{{$TotalProduct}}</td>
             </tr>
             <tr>
-                <td>Current Stock : </td>
+                <td>Current Stock :  </td>
                 <td>522</td>
             </tr>
         </table>
         <br>
         <table  align="center" style="border-spacing: 0;" border="1px"  >
             <tr>
-                <td>#</td>
+                <td>SL</td>
                 <td>Name</td>
                 <td>Category</td>
                 <td>Subcategory</td>
@@ -53,7 +54,7 @@
             </tr>
             @foreach ($productsList as $key=>$plist )
                 <tr>
-                    <td>{{$key++}}</td>
+                    <td>{{++$key}}</td>
                     <td>{{$plist->name}}</td>
                     <td>{{$plist->category}}</td>
                     <td>{{$plist->subcategory}}</td>
