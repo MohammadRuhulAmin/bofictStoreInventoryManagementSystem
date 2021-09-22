@@ -20,7 +20,7 @@ use App\Exports\ProductExport;
 class ReportGeneratorController extends Controller
 {
     public function index(){
-        
+
         $departmentList = Department::orderby('created_at','DESC')->get();
         $categoryList = Category::orderby('created_at','DESC')->get();
         $subcategoryList =Subcategory::orderby('created_at','DESC')->get();
@@ -29,6 +29,7 @@ class ReportGeneratorController extends Controller
         $brandList = Brand::orderby('created_at','DESC')->get();   
        return view('admin.reports.index')->with(
            [
+
                 'categoryList' =>$categoryList,
                 'subcategoryList' =>$subcategoryList,
                 'typeList' =>$typeList,
@@ -39,6 +40,12 @@ class ReportGeneratorController extends Controller
            ]
            );
     }
+
+    public function generateReportAllStuff(Request $request){
+        return $request->all();
+    }
+
+
 
    
     
