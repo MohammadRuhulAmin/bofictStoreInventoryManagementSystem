@@ -109,7 +109,8 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        
 
        //Report Generator 
-       Route::get('/reports',[ReportGeneratorController::class,'index'])->name('report.index');
+       Route::get('/reports',[ReportGeneratorController::class,'ReportIndex'])->name('report.ReportIndex');
+        Route::get('/reports/department',[ReportGeneratorController::class,'index'])->name('report.index');
        Route::post('/reports/bycategory/to-excel',[ReportGeneratorController::class,'exportReportByCategory'])->name('report.GenerateByCategory');
        Route::post('/reports/bycategory/to-pdf',[ReportGeneratorController::class,'exportReportByCategoryToPDF'])->name('report.GenerateByCategoryToPDF');
       

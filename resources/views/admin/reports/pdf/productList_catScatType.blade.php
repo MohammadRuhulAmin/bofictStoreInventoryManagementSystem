@@ -41,8 +41,6 @@
                 <td>Total Product : </td>
                 <td>{{$TotalProduct}}</td>
             </tr>
-           
-           
         </table>
         <br>
         <table  align="center" style="border-spacing: 0;" border="1px"  >

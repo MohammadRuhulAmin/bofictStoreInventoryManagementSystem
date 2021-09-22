@@ -15,13 +15,16 @@ use PDF;
 // use Excel;
 use Maatwebsite\Excel\Excel;
 use App\Exports\ProductExport;
-
 class ReportGeneratorController extends Controller
 {
     // for using constroctor 
     private $excel;
     public function __construct(Excel $excel){
         $this->excel = $excel;
+    }
+
+    public function ReportIndex(){
+        return view('admin.reports.reportCategory');
     }
 
     //
@@ -31,7 +34,7 @@ class ReportGeneratorController extends Controller
         $subcategories = Subcategory::orderby('created_at','DESC')->get();
         $types = Type::orderby('created_at','DESC')->get();
         $departments =  Department::orderby('created_at','DESC')->get();
-       return view('admin.reports.index',compact('categories','subcategories','types','departments'));
+        return view('admin.reports.pdf.department.index',compact('categories','subcategories','types','departments'));
     }
 
     public function exportReportByCategory(Request $request){
