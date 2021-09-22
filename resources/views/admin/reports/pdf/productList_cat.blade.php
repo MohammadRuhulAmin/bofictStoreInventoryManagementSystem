@@ -18,7 +18,7 @@
 <body>
         <div style="text-align:center">
             <h3>{{$title }}  ({{$Dept}})</h3> 
-            
+            <b>Report Name : </b>
             
         </div>
         <table  >
@@ -48,6 +48,7 @@
                 <td>Brand</td>
                 <td>Desc</td>
                 <td>Depart</td>
+                <td>Remarks</td>
             </tr>
             @foreach ($productsList as $key=>$plist )
                 <tr> 
@@ -60,6 +61,7 @@
                     <td>{{$plist->brand}}</td>
                     <td>{{$plist->description}}</td>
                     <td>{{$plist->department}}</td>
+                    <td></td>
 
                 </tr>
             @endforeach
