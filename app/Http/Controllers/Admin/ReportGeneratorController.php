@@ -17,24 +17,17 @@ use Maatwebsite\Excel\Excel;
 use App\Exports\ProductExport;
 class ReportGeneratorController extends Controller
 {
-    // for using constroctor 
-    private $excel;
-    public function __construct(Excel $excel){
-        $this->excel = $excel;
-    }
+   
 
     public function ReportIndex(){
         return view('admin.reports.reportCategory');
     }
-
-    //
     public function index(){
-        
         $categories = Category::orderby('created_at','DESC')->get();
         $subcategories = Subcategory::orderby('created_at','DESC')->get();
         $types = Type::orderby('created_at','DESC')->get();
         $departments =  Department::orderby('created_at','DESC')->get();
-        return view('admin.reports.pdf.department.index',compact('categories','subcategories','types','departments'));
+        return view('admin.reports.department.index',compact('categories','subcategories','types','departments'));
     }
 
     public function exportReportByCategory(Request $request){
@@ -109,7 +102,6 @@ class ReportGeneratorController extends Controller
         $categoryName = $request->SearchByCategory_3;
         $subCategoryName = $request->SearchBySubCategory_3;
         $type = $request->Type_3;
-        // return $categoryName ."  ".$subCategoryName." ".$type;
 
         $productsList = Product::where(['category'=>$categoryName , 'subcategory' =>$subCategoryName ,'type' =>$type])->get();
         $data = [
@@ -138,7 +130,7 @@ class ReportGeneratorController extends Controller
             'Dept' => 'ICT Cell',
             'TotalProduct' =>count($productsList),
             'productsList' =>$productsList,
-            'department' =>$department ,
+            'department' =>$department,
         ];
         
         $pdf = PDF::loadView('admin.reports.pdf.productList_department',$data);
@@ -161,9 +153,33 @@ class ReportGeneratorController extends Controller
             'department' =>$department ,
             'category' =>$category,
         ];
-       
+
         $pdf = PDF::loadView('admin.reports.pdf.productList_deptCat',$data);
         return $pdf->download('productList.pdf');
 
+    }
+    public function expRepByDepartmentCatSubCatToPDF(Request $request){
+        $this->validate($request,[
+            'SearchByDepartment_3'=>'required',
+            'SearchByCategory_3' =>'required',
+            'SearchBySubCategory_3' =>'required',
+        ]);
+        $department = $request->SearchByDepartment_3;
+        $category = $request->SearchByCategory_3;
+        $subcategory = $request->SearchBySubCategory_3;
+        $productsList = Product::where(['department' => $department,'category' =>$category,'subcategory'=>$subcategory])->get();
+        $data = [
+            'title' =>'BOF',
+            'Dept' => 'ICT Cell',
+            'TotalProduct' =>count($productsList),
+            'productsList' =>$productsList,
+            'department' =>$department,
+            'category' =>$category,
+            'subcategory' =>$subcategory,
+        ];
+        // return $data; 
+
+        $pdf = PDF::loadView('admin.reports.pdf.productList_deptCat',$data);
+        return $pdf->download('productList.pdf'); 
     }
 }
