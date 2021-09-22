@@ -52,10 +52,11 @@ class ReportGeneratorController extends Controller
             'IC' => 'IC : SAE Nurul Bari',
             'TotalProduct' =>count($productsList),
             'productsList' =>$productsList,
-            'category' =>$categoryName 
+            'category' =>$categoryName ,
+            
         ];
          
-        $pdf = PDF::loadView('admin.reports.pdf.productList',$data);
+        $pdf = PDF::loadView('admin.reports.pdf.productList_cat',$data);
         return $pdf->download('productList.pdf');
     }
 
@@ -78,10 +79,25 @@ class ReportGeneratorController extends Controller
             'SearchBySubCategory_2'=>'required',
         ]);
 
-        session()->put(['categoryName'=>$request->SearchByCategory_2]);
-        session()->put(['subCategoryName'=>$request->SearchBySubCategory_2]);
-        //return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
-        return $this->excel->download(new ProductExportByCategorySubCategory,'productList.pdf',Excel::DOMPDF);
+        $categoryName = $request->SearchByCategory_2;
+        $subCategoryName = $request->SearchBySubCategory_2;
+        $productsList = Product::where(['category'=>$categoryName , 'subcategory' =>$subCategoryName ])->get();
+        $data = [
+            'title' =>'Bangladesh Ordnance Factories',
+            'Dept' => 'Department Of ICT Cell',
+            'TotalProduct' =>count($productsList),
+            'productsList' =>$productsList,
+            'category' =>$categoryName ,
+            'subcategory' =>$subCategoryName,
+        ];
+         
+        $pdf = PDF::loadView('admin.reports.pdf.productList_catSubcat',$data);
+        return $pdf->download('productList.pdf');
+
+        // session()->put(['categoryName'=>$request->SearchByCategory_2]);
+        // session()->put(['subCategoryName'=>$request->SearchBySubCategory_2]);
+        // //return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
+        // return $this->excel->download(new ProductExportByCategorySubCategory,'productList.pdf',Excel::DOMPDF);
     }
 
 

@@ -14,6 +14,7 @@
         </style>
 </head>
 
+
 <body>
         <div style="text-align:center">
             <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
@@ -29,6 +30,10 @@
             <tr>
                 <td>Category :  </td>
                 <td>{{$category}}</td>
+            </tr>
+            <tr>
+                <td>Sub category :  </td>
+                <td>{{$subcategory}}</td>
             </tr>
             <tr>
                 <td>Total Product : </td>
