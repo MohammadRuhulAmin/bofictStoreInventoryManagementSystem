@@ -119,7 +119,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        Route::post('/reports/bycat-subcat-type/to-pdf',[ReportGeneratorController::class,'expRepByCatSubCatTypeToPDF'])->name('report.GenByCatSubCatTypeToPDF');
         
        Route::post('/reports/by-department/to-pdf',[ReportGeneratorController::class,'expRepByDepartmentToPDF'])->name('report.GenByDepartmentToPDF');
-
+       Route::post('/reports/by-department-category/to-pdf',[ReportGeneratorController::class,'expRepByDepartmentCatToPDF'])->name('report.GenByDepartmentCatToPDF');
       });
 });
 // Routes for users 

@@ -143,6 +143,29 @@ class ReportGeneratorController extends Controller
         return $pdf->download('productList.pdf');
     }
 
+    public function expRepByDepartmentCatToPDF(Request $request){
+        $this->validate($request,[
+            'SearchByDepartment_2'=>'required',
+            'SearchByCategory_2' =>'required',
+        ]);
+        $department = $request->SearchByDepartment_2;
+        $category = $request->SearchByCategory_2;
+        $productsList = Product::where(['department' => $department,'category' =>$category])->get();
+        $data = [
+            'title' =>'Bangladesh Ordnance Factories',
+            'Dept' => 'Department Of ICT Cell',
+            'TotalProduct' =>count($productsList),
+            'productsList' =>$productsList,
+            'department' =>$department ,
+            'category' =>$category,
+        ];
+       
+        $pdf = PDF::loadView('admin.reports.pdf.productList_deptCat',$data);
+        return $pdf->download('productList.pdf');
+
+    }
+
+
 
 
 

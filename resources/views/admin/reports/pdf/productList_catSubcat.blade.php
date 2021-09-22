@@ -39,10 +39,7 @@
                 <td>Total Product : </td>
                 <td>{{$TotalProduct}}</td>
             </tr>
-            <tr>
-                <td>Current Stock :  </td>
-                <td>522</td>
-            </tr>
+            
         </table>
         <br>
         <table  align="center" style="border-spacing: 0;" border="1px"  >

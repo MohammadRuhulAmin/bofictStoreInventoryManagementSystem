@@ -21,35 +21,29 @@
             <h3>{{$title}}</h3>
             <b>{{$Dept}}</b>
             
+            
         </div>
-        <table  >
+        <table >
             <tr>
                 <td>Date : </td>
                 <td> {{\Carbon\Carbon::now()->format('d-m-Y')}}</td>
             </tr>
             <tr>
-                <td>Category :  </td>
-                <td>{{$category}}</td>
+                <td>Department </td>
+                <td>{{$department}}</td>
             </tr>
             <tr>
-                <td>Sub category :  </td>
-                <td>{{$subcategory}}</td>
-            </tr>
-            <tr>
-                <td>Type </td>
-                <td>{{$type}}</td>
-            </tr>
-            <tr>
-                <td>Total Product : </td>
+                <td>Total Product</td>
                 <td>{{$TotalProduct}}</td>
             </tr>
-           
+            
            
         </table>
         <br>
+        <br>
         <table  align="center" style="border-spacing: 0;" border="1px"  >
             <tr>
-                <td>SL</td>
+                <td>#SL</td>
                 <td>Name</td>
                 <td>Category</td>
                 <td>Subcategory</td>
