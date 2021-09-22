@@ -97,7 +97,7 @@ class ViewerController extends Controller
             $productList = Product::where(['department'=>$department ,'subcategory'=>$subcategory])->get();
             return view('user.products.searchProductResult',compact('productList'));
         }
-
+        
         else if($department !== null && $category === null && $subcategory === null && $brand !== null && $item === null && $type === null){
             $productList = Product::where(['department'=>$department ,'brand'=>$brand])->get();
             return view('user.products.searchProductResult',compact('productList'));

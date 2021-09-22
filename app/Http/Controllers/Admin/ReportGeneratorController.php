@@ -29,20 +29,64 @@ class ReportGeneratorController extends Controller
         $brandList = Brand::orderby('created_at','DESC')->get();   
        return view('admin.reports.index')->with(
            [
-
                 'categoryList' =>$categoryList,
                 'subcategoryList' =>$subcategoryList,
                 'typeList' =>$typeList,
                 'itemList' =>$itemList,
                 'brandList' =>$brandList,
                 'departmentList' =>$departmentList,
-                
+
            ]
            );
+
     }
 
     public function generateReportAllStuff(Request $request){
-        return $request->all();
+        $department = $request->department;
+        $category = $request->category;
+        $subcategory = $request->subcategory;
+        $brand = $request->brand;
+        $item = $request->item;
+        $type = $request->type;
+        
+        // if input field is 1 
+        if($department !== null && $category === null && $subcategory === null && $brand === null && $item === null && $type === null){
+            $productList = Product::where(['department'=>$department])->get();
+            $data = [
+                'productsList' =>$productList,
+                'Title' =>'BOF',
+                'Dept' =>'ICT CELL',
+                'Department' =>$department,
+                'TotalProduct' =>count($productList),
+            ];
+            $pdf = PDF::loadView('admin.reports.pdf.dept',$data);
+            return $pdf->download('productList.pdf');
+        }
+        else if($category !== null &&  $department === null   &&  $subcategory === null && $brand === null && $item === null && $type === null){
+            $productList = Product::where(['category'=>$category])->get();
+            return $productList;
+        }
+        else if($subcategory !== null &&   $department === null   &&  $category === null && $brand === null && $item === null &&  $type === null){
+            $productList = Product::where(['subcategory'=>$subcategory])->get();
+            return $productList;
+
+        }
+        else if($brand !== null &&   $department === null   &&  $category === null && $subcategory === null && $item === null &&  $type === null){
+            $productList = Product::where(['brand'=>$brand])->get();
+            return $productList;
+            
+        } 
+        else if($item !== null &&   $department === null   &&  $category === null && $subcategory === null && $brand === null &&  $type === null){
+            $productList = Product::where(['item'=>$item])->get();
+            return $productList;
+            
+        }
+        else if($type !== null &&   $department === null   &&  $category === null && $subcategory === null && $brand === null &&  $item === null){
+            $productList = Product::where(['type'=>$type])->get();
+            return $productList;
+        }
+
+        
     }
 
 
