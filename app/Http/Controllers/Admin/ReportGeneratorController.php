@@ -9,6 +9,7 @@ use App\Models\Admin\Subcategory;
 use App\Exports\ProductExportByCategory;
 use App\Exports\ProductExportByCategorySubCategory;
 use App\Models\Admin\Product;
+use App\Models\Admin\Type;
 use PDF; 
 // use Excel;
 use Maatwebsite\Excel\Excel;
@@ -27,7 +28,8 @@ class ReportGeneratorController extends Controller
         
         $categories = Category::orderby('created_at','DESC')->get();
         $subcategories = Subcategory::orderby('created_at','DESC')->get();
-       return view('admin.reports.index',compact('categories','subcategories'));
+        $types = Type::orderby('created_at','DESC')->get();
+       return view('admin.reports.index',compact('categories','subcategories','types'));
     }
 
     public function exportReportByCategory(Request $request){
@@ -93,12 +95,36 @@ class ReportGeneratorController extends Controller
          
         $pdf = PDF::loadView('admin.reports.pdf.productList_catSubcat',$data);
         return $pdf->download('productList.pdf');
-
-        // session()->put(['categoryName'=>$request->SearchByCategory_2]);
-        // session()->put(['subCategoryName'=>$request->SearchBySubCategory_2]);
-        // //return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
-        // return $this->excel->download(new ProductExportByCategorySubCategory,'productList.pdf',Excel::DOMPDF);
     }
+
+    public function expRepByCatSubCatTypeToPDF(Request $request){
+        $this->validate($request,[
+            'SearchByCategory_3'=>'required',
+            'SearchBySubCategory_3'=>'required',
+             'Type_3' =>'required',
+        ]);
+
+        $categoryName = $request->SearchByCategory_3;
+        $subCategoryName = $request->SearchBySubCategory_3;
+        $type = $request->Type_3;
+        // return $categoryName ."  ".$subCategoryName." ".$type;
+
+        $productsList = Product::where(['category'=>$categoryName , 'subcategory' =>$subCategoryName ,'type' =>$type])->get();
+        $data = [
+            'title' =>'Bangladesh Ordnance Factories',
+            'Dept' => 'Department Of ICT Cell',
+            'TotalProduct' =>count($productsList),
+            'productsList' =>$productsList,
+            'category' =>$categoryName ,
+            'subcategory' =>$subCategoryName,
+            'type' => $type,
+        ];
+        
+        $pdf = PDF::loadView('admin.reports.pdf.productList_catScatType',$data);
+        return $pdf->download('productList.pdf');
+    }
+
+
 
 
 }

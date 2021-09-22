@@ -96,6 +96,56 @@
               </div>
             </form>
           </div>
+          <div class="card card-primary m-3">
+            <form  method="post">
+              @csrf 
+              <div class="card-header card-primary">
+                <h6 class="card-text">Generate Report of Product By Category , Subcategory & Type Wise  </h6>
+              </div>
+              <div class="card-body">
+               <div class="form-group">
+                <label> Select Category </label>
+                <select name="SearchByCategory_3" class="form-control">
+                  <option></option>
+                  @foreach ($categories as $category )
+                      <option>{{$category->name}}</option>
+                  @endforeach
+                </select>
+                @if($errors->has('SearchByCategory_3'))
+                  <span class="text-danger">Category Name must be Provided!</span>
+                @endif
+               </div>
+               <div class="form-group">
+                <label> Select Sub Category</label>
+                <select name="SearchBySubCategory_3" class="form-control">
+                  <option></option>
+                  @foreach ($subcategories as $subcategory )
+                      <option>{{$subcategory->name}}</option>
+                  @endforeach
+                </select>
+                @if($errors->has('SearchBySubCategory_3'))
+                <span class="text-danger">SubCategory Name must be Provided!</span>
+                @endif
+               </div>
+               <div class="form-group">
+                <label> Select Type  </label>
+                <select name="Type_3" class="form-control">
+                  <option></option>
+                  @foreach ($types as $type )
+                      <option>{{$type->name}}</option>
+                  @endforeach
+                </select>
+                @if($errors->has('Type_3'))
+                <span class="text-danger">SubCategory Name must be Provided! </span>
+                @endif
+               </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-success" type="submit" formaction="#" ><i class="fa fa-download"></i>Download Excel</button>
+                <button class="btn btn-success" type="submit" formaction="{{route('report.GenByCatSubCatTypeToPDF')}}" ><i class="fas fa-file-pdf"></i>Download PDF</button>
+              </div>
+            </form>
+          </div>
       </div>
       </div>
     </div>

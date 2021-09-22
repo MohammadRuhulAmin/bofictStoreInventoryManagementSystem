@@ -32,9 +32,18 @@
                 <td>{{$category}}</td>
             </tr>
             <tr>
+                <td>Sub category :  </td>
+                <td>{{$subcategory}}</td>
+            </tr>
+            <tr>
+                <td>Type </td>
+                <td>{{$type}}</td>
+            </tr>
+            <tr>
                 <td>Total Product : </td>
                 <td>{{$TotalProduct}}</td>
             </tr>
+           
             <tr>
                 <td>Current Stock :  </td>
                 <td>522</td>
@@ -54,7 +63,7 @@
                 <td>Depart</td>
             </tr>
             @foreach ($productsList as $key=>$plist )
-                <tr> 
+                <tr>
                     <td>{{++$key}}</td>
                     <td>{{$plist->name}}</td>
                     <td>{{$plist->category}}</td>
