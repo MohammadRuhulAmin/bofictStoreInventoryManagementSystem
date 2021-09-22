@@ -40,7 +40,7 @@ class ReportGeneratorController extends Controller
         ]);
         session()->put(['categoryName'=>$request->SearchByCategory_1]);
         return $this->excel->download(new ProductExportByCategory,'productList.xlsx');
-        //return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
+        
     }
     
     public function exportReportByCategoryToPDF(Request $request){
@@ -50,10 +50,9 @@ class ReportGeneratorController extends Controller
         $categoryName = $request->SearchByCategory_1;
         $productsList = Product::where('category',$categoryName)->get();
         $data = [
-            'title' =>'Bangladesh Ordnance Factories',
-            'Dept' => 'Department Of ICT Cell',
-            'OIC' => 'OIC : Major Khondakar Mohammad Rakibul Hasan',
-            'IC' => 'IC : SAE Nurul Bari',
+            'title' =>'BOF',
+            'Dept' => 'ICT Cell',
+           
             'TotalProduct' =>count($productsList),
             'productsList' =>$productsList,
             'category' =>$categoryName ,
@@ -85,8 +84,8 @@ class ReportGeneratorController extends Controller
         $subCategoryName = $request->SearchBySubCategory_2;
         $productsList = Product::where(['category'=>$categoryName , 'subcategory' =>$subCategoryName ])->get();
         $data = [
-            'title' =>'Bangladesh Ordnance Factories',
-            'Dept' => 'Department Of ICT Cell',
+            'title' =>'BOF',
+            'Dept' => 'ICT Cell',
             'TotalProduct' =>count($productsList),
             'productsList' =>$productsList,
             'category' =>$categoryName ,
@@ -111,8 +110,8 @@ class ReportGeneratorController extends Controller
 
         $productsList = Product::where(['category'=>$categoryName , 'subcategory' =>$subCategoryName ,'type' =>$type])->get();
         $data = [
-            'title' =>'Bangladesh Ordnance Factories',
-            'Dept' => 'Department Of ICT Cell',
+            'title' =>'BOF',
+            'Dept' => 'ICT Cell',
             'TotalProduct' =>count($productsList),
             'productsList' =>$productsList,
             'category' =>$categoryName ,
@@ -132,8 +131,8 @@ class ReportGeneratorController extends Controller
 
         $productsList = Product::where(['department' => $department])->get();
         $data = [
-            'title' =>'Bangladesh Ordnance Factories',
-            'Dept' => 'Department Of ICT Cell',
+            'title' =>'BOF',
+            'Dept' => 'ICT Cell',
             'TotalProduct' =>count($productsList),
             'productsList' =>$productsList,
             'department' =>$department ,
@@ -152,8 +151,8 @@ class ReportGeneratorController extends Controller
         $category = $request->SearchByCategory_2;
         $productsList = Product::where(['department' => $department,'category' =>$category])->get();
         $data = [
-            'title' =>'Bangladesh Ordnance Factories',
-            'Dept' => 'Department Of ICT Cell',
+            'title' =>'BOF',
+            'Dept' => 'ICT Cell',
             'TotalProduct' =>count($productsList),
             'productsList' =>$productsList,
             'department' =>$department ,
@@ -164,9 +163,4 @@ class ReportGeneratorController extends Controller
         return $pdf->download('productList.pdf');
 
     }
-
-
-
-
-
 }
