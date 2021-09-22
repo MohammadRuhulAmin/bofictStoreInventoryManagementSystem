@@ -10,6 +10,7 @@ use App\Exports\ProductExportByCategory;
 use App\Exports\ProductExportByCategorySubCategory;
 use App\Models\Admin\Product;
 use App\Models\Admin\Type;
+use App\Models\Admin\Department;
 use PDF; 
 // use Excel;
 use Maatwebsite\Excel\Excel;
@@ -29,7 +30,8 @@ class ReportGeneratorController extends Controller
         $categories = Category::orderby('created_at','DESC')->get();
         $subcategories = Subcategory::orderby('created_at','DESC')->get();
         $types = Type::orderby('created_at','DESC')->get();
-       return view('admin.reports.index',compact('categories','subcategories','types'));
+        $departments =  Department::orderby('created_at','DESC')->get();
+       return view('admin.reports.index',compact('categories','subcategories','types','departments'));
     }
 
     public function exportReportByCategory(Request $request){
@@ -61,8 +63,6 @@ class ReportGeneratorController extends Controller
         $pdf = PDF::loadView('admin.reports.pdf.productList_cat',$data);
         return $pdf->download('productList.pdf');
     }
-
-
 
     public function exportReportByCategorySubCategory(Request $request){
         $this->validate($request,[
@@ -121,6 +121,25 @@ class ReportGeneratorController extends Controller
         ];
         
         $pdf = PDF::loadView('admin.reports.pdf.productList_catScatType',$data);
+        return $pdf->download('productList.pdf');
+    } 
+
+    public function expRepByDepartmentToPDF(Request $request){
+        $this->validate($request,[
+            'SearchByDepartment_1'=>'required'
+        ]);
+        $department = $request->SearchByDepartment_1;
+
+        $productsList = Product::where(['department' => $department])->get();
+        $data = [
+            'title' =>'Bangladesh Ordnance Factories',
+            'Dept' => 'Department Of ICT Cell',
+            'TotalProduct' =>count($productsList),
+            'productsList' =>$productsList,
+            'department' =>$department ,
+        ];
+        
+        $pdf = PDF::loadView('admin.reports.pdf.productList_department',$data);
         return $pdf->download('productList.pdf');
     }
 

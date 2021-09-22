@@ -29,9 +29,36 @@
       <div class="card-header">
         <h3 class="card-title">Generate Report  </h3>
       </div>
-
-
       <div class="card-body">
+        <div class="card card-primary m-3">
+          <form  method="post">
+            @csrf 
+            <div class="card-header">
+              <h6 class="card-text">Generate Report of Product By Department </h6>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label> Select Depertment </label>
+              <select name="SearchByDepartment_1" class="form-control">
+                <option></option>
+                @foreach ($departments as $department )
+                    <option>{{$department->name}}</option>
+                @endforeach
+              </select>
+              @if($errors->has('SearchByDepartment_1'))
+                <span class="text-danger">Department Name must be Provided!   {{$errors->first('SearchByDepartment_1')}} </span>
+              @endif
+              </div>
+            </div>
+            <div class="card-footer">
+           
+              <button class="btn btn-success" type="submit" formaction="{{route('report.GenByDepartmentToPDF')}}" ><i class="fas fa-file-pdf"></i>Download PDF</button> 
+            </div>
+          </form>
+        </div>
+
+
+
           <div class="card card-primary m-3">
             <form  method="post">
               @csrf 
@@ -141,7 +168,7 @@
                </div>
               </div>
               <div class="card-footer">
-                <button class="btn btn-success" type="submit" formaction="#" ><i class="fa fa-download"></i>Download Excel</button>
+                {{-- <button class="btn btn-success" formaction="#" ><i class="fa fa-download"></i>Download Excel</button> --}}
                 <button class="btn btn-success" type="submit" formaction="{{route('report.GenByCatSubCatTypeToPDF')}}" ><i class="fas fa-file-pdf"></i>Download PDF</button>
               </div>
             </form>
