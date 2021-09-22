@@ -18,7 +18,6 @@ use App\Http\Controllers\Admin\AssignProductToUser;
 use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\Admin\AccessoryController;
 use App\Http\Controllers\Admin\ReportGeneratorController;
-use App\Http\Controllers\Admin\DepartmentReportController;
 // for user 
 use App\Http\Controllers\User\ViewerController; 
 
@@ -109,25 +108,11 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        Route::resource('accessories', AccessoryController::class);
        
 
-       //Report Generator 
-       Route::get('/reports',[ReportGeneratorController::class,'ReportIndex'])->name('report.ReportIndex');
-        Route::get('/reports/department',[ReportGeneratorController::class,'index'])->name('report.index');
-       Route::post('/reports/bycategory/to-excel',[ReportGeneratorController::class,'exportReportByCategory'])->name('report.GenerateByCategory');
-       Route::post('/reports/bycategory/to-pdf',[ReportGeneratorController::class,'exportReportByCategoryToPDF'])->name('report.GenerateByCategoryToPDF');
-      
-       Route::post('/reports/bycategory&SubCategory',[ReportGeneratorController::class,'exportReportByCategorySubCategory'])->name('report.GenerateByCategorySubcategory');
-       Route::post('/reports/byCategory&SubCategory/to-pdf',[ReportGeneratorController::class,'exportReportByCategorySubCategoryToPDF'])->name('report.GenerateByCategorySubcategoryToPDF');
+       //Report Generator
+       Route::get('/reports',[ReportGeneratorController::class ,'index'])->name('report.index');
+
+
        
-       Route::post('/reports/bycat-subcat-type/to-pdf',[ReportGeneratorController::class,'expRepByCatSubCatTypeToPDF'])->name('report.GenByCatSubCatTypeToPDF');
-        
-      
-
-       // Report List By Department
-       Route::post('/reports/by-department/to-pdf',[DepartmentReportController::class,'expRepByDepartmentToPDF'])->name('report.GenByDepartmentToPDF');
-       Route::post('/reports/by-department-category/to-pdf',[DepartmentReportController::class,'expRepByDepartmentCatToPDF'])->name('report.GenByDepartmentCatToPDF');
-       Route::post('/reports/by-department-category-subcategory/to-pdf',[DepartmentReportController::class,'expRepByDepartmentCatSubCatToPDF'])->name('report.GenByDepartmentCatSubCatToPDF');
-
-
       });
 });
 // Routes for users 
