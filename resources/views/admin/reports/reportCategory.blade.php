@@ -37,6 +37,16 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-3">
+              <div class="card">
+                  <div class="card-header">
+                      <h3 class="card-title">
+                          <a href="{{route('report.index')}}">Report By Category  </a>
+                      </h3> 
+                      
+                  </div>
+              </div>
+          </div>
         </div>
       </div>
       
