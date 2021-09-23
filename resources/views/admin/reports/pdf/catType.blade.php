@@ -18,7 +18,7 @@
         <div style="text-align:center">
             <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
             <h3>{{$Title }}  ({{$Dept}})</h3>
-            <b>Report Name : Products List of  {{$Department}} Department </b>
+            <b>Report Name : Products List of  {{$Category}} Category   {{$Type}} Type </b>
             <br>
         </div>
         <table  >
@@ -27,9 +27,14 @@
                 <td> {{\Carbon\Carbon::now()->format('d-m-Y')}}</td>
             </tr>
             <tr>
-                <td>Department :  </td>
-                <td>{{$Department}}</td>
+                <td>Category :  </td>
+                <td>{{$Category}}</td>
             </tr>
+            <tr>
+                <td> Type </td>
+                <td>{{$Type}}</td>
+            </tr>
+            
             <tr>
                 <td>Total Product : </td>
                 <td>{{$TotalProduct}}</td>

@@ -18,17 +18,21 @@
         <div style="text-align:center">
             <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
             <h3>{{$Title }}  ({{$Dept}})</h3>
-            <b>Report Name : Products List of  {{$Department}} Department </b>
+            <b>Report Name : Products List of  {{$Department}} & {{$SubCategory}} Category  </b>
             <br>
         </div>
-        <table  >
+        <table >
             <tr>
                 <td>Date : </td>
                 <td> {{\Carbon\Carbon::now()->format('d-m-Y')}}</td>
             </tr>
             <tr>
-                <td>Department :  </td>
+                <td>Department  </td>
                 <td>{{$Department}}</td>
+            </tr>
+            <tr>
+                <td>SubCategory  </td>
+                <td>{{$SubCategory}}</td>
             </tr>
             <tr>
                 <td>Total Product : </td>
@@ -62,7 +66,6 @@
                     <td>{{$plist->description}}</td>
                     <td>{{$plist->department}}</td>
                     <td></td>
-
                 </tr>
             @endforeach
         </table>
