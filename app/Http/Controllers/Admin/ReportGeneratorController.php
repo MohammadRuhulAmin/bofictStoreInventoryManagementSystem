@@ -384,6 +384,142 @@ class ReportGeneratorController extends Controller
             }
             
         }
+        //subcategory & Brand 
+        else if($department === null && $category === null && $subcategory !== null && $brand !== null && $item === null && $type === null ){
+            $productList = Product::where(['subcategory'=>$subcategory ,'brand'=>$brand])->get();
+            // return $productList;
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Subcategory' =>$subcategory,
+                    'Brand' =>$brand,
+                    'TotalProduct' =>$totalProduct,
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.subCatBrand',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $subcategory ." SubCategory & ". $brand." Brand ")->error();
+                return back();
+            }
+            
+        }
+        //subcategory  & item 
+        else if($department === null && $category === null && $subcategory !== null && $brand === null && $item !== null && $type === null ){
+            $productList = Product::where(['subcategory'=>$subcategory ,'item'=>$item])->get();
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Subcategory' =>$subcategory,
+                    'Item' =>$item,
+                    'TotalProduct' =>$totalProduct,
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.subCatItem',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $subcategory ." SubCategory & ". $item." Item ")->error();
+                return back();
+            }
+            
+        }
+         //subcategory  &  Type
+         else if($department === null && $category === null && $subcategory !== null && $brand === null && $item === null && $type !== null ){
+            $productList = Product::where(['subcategory'=>$subcategory ,'type'=>$type])->get();
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Subcategory' =>$subcategory,
+                    'Type' =>$type,
+                    'TotalProduct' =>$totalProduct,
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.subCatType',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $subcategory ." SubCategory & ". $type." Type ")->error();
+                return back();
+            }
+            
+        }
+        //brand & item
+        else if($department === null && $category === null && $subcategory === null && $brand !== null && $item !==  null && $type === null ){
+            $productList = Product::where(['brand'=>$brand ,'item'=>$item])->get();
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Brand' =>$brand,
+                    'Item' =>$item,
+                    'TotalProduct' =>$totalProduct,
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.brandItem',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $brand ." Brand & ". $item." Item ")->error();
+                return back();
+            }
+            
+        }
+        // brand & Type
+        else if($department === null && $category === null && $subcategory === null && $brand !== null && $item ===  null && $type !== null ){
+            $productList = Product::where(['brand'=>$brand ,'type'=>$type])->get();
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Brand' =>$brand,
+                    'Type' =>$type,
+                    'TotalProduct' =>$totalProduct,
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.brandType',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $brand ." Brand & ". $type." Type ")->error();
+                return back();
+            }
+            
+        }
+        //item & Type 
+        else if($department === null && $category === null && $subcategory === null && $brand === null && $item !==  null && $type !== null ){
+            $productList = Product::where(['item'=>$item ,'type'=>$type])->get();
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Item' =>$item,
+                    'Type' =>$type,
+                    'TotalProduct' =>$totalProduct,
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.itemType',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $item ." Item & ". $type." Type ")->error();
+                return back();
+            }
+            
+        }
+
+
+
         
 
         
