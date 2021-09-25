@@ -62,7 +62,8 @@ class ReportGeneratorController extends Controller
                 'TotalProduct' =>count($productList),
             ];
             $pdf = PDF::loadView('admin.reports.pdf.dept',$data);
-            return $pdf->download('productList.pdf');
+            return $pdf->download('productList.pdf'); 
+           
         }
         //for category
         else if($category !== null &&  $department === null   &&  $subcategory === null && $brand === null && $item === null && $type === null){
@@ -1026,6 +1027,54 @@ class ReportGeneratorController extends Controller
             }
             else{
                 flash('No Data Has found for '. $subcategory ." Subcategory & ". $brand." Brand ". $item." Item  ".$type." Type")->error();
+                return back();
+            }
+        } 
+          //Department  Subcategory Brand Item Type  
+          else if($department !==  null && $category !== null && $subcategory !== null && $brand !== null && $item !==  null && $type === null ){
+            $productList = Product::where(['brand'=>$brand ,'subcategory'=>$subcategory,'item' =>$item,'category' =>$category,'department' =>$department ])->get();
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Subcategory' =>$subcategory,
+                    'Brand' =>$brand,
+                    'Item' =>$item,
+                    'Category' =>$category,
+                    'Department' =>$department,
+                    'TotalProduct' =>$totalProduct,
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.deptcatSubCatBrandItem',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $subcategory ." Subcategory & ". $brand." Brand ". $item." Item  ".$department." Department ".$category ."Category " )->error();
+                return back();
+            }
+        }
+        // category subcategory brand item type
+        else if($department ===  null && $category !== null && $subcategory !== null && $brand !== null && $item !==  null && $type !== null ){
+            $productList = Product::where(['brand'=>$brand ,'subcategory'=>$subcategory,'item' =>$item,'category' =>$category,'type' =>$type ])->get();
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Subcategory' =>$subcategory,
+                    'Brand' =>$brand,
+                    'Item' =>$item,
+                    'Category' =>$category,
+                    'Type' =>$type,
+                    'TotalProduct' =>$totalProduct,
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.catSubCatBrandItemType',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $subcategory ." Subcategory & ". $brand." Brand ". $item." Item  ".$type." Type ".$category ."Category " )->error();
                 return back();
             }
         }
