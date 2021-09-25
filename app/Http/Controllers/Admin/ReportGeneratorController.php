@@ -1078,6 +1078,33 @@ class ReportGeneratorController extends Controller
                 return back();
             }
         }
+        //for input field 6
+        //category subcategory brand item type department 
+        else if($department !==  null && $category !== null && $subcategory !== null && $brand !== null && $item !==  null && $type !== null ){
+            $productList = Product::where(['brand'=>$brand ,'subcategory'=>$subcategory,'item' =>$item,'category' =>$category,'type' =>$type ,'department' =>$department])->get();
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Department' =>$department,
+                    'Subcategory' =>$subcategory,
+                    'Brand' =>$brand,
+                    'Item' =>$item,
+                    'Category' =>$category,
+                    'Type' =>$type,
+                    'TotalProduct' =>$totalProduct,
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.catSubCatBrandItemTypeDept',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $subcategory ." Subcategory & ". $brand." Brand ". $item." Item  ".$type." Type ".$category ."Category ".$department ." Department" )->error();
+                return back();
+            }
+        }
+         
 
 
 
