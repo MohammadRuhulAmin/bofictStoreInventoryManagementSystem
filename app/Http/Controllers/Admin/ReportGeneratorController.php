@@ -687,6 +687,56 @@ class ReportGeneratorController extends Controller
                 return back();
             }
         }
+         //for department , Brand , Item 
+         else if($department !== null && $category === null && $subcategory === null && $brand !== null && $item !==  null && $type === null ){
+            $productList = Product::where(['department'=>$department ,'subcategory'=>$subcategory,'type' =>$type])->get();
+           
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Department' =>$department,
+                    'Brand' =>$brand,
+                    'Item' =>$item,
+                    'TotalProduct' =>$totalProduct,
+
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.deptBrandItem',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $department ." Department & ". $brand." Brand ". $item." Item ")->error();
+                return back();
+            }
+        }
+
+         //for department , Brand , Type 
+         else if($department !== null && $category === null && $subcategory === null && $brand !== null && $item ===  null && $type !== null ){
+            $productList = Product::where(['department'=>$department ,'subcategory'=>$subcategory,'type' =>$type])->get();
+           
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Department' =>$department,
+                    'Brand' =>$brand,
+                    'Type' =>$type,
+                    'TotalProduct' =>$totalProduct,
+
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.deptBrandType',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $department ." Department & ". $brand." Brand ". $type." Type ")->error();
+                return back();
+            }
+        }
+        
 
 
 
