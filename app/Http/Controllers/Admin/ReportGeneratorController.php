@@ -201,7 +201,7 @@ class ReportGeneratorController extends Controller
 
           
         }
-         //for department & Subcategory
+         //for department & Subcategory 
         else if($department !== null && $category === null && $subcategory !== null && $brand === null && $item === null && $type === null){
             $productList = Product::where(['department'=>$department ,'subcategory'=>$subcategory])->get();
             $totalProduct = count($productList);
@@ -362,7 +362,7 @@ class ReportGeneratorController extends Controller
 
             
         }
-        // category & type
+        // category & type 
         else if($department === null && $category !== null && $subcategory === null && $brand === null && $item === null && $type !== null ){
             $productList = Product::where(['category'=>$category ,'type'=>$type])->get();
             $totalProduct = count($productList);
@@ -712,9 +712,9 @@ class ReportGeneratorController extends Controller
             }
         }
 
-         //for department , Brand , Type 
+         //for department , Brand , Type
          else if($department !== null && $category === null && $subcategory === null && $brand !== null && $item ===  null && $type !== null ){
-            $productList = Product::where(['department'=>$department ,'subcategory'=>$subcategory,'type' =>$type])->get();
+            $productList = Product::where(['department'=>$department ,'brand'=>$brand,'type' =>$type])->get();
            
             $totalProduct = count($productList);
             if($totalProduct !==0 ){
@@ -733,6 +733,30 @@ class ReportGeneratorController extends Controller
             }
             else{
                 flash('No Data Has found for '. $department ." Department & ". $brand." Brand ". $type." Type ")->error();
+                return back();
+            }
+        }
+        // for department ,  item & type
+        else if($department !==  null && $category === null && $subcategory === null && $brand === null && $item !==  null && $type !== null ){
+            $productList = Product::where(['department'=>$department ,'item'=>$item,'type' =>$type])->get();
+           
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Department' =>$department,
+                    'Item' =>$item,
+                    'Type' =>$type,
+                    'TotalProduct' =>$totalProduct,
+
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.deptItemType',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $department ." Department & ". $item." Item ". $type." Type ")->error();
                 return back();
             }
         }
