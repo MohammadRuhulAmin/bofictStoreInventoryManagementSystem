@@ -18,7 +18,7 @@
             <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
             <h3>{{$Title }}  ({{$Dept}})</h3>
             <b>Report Name :  </b>
-            <br>
+            <br> 
             <table >
                 <tr>
                     <td>Date : </td>
@@ -42,12 +42,10 @@
                     <tr>
                         <td>Subcategory   </td>
                         <td>{{$product->subcategory}}</td>
-                       
                     </tr>
                     <tr>
                         <td> Brand</td>
                         <td>{{$product->brand}}</td>
-                       
                     </tr>
                     <tr>
                         <td>Type</td>

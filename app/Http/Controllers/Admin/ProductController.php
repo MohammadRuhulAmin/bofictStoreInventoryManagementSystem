@@ -64,9 +64,11 @@ class ProductController extends Controller
           $this->validate($request,[
             'name'=>'required|min:2|max:50|unique:products',
         ]);
-        $product = new Product();
+
         
-        $product->name = $request->name;
+        $productID =  preg_replace('/\s+/', '', $request->name);
+        $product = new Product();
+        $product->name = $productID;
         $product->category = $request->category;
         $product->subcategory= $request->subcategory;
         $product->item = $request->item;
