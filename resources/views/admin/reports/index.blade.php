@@ -91,36 +91,67 @@
       </form>
         {{-- another card --}}
         <div class="card card-primary col-md-4 ml-3 h-40">
-          <form action="{{route('admin.search.specificProduct')}}"  method="POST"> 
-            @csrf 
-          <div class="card-header">
-            <h3 class="card-title">Search By Product ID /Product Name  </h3>
-          </div>
          
-        
-          <div class="card-body">
+          <div class="card-header">
+            <h3 class="card-title"> Report By  Product ID / BOF User ID   </h3>
+          </div>
+          <br>
+          <br>
+          <form action="{{route('admin.report.specificProduct')}}"  method="POST"> 
+            @csrf 
+         <div class="card card-primary">
+            <div class="card-header">
+             
+            </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label class="form-control" for="productName"> Report By Product ID /  </label>
+                   <select id="selectProductForProductReport"  class="form-control" name="productName">
+                     <option></option>
+                     @foreach ($productsList as $pList)
+                       <option>{{$pList->name}}</option>
+                     @endforeach
+                   </select>
+                   @if($errors->has('productName'))
+                      <span class="text-danger">Please provide a Valid Product Name </span>
+                   @endif
+                   <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-search"></i> Search </button>
+                  </div>
+                </div>
+         </div>
+        </form>
+         <div class="card card-primary">
+          <div class="card-header">
+          
+          </div>
+          <form action="{{route('admin.report.byBofID')}}" method="post">
+            @csrf 
+            <div class="card-body">
               <div class="form-group">
-                <label class="form-control" for="productName"> Product Name </label>
-                 <select id="selectProductForProductReport"  class="form-control" name="productName">
+                <label class="form-control" for="productName"> Report By BOF User ID /   </label>
+                 <select id="selectUserForUserReport"  class="form-control" name="BofUserID">
                    <option></option>
-                   @foreach ($productsList as $pList)
-                     <option>{{$pList->name}}</option>
+                   @foreach ($usersIdList as $bList)
+                     <option>{{$bList->bofid}}</option>
                    @endforeach
                  </select>
-                 @if($errors->has('productName'))
-                    <span class="text-danger">Please provide a Valid Product Name </span>
+                 @if($errors->has('BofUserID'))
+                    <span class="text-danger">Please provide a Valid BOF  User ID  </span>
                  @endif
                  <div class="card-footer">
                   <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-search"></i> Search </button>
                 </div>
               </div>
+          </form>
            
+        </div>
           </div>
         </div>
     
     </div>
 </div>
-</form>
+
 
 </div>
 @endsection

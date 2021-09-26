@@ -166,4 +166,10 @@
         allowClear:true 
     })
 </script>
+<script type="text/javascript">
+    $("#selectUserForUserReport").select2({
+        placeholder:"Select Product Id for Report",
+        allowClear:true 
+    })
+</script>
 @stack('scripts')

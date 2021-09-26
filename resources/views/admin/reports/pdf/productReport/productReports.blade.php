@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bangladesh Ordnance Factories</title>
+    <style>
+        td {
+                border: 1px solid #ddd;
+                 /* padding: 10px; */
+                 width: 50%;
+          }
+    </style>
 </head>
 <body>
         <div style="text-align:center">

@@ -13,6 +13,7 @@ use App\Models\Admin\Type;
 use App\Models\Admin\Department;
 use App\Models\Admin\Item;
 use App\Models\Admin\Brand;
+use App\Models\Admin\Productissued;
 use PDF; 
 // use Excel;
 use Maatwebsite\Excel\Excel;
@@ -29,6 +30,7 @@ class ReportGeneratorController extends Controller
         $itemList = Item::orderby('created_at','DESC')->get();
         $brandList = Brand::orderby('created_at','DESC')->get();
         $productsList = Product::orderby('created_at','DESC')->get();
+        $usersIdList = Productissued::orderby('created_at','DESC')->get();
        return view('admin.reports.index')->with(
            [
                 'categoryList' =>$categoryList,
@@ -37,7 +39,8 @@ class ReportGeneratorController extends Controller
                 'itemList' =>$itemList,
                 'brandList' =>$brandList,
                 'departmentList' =>$departmentList,
-                'productsList' =>$productsList
+                'productsList' =>$productsList,
+                'usersIdList' =>$usersIdList ,
            ]
            );
 
@@ -1139,7 +1142,6 @@ class ReportGeneratorController extends Controller
 
 
     public function reportForSpecificProduct(Request $request){
-        
         $this->validate($request,[
             'productName'=>'required',
         ]);
@@ -1161,11 +1163,26 @@ class ReportGeneratorController extends Controller
         ];
             $pdf = PDF::loadView('admin.reports.pdf.productReport.productReports',$data);
             return $pdf->download('productList.pdf');
-  
-     
-     
-        
         //return view('admin.reports.pdf.productReport.productReports',compact('product','complaintsOfProduct','productUserList'));
+
+    }
+    public function reportForSpecificUser(Request $request){
+        //return $request;
+        $userInfo = Productissued::where(['bofid' => $request->BofUserID])->first();
+        $productUserInfo = Productissued::where(['id'=>$userInfo->id ])->first();
+        $productInfo = $productUserInfo->products;
+        $totalProductUsed =  $productUserInfo->products->count();
+        $data = [
+            'Title' =>'BOF',
+            'Dept' =>'ICT CELL',
+            'productUserInfo' =>$productUserInfo,
+            'productInfo' =>$productInfo,
+            'totalProductUsed' =>$totalProductUsed,
+            
+        ];
+        $pdf = PDF::loadView('admin.reports.pdf.userReport.userReports',$data);
+        return $pdf->download('productList.pdf');
+       
 
     }
 
