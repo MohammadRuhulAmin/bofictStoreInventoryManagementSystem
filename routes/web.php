@@ -110,7 +110,10 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
 
        //Report Generator
        Route::get('/reports',[ReportGeneratorController::class ,'index'])->name('report.index');
-       Route::post('/reports/generateAllStuff',[ReportGeneratorController::class,'generateReportAllStuff'])->name('report.generateAllStuff');
+       Route::post('/reports/generateAllStuff',[ReportGeneratorController::class,'generateReportAllStuff'])->name('report.generateAllStuff'); 
+
+       // Report Generator for Specific product 
+       Route::post('/reports/product',[ReportGeneratorController::class,'reportForSpecificProduct'])->name('admin.search.specificProduct');
 
 
        

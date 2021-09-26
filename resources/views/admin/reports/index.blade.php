@@ -91,7 +91,7 @@
       </form>
         {{-- another card --}}
         <div class="card card-primary col-md-4 ml-3 h-40">
-          <form action="{{route('user.search.specificProduct')}}"  method="POST"> 
+          <form action="{{route('admin.search.specificProduct')}}"  method="POST"> 
             @csrf 
           <div class="card-header">
             <h3 class="card-title">Search By Product ID /Product Name  </h3>
@@ -101,7 +101,12 @@
           <div class="card-body">
               <div class="form-group">
                 <label class="form-control" for="productName"> Product Name </label>
-                 <input type="text" class="form-control" name="productName" placeholder="Search By Product Id or Name" />
+                 <select id="selectProductForProductReport"  class="form-control" name="productName">
+                   <option></option>
+                   @foreach ($productsList as $pList)
+                     <option>{{$pList->name}}</option>
+                   @endforeach
+                 </select>
                  @if($errors->has('productName'))
                     <span class="text-danger">Please provide a Valid Product Name </span>
                  @endif

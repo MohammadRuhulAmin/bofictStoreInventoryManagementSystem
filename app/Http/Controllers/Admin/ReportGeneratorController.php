@@ -21,12 +21,14 @@ class ReportGeneratorController extends Controller
 {
     public function index(){
 
+        
         $departmentList = Department::orderby('created_at','DESC')->get();
         $categoryList = Category::orderby('created_at','DESC')->get();
         $subcategoryList =Subcategory::orderby('created_at','DESC')->get();
         $typeList = Type::orderby('created_at','DESC')->get();
         $itemList = Item::orderby('created_at','DESC')->get();
-        $brandList = Brand::orderby('created_at','DESC')->get();   
+        $brandList = Brand::orderby('created_at','DESC')->get();
+        $productsList = Product::orderby('created_at','DESC')->get();
        return view('admin.reports.index')->with(
            [
                 'categoryList' =>$categoryList,
@@ -35,7 +37,7 @@ class ReportGeneratorController extends Controller
                 'itemList' =>$itemList,
                 'brandList' =>$brandList,
                 'departmentList' =>$departmentList,
-
+                'productsList' =>$productsList
            ]
            );
 
@@ -1133,28 +1135,38 @@ class ReportGeneratorController extends Controller
             flash("No Data is Match for this pattern ! we will work on it!" )->error();
             return back();
         }
-         
+    } 
 
 
-
-
-
-
-
-
-
+    public function reportForSpecificProduct(Request $request){
         
-
-
-
+        $this->validate($request,[
+            'productName'=>'required',
+        ]);
         
+        $productInfo = Product::where(['name' =>$request->productName])->first();
+        $product = Product::findOrFail($productInfo->id);
+        $productUserList = $product->productissueds;
+        $complaintsOfProduct = Product::findOrFail($productInfo->id)->complaints;
+        // $pdf = PDF::loadView('admin.reports.pdf.catSubCatBrandItemType',$data);
+        // return $pdf->download('productList.pdf');
 
+        $data = [
+            'Title' =>'BOF',
+            'Dept' =>'ICT CELL',
+            'productUserList' =>$productUserList,
+            'product' =>$product,
+            'complaintsOfProduct' =>$complaintsOfProduct,
+            
+        ];
+            $pdf = PDF::loadView('admin.reports.pdf.productReport.productReports',$data);
+            return $pdf->download('productList.pdf');
+  
+     
+     
         
+        //return view('admin.reports.pdf.productReport.productReports',compact('product','complaintsOfProduct','productUserList'));
 
-
-
-
-        
     }
 
 
