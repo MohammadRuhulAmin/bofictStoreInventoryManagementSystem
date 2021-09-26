@@ -31,6 +31,7 @@ class ReportGeneratorController extends Controller
         $brandList = Brand::orderby('created_at','DESC')->get();
         $productsList = Product::orderby('created_at','DESC')->get();
         $usersIdList = Productissued::orderby('created_at','DESC')->get();
+        
        return view('admin.reports.index')->with(
            [
                 'categoryList' =>$categoryList,
