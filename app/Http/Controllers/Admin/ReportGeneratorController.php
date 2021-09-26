@@ -936,6 +936,31 @@ class ReportGeneratorController extends Controller
                 return back();
             }
         }
+        //department category item type 
+        else if($department !==  null && $category !== null && $subcategory === null && $brand === null && $item !==  null && $type !== null ){
+            $productList = Product::where(['department'=>$department ,'category'=>$category,'item' =>$item,'type' =>$type ])->get();
+           
+            $totalProduct = count($productList);
+            if($totalProduct !==0 ){
+                $data = [
+                    'productsList' =>$productList,
+                    'Title' =>'BOF',
+                    'Dept' =>'ICT CELL',
+                    'Department' =>$department,
+                    'Category' =>$category,
+                    'Item' =>$item,
+                    'Type' =>$type,
+                    'TotalProduct' =>$totalProduct,
+                    
+                ];
+                $pdf = PDF::loadView('admin.reports.pdf.deptCatItemType',$data);
+                return $pdf->download('productList.pdf');
+            }
+            else{
+                flash('No Data Has found for '. $department ." department & ". $category." Category ". $item." Item  ".$type." Type")->error();
+                return back();
+            }
+        }
 
         //category subcategory brand item 
         else if($department ===  null && $category !== null && $subcategory !== null && $brand !== null && $item !==  null && $type === null ){
@@ -1103,6 +1128,10 @@ class ReportGeneratorController extends Controller
                 flash('No Data Has found for '. $subcategory ." Subcategory & ". $brand." Brand ". $item." Item  ".$type." Type ".$category ."Category ".$department ." Department" )->error();
                 return back();
             }
+        }
+        else{
+            flash("No Data is Match for this pattern ! we will work on it!" )->error();
+            return back();
         }
          
 
