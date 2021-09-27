@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\AssignProductToUser;
 use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\Admin\AccessoryController;
 use App\Http\Controllers\Admin\ReportGeneratorController;
+use App\Http\Controllers\Admin\InformationGeneratorController;
+
 // for user 
 use App\Http\Controllers\User\ViewerController; 
 
@@ -98,7 +100,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        Route::post('/import-excel-file/productUsers',[ProductissuedController::class,'importProductUsers'])->name('admin.productUsersInfo.import');
       
        // assigning product with user 
-       Route::resource('assignProductWithUsers',AssignProductToUser::class); 
+       Route::resource('assignProductWithUsers',AssignProductToUser::class);
        Route::get('/assignProductWithUsers/{id}/details-of-product-repairment-history',[AssignProductToUser::class,'productRepairementHistory'])->name('assignProductWithUsers.repairmentHistoryProduct');
 
        //Product Stock 
@@ -114,10 +116,19 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
 
        // Report Generator for Specific product 
        Route::post('/reports/product',[ReportGeneratorController::class,'reportForSpecificProduct'])->name('admin.report.specificProduct');
-      
+       
+       // Report Generator for Specific User
        Route::post('/reports/user',[ReportGeneratorController::class,'reportForSpecificUser'])->name('admin.report.byBofID');
 
+       // Information Generator for Specific Product
+       Route::post('/information/product',[InformationGeneratorController::class,'informationForSpecificProduct'])->name('admin.information.specificProduct');
        
+       //Information Generator for Specific User 
+       Route::post('/information/user',[InformationGeneratorController::class,'informationForSpecificUser'])->name('admin.information.specificUser');
+       // Information Generator for All Stuff 
+       Route::post('/information/generateAllStuff',[InformationGeneratorController::class,'informationGenerateReportAllStuff'])->name('information.generateAllStuff'); 
+
+
       });
 });
 // Routes for users 

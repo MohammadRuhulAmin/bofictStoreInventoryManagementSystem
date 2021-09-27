@@ -101,10 +101,7 @@
                       <div class="icon">
                         <i class="fa fa-users"></i>
                       </div>
-                    
                       <a href="{{route('admin_complaints.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        
-                
                     </div>
                   </div>
             </div>
@@ -120,7 +117,7 @@
               <h3 class="card-title"> Product Information </h3>
             
             </div>
-            <form method="post" action="{{route('report.generateAllStuff')}}">
+            <form method="post" action="{{route('information.generateAllStuff')}}">
               @csrf 
               <div class="card-body">
                 <div class="form-group">
@@ -192,7 +189,7 @@
             </div>
             <br>
             <br>
-            <form action="{{route('admin.report.specificProduct')}}"  method="POST"> 
+            <form action="{{route('admin.information.specificProduct')}}"  method="POST"> 
               @csrf 
            <div class="card card-primary">
               <div class="card-header">
@@ -220,7 +217,7 @@
             <div class="card-header">
               <h3 class="card-title">Information  by User ID  /</h3>
             </div>
-            <form action="{{route('admin.report.byBofID')}}" method="post">
+            <form action="{{route('admin.information.specificUser')}}" method="post">
               @csrf 
               <div class="card-body">
                 <div class="form-group">

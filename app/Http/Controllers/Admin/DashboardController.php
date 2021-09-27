@@ -57,11 +57,6 @@ class DashboardController extends Controller
                 'productsList' =>$productsList,
                 'usersIdList' =>$usersIdList,
 
-
-
-
-
-
            ]
            );
      
