@@ -461,7 +461,6 @@ class InformationGeneratorController extends Controller
                 flash('No Data Has found for '. $brand ." Brand & ". $type." Type ")->error();
                 return back();
             }
-            
         }
         //item & Type 
         else if($department === null && $category === null && $subcategory === null && $brand === null && $item !==  null && $type !== null ){
@@ -491,16 +490,15 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                  
                     'Department' =>$department,
                     'Category' =>$category,
                     'Subcategory' =>$subcategory,
                     'TotalProduct' =>$totalProduct,
 
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptCatSubcat',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptCatSubcat',$data);
+               
             }
             else{
                 flash('No Data Has found for '. $department ." Department & ". $category." category ". $subcategory." Subcategory ")->error();
@@ -515,16 +513,14 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
                     'Department' =>$department,
                     'Category' =>$category,
                     'Brand' =>$brand,
                     'TotalProduct' =>$totalProduct,
 
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptCatBrand',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptCatBrand',$data);
+                
             }
             else{
                 flash('No Data Has found for '. $department ." Department & ". $category." category ". $brand." Brand ")->error();
@@ -539,16 +535,15 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                   
                     'Department' =>$department,
                     'Category' =>$category,
                     'Type' =>$type,
                     'TotalProduct' =>$totalProduct,
 
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptCatType',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptCatType',$data);
+                
             }
             else{
                 flash('No Data Has found for '. $department ." Department & ". $category." category ". $type." Type ")->error();
@@ -563,16 +558,14 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
                     'Department' =>$department,
                     'Category' =>$category,
                     'Item' =>$item,
                     'TotalProduct' =>$totalProduct,
 
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptCatItem',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptCatItem',$data);
+                
             }
             else{
                 flash('No Data Has found for '. $department ." Department & ". $category." category ". $item." Item ")->error();
@@ -588,16 +581,14 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
                     'Department' =>$department,
                     'Subcategory' =>$subcategory,
                     'Brand' =>$brand,
                     'TotalProduct' =>$totalProduct,
 
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptSubCatBrand',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptSubCatBrand',$data);
+                
             }
             else{
                 flash('No Data Has found for '. $department ." Department & ". $subcategory." Subcategory ". $brand." Brand ")->error();
@@ -613,16 +604,15 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                  
                     'Department' =>$department,
                     'Subcategory' =>$subcategory,
                     'Item' =>$item,
                     'TotalProduct' =>$totalProduct,
 
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptSubCatItem',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptSubCatItem',$data);
+                
             }
             else{
                 flash('No Data Has found for '. $department ." Department & ". $subcategory." Subcategory ". $item." Item ")->error();
@@ -637,16 +627,15 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                
                     'Department' =>$department,
                     'Subcategory' =>$subcategory,
                     'Type' =>$type,
                     'TotalProduct' =>$totalProduct,
 
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptSubCatType',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptSubCatType',$data);
+               
             }
             else{
                 flash('No Data Has found for '. $department ." Department & ". $subcategory." Subcategory ". $type." Type ")->error();
@@ -655,22 +644,20 @@ class InformationGeneratorController extends Controller
         }
          //for department , Brand , Item 
          else if($department !== null && $category === null && $subcategory === null && $brand !== null && $item !==  null && $type === null ){
-            $productList = Product::where(['department'=>$department ,'subcategory'=>$subcategory,'type' =>$type])->get();
+            $productList = Product::where(['department'=>$department ,'brand'=>$brand,'item' =>$item])->get();
            
             $totalProduct = count($productList);
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
                     'Department' =>$department,
                     'Brand' =>$brand,
                     'Item' =>$item,
                     'TotalProduct' =>$totalProduct,
 
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptBrandItem',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptBrandItem',$data);
+               
             }
             else{
                 flash('No Data Has found for '. $department ." Department & ". $brand." Brand ". $item." Item ")->error();
@@ -686,16 +673,15 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                   
                     'Department' =>$department,
                     'Brand' =>$brand,
                     'Type' =>$type,
                     'TotalProduct' =>$totalProduct,
 
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptBrandType',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptBrandType',$data);
+               
             }
             else{
                 flash('No Data Has found for '. $department ." Department & ". $brand." Brand ". $type." Type ")->error();
@@ -710,16 +696,15 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                 
                     'Department' =>$department,
                     'Item' =>$item,
                     'Type' =>$type,
                     'TotalProduct' =>$totalProduct,
 
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptItemType',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptItemType',$data);
+               
             }
             else{
                 flash('No Data Has found for '. $department ." Department & ". $item." Item ". $type." Type ")->error();
@@ -734,16 +719,15 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                  
                     'Category' =>$category,
                     'Subcategory' =>$subcategory,
                     'Brand' =>$brand,
                     'TotalProduct' =>$totalProduct,
 
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.catSubcatBrand',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.catSubcatBrand',$data);
+                
             }
             else{
                 flash('No Data Has found for '. $category ." Category & ". $subcategory." Subcategory ". $brand." Brand ")->error();
@@ -758,17 +742,14 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                
                     'Category' =>$category,
                     'Subcategory' =>$subcategory,
                     'Item' =>$item,
                     'TotalProduct' =>$totalProduct,
-
-
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.catSubcatItem',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.catSubcatItem',$data);
+                
             }
             else{
                 flash('No Data Has found for '. $category ." Category & ". $subcategory." Subcategory ". $item." Item  ")->error();
@@ -785,16 +766,15 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+               
                     'Category' =>$category,
                     'Subcategory' =>$subcategory,
                     'Type' =>$type,
                     'TotalProduct' =>$totalProduct,
                     
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.catSubcatType',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.catSubcatType',$data);
+               
             }
             else{
                 flash('No Data Has found for '. $category ." Category & ". $subcategory." Subcategory ". $type." Type  ")->error();
@@ -809,16 +789,14 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
                     'Brand' =>$brand,
                     'Subcategory' =>$subcategory,
                     'Item' =>$item,
                     'TotalProduct' =>$totalProduct,
                     
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.subCatBrandItem',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.subCatBrandItem',$data);
+                
             }
             else{
                 flash('No Data Has found for '. $subcategory ." subcategory & ". $brand." Brand ". $item." Item  ")->error();
@@ -834,8 +812,7 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+               
                     'Department' =>$department,
                     'Category' =>$category,
                     'Subcategory' =>$subcategory,
@@ -859,8 +836,7 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                  
                     'Department' =>$department,
                     'Category' =>$category,
                     'Subcategory' =>$subcategory,
@@ -884,8 +860,7 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                  
                     'Department' =>$department,
                     'Category' =>$category,
                     'Subcategory' =>$subcategory,
@@ -909,8 +884,7 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                   
                     'Department' =>$department,
                     'Category' =>$category,
                     'Item' =>$item,
@@ -934,8 +908,7 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                 
                     'Subcategory' =>$subcategory,
                     'Category' =>$category,
                     'Brand' =>$brand,
@@ -957,8 +930,7 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                   
                     'Subcategory' =>$subcategory,
                     'Category' =>$category,
                     'Brand' =>$brand,
@@ -981,8 +953,7 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                   
                     'Subcategory' =>$subcategory,
                     'Category' =>$category,
                     'Item' =>$item,
@@ -1004,8 +975,7 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                   
                     'Subcategory' =>$subcategory,
                     'Brand' =>$brand,
                     'Item' =>$item,
@@ -1027,8 +997,7 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                    
                     'Subcategory' =>$subcategory,
                     'Brand' =>$brand,
                     'Item' =>$item,
@@ -1051,8 +1020,7 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                   
                     'Subcategory' =>$subcategory,
                     'Brand' =>$brand,
                     'Item' =>$item,
@@ -1076,8 +1044,7 @@ class InformationGeneratorController extends Controller
             if($totalProduct !==0 ){
                 $data = [
                     'productsList' =>$productList,
-                    'Title' =>'BOF',
-                    'Dept' =>'ICT CELL',
+                   
                     'Department' =>$department,
                     'Subcategory' =>$subcategory,
                     'Brand' =>$brand,

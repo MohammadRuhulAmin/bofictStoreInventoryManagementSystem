@@ -694,9 +694,10 @@ class ReportGeneratorController extends Controller
                 return back();
             }
         }
+
          //for department , Brand , Item 
          else if($department !== null && $category === null && $subcategory === null && $brand !== null && $item !==  null && $type === null ){
-            $productList = Product::where(['department'=>$department ,'subcategory'=>$subcategory,'type' =>$type])->get();
+            $productList = Product::where(['department'=>$department ,'brand'=>$brand,'item' =>$item])->get();
            
             $totalProduct = count($productList);
             if($totalProduct !==0 ){
@@ -942,6 +943,7 @@ class ReportGeneratorController extends Controller
                 return back();
             }
         }
+
         //department category item type 
         else if($department !==  null && $category !== null && $subcategory === null && $brand === null && $item !==  null && $type !== null ){
             $productList = Product::where(['department'=>$department ,'category'=>$category,'item' =>$item,'type' =>$type ])->get();
