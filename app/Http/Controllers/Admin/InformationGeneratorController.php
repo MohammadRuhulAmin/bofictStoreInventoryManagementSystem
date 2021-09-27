@@ -820,8 +820,8 @@ class InformationGeneratorController extends Controller
                     'TotalProduct' =>$totalProduct,
                     
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptCatSubCatBrand',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptCatSubCatBrand',$data);
+               
             }
             else{
                 flash('No Data Has found for '. $department ." department & ". $category." Category ". $subcategory." Subcategory  ".$brand." brand")->error();
@@ -844,8 +844,8 @@ class InformationGeneratorController extends Controller
                     'TotalProduct' =>$totalProduct,
                     
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptCatSubCatItem',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptCatSubCatItem',$data);
+                
             }
             else{
                 flash('No Data Has found for '. $department ." department & ". $category." Category ". $subcategory." Subcategory  ".$item." item")->error();
@@ -868,8 +868,8 @@ class InformationGeneratorController extends Controller
                     'TotalProduct' =>$totalProduct,
                     
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptCatSubCatType',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptCatSubCatType',$data);
+                
             }
             else{
                 flash('No Data Has found for '. $department ." department & ". $category." Category ". $subcategory." Subcategory  ".$type." Type")->error();
@@ -892,8 +892,8 @@ class InformationGeneratorController extends Controller
                     'TotalProduct' =>$totalProduct,
                     
                 ];
-                $pdf = PDF::loadView('admin.reports.pdf.deptCatItemType',$data);
-                return $pdf->download('productList.pdf');
+                return view('admin.information.categoryInformation.deptCatItemType',$data);
+                
             }
             else{
                 flash('No Data Has found for '. $department ." department & ". $category." Category ". $item." Item  ".$type." Type")->error();
@@ -990,6 +990,7 @@ class InformationGeneratorController extends Controller
                 return back();
             }
         } 
+        // information for 5 input field 
           //Department  Subcategory Brand Item Type  
           else if($department !==  null && $category !== null && $subcategory !== null && $brand !== null && $item !==  null && $type === null ){
             $productList = Product::where(['brand'=>$brand ,'subcategory'=>$subcategory,'item' =>$item,'category' =>$category,'department' =>$department ])->get();
@@ -1062,7 +1063,7 @@ class InformationGeneratorController extends Controller
             }
         }
         else{
-            flash("No Data is Match for this pattern ! we will work on it!" )->error();
+            flash("No Data is Match for this pattern ! we will work on it please let us know !" )->error();
             return back();
         }
     } 
