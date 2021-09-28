@@ -1170,7 +1170,9 @@ class ReportGeneratorController extends Controller
 
     }
     public function reportForSpecificUser(Request $request){
-        //return $request;
+        $this->validate($request,[
+            'BofUserID' =>'required',
+        ]);
         $userInfo = Productissued::where(['bofid' => $request->BofUserID])->first();
         $productUserInfo = Productissued::where(['id'=>$userInfo->id ])->first();
         $productInfo = $productUserInfo->products;

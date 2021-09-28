@@ -48,7 +48,7 @@
        
       </div>
       <br>
-      <table  class="table table-bordered datatable table-sm" id="productTable">
+      <table  class="table table-bordered datatable table-sm" id="productTable" >
         <thead>
             <tr>
                 <th>#SL</th>

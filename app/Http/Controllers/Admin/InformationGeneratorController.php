@@ -44,6 +44,9 @@ class InformationGeneratorController extends Controller
     }
     
     public function informationForSpecificUser(Request $request){
+        $this->validate($request,[
+            'BofUserID' =>'required'
+        ]);
         //return $request;
         $userInfo = Productissued::where(['bofid' => $request->BofUserID])->first();
         $productUserInfo = Productissued::where(['id'=>$userInfo->id ])->first();

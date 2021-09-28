@@ -13,14 +13,15 @@
         <table class="table table-striped" id="productsInformation" width="100%">
             <thead>
                 <tr>
-                  
+                    <th>department</th>
                     <th>name</th>
                     <th>category</th>
                     <th>subcategory</th>
                     <th>brand</th>
                     <th>item</th>
                     <th>type</th>
-                    <th>department</th>
+                    <th>description</th>
+                   
                 </tr>
             </thead>
         </table>
@@ -37,7 +38,6 @@
 <script type="text/javascript">
      $(document).ready(function() {
         //  console.log('{{url('/testing-product')}}');
- 
  $("#productsInformation").DataTable({
          serverSide: true,
          ajax: {
@@ -46,17 +46,19 @@
          },
          buttons: true,
          searching: true,
-         scrollY: 500,
+         scrollY: 700,
          scrollX: true,
          scrollCollapse: true,
          columns: [
+            {data: "department"},
              {data: "name"},
              {data: "category"},
              {data: "subcategory"},
              {data: "brand"},
              {data: "item"},
              {data: "type"},
-             {data: "department"}
+             {data:"description"},
+            
           
          ]  
    });

@@ -32,11 +32,7 @@ class ProductController extends Controller
     {
         $categoriesList = Category::orderby('created_at','DESC')->get();
         $products = Product::orderby('created_at','DESC')->get();
-
-        
          
-
-
         return view('admin.products.index',compact('products','categoriesList'));
     }
 
