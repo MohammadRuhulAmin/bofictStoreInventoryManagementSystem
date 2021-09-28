@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\ReportGeneratorController;
 use App\Http\Controllers\Admin\InformationGeneratorController;
 
 // for user 
-use App\Http\Controllers\User\ViewerController; 
+use App\Http\Controllers\User\ViewerController;
 
 // for technicians
 use App\Http\Controllers\Technician\TechDashboardController;
@@ -41,9 +41,11 @@ use App\Http\Controllers\TestProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[TestProductController::class,'view']);
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
@@ -170,5 +172,5 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
 
 
 
-Route::get('/testing-product-view',[TestProductController::class,'view']);
+
 Route::get('/testing-product',[TestProductController::class,'allProductsList']);

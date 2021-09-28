@@ -42,6 +42,12 @@
                 </tr>
             </thead>
         </table>
+        <table class="table-striped" align="center" width="10%">
+            <tr>
+                <td><a href="{{route('login')}}" class="btn btn-success">Login</a></td>
+                <td><a href="{{route('register')}}" class="btn btn-warning">Register</a></td>
+            </tr>
+        </table>
     </div>
 
     
@@ -83,6 +89,5 @@
 });
 
 </script>
-
 </body>
 </html>
