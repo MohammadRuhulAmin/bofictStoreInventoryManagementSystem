@@ -177,6 +177,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        // yajra datatable oracle for speed up the load data in products table
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
     ],
 
@@ -233,6 +235,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' =>\Maatwebsite\Excel\Facades\Excel::class,
         'PDF' =>Barryvdh\DomPDF\Facade::class,
+         // yajra datatable oracle for speed up the load data in products table
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        
         
     ],
 

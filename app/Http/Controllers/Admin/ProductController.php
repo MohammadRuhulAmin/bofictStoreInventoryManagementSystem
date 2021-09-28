@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Session;
 use App\Exports\ProductExportByCategory;
 use Excel;
 use App\Exports\ProductExport;
+use DataTables;
+use DB;
 
 
 class ProductController extends Controller
@@ -30,6 +32,11 @@ class ProductController extends Controller
     {
         $categoriesList = Category::orderby('created_at','DESC')->get();
         $products = Product::orderby('created_at','DESC')->get();
+
+        
+         
+
+
         return view('admin.products.index',compact('products','categoriesList'));
     }
 

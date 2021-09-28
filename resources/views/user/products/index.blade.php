@@ -36,7 +36,8 @@
         <a href="{{route('user.product.csv')}}" class="btn btn-primary">Download as CSV FIle  </a>
       </div>
       <br>
-      <table  class="table table-bordered datatable table-sm" id="productTable">
+     
+      <table  class="table table-bordered datatable table-sm" id="productTable" >
         <thead>
             <tr>
                 <th>#SL</th>

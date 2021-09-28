@@ -43,7 +43,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Select  Category  </label>
-            <select name="category" class="form-control">
+            <select name="category" id="SelectCategory" class="form-control">
                 <option>{{$product->category}}</option>
                 @foreach($categories as $category)
                     <option>{{$category->name}}</option>

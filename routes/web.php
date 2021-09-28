@@ -26,7 +26,10 @@ use App\Http\Controllers\User\ViewerController;
 // for technicians
 use App\Http\Controllers\Technician\TechDashboardController;
 use App\Http\Controllers\Technician\ComplaintsController;
-
+//for testing product
+use App\Models\Admin\Product;
+use App\Http\Controllers\TestProductController;
+// use DataTables;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -164,3 +167,8 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
      Route::post('/complaints/complaints-list-byDate',[ComplaintsController::class,'listByDate'])->name('technician_complaints.listByDate');     
     });
 });
+
+
+
+Route::get('/testing-product-view',[TestProductController::class,'view']);
+Route::get('/testing-product',[TestProductController::class,'index']);
