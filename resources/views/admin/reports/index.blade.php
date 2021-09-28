@@ -123,7 +123,6 @@
         </form>
          <div class="card card-primary">
           <div class="card-header">
-          
           </div>
           <form action="{{route('admin.report.byBofID')}}" method="post">
             @csrf 

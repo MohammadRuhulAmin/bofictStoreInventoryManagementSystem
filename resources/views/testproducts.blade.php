@@ -9,8 +9,25 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 </head>
 <body>
-    <div class="container">
-        <table class="table table-striped" id="productsInformation" width="100%">
+   
+    <div style="text-align:center">
+        <br><br>
+        <img src="{{asset('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
+        {{-- <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/> --}}
+        <h1>Bangladesh Ordnance Factories</h1>
+        <b>Stock Inventory Management System (BOF ICT CELL)</b>
+        <br>
+        <table align="center">
+            <tr>
+                <td >Date : </td>
+                <td> {{\Carbon\Carbon::now()->format('d-m-Y')}}</td>
+            </tr>
+        </table>
+        <br>
+    </div>
+
+    <div class="container jumbotron" >
+        <table  class="table table-striped" id="productsInformation" width="100%">
             <thead>
                 <tr>
                     <th>department</th>

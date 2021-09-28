@@ -169,5 +169,6 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
 });
 
 
+
 Route::get('/testing-product-view',[TestProductController::class,'view']);
-Route::get('/testing-product',[TestProductController::class,'allProductsList']); 
+Route::get('/testing-product',[TestProductController::class,'allProductsList']);
