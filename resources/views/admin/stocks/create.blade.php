@@ -33,52 +33,60 @@
       <form role="form" action="{{route('stocks.store')}}" method="post">
         @csrf 
         <div class="card-body">
+           
             <div class="form-group">
-              <label for="exampleInputEmail1">Accessory  <span class="text-danger">*</span></label>
-              <select name="accessoryName" id="selectAccessoryName" class="form-control">
-                <option></option>
-                @foreach($accessories as $accessory)
-                  <option>{{$accessory->accessoryName}}</option>
-                @endforeach
-              </select>
+                <label for="exampleInputEmail1">Category </label>
+                <select  class="form-control" name="category"  id="SelectCategory">
+                    <option></option>
+                    @foreach ($categorys as  $category)
+                    <option>{{$category->name}}</option>
+                    @endforeach
+                </select>
+              </div> 
+              <div class="form-group">
+                <label for="exampleInputEmail1">Subcategory </label>
+                <select  class="form-control" name="subcategory"  id="selectSubCategory">
+                    <option></option>
+                    @foreach ($subcategorys as  $subcategory)
+                    <option>{{$subcategory->name}}</option>
+                    @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Brand </label>
+                <select  class="form-control" name="brand"  id="selectBrand">
+                    <option></option>
+                    @foreach ($brands as  $brand)
+                    <option>{{$brand->name}}</option>
+                    @endforeach
+                </select>
+              </div>
 
-              @if($errors->has('accessoryName'))
-                  <span class="text-danger">Accessory  Name must be Provided! &  {{$errors->first('accessoryName')}} </span>
-              @endif
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">First Priority  <span class="text-danger"></span></label>
-              <select name="accessoryFirstProperty" id="selectAccessoryFirstProperty" class="form-control">
-                <option></option>
-                @foreach($accessories as $accessory)
-                  <option>{{$accessory->accessoryFirstProperty}}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Second Priority  <span class="text-danger"></span></label>
-              <select name="accessorySecondProperty" id="selectAccessorySecondProperty" class="form-control">
-                <option></option>
-                @foreach($accessories as $accessory)
-                  <option>{{$accessory->accessorySecondProperty}}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Third Priority  <span class="text-danger"></span></label>
-              <select name="accessoryThirdProperty" id="selectAccessoryThirdProperty" class="form-control">
-                <option></option>
-                @foreach($accessories as $accessory)
-                  <option>{{$accessory->accessoryThirdProperty}}</option>
-                @endforeach
-              </select>
-            </div>
-            
+              <div class="form-group">
+                <label for="exampleInputEmail1">Item </label>
+                <select  class="form-control" name="item"  id="selectItem">
+                    <option></option>
+                    @foreach ($items as  $item)
+                    <option>{{$item->name}}</option>
+                    @endforeach
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Type </label>
+                <select  class="form-control" name="type"  id="selectType">
+                    <option></option>
+                    @foreach ($types as  $type)
+                    <option>{{$type->name}}</option>
+                    @endforeach
+                </select>
+              </div>
+
             <div class="form-group">
               <label for="exampleInputEmail1">Date <span class="text-danger">*</span> </label>
               <input type="date" class="form-control" id="" name="date" placeholder="Date">
               @if($errors->has('date'))
-                  <span class="text-danger">Item Details must be Provided! &  {{$errors->first('date')}} </span>
+                  <span class="text-danger">Date  must be Provided! &  {{$errors->first('date')}} </span>
               @endif
             </div>
             <div class="form-group">
@@ -113,14 +121,14 @@
               
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1"> Issued To <span class="text-danger">*</span></label>
+              <label for="exampleInputEmail1"> Issued To</label>
               <input type="text" class="form-control" id="" name="issuedTo" placeholder="Issued To">
               {{-- @if($errors->has('issuedTo'))
                   <span class="text-danger">Item Details must be Provided! &  {{$errors->first('issuedTo')}} </span>
               @endif --}}
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Branch <span class="text-danger">*</span> </label>
+              <label for="exampleInputEmail1">Branch  </label>
               <input type="text" class="form-control" id="" name="branch" placeholder="Branch ">
               {{-- @if($errors->has('branch'))
                   <span class="text-danger">Branch Must be Provided!   {{$errors->first('branch')}} </span>

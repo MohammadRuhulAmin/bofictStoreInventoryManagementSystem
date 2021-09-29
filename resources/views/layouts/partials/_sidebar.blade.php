@@ -167,14 +167,7 @@
               </li>
               @endif
               
-              @if(auth()->user()->role === "admin")
-              <li class="nav-item">
-                <a href="{{route('accessories.index')}}" class="nav-link {{request()->is('accessories*')? 'active': ''}}">
-                  <i class="fas fa-align-left nav-icon"></i>
-                  <p>Stock Accessories </p>
-                </a>
-              </li>
-              @endif
+           
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('report.index')}}" class="nav-link">

@@ -13,12 +13,15 @@ class CreateStocksTable extends Migration
      */
     public function up()
     {
+
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->string('accessoryName',100)->nullable();
-            $table->string('accessoryFirstProperty',100)->nullable();
-            $table->string('accessorySecondProperty',100)->nullable();
-            $table->string('accessoryThirdProperty',100)->nullable();
+            $table->string('category',100)->nullable();
+            $table->string('subcategory',100)->nullable();
+            $table->string('brand',100)->nullable();
+            $table->string('item',100)->nullable();
+            $table->string('type',100)->nullable();
+            $table->string('department',100)->nullable();
             $table->date('date')->nullable();
             $table->bigInteger('inclusion')->nullable();
             $table->bigInteger('exclusion')->nullable();

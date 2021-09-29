@@ -36,11 +36,12 @@
             <tr>
                 <th>#SL</th>
                 <th>Date</th>
-                <th>Accessory Name </th>
-                <th>First Property</th>
-                <th>Second Property</th>
-                <th>Third Property</th>
-                <th>Inclusion</th>
+                <th>Category </th>
+                <th>Subcategory</th>
+                <th>Brand</th>
+                <th>item</th>
+                <th>type</th>
+                <th>inclusion</th>
                 <th>Exclusion</th>
                 <th>Maintanance</th>
                 <th>Store Balance</th>
@@ -51,7 +52,6 @@
                 <th>Action</th>
             </tr>
         </thead>
-         
 
         <tbody>
             @if($stocks)
@@ -59,10 +59,11 @@
                     <tr>
                         <td>{{++$key}}</td>
                         <td>{{$stock->date ??''}}</td>
-                        <td>{{$stock->accessoryName?? ''}}</td>
-                        <td>{{$stock->accessoryFirstProperty?? ''}}</td>
-                        <td>{{$stock->accessorySecondProperty?? ''}}</td>
-                        <td>{{$stock->accessoryThirdProperty?? ''}}</td>
+                        <td>{{$stock->category??''}}</td>
+                        <td>{{$stock->subcategory??''}}</td>
+                        <td>{{$stock->brand??''}}</td>
+                        <td>{{$stock->item??''}}</td>
+                        <td>{{$stock->type??''}}</td>
                         <td>{{$stock->inclusion ?? ''}}</td>
                         <td>{{$stock->exclusion ?? ''}}</td>
                         <td>{{$stock->maintanance ?? ''}}</td>
