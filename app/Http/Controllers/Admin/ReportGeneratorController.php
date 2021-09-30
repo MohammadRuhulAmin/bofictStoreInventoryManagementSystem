@@ -1164,8 +1164,9 @@ class ReportGeneratorController extends Controller
             'complaintsOfProduct' =>$complaintsOfProduct,
             
         ];
-            $pdf = PDF::loadView('admin.reports.pdf.productReport.productReports',$data);
-            return $pdf->download('productList.pdf');
+        $pdf = PDF::loadView('admin.reports.pdf.productReport.productReports',$data);
+        return $pdf->download('productList.pdf');
+        
         //return view('admin.reports.pdf.productReport.productReports',compact('product','complaintsOfProduct','productUserList'));
 
     }

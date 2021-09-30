@@ -19,6 +19,8 @@ use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\Admin\AccessoryController;
 use App\Http\Controllers\Admin\ReportGeneratorController;
 use App\Http\Controllers\Admin\InformationGeneratorController;
+use App\Http\Controllers\Admin\StockReportGeneratorController;
+
 
 // for user 
 use App\Http\Controllers\User\ViewerController;
@@ -48,7 +50,7 @@ use App\Http\Controllers\TestProductController;
 Route::get('/',[TestProductController::class,'view']);
 Route::get('/bofict-cell',[TestProductController::class,'allProductsList']);
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () { 
 //     return view('dashboard');
 // })->name('dashboard');
 
@@ -128,7 +130,11 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        Route::post('/information/generateAllStuff',[InformationGeneratorController::class,'informationGenerateReportAllStuff'])->name('information.generateAllStuff'); 
        
       // Product Stock 
-       Route::resource('stocks',StockController::class);
+      Route::resource('stocks',StockController::class);                                    
+       // Stock Report Generator Controller 
+      Route::get('/stocks/stockReport/index',[StockReportGeneratorController::class ,'index'])->name('stockReport.index'); 
+      Route::post('/stocks/stockReport/ReportGenerateToPDF',[StockReportGeneratorController::class,'StockReportGeneratorAllStuff'])->name('stockReport.generateReport');
+
       
       
       });
