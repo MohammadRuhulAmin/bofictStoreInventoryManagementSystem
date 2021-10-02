@@ -18,7 +18,7 @@
         <div style="text-align:center">
             <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
             <h3>{{$Title }}  ({{$Dept}})</h3>
-            <b>Report Name : {{$Category}} Category Balance Sheet </b>
+            <b>Report Name : {{$Category}} Category  & {{$Subcategory}} Subcategory  Balance Sheet </b>
             <br>
         </div>
         <table  >
@@ -42,7 +42,7 @@
                 {{-- <td>Brand</td>  --}}
                 {{-- <td>Item</td> --}}
                 {{-- <td>Type</td> --}}
-                <td>Inclusion</td>
+                <td>Inclusion</td> 
                 <td>Exclusion</td>
                 {{-- <td>Maintanance</td> --}}
                 <td>Store Balance</td>

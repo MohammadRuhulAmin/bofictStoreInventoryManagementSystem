@@ -91,7 +91,7 @@ class StockController extends Controller
             $stock->stockBalance = $totalStock; 
             $stock->save();
            flash('Product item is  Recorded in Stock!')->success();
-           return back();
+           return back();     
             
         }
         //for only subcategory
@@ -183,7 +183,7 @@ class StockController extends Controller
                 $totalExclusion += $stockItemInclusionDB[$i]->exclusion;
             }
             
-            $totalStock = ($totalInclusion+  $stock->inclusion ) - ($totalExclusion + $stock->exclusion); 
+            $totalStock = ($totalInclusion+  $stock->inclusion ) -  ($totalExclusion + $stock->exclusion); 
             $stock->stockBalance = $totalStock; 
             $stock->save();
            flash('Product item is  Recorded in Stock!')->success();

@@ -18,7 +18,7 @@
         <div style="text-align:center">
             <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
             <h3>{{$Title }}  ({{$Dept}})</h3>
-            <b>Report Name : {{$Category}} Category Balance Sheet </b>
+            <b>Report Name : {{$Subcategory}} Subcategory Balance Sheet </b>
             <br>
         </div>
         <table  >
@@ -37,8 +37,8 @@
             <tr>
                 <td>SL</td>
                 <td>Date</td>
-                {{-- <td>Category</td> --}}
-                {{-- <td>Subcategory</td> --}}
+                {{-- <td>Category</td>
+                <td>Subcategory</td> --}}
                 {{-- <td>Brand</td>  --}}
                 {{-- <td>Item</td> --}}
                 {{-- <td>Type</td> --}}
@@ -53,13 +53,13 @@
             </tr>
             @foreach ($StockReports as $key=>$slist )
                 <tr> 
-                    <td>{{++$key}}</td> 
+                    <td>{{++$key}}</td>
                     <td>{{$slist->date}}</td>
-                    {{-- <td>{{$slist->category}}</td>  --}}
-                    {{-- <td>{{$slist->subcategory}}</td> --}}
+                    {{-- <td>{{$slist->category}}</td> 
+                    <td>{{$slist->subcategory}}</td> --}}
                     {{-- <td>{{$slist->brand}}</td>  --}}
-                    {{-- <td>{{$slist->item}}</td> --}} 
-                    {{-- <td>{{$slist->type}}</td>  --}} 
+                    {{-- <td>{{$slist->item}}</td> --}}
+                    {{-- <td>{{$slist->type}}</td>  --}}
                     <td>{{$slist->inclusion}}</td>
                     <td>{{$slist->exclusion}}</td>
                     {{-- <td>{{$slist->maintanance}}</td> --}}
@@ -68,8 +68,6 @@
                     <td>{{$slist->issuedTo}}</td>
                     <td>{{$slist->branch}}</td>
                     <td></td>
-                    
-
                 </tr>
             @endforeach
         </table>
