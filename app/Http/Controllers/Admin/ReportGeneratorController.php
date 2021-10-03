@@ -702,6 +702,7 @@ class ReportGeneratorController extends Controller
             $totalProduct = count($productList);
             if($totalProduct !==0 ){
                 $data = [
+                    
                     'productsList' =>$productList,
                     'Title' =>'BOF',
                     'Dept' =>'ICT CELL',

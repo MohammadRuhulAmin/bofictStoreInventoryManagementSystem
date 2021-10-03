@@ -118,7 +118,7 @@
             </div>
             <div class="treeview ">
               <hr>
-              
+
               <ul class="mb-1 pl-3 pb-2"> 
                 <li><i class="fas fa-angle-right rotate"></i>
                   <span><i class="fa fa-desktop" aria-hidden="true"></i> WorkStation PC </span>
@@ -128,7 +128,6 @@
                        <ul class="nested">
                           <li > <i class="fas fa-microchip"></i> i3 , i5 , i7 , i9  </li>
                        </ul>
-                   
                   </ul>
                 </li>
                 <li><i class="fas fa-angle-right rotate"> </i>
