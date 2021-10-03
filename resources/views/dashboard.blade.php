@@ -112,12 +112,14 @@
      
       <div class="card-body">
         <div class="row">
-          <div class="card card-primary col-md-3 TreeScroll">
-            <div class="treeview w-20 border ">
-              <h6 class="pt-3 pl-3 text-success" >Road Map For Products </h6>
+          <div class="card card-primary col-md-2 ">
+            <div class="card-header">
+              <p class="card-text" >Road Map For Products </p>
+            </div>
+            <div class="treeview ">
               <hr>
-              <ul class="mb-1 pl-3 pb-2">
-                
+              
+              <ul class="mb-1 pl-3 pb-2"> 
                 <li><i class="fas fa-angle-right rotate"></i>
                   <span><i class="fa fa-desktop" aria-hidden="true"></i> WorkStation PC </span>
                   <ul class="nested">
@@ -185,7 +187,7 @@
             
          
          </div>
-          <div class="card card-primary col-md-3">
+          <div class="card card-primary col-md-5">
             <div class="card-header">
               <h3 class="card-title"> Product Information </h3>
             
