@@ -18,6 +18,9 @@
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+{{-- bootstrap tree view --}}
+
 {{-- sweet alert --}}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -176,7 +179,9 @@
         placeholder:"Select Category ",
         allowClear:true 
     })
-</script>
+</script> 
+
+
 @stack('scripts')
 
 

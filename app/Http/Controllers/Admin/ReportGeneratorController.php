@@ -1170,7 +1170,7 @@ class ReportGeneratorController extends Controller
         //return view('admin.reports.pdf.productReport.productReports',compact('product','complaintsOfProduct','productUserList'));
 
     }
-    public function reportForSpecificUser(Request $request){
+    public function reportForSpecificUser(Request $request){ 
         $this->validate($request,[
             'BofUserID' =>'required',
         ]);
@@ -1184,7 +1184,7 @@ class ReportGeneratorController extends Controller
             'productUserInfo' =>$productUserInfo,
             'productInfo' =>$productInfo,
             'totalProductUsed' =>$totalProductUsed,
-            
+
         ];
         $pdf = PDF::loadView('admin.reports.pdf.userReport.userReports',$data);
         return $pdf->download('productList.pdf');

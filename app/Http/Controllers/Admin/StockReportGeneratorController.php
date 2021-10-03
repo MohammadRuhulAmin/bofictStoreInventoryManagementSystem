@@ -47,7 +47,7 @@ class StockReportGeneratorController extends Controller
             ];
             $pdf = PDF::loadView('admin.stockReport.pdf.cat',$data);
             return $pdf->download('stockReport.pdf');
-        } 
+        }
         // for only subcategory stock report 
         else if($category === null  && $subcategory !==  null && $brand === null && $item === null && $type === null){
             $stockReport = Stock::where(['subcategory'=>$subcategory])->get();
@@ -128,7 +128,7 @@ class StockReportGeneratorController extends Controller
             $pdf = PDF::loadView('admin.stockReport.pdf.catSubcat',$data);
             return $pdf->download('stockReport.pdf');
         }
-        //for category & brand
+        //for category & brand 
         else if($category !== null  && $subcategory ===  null && $brand !== null && $item === null && $type === null){
             $stockReport = Stock::where(['category' =>$category , 'subcategory' =>$subcategory])->get();
             $stockReportLastRow = Stock::where(['category' =>$category , 'brand' =>$brand])->latest()->first();
@@ -144,7 +144,7 @@ class StockReportGeneratorController extends Controller
             $pdf = PDF::loadView('admin.stockReport.pdf.catBrand',$data);
             return $pdf->download('stockReport.pdf');
         }
-         //for category & item
+         //for category & item 
          else if($category !== null  && $subcategory ===  null && $brand === null && $item !== null && $type === null){
             $stockReport = Stock::where(['category' =>$category , 'item' =>$item])->get();
             $stockReportLastRow = Stock::where(['category' =>$category , 'item' =>$item])->latest()->first();
@@ -154,10 +154,26 @@ class StockReportGeneratorController extends Controller
                 'StockReports' => $stockReport, 
                 'Category' => $category,
                 'Item' =>$item,
-                'CurrentStock' => $stockReportLastRow->stockBalance ?? 0 ,
+                'CurrentStock' => $stockReportLastRow->stockBalance ?? 0 , 
             ];
 
             $pdf = PDF::loadView('admin.stockReport.pdf.catItem',$data);
+            return $pdf->download('stockReport.pdf');
+        }
+        // for category type 
+        else if($category !== null  && $subcategory ===  null && $brand === null && $item === null && $type !== null){
+            $stockReport = Stock::where(['category' =>$category , 'type' =>$type])->get();
+            $stockReportLastRow = Stock::where(['category' =>$category , 'type' =>$type])->latest()->first();
+            $data = [
+                'Title' =>'BOF',  
+                'Dept' =>'ICT CELL',
+                'StockReports' => $stockReport,
+                'Category' => $category,
+                'Type' =>$type,
+                'CurrentStock' =>$stockReportLastRow->stockBalance ?? 0 , 
+            ];
+
+            $pdf = PDF::loadView('admin.stockReport.pdf.catType',$data);
             return $pdf->download('stockReport.pdf');
         }
 
@@ -166,7 +182,7 @@ class StockReportGeneratorController extends Controller
 
         else{ 
             flash('Condition is not added yet , please let us know ')->error();
-           return back();
+           return back();   
         }
        
     }

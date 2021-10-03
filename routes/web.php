@@ -135,8 +135,6 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::get('/stocks/stockReport/index',[StockReportGeneratorController::class ,'index'])->name('stockReport.index'); 
       Route::post('/stocks/stockReport/ReportGenerateToPDF',[StockReportGeneratorController::class,'StockReportGeneratorAllStuff'])->name('stockReport.generateReport');
 
-      
-      
       });
 });
 // Routes for users 

@@ -112,7 +112,80 @@
      
       <div class="card-body">
         <div class="row">
-          <div class="card card-primary col-md-6">
+          <div class="card card-primary col-md-3 TreeScroll">
+            <div class="treeview w-20 border ">
+              <h6 class="pt-3 pl-3 text-success" >Road Map For Products </h6>
+              <hr>
+              <ul class="mb-1 pl-3 pb-2">
+                
+                <li><i class="fas fa-angle-right rotate"></i>
+                  <span><i class="fa fa-desktop" aria-hidden="true"></i> WorkStation PC </span>
+                  <ul class="nested">
+                    <li> <i class="fab fa-battle-net"></i>  HP , ASUS , DELL   </li>
+                       <li> <i class="fab fa-battle-net"></i>  Apple , Intel , Delux    </li>
+                       <ul class="nested">
+                          <li > <i class="fas fa-microchip"></i> i3 , i5 , i7 , i9  </li>
+                       </ul>
+                   
+                  </ul>
+                </li>
+                <li><i class="fas fa-angle-right rotate"> </i>
+                  <span><i class="fa fa-desktop"></i> Desktop </span>
+                  <ul class="nested">
+                    <li><i class="fa fa-desktop"></i> Brand Desktop </li>
+                     <ul class="nested">
+                       <li> <i class="fab fa-battle-net"></i>  HP , ASUS , DELL   </li>
+                       <li> <i class="fab fa-battle-net"></i>  Apple , Intel , Delux    </li>
+                       <ul class="nested">
+                          <li > <i class="fas fa-microchip"></i> i3 , i5 , i7 , i9  </li>
+                       </ul>
+
+                     </ul>
+                    <li><i class="fa fa-desktop"></i> Clone  Desktop </li>
+                    <ul class="nested">
+                      <li > <i class="fas fa-microchip"></i> i3 , i5 , i7 , i9  </li>
+                   </ul>
+                    </li>
+                  </ul>
+                </li>
+
+                <li><i class="fas fa-angle-right rotate"></i>
+                  <span><i class="fa fa-wifi" aria-hidden="true"></i> Router</span>
+                  <ul class="nested">
+                    <li><i class="fa fa-wifi" aria-hidden="true"></i> Home Router </li>
+                    <li><i class="fa fa-wifi" aria-hidden="true"></i> Core Router </li>
+                   
+                  </ul>
+                </li>
+                <li><i class="fas fa-angle-right rotate"></i>
+                  <span><i class="fas fa-phone"></i> Phone</span>
+                  <ul class="nested">
+                      <li><i class="fas fa-phone"></i> Mobile Phone </li>
+                      <li><i class="fas fa-phone"></i> Cordless Phone  </li>
+                    </ul>
+                </li> 
+                <li><i class="fas fa-angle-right rotate"></i>
+                  <span> <i class="fas fa-print"></i> Printer </span>
+                  <ul class="nested">
+                      <li><i class="fas fa-print"></i> Color Printer </li>
+                      <ul class="nested">
+                        <li> <i class="fas fa-print"></i> Laser </li>
+                        <li> <i class="fas fa-print"></i> Ink Jet</li>
+                      </ul>
+                      <li><i class="fas fa-print"></i> Black & White Printer   </li>
+                      <ul class="nested">
+                        <li> <i class="fas fa-print"></i> Micro Dry </li>
+                        <li> <i class="fas fa-print"></i> Dot Matrix Printer </li>
+                      </ul>
+                    </ul>
+                </li>
+              </ul>
+            
+            </div>
+            
+         
+         </div>
+          <div class="card card-primary col-md-3">
             <div class="card-header">
               <h3 class="card-title"> Product Information </h3>
             
@@ -139,7 +212,7 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label class="form-control" for="category"> Sub category   </label>
+                    <label class="form-control"  for="category"> Sub category   </label>
                     <select class="form-control" id="userSelectSubCategory" name="subcategory">
                       <option></option>
                     @foreach($subcategoryList as $sList)
@@ -181,6 +254,7 @@
               </div>
           </div>
         </form>
+        
           {{-- another card --}}
           <div class="card  card-primary col-md-4 ml-3 h-40">
            
@@ -210,6 +284,9 @@
                      <div class="card-footer">
                       <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-search"></i> Search </button>
                     </div>
+                  </div>
+                  <div class="card card-primary col-md-3">
+                     {{-- This is for testing  --}}
                   </div>
            </div>
           </form>
@@ -248,5 +325,5 @@
       <div class="card-footer"></div>
     </div> 
          
- 
+   
 @endsection

@@ -6,6 +6,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html lang="en">
 <head>
     @include('layouts.partials._head')
+    @include('layouts.partials._customCssStyle')
+
  </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -36,7 +38,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-
     @include('layouts.partials._footer-script')
     @include('layouts.partials._DynamicUserSelectOptions')
 </body>

@@ -90,7 +90,7 @@ class StockController extends Controller
             $totalStock = ($totalInclusion+  $stock->inclusion ) - ($totalExclusion + $stock->exclusion);
             $stock->stockBalance = $totalStock; 
             $stock->save();
-           flash('Product item is  Recorded in Stock!')->success();
+           flash('Product item is  Recorded in Stock!')->success();     
            return back();     
             
         }
