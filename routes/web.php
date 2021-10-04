@@ -72,6 +72,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::get('/users/{id}/to-user/',[UsersController::class,'toUser'])->name('users.toUser');
       Route::get('/users/{id}/to-admin/',[UsersController::class,'toAdmin'])->name('users.toAdmin');
       Route::get('/users/{id}/details',[UsersController::class,'detailsOfUser'])->name('users.details');
+      
        //Category
       Route::resource('categories', CategoriesController::class);
        //Brand
@@ -154,6 +155,7 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
       Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('user.product.csv');
       Route::post('/product/search',[ViewerController::class,'searchProduct'])->name('user.search.products');
       Route::post('/product/search/name',[ViewerController::class,'searchProductName'])->name('user.search.specificProduct');
+
     });
 });
 

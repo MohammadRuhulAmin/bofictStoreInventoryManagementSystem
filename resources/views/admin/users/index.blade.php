@@ -28,7 +28,6 @@
         <h3 class="card-title">Users List  </h3>
       </div>
       <br>
-     
       <table class="table table-bordered datatable">
         <thead>
             <tr>
@@ -52,9 +51,9 @@
                         <td class="text-center">
                           <a href="{{route('users.toTechnician',$user->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-male"></i> Technician </a>
                           <a href="{{route('users.toUser',$user->id)}}" class="btn btn-sm btn-success"><i class="fas fa-user"></i>User </a>
-                          <a href="{{route('users.toAdmin',$user->id)}}" class="btn btn-sm btn-danger"><i class="fas fa-user"></i>Admin </a>
+                          <a href="{{route('users.toAdmin',$user->id)}}" class="btn btn-sm btn-danger"><i class="fas fa-user"></i>Admin </a> 
+            
                         </td>
-                        
                         <td>
                             <a  href="{{route('users.edit',$user->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 

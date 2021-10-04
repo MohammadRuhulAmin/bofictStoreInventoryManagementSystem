@@ -154,6 +154,7 @@ class UsersController extends Controller
         flash('User Permission Has changed to Admin  Successfully  !')->success();
         return back();
     }
+   
     public function detailsOfUser($id){
        
         $userInformation = User::findOrFail($id);
@@ -162,5 +163,8 @@ class UsersController extends Controller
         return view('admin.users.details',compact('userInformation','complaintsOfProduct'));
         
     }
+
+
+   
 
 }

@@ -17,9 +17,10 @@ class LandingPageController extends Controller
             return redirect('user/dashboard');
         }
         
-        if($role  ===  "technician"){
+        if($role  ===  "technician" ){
             return redirect('technician/dashboard');
         }
+        
 
     }
 }

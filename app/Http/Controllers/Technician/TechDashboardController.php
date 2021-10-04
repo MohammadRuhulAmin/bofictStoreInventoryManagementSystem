@@ -9,12 +9,10 @@ use Illuminate\Support\Carbon;
 class TechDashboardController extends Controller
 {
     public function dashboard(){
+        $todayComplaintsListCount = Complaint::whereDate('created_at','=', Carbon::today()->toDateString())->count();
+        $totalProblems = Complaint::count();
         $todayDate = date("Y-m-d");
-
-        
-        $complaints = Complaint::where('created_at','=',)->get();
         $complaints = Complaint::whereDate('created_at', '=',  Carbon::today()->toDateString())->get();
-       
-        return view('technician.dashboard',compact('complaints'));
+        return view('technician.dashboard',compact('complaints','todayComplaintsListCount','totalProblems'));
     }
 }

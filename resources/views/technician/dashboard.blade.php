@@ -26,7 +26,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                       <div class="inner">
-                        <h3>1000</h3>
+                        <h3>{{$totalProblems ?? '0'}}</h3>
                         <p>Total Complaint</p>
                       </div>
                       <div class="icon">
@@ -70,7 +70,7 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                       <div class="inner">
-                        <h3> 22 </h3>
+                        <h3> {{$todayComplaintsListCount ?? '0'}} </h3>
         
                         <p>Todays Complaints</p>
                       </div>

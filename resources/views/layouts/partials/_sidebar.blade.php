@@ -186,7 +186,7 @@
               </li>
               @endif
              
-              @if(auth()->user()->role === "technician")
+              @if(auth()->user()->role === "technician" || auth()->user()->role === "officeHd.Mant.Tech")
               <li class="nav-item">
                 <a href="{{route('technician.dashboard')}}" class="nav-link {{request()->is('technician.dashboard')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
@@ -195,7 +195,7 @@
               </li>
               @endif
 
-              @if(auth()->user()->role === "technician")
+              @if(auth()->user()->role === "technician" || auth()->user()->role === "officeHd.Mant.Tech" )
               <li class="nav-item">
                 <a href="{{route('technician_complaints.index')}}" class="nav-link {{request()->is('complaint*')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
