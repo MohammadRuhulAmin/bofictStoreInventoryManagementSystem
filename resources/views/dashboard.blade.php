@@ -112,84 +112,13 @@
      
       <div class="card-body">
         <div class="row">
-          <div class="card card-primary col-md-2 ">
+       
+          <div class="card card col-md-5">
             <div class="card-header">
-              <p class="card-text" >Road Map For Products </p>
-            </div>
-            <div class="treeview ">
-              <hr>
-
-              <ul class="mb-1 pl-3 pb-2"> 
-                <li><i class="fas fa-angle-right rotate"></i>
-                  <span><i class="fa fa-desktop" aria-hidden="true"></i> WorkStation PC </span>
-                  <ul class="nested">
-                    <li> <i class="fab fa-battle-net"></i>  HP , ASUS , DELL   </li>
-                       <li> <i class="fab fa-battle-net"></i>  Apple , Intel , Delux    </li>
-                       <ul class="nested">
-                          <li > <i class="fas fa-microchip"></i> i3 , i5 , i7 , i9  </li>
-                       </ul>
-                  </ul>
-                </li>
-                <li><i class="fas fa-angle-right rotate"> </i>
-                  <span><i class="fa fa-desktop"></i> Desktop </span>
-                  <ul class="nested">
-                    <li><i class="fa fa-desktop"></i> Brand Desktop </li>
-                     <ul class="nested">
-                       <li> <i class="fab fa-battle-net"></i>  HP , ASUS , DELL   </li>
-                       <li> <i class="fab fa-battle-net"></i>  Apple , Intel , Delux    </li>
-                       <ul class="nested">
-                          <li > <i class="fas fa-microchip"></i> i3 , i5 , i7 , i9  </li>
-                       </ul>
-
-                     </ul>
-                    <li><i class="fa fa-desktop"></i> Clone  Desktop </li>
-                    <ul class="nested">
-                      <li > <i class="fas fa-microchip"></i> i3 , i5 , i7 , i9  </li>
-                   </ul>
-                    </li>
-                  </ul>
-                </li>
-
-                <li><i class="fas fa-angle-right rotate"></i>
-                  <span><i class="fa fa-wifi" aria-hidden="true"></i> Router</span>
-                  <ul class="nested">
-                    <li><i class="fa fa-wifi" aria-hidden="true"></i> Home Router </li>
-                    <li><i class="fa fa-wifi" aria-hidden="true"></i> Core Router </li>
-                   
-                  </ul>
-                </li>
-                <li><i class="fas fa-angle-right rotate"></i>
-                  <span><i class="fas fa-phone"></i> Phone</span>
-                  <ul class="nested">
-                      <li><i class="fas fa-phone"></i> Mobile Phone </li>
-                      <li><i class="fas fa-phone"></i> Cordless Phone  </li>
-                    </ul>
-                </li> 
-                <li><i class="fas fa-angle-right rotate"></i>
-                  <span> <i class="fas fa-print"></i> Printer </span>
-                  <ul class="nested">
-                      <li><i class="fas fa-print"></i> Color Printer </li>
-                      <ul class="nested">
-                        <li> <i class="fas fa-print"></i> Laser </li>
-                        <li> <i class="fas fa-print"></i> Ink Jet</li>
-                      </ul>
-                      <li><i class="fas fa-print"></i> Black & White Printer   </li>
-                      <ul class="nested">
-                        <li> <i class="fas fa-print"></i> Micro Dry </li>
-                        <li> <i class="fas fa-print"></i> Dot Matrix Printer </li>
-                      </ul>
-                    </ul>
-                </li>
-              </ul>
-            
-            </div>
-            
-         
-         </div>
-          <div class="card card-primary col-md-5">
-            <div class="card-header">
-              <h3 class="card-title"> Product Information </h3>
-            
+              <h3 class="card-title"> Product Information </h3><br>
+              <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModalScrollable">
+                <i class="fas fa-info-circle"></i>
+              </button>
             </div>
             <form method="post" action="{{route('information.generateAllStuff')}}">
               @csrf 
@@ -323,8 +252,99 @@
     </div>
     </div>
       </div>
-      <div class="card-footer"></div>
+      <div class="card-footer">
+        {{-- modal start --}}
+       <!-- Button trigger modal -->
+       
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Tree View Of ICT Product Excessories</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="treeview ">
+                  <hr>
+    
+                  <ul class="mb-1 pl-3 pb-2"> 
+                    <li><i class="fas fa-angle-right rotate"></i>
+                      <span><i class="fa fa-desktop" aria-hidden="true"></i> WorkStation PC </span>
+                      <ul class="nested">
+                        <li> <i class="fab fa-battle-net"></i>  HP , ASUS , DELL   </li>
+                           <li> <i class="fab fa-battle-net"></i>  Apple , Intel , Delux    </li>
+                           <ul class="nested">
+                              <li > <i class="fas fa-microchip"></i> i3 , i5 , i7 , i9  </li>
+                           </ul>
+                      </ul>
+                    </li>
+                    <li><i class="fas fa-angle-right rotate"> </i>
+                      <span><i class="fa fa-desktop"></i> Desktop </span>
+                      <ul class="nested">
+                        <li><i class="fa fa-desktop"></i> Brand Desktop </li>
+                         <ul class="nested">
+                           <li> <i class="fab fa-battle-net"></i>  HP , ASUS , DELL   </li>
+                           <li> <i class="fab fa-battle-net"></i>  Apple , Intel , Delux    </li>
+                           <ul class="nested">
+                              <li > <i class="fas fa-microchip"></i> i3 , i5 , i7 , i9  </li>
+                           </ul>
+    
+                         </ul>
+                        <li><i class="fa fa-desktop"></i> Clone  Desktop </li>
+                        <ul class="nested">
+                          <li > <i class="fas fa-microchip"></i> i3 , i5 , i7 , i9  </li>
+                       </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><i class="fas fa-angle-right rotate"></i>
+                      <span><i class="fa fa-wifi" aria-hidden="true"></i> Router</span>
+                      <ul class="nested">
+                        <li><i class="fa fa-wifi" aria-hidden="true"></i> Home Router </li>
+                        <li><i class="fa fa-wifi" aria-hidden="true"></i> Core Router </li>
+                       
+                      </ul>
+                    </li>
+                    <li><i class="fas fa-angle-right rotate"></i>
+                      <span><i class="fas fa-phone"></i> Phone</span>
+                      <ul class="nested">
+                          <li><i class="fas fa-phone"></i> Mobile Phone </li>
+                          <li><i class="fas fa-phone"></i> Cordless Phone  </li>
+                        </ul>
+                    </li> 
+                    <li><i class="fas fa-angle-right rotate"></i>
+                      <span> <i class="fas fa-print"></i> Printer </span>
+                      <ul class="nested">
+                          <li><i class="fas fa-print"></i> Color Printer </li>
+                          <ul class="nested">
+                            <li> <i class="fas fa-print"></i> Laser </li>
+                            <li> <i class="fas fa-print"></i> Ink Jet</li>
+                          </ul>
+                          <li><i class="fas fa-print"></i> Black & White Printer   </li>
+                          <ul class="nested">
+                            <li> <i class="fas fa-print"></i> Micro Dry </li>
+                            <li> <i class="fas fa-print"></i> Dot Matrix Printer </li>
+                          </ul>
+                        </ul>
+                    </li>
+                  </ul>
+                
+                </div>
+               
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+              </div>
+            </div>
+          </div>
+        </div>
+        {{-- modal end --}}
+      </div>
     </div> 
-         
-   
+
+
 @endsection
