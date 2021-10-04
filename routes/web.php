@@ -170,6 +170,7 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
     // Complaint 
      Route::resource('technician_complaints',ComplaintsController::class);
      Route::post('/complaints/complaints-list-byDate',[ComplaintsController::class,'listByDate'])->name('technician_complaints.listByDate');    
+    // for Hardware maintance & Data entry operator the dashboard will be added ! 
     });
 });
 
