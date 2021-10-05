@@ -214,6 +214,7 @@ class ProductController extends Controller
         flash('Excel File is Imported ,   Successfully!')->success();
         return redirect()->route('products.index');
     }
+    
     public function exportByCategory(Request $request){
         
         session()->put(['categoryName'=>$request->SearchByCategory]);
