@@ -144,9 +144,9 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
   // user prefix
    Route::prefix('user')->group(function(){
       
-    // user dashboard
-    Route::get('/dashboard',[ViewerController::class,'dashboard'])->name('user.dashboard');
-    // Product Index 
+      // user dashboard
+      Route::get('/dashboard',[ViewerController::class,'dashboard'])->name('user.dashboard');
+      // Product Index 
       Route::get('/products',[ViewerController::class,'index'])->name('product.index');
       // show product details 
       Route::get('/product/details/{id}',[ViewerController::class,'details'])->name('product.show');
@@ -164,8 +164,7 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
 Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
   // user prefix
    Route::prefix('technician')->group(function(){
-      
-    // user dashboard
+    // user dashboard 
     Route::get('/dashboard',[TechDashboardController::class,'dashboard'])->name('technician.dashboard');
     // Complaint 
      Route::resource('technician_complaints',ComplaintsController::class);

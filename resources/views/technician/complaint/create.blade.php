@@ -97,7 +97,6 @@
                 <span class="text-danger">Solver  must be Provided! &  {{$errors->first('complaintSolverTechnicianName')}}</span>
             @endif
           </div>
-          
           <div class="form-group">
             <label for="exampleInputEmail1"> Complaint Solution Date    </label>
             <input type="date" class="form-control" id="" name="complaintSolutionDate">
@@ -105,7 +104,24 @@
                 <span class="text-danger"> Problem Solution Date   {{$errors->first('complaintSolutionDate')}}</span>
             @endif
           </div>
-          
+          <div class="form-group">
+            <label for="exampleInputEmail1"> Product Status    </label>
+            <select class="form-control" id="" name="productStatus">
+              <option></option>
+              <option>In Stock</option>
+              <option>Issued</option>
+              <option>Repair Cell</option>
+              <option>Out of Order</option>
+              <option>Unservivable</option>
+              <option>Dispose</option>
+              <option>Expire</option>
+            </select>
+            @if($errors->has('productStatus'))
+                <span class="text-danger">Select the product status  </span>
+            @endif
+          </div>
+
+
           <div class="form-group">
             <label for="exampleInputEmail1"> Complaint Solution Description    </label>
             <input type="text" class="form-control" id="" name="complaintSolutionDescription">
@@ -113,6 +129,9 @@
                 <span class="text-danger">Solution Description  Name must be Provided! &  {{$errors->first('complaintSolutionDescription')}}</span>
             @endif
           </div>
+
+
+
           <div class="form-group">
             <label for="exampleInputEmail1"> IC    </label>
             <input type="checkbox" class="form-control" id="" name="ic">

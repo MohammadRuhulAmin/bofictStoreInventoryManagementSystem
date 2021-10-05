@@ -110,6 +110,7 @@
                   <th>Cnt Rcv Name</th>
                   <th>Sln By</th>
                   <th>Sln Date</th>
+                  <th> Product Status </th>
                   <th>Sln Descript</th>
                   <th>IC</th>
                   <th>OIC</th>
@@ -130,7 +131,8 @@
                           <td>{{$complaint->complaintDescription ?? ''}}</td>
                           <td>{{$complaint->complaintReceiverName ?? ''}}</td>
                           <td>{{$complaint->complaintSolverTechnicianName}}</td>
-                          <td>{{$complaint->complaintSolutionDate ?? ''}}</td>
+                          <td>{{$complaint->complaintSolutionDate ?? ''}}</td>   
+                          <td>{{$complaint->productStatus ?? '' }}</td>
                           <td>{{$complaint->complaintSolutionDescription ?? ''}}</td>
                           <td>{{$complaint->ic ?? ''}}</td>
                           <td>{{$complaint->oic ?? ''}}</td>

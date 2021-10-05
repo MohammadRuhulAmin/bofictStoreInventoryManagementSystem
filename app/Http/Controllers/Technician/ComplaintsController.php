@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Technician;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 use App\Models\Technician\Complaint;
 use App\Models\Admin\Product;
 use App\Models\Admin\User;
@@ -65,14 +65,13 @@ class ComplaintsController extends Controller
             'complaintDescription' =>'required',
             'complaintReceiverName' =>'required',
             'complaintSolverTechnicianName' =>'required',
+            'productStatus' =>'required',
             'complaintSolutionDate' =>'required',
             'complaintSolutionDescription' =>'required',
 
         ]);
         $product = Product::where(['name'=>$request->productName])->first();
         //--------------------------------
-       
-
         //-------------------------------
         $complaint = new Complaint();
         $complaint->productName = $request->productName;
@@ -80,25 +79,21 @@ class ComplaintsController extends Controller
         $complaint->date = $request->date;
         $complaint->time = $request->time;
         $complaint->complaintName = $request->complaintName;
-        $complaint->complaintDesignation = $request->complaintDesignation;
-        $complaint->complaintDescription = $request->complaintDescription;
+        $complaint->complaintDesignation  = $request->complaintDesignation;
+        $complaint->complaintDescription  = $request->complaintDescription;
         $complaint->complaintReceiverName = $request->complaintReceiverName;
         $complaint->complaintSolverTechnicianName = $request->complaintSolverTechnicianName;
         $complaint->complaintSolutionDate = $request->complaintSolutionDate;
         $complaint->complaintSolverTechnicianName = $request->complaintSolverTechnicianName;
         $complaint->complaintSolutionDate = $request->complaintSolutionDate;
+        $complaint->productStatus = $request->productStatus;
         $complaint->complaintSolutionDescription = $request->complaintSolutionDescription;
         $complaint->ic = $request->ic;
         $complaint->oic = $request->oic;
         $complaint->save();
         flash('Complaint Created Successfully!')->success();
         return back();
-        
-
-
-        
     }
-
     /**
      * Display the specified resource.
      *
@@ -119,7 +114,7 @@ class ComplaintsController extends Controller
     public function edit($id)
     {
         $complaint = Complaint::findOrFail($id);
-        return view('technician.complaint.edit',compact('complaint'));
+        return view('technician.complaint.edit',compact('complaint'));   
     }
 
     /**
@@ -131,6 +126,8 @@ class ComplaintsController extends Controller
      */
     public function update(Request $request, $id)
     {
+       
+       
         $this->validate($request,[
             'date'=>'required',
             'time'=>'required',
@@ -139,12 +136,16 @@ class ComplaintsController extends Controller
             'complaintDescription' =>'required',
             'complaintReceiverName' =>'required',
             'complaintSolverTechnicianName' =>'required',
+            'productStatus' =>'required',
             'complaintSolutionDate' =>'required',
             'complaintSolutionDescription' =>'required',
-
         ]);
         $complaint = Complaint::findOrFail($id);
-        
+        if($complaint->productStatus === "Expire"){
+            flash("Product is Expire it cannot recicle to Use or not Authorized by OIC")->error();
+            return back();
+        }
+        // return $complaint->productStatus ."  ".$request->productStatus; 
         $complaint->date = $request->date;
         $complaint->time = $request->time;
         $complaint->complaintName = $request->complaintName;
@@ -157,7 +158,30 @@ class ComplaintsController extends Controller
         $complaint->complaintSolutionDate = $request->complaintSolutionDate;
         $complaint->complaintSolutionDescription = $request->complaintSolutionDescription;
         $complaint->ic = $request->ic;
-        $complaint->oic = $request->oic;
+        $complaint->oic = $request->oic; 
+        $productStatusArray = array();
+        $productStatusArray[0] =  $complaint->productStatus;
+        $productStatusArray[1] = $request->productStatus;
+        $complaint->productStatus = $request->productStatus;
+        // if($complaint->productStatus === "Expire"){
+        //     flash("Product is Expire it cannot recicle to Use or not Authorized by OIC")->error();
+        //     return back();
+        // }
+        
+        if($productStatusArray[0] === "Expire" && $productStatusArray[1] ==="Dispose"){
+            flash('Expire Product Cannot Switch to Dispose option ! ')->error();
+            return back();
+        }
+
+        if($productStatusArray[0] === "Expire" && $productStatusArray[1] === "Unservivable"){
+            flash('Expire Product Cannot Switch to Unservivable option !')->error(); 
+            return back();
+        }
+        if($productStatusArray[0] === "Dispose" && $productStatusArray[1] === "Unservivable"){
+            flash('Dispose Product Cannot Switch to Unservivable  option !')->error();
+            return back();
+        }
+        
         $complaint->save();
         flash('Complaint Updated Successfully!')->success();
         return redirect()->route('technician_complaints.index');
