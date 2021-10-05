@@ -83,9 +83,11 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::resource('types',TypeController::class);
      //Product
       Route::resource('products',ProductController::class);
-     //Item
+      Route::get('repeatedProductsList',[ProductController::class,'repeatedProductList'])->name('products.repeatedProductsList');
+      
+      //Item
       Route::resource('items',ItemController::class);
-     //complaints 
+      //complaints 
       Route::resource('admin_complaints',AdminComplaintsController::class);
       Route::post('/complaints/complaints-list-byDate',[AdminComplaintsController::class,'listByDate'])->name('admin_complaints.listByDate');
 

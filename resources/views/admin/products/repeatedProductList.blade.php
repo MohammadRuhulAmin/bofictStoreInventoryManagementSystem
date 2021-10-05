@@ -9,15 +9,14 @@
     
           <h1 class="m-0">Products</h1>
           <br>
-          <a href="{{route('products.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add New Product Item</a>
-          <a href="{{route('products.repeatedProductsList')}}" class="btn btn-sm btn-danger" > <i class="fa fa-delete"></i> Repeated Product </a>
+          <a href="{{route('products.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i></a>
           
           
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item active">Product List </li>
+            <li class="breadcrumb-item active">Repeated Product List  </li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -29,23 +28,12 @@
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Product  List  </h3>
+        <h3 class="card-title">Repeated Product List   </h3>
       </div>
       <br>
       
       <br>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="card-title">Download All Products List </h5>
-            </div>
-            <div class="card-body">
-              <a href="{{route('admin.product.excel')}}" class="btn btn-warning">Download as Excel File </a>
-              <a href="{{route('admin.product.csv')}}" class="btn btn-primary">Download as CSV FIle  </a>
-            </div>
-          </div>
-        </div>
+      
        
       </div>
       <br>
@@ -69,7 +57,6 @@
             @if($products)
                 @foreach ($products as $key=> $product)
                     <tr>
-                      {{-- {{asset('storage/product_images/'.$product->image)}} --}}
                         <td>{{++$key}}</td>
                         <td>
                           @if($product->image !== null)
@@ -87,7 +74,7 @@
                         <td>{{$product->type ?? ''}}</td>
                         <td>{{$product->item ?? ''}}</td>
                         <td>
-                            <a  href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
+                            <a href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
                                 <i class="fa fa-edit"></i>  Edit 
                             </a>
                             <a href="{{route('products.show',$product->id)}}" class="btn btn-sm btn-success">
@@ -97,7 +84,7 @@
                               <i class="fa fa-trash"></i>  Delete
                             </a>
                             <form id="product-delete-{{$product->id}}" action="{{route('products.destroy',$product->id)}}" method="post">
-                                @csrf 
+                                @csrf
                                 @method('DELETE')
                             </form>
                         </td>

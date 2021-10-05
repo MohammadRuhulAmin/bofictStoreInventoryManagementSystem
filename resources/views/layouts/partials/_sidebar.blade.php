@@ -140,7 +140,6 @@
                 </a>
               </li>
               @endif
-            
               </li>
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
@@ -160,7 +159,16 @@
               @endif
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
-                <a href="{{route('stocks.index')}}" class="nav-link {{request()->is('stocks*')? 'active': ''}}">
+                <a href="{{route('products.repeatedProductsList')}}" class="text-danger nav-link {{request()->is('productIssuesUsers*')? 'active': ''}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> Repeated Log!! </p>
+                </a>
+              </li>
+              @endif
+              
+              @if(auth()->user()->role === "admin")
+              <li class="nav-item">
+                <a href="{{route('stocks.index')}}"  class=" nav-link{{request()->is('stocks*')? 'active': ''}}">
                   <i class="fas fa-align-left nav-icon"></i>
                   <p> Stock </p>
                 </a>
@@ -176,7 +184,9 @@
                 </a>
               </li>
               @endif
+
               
+
               @if(auth()->user()->role === "user")
               <li class="nav-item">
                 <a href="{{route('user.dashboard')}}" class="nav-link {{request()->is('dashboard*')? 'active': ''}}">
@@ -203,8 +213,13 @@
                 </a>
               </li>
               @endif
+              
+              
             </ul>
           </li>
+         
+
+
           <li class="nav-item">
             <a href="{{route('users.logout')}}" class="nav-link {{request()->is('users*')? 'active': ''}}">
               <i class="fa fa-sign-out"></i>
@@ -214,7 +229,9 @@
               </p>
             </a>
           </li>
+        
         </ul>
+       
       </nav>
       <!-- /.sidebar-menu -->
     </div>

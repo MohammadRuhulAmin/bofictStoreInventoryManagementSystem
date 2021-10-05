@@ -126,8 +126,6 @@ class ComplaintsController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
-       
         $this->validate($request,[
             'date'=>'required',
             'time'=>'required',
@@ -140,6 +138,7 @@ class ComplaintsController extends Controller
             'complaintSolutionDate' =>'required',
             'complaintSolutionDescription' =>'required',
         ]);
+
         $complaint = Complaint::findOrFail($id);
         if($complaint->productStatus === "Expire"){
             flash("Product is Expire it cannot recicle to Use or not Authorized by OIC")->error();
@@ -186,14 +185,15 @@ class ComplaintsController extends Controller
         flash('Complaint Updated Successfully!')->success();
         return redirect()->route('technician_complaints.index');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    
+     public function destroy($id)
     {
         $complaint = Complaint::findOrFail($id);
         $complaint->delete();
@@ -206,5 +206,4 @@ class ComplaintsController extends Controller
         $complaints = Complaint::where(['date'=>$request->listByDate])->get();
         return view('technician.complaint.listByDate',compact('complaints','specificDate'));
     }
-
 }

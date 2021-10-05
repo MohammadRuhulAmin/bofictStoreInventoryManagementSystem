@@ -220,5 +220,22 @@ class ProductController extends Controller
         return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
         //return $request->all();
     }
+    public function repeatedProductList(){
+        $productsList = Product::all();
+        $TrackedRepeatedProduct = array();
+        $totalProducts = count($productsList);
+        for ($i = 0;$i<$totalProducts;$i++){
+            $productItemName = $productsList[$i]->name;
+            for($j = 0;$j<$totalProducts;$j++){
+                if($i != $j){   
+                    if($productsList[$j]->name === $productItemName){
+                        array_push($TrackedRepeatedProduct, $productsList[$j]);
+                    }
+                }
+            }
+        }
+        return view('admin.products.repeatedProductList')->with(['products' => $TrackedRepeatedProduct]);
+        
+    }
 
 }
