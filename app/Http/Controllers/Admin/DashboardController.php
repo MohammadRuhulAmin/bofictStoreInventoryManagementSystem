@@ -16,6 +16,10 @@ use App\Models\Admin\Productissued;
 class DashboardController extends Controller
 {
     public function index(){
+        
+         
+
+
         $total_department = Department::count();
         $total_category = Category::count();
      

@@ -13,7 +13,7 @@ class TestProductController extends Controller
         //$products = Product::orderby('created_at','DESC')->get();
         $products = DB::table('products')->orderby('created_at','DESC');
         return DataTables::queryBuilder($products)->toJson();
-        //return view('testproducts');
+      
     }
     public function view(){
         return view('testproducts');

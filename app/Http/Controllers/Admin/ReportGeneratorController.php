@@ -868,6 +868,7 @@ class ReportGeneratorController extends Controller
                 return back();
             }
         }
+
         //input field 4
         // Department , category , subcategory , Brand 
         else if($department !==  null && $category !== null && $subcategory !== null && $brand !== null && $item ===  null && $type === null ){
@@ -1192,7 +1193,37 @@ class ReportGeneratorController extends Controller
        
 
     }
-
+    public function ReportRepeatedFile(){
+            $productsList = Product::all();
+            $TrackedRepeatedProduct = array();
+            $totalProducts = count($productsList);
+            for ($i = 0;$i<$totalProducts;$i++){
+                $productItemName = $productsList[$i]->name;
+                for($j = 0;$j<$totalProducts;$j++){
+                    if($i != $j){   
+                        if($productsList[$j]->name === $productItemName){
+                            array_push($TrackedRepeatedProduct, $productsList[$j]);
+                        }
+                    }
+                }
+            }
+            
+            $data = [
+                'productsList' =>$TrackedRepeatedProduct,
+                'Title' =>'BOF',
+                'Dept' =>'ICT CELL',
+                'Subcategory' =>$subcategory,
+                'Brand' =>$brand,
+                'Item' =>$item,
+                'Category' =>$category,
+                'Type' =>$type,
+                'TotalProduct' =>$totalProduct,
+            ];
+            $pdf = PDF::loadView('admin.reports.pdf.productReport.repeatedProductsList',$data);
+            return $pdf->download('productList.pdf');
+            
+        
+    }
 
 
    

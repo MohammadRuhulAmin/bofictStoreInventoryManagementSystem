@@ -19,7 +19,7 @@ use Excel;
 use App\Exports\ProductExport;
 use DataTables;
 use DB;
-
+use Illuminate\Support\Carbon;
 
 class ProductController extends Controller
 {
@@ -28,17 +28,24 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+  
     public function index()
-    {
-        $categoriesList = Category::orderby('created_at','DESC')->get();
-        $products = Product::orderby('created_at','DESC')->get();
-         
-        return view('admin.products.index',compact('products','categoriesList'));
+    {   
+        
+         //$products = DB::table('products')->get();
+         // $products = Product::all();
+         //$products = DB::table('products')->groupBy('category')->get();
+        //  $products = DB::table('products')->groupBy('category','desktop')->get();
+        $products =DB::table('products')->whereBetween('created_at' ,[Carbon::parse('2021-06-01') ,Carbon::parse('2021-01-01')->endOfYear()])->get();
+        //$products = DB::table('products')->get();
+        return view('admin.products.index',compact('products'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create()

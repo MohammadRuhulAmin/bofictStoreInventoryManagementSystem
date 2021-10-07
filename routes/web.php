@@ -43,12 +43,13 @@ use App\Http\Controllers\TestProductController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/',[TestProductController::class,'view']);
-Route::get('/bofict-cell',[TestProductController::class,'allProductsList']);
+// Route::get('/',[TestProductController::class,'view']);
+// Route::get('/bofict-cell',[TestProductController::class,'allProductsList']);
+
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () { 
 //     return view('dashboard');
@@ -84,6 +85,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
      //Product
       Route::resource('products',ProductController::class);
       Route::get('repeatedProductsList',[ProductController::class,'repeatedProductList'])->name('products.repeatedProductsList');
+     
       
       //Item
       Route::resource('items',ItemController::class);
@@ -110,7 +112,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        Route::resource('productIssuesUsers',ProductissuedController::class);
        Route::post('/import-excel-file/productUsers',[ProductissuedController::class,'importProductUsers'])->name('admin.productUsersInfo.import');
       
-       // assigning product with user 
+       // assigning product with user  
        Route::resource('assignProductWithUsers',AssignProductToUser::class);
        Route::get('/assignProductWithUsers/{id}/details-of-product-repairment-history',[AssignProductToUser::class,'productRepairementHistory'])->name('assignProductWithUsers.repairmentHistoryProduct');
 
@@ -118,9 +120,10 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        Route::get('/reports',[ReportGeneratorController::class ,'index'])->name('report.index');
        Route::post('/reports/generateAllStuff',[ReportGeneratorController::class,'generateReportAllStuff'])->name('report.generateAllStuff'); 
 
-       // Report Generator for Specific product 
+       // Report Generator for Specific product  
        Route::post('/reports/product',[ReportGeneratorController::class,'reportForSpecificProduct'])->name('admin.report.specificProduct');
-       
+       //Route::get('/reports/product/repeatedProductsList',[ReportGeneratorController::class,'ReportRepeatedFile']);
+
        // Report Generator for Specific User
        Route::post('/reports/user',[ReportGeneratorController::class,'reportForSpecificUser'])->name('admin.report.byBofID');
 
@@ -135,7 +138,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       // Product Stock 
       Route::resource('stocks',StockController::class);                                    
        // Stock Report Generator Controller 
-      Route::get('/stocks/stockReport/index',[StockReportGeneratorController::class ,'index'])->name('stockReport.index'); 
+      Route::get('/stocks/stockReport/index',[StockReportGeneratorController::class ,'index'])->name('stockReport.index');
       Route::post('/stocks/stockReport/ReportGenerateToPDF',[StockReportGeneratorController::class,'StockReportGeneratorAllStuff'])->name('stockReport.generateReport');
 
       });
@@ -169,11 +172,17 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
     // user dashboard 
     Route::get('/dashboard',[TechDashboardController::class,'dashboard'])->name('technician.dashboard');
     // Complaint 
+
      Route::resource('technician_complaints',ComplaintsController::class);
      Route::post('/complaints/complaints-list-byDate',[ComplaintsController::class,'listByDate'])->name('technician_complaints.listByDate');    
     // for Hardware maintance & Data entry operator the dashboard will be added ! 
     });
 });
+
+
+
+
+
 
 
 

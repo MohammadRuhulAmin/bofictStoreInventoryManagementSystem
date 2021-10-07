@@ -88,13 +88,13 @@
                         <td>{{$product->item ?? ''}}</td>
                         <td>
                             <a  href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
-                                <i class="fa fa-edit"></i>  Edit 
+                                <i class="fa fa-edit"></i>   
                             </a>
                             <a href="{{route('products.show',$product->id)}}" class="btn btn-sm btn-success">
-                              <i class="fa fa-info-circle"></i> Details
+                              <i class="fa fa-info-circle"></i> 
                             </a>
                             <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="product-delete-{{$product->id}}">
-                              <i class="fa fa-trash"></i>  Delete
+                              <i class="fa fa-trash"></i> 
                             </a>
                             <form id="product-delete-{{$product->id}}" action="{{route('products.destroy',$product->id)}}" method="post">
                                 @csrf 

@@ -28,7 +28,7 @@
     </div>
 
     <div class="container" >
-        {{-- <table  class="table table-striped" id="productsInformation" width="100%">
+        <table  class="table table-striped" id="productsInformation" width="100%">
             <thead>
                 <tr>
                     <th>department</th>
@@ -42,7 +42,7 @@
                    
                 </tr>
             </thead>
-        </table> --}}
+        </table>
         <table class="table-striped" align="center" width="10%">
             <tr>
                 <td><a href="{{route('login')}}" class="btn btn-success">Login</a></td>
@@ -59,7 +59,7 @@
  
   <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
    
-{{-- 
+
 <script type="text/javascript">
      $(document).ready(function() {
         //  console.log('{{url('/testing-product')}}');
@@ -94,7 +94,7 @@
 
 });
 
-</script> --}}
+</script>
 </body>
 </html>
 
