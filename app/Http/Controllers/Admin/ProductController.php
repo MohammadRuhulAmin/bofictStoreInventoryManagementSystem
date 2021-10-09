@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Product;
@@ -20,7 +19,6 @@ use App\Exports\ProductExport;
 use DataTables;
 use DB;
 use Illuminate\Support\Carbon;
-
 class ProductController extends Controller
 {
     /**
@@ -29,7 +27,6 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-  
     public function index()
     {   
         
@@ -176,8 +173,8 @@ class ProductController extends Controller
             
             $image = $request->file('image');
             $fileName = time().'.'.$image->getClientOriginalExtension();
-            $request->image->move('storage/',$fileName);
-            $product->image = $fileName;
+            $request->image->move('storage/',$fileName); 
+            $product->image = $fileName; 
             
         }
         //==================
@@ -222,14 +219,16 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
     
+
     public function exportByCategory(Request $request){
         
         session()->put(['categoryName'=>$request->SearchByCategory]);
         return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
-        //return $request->all();
     }
+    
+    
     public function repeatedProductList(){
-        $productsList = Product::all();
+        $productsList = Product::orderby('name')->get();
         $TrackedRepeatedProduct = array();
         $totalProducts = count($productsList);
         for ($i = 0;$i<$totalProducts;$i++){
@@ -243,7 +242,6 @@ class ProductController extends Controller
             }
         }
         return view('admin.products.repeatedProductList')->with(['products' => $TrackedRepeatedProduct]);
-        
     }
 
 }
