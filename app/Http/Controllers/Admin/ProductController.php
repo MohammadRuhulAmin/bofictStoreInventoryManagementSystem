@@ -19,6 +19,7 @@ use App\Exports\ProductExport;
 use DataTables;
 use DB;
 use Illuminate\Support\Carbon;
+
 class ProductController extends Controller
 {
     /**
@@ -234,13 +235,16 @@ class ProductController extends Controller
         for ($i = 0;$i<$totalProducts;$i++){
             $productItemName = $productsList[$i]->name;
             for($j = 0;$j<$totalProducts;$j++){
-                if($i != $j){   
+                if($i != $j){
+
                     if($productsList[$j]->name === $productItemName){
                         array_push($TrackedRepeatedProduct, $productsList[$j]);
                     }
                 }
             }
         }
+        
+        
         return view('admin.products.repeatedProductList')->with(['products' => $TrackedRepeatedProduct]);
     }
 
