@@ -1,5 +1,4 @@
 <?php
-
 //for admin
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -20,17 +19,17 @@ use App\Http\Controllers\Admin\AccessoryController;
 use App\Http\Controllers\Admin\ReportGeneratorController;
 use App\Http\Controllers\Admin\InformationGeneratorController;
 use App\Http\Controllers\Admin\StockReportGeneratorController;
-
-
+use App\Http\Controllers\Admin\CameraDetailsController;
 // for user 
 use App\Http\Controllers\User\ViewerController;
-
-// for technicians
+// for technicians 
 use App\Http\Controllers\Technician\TechDashboardController;
 use App\Http\Controllers\Technician\ComplaintsController;
 //for testing product
 use App\Models\Admin\Product;
 use App\Http\Controllers\TestProductController;
+use App\Http\Controllers\Admin\CameraLocationController;
+
 // use DataTables;
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +60,6 @@ Route::get('/user/logout',[UsersController::class,'logout'])->name('users.logout
 // Dashboard redirect after checking who is user or admin 
 Route::get('/redirects',[LandingPageController::class,'redirectUser']);
 
-
 Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
    // admin prefix
       Route::prefix('admin')->group(function(){
@@ -83,10 +81,11 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
      // Type 
       Route::resource('types',TypeController::class);
      //Product
+      // Route::get('products/allProductsList',[ProductController::class,'allProductsList'])->name('products.allProducts');
       Route::resource('products',ProductController::class);
       Route::get('repeatedProductsList',[ProductController::class,'repeatedProductList'])->name('products.repeatedProductsList');
-     
       
+
       //Item
       Route::resource('items',ItemController::class);
       //complaints 
@@ -135,20 +134,23 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        // Information Generator for All Stuff 
        Route::post('/information/generateAllStuff',[InformationGeneratorController::class,'informationGenerateReportAllStuff'])->name('information.generateAllStuff'); 
        
+       // Camera Location
+       Route::resource('cameralocations',CameraLocationController::class);
+       //Camera Details 
+       Route::resource('cameradetails',CameraDetailsController::class);
       // Product Stock 
       Route::resource('stocks',StockController::class);                                    
        // Stock Report Generator Controller 
       Route::get('/stocks/stockReport/index',[StockReportGeneratorController::class ,'index'])->name('stockReport.index');
       Route::post('/stocks/stockReport/ReportGenerateToPDF',[StockReportGeneratorController::class,'StockReportGeneratorAllStuff'])->name('stockReport.generateReport');
-
-      });
+      
+   });
 });
 // Routes for users 
 
 Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
   // user prefix
    Route::prefix('user')->group(function(){
-      
       // user dashboard
       Route::get('/dashboard',[ViewerController::class,'dashboard'])->name('user.dashboard');
       // Product Index 
@@ -172,11 +174,16 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
     // user dashboard 
     Route::get('/dashboard',[TechDashboardController::class,'dashboard'])->name('technician.dashboard');
     // Complaint 
-
      Route::resource('technician_complaints',ComplaintsController::class);
      Route::post('/complaints/complaints-list-byDate',[ComplaintsController::class,'listByDate'])->name('technician_complaints.listByDate');    
     // for Hardware maintance & Data entry operator the dashboard will be added ! 
-    });
+
+    
+   });
+});
+
+Route::get('/show',function(){
+   return view('allProductsList');
 });
 
 

@@ -1164,7 +1164,6 @@ class ReportGeneratorController extends Controller
             'productUserList' =>$productUserList,
             'product' =>$product,
             'complaintsOfProduct' =>$complaintsOfProduct,
-            
         ];
         $pdf = PDF::loadView('admin.reports.pdf.productReport.productReports',$data);
         return $pdf->download('productList.pdf');
@@ -1222,6 +1221,12 @@ class ReportGeneratorController extends Controller
             $pdf = PDF::loadView('admin.reports.pdf.productReport.repeatedProductsList',$data);
             return $pdf->download('productList.pdf');
             
+        
+    }
+
+    
+    // This is for dynamic Function Any type of query may execute here! 
+    public function DynamicReportFunction(){
         
     }
 

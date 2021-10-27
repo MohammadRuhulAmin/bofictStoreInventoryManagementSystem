@@ -17,7 +17,7 @@
 
 <body>
         <div style="text-align:center">
-            <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
+            {{-- <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/> --}}
             <h3>{{$Title }}  ({{$Dept}})</h3>
             <b>Report Name : Products List of  {{$Category}} Category </b>
             <br>
@@ -38,7 +38,7 @@
            
         </table>
         <br>
-        <table  align="center" style="border-spacing: 0;" border="1px"  >
+        <table  align="center" style="border-spacing: 0;" border="1px">
             <tr>
                 <td>SL</td>
                 <td>Name</td>

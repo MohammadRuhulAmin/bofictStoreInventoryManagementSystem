@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Product;
@@ -22,24 +23,26 @@ use Illuminate\Support\Carbon;
 
 class ProductController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
 
+    // public function allProductsList(Request $request){
+    //     $products =  DB::table('products');
+    //     return DataTables::queryBuilder($products)->toJson();
+
+    // }
+
     public function index()
     {   
         
-         //$products = DB::table('products')->get();
-         // $products = Product::all();
-         //$products = DB::table('products')->groupBy('category')->get();
-        //  $products = DB::table('products')->groupBy('category','desktop')->get();
-        $products =DB::table('products')->whereBetween('created_at' ,[Carbon::parse('2021-06-01') ,Carbon::parse('2021-01-01')->endOfYear()])->get();
-        //$products = DB::table('products')->get();
+        
+        $products = DB::table('products')->whereBetween('created_at' ,[Carbon::parse('2021-06-01') ,Carbon::parse('2021-01-01')->endOfYear()])->get();
         return view('admin.products.index',compact('products'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -58,7 +61,6 @@ class ProductController extends Controller
         return view('admin.products.create')
         ->with(['categories'=>$categories,'subcategories'=>$subcategories,'types'=>$types,'brands'=>$brands,'items'=>$items,'departments'=>$departments]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -66,14 +68,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-         
+    {    
           //validation 
           $this->validate($request,[
             'name'=>'required|min:2|max:50|unique:products',
-        ]);
-
-        
+        ]);        
         $productID =  preg_replace('/\s+/', '', $request->name);
         $product = new Product();
         $product->name = $productID;
@@ -243,8 +242,6 @@ class ProductController extends Controller
                 }
             }
         }
-        
-        
         return view('admin.products.repeatedProductList')->with(['products' => $TrackedRepeatedProduct]);
     }
 

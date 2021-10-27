@@ -174,6 +174,23 @@
                 </a>
               </li>
               @endif
+              @if(auth()->user()->role === "admin")
+              <li class="nav-item">
+                <a href="{{route('cameradetails.index')}}" class="nav-link">
+                  <i class="fas fa-align-right nav-icon"></i>
+                  <p> Camera Information </p>
+                </a>
+              </li>
+              @endif
+              @if(auth()->user()->role === "admin")
+              <li class="nav-item">
+                <a href="{{route('cameralocations.index')}}" class="nav-link">
+                  <i class="fas fa-align-right nav-icon"></i>
+                  <p>Camera Location</p>
+                </a>
+              </li>
+              @endif
+
               
            
               @if(auth()->user()->role === "admin")
@@ -184,6 +201,7 @@
                 </a>
               </li>
               @endif
+              
 
               
 

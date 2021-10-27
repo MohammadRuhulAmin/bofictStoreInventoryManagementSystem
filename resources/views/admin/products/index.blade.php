@@ -107,10 +107,8 @@
         </tbody>
       </table>
       <br>
-     
     </div>
     <!-- /.card -->
   </div>
   <!-- /.content -->    
-  
 @endsection
