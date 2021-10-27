@@ -13,7 +13,7 @@ class Productissueuser implements ToModel,WithHeadingRow
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     
-
+ // all the row heading must be small letters 
     public function model(array $row)
     {
         return new Productissued([

@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Cameradetail;
 use App\Models\Admin\Cameralocation;
+use App\Imports\CameraDetailsImport;
+use Excel;
 class CameraDetailsController extends Controller
 {
     /*
@@ -114,6 +116,14 @@ class CameraDetailsController extends Controller
         $cameraDetail->delete();
         flash('Camera Information is Deleted Successfully')->success();
         return back();
-
     }
+    public function importCameraDetailsFile(Request $request){
+        $this->validate($request,[
+            'cameraDetailsFile' =>'required'
+        ]);
+        Excel::import(new CameraDetailsImport,$request->cameraDetailsFile);
+        flash('Camera Details of File for Excel is imported  Successfully')->success();
+        return redirect()->route('cameradetails.index');
+    }
+   
 }

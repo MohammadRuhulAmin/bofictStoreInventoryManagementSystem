@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cameradetail extends Model
 {
     use HasFactory;
+    protected $table = "cameradetails";
     protected $fillable = [
         'ictNo',
         'cameraParentLoccation',

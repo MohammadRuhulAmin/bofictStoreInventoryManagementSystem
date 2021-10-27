@@ -137,6 +137,8 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        // Camera Location
        Route::resource('cameralocations',CameraLocationController::class);
        //Camera Details 
+       //import Camera Details for Excel File 
+       Route::post('/cameradetails/importExcelFile',[CameraDetailsController::class,'importCameraDetailsFile'])->name('admin.cameraDetailsInfoImport');
        Route::resource('cameradetails',CameraDetailsController::class);
       // Product Stock 
       Route::resource('stocks',StockController::class);                                    

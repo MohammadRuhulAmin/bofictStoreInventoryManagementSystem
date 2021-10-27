@@ -18,7 +18,25 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
-
+  <div class="card card-primary m-3">
+    <div class="card-header">
+        <h3 class="card-title">Upload Data Via Excel</h3>
+    </div>
+    <div class="card-body">
+        <form method="post" action="{{route('admin.cameraDetailsInfoImport')}}" enctype="multipart/form-data">
+            @csrf 
+            <div class="form-group">
+                <label>Choose Excel / CSV File</label>
+                <input type="file" name="cameraDetailsFile" class="form-control">
+                @if($errors->has('cameraDetailsFile'))
+                    <span class="text-danger"> {{$errors->first('cameraDetailsFile')}}</span>
+                @endif
+                <span class="text-danger">**Excel File Column Must Be ictNo , cameraParentLoccation , specificLocationOfCamera ,  cameraType , defaultIpAddress , usedIpAddress , remarks </span>
+            </div>
+            <button class="btn btn-sm btn-primary">Submit</button>
+        </form>
+    </div>
+  </div>
   <!-- Main content -->
   <div class="col-md-12">
     <!-- general form elements -->

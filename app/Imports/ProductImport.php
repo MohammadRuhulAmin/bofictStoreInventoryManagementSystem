@@ -13,9 +13,8 @@ class ProductImport implements ToModel,WithHeadingRow
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
-    {
+    { // all the row heading must be small letters 
         return new Product([
-            
             'name'=>$row['name'],
             'category'=>$row['category'],
             'subcategory'=>$row['subcategory'],
