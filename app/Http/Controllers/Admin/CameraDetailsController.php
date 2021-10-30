@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -7,6 +8,7 @@ use App\Models\Admin\Cameradetail;
 use App\Models\Admin\Cameralocation;
 use App\Imports\CameraDetailsImport;
 use Excel;
+
 class CameraDetailsController extends Controller
 {
     /*
@@ -15,7 +17,6 @@ class CameraDetailsController extends Controller
      */
     public function index()
     {
-       
         $cameraDetailsList = CameraDetail::orderBy('created_at','DESC')->get();
         return view('admin.cameradetails.index',compact('cameraDetailsList'));
     }
@@ -89,8 +90,7 @@ class CameraDetailsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         $cameraDetail = Cameradetail::findOrFail($id);
         $cameraDetail->ictNo = $request->ictNo;
         $cameraDetail->cameraParentLoccation = $request->cameraParentLoccation;
@@ -103,7 +103,7 @@ class CameraDetailsController extends Controller
         flash("Camera Information is Updated Successfully !")->success();
         return redirect()->route('cameradetails.index');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *

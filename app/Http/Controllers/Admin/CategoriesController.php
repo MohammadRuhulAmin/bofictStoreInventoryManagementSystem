@@ -71,7 +71,7 @@ class CategoriesController extends Controller
         $category = Category::findOrFail($id);
         return view('admin.categories.edit',compact('category'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -90,7 +90,6 @@ class CategoriesController extends Controller
         flash('Category is Updated  Successfully!')->success();
         return redirect()->route('categories.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -103,7 +102,6 @@ class CategoriesController extends Controller
         $category->delete();
         flash('Category is Deleted  Successfully!')->success();
         return redirect()->route('categories.index');
-
     } 
     // HANDLE AJAX REQUEST 
     public function getCategoriesJson(){

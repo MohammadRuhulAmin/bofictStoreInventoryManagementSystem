@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\ReportGeneratorController;
 use App\Http\Controllers\Admin\InformationGeneratorController;
 use App\Http\Controllers\Admin\StockReportGeneratorController;
 use App\Http\Controllers\Admin\CameraDetailsController;
+use App\Http\Controllers\Admin\QuiceAccessController;
 // for user 
 use App\Http\Controllers\User\ViewerController;
 // for technicians 
@@ -81,11 +82,10 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
      // Type 
       Route::resource('types',TypeController::class);
      //Product
-      // Route::get('products/allProductsList',[ProductController::class,'allProductsList'])->name('products.allProducts');
+      Route::get('products/allProductsList',[ProductController::class,'allProductsList'])->name('products.allProducts');
       Route::resource('products',ProductController::class);
       Route::get('repeatedProductsList',[ProductController::class,'repeatedProductList'])->name('products.repeatedProductsList');
       
-
       //Item
       Route::resource('items',ItemController::class);
       //complaints 
@@ -184,9 +184,11 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
    });
 });
 
-Route::get('/show',function(){
-   return view('allProductsList');
-});
+//Route for quick access :: 
+
+Route::get('products/allProductsList',[QuiceAccessController::class,'allProductsList'])->name('QuickAccess.allProductsList');
+Route::get('/QuickAccess/productsList/Index',[QuiceAccessController::class,'allProductsListIndex'])->name('QuickAccess.allProductsListIndex');
+
 
 
 

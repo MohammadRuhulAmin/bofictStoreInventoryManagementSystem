@@ -19,7 +19,6 @@ class BrandsController extends Controller
         $brands = Brand::orderby('created_at','DESC')->get();
         return view('admin.brands.index',compact('brands'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +28,6 @@ class BrandsController extends Controller
     {
         return view('admin.brands.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -71,7 +69,6 @@ class BrandsController extends Controller
         $brand = Brand::findOrFail($id);
         return view('admin.brands.edit',compact('brand'));
     }
-
     /**
      * Update the specified resource in storage.
      *

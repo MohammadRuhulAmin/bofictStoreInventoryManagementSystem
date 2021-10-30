@@ -30,16 +30,15 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // public function allProductsList(Request $request){
-    //     $products =  DB::table('products');
-    //     return DataTables::queryBuilder($products)->toJson();
-
-    // }
+    public function allProductsList(Request $request){
+       
+        return Datatables::of(Product::query())->make(true);
+    }
 
     public function index()
     {   
-        
-        
+       // return view('admin.products.index');
+       
         $products = DB::table('products')->whereBetween('created_at' ,[Carbon::parse('2021-06-01') ,Carbon::parse('2021-01-01')->endOfYear()])->get();
         return view('admin.products.index',compact('products'));
     }
@@ -57,7 +56,6 @@ class ProductController extends Controller
         $brands = Brand::orderby('created_at','DESC')->get();
         $items = Item::orderby('created_at','DESC')->get();
         $departments = Department::orderby('created_at','DESC')->get();
-        
         return view('admin.products.create')
         ->with(['categories'=>$categories,'subcategories'=>$subcategories,'types'=>$types,'brands'=>$brands,'items'=>$items,'departments'=>$departments]);
     }
@@ -218,8 +216,6 @@ class ProductController extends Controller
         flash('Excel File is Imported ,   Successfully!')->success();
         return redirect()->route('products.index');
     }
-    
-
     public function exportByCategory(Request $request){
         
         session()->put(['categoryName'=>$request->SearchByCategory]);

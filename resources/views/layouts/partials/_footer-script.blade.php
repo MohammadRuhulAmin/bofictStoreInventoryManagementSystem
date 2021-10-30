@@ -8,6 +8,7 @@
 <script src="{{asset('admin/dist/js/adminlte.min.js')}}"></script>
 
 {{-- datatables --}}
+{{-- datatables --}}
 <script src="{{asset('admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
@@ -18,11 +19,6 @@
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
-
-
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
-  {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
-{{-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> --}}
 
 {{-- bootstrap tree view --}}
 
@@ -53,9 +49,6 @@
         });
     });
 </script>
-
-
-
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
@@ -187,9 +180,30 @@
 </script> 
 <script>
     $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
+    $('#myInput').trigger('focus')
 })
 </script>
+
+{{-- <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<!-- Bootstrap JavaScript ++  --> 
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> --}}
+<script> 
+    $('#productTable').DataTable();
+    // $('#productTable').DataTable({
+    //    processing:true,
+    //    serverSide:true,
+    //    ajax:'{!! route('products.allProducts') !!}',
+    //    columns: [
+    //        {"data": "department"},
+    //         {"data": "name"},
+    //         {"data": "category"},
+    //         {"data": "subcategory"},
+    //         {"data": "brand"},
+    //         {"data": "item"},
+    //         {"data": "type"},
+    //     ]  
+    // })
+  </script>
 
 @stack('scripts')
 

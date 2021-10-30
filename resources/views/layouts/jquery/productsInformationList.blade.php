@@ -1,7 +1,14 @@
 
+
 <script>
    
-   
+//   $(document).ready(function(){
+//     $('#productTable').DataTable({
+//         processing:true,
+//         serverSide:true,
+//     })
+     
+//   })
    
 
 
