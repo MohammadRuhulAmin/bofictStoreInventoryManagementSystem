@@ -10,26 +10,16 @@ use App\Models\Admin\Product;
 
 class QuiceAccessController extends Controller
 {
-    public function allProductsList(Request $request){
-        return datatables()->of(Product::latest()->get())->make(true);
-
-        $products = DB::table('products')->orderBy('department')->get();
-        return Datatables::of($products)->make(true);
-    }
-    public function allProductsListIndex(){
-        return view('allProductsList');
-    }
     public function AnyProductsListSearchIndex(){
         return view('allProductsInfoSearch');
-    }
-    
-        
+    }       
 public function searchAnyProduct(Request $request){
         
     if($request->ajax()){
         $output = '';
         $query = $request->get('query');
         if($query !=''){
+            
             $data = DB::table('products')
             ->where('department','like','%'.$query.'%')
             ->orWhere('category','like','%'.$query.'%')
@@ -48,8 +38,8 @@ public function searchAnyProduct(Request $request){
             foreach($data as $row){
                 $output .='<tr>
                     <td>'.$row->id.'</td>
-                    <td>'.$row->name.'</td>
                     <td>'.$row->department.'</td>
+                    <td>'.$row->name.'</td>
                     <td>'.$row->category.'</td>
                     <td>'.$row->subcategory.'</td>
                     <td>'.$row->brand.'</td>

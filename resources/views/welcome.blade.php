@@ -49,14 +49,13 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="https://www.bof.gov.bd">BOF Website</a></li>
-          <li> <a class="nav-link scrollto active" href="{{route('QuickAccess.allProductsListIndex')}}"> All Products  </a> </li>
           <li> <a class="nav-link scrollto active" href="{{route('QuickAccess.searchProductsIndex')}}"> Search Products  </a> </li>
           <li class="dropdown"><a href="#"><span>Access</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
                 @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                     <li>   <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a></li>
+                     <li>   <a href="{{ route('dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a></li>
                     @else
                       <li>  <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a></li>
 
