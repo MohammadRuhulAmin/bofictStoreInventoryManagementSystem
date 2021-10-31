@@ -28,7 +28,7 @@
         <h3>Bangladesh Ordnance Factories (ICT CELL)</h3>
         <h4>Products List </h4>
         <br>
-    </div>
+     </div>
           <div class="card">
             <div class="card-header"></div>
             <div class="card-body">
@@ -62,7 +62,8 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <!-- App scripts -->
         <script>
-          $('#QuickAccessProductTable').DataTable({
+          $(document).ready(function(){
+            $('#QuickAccessProductTable').DataTable({
              processing:true,
              serverSide:true,
              ajax:'{!! route('QuickAccess.allProductsList') !!}',
@@ -74,7 +75,9 @@
                   {"data": "brand"},
                   {"data": "item"},
                   {"data": "type"},
+                  
               ]  
+          })
           })
         </script>
     </body>
