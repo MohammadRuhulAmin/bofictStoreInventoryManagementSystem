@@ -86,6 +86,9 @@ class QuiceAccessController extends Controller
             else{
                 $data = DB::table('cameradetails')->get();
             }
+            // <td>{!!  $task->completed? 'Yes' : '<a href="/task/complete/'.$task->id.'" >Mark as complete</a>' !!}</td>
+            //$link_head = "<a href='http://172.20.1.14/'>";
+            
             $totalRow = $data->count();
             if($totalRow>0){
                 foreach($data as $row){
@@ -96,7 +99,7 @@ class QuiceAccessController extends Controller
                         <td>'.$row->specificLocationOfCamera.'</td>
                         <td>'.$row->cameraType.'</td>
                         <td>'.$row->defaultIpAddress.'</td>
-                        <td>'.$row->usedIpAddress.'</td>
+                        <td>'."<a href='http://$row->usedIpAddress''>$row->usedIpAddress</a>".'</td>
                         <td>'.$row->remarks.'</td>
                     </tr>';
                 }

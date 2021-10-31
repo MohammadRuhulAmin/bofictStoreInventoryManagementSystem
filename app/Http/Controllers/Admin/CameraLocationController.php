@@ -39,7 +39,7 @@ class CameraLocationController extends Controller
     {
         $this->validate($request,[
             'locationName'=>'required|unique:cameralocations',
-            'locationDetails' =>'required'
+            // 'locationDetails' =>'required'
         ]);
 
         $cameraLocation = new Cameralocation();

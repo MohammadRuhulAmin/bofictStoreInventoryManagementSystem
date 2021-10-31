@@ -41,13 +41,13 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Location Details</label>
             <input type="text" class="form-control" id="" name="locationDetails" placeholder="Location Details ">
-            @if($errors->has('locationDetails'))
+            {{-- @if($errors->has('locationDetails'))
                 <span class="text-danger"> {{$errors->first('locationDetails')}}</span>
-            @endif
+            @endif --}}
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Total Camera </label>
-            <input type="number" class="form-control" id="" name="totalCamera" placeholder="Location Details ">
+            <input type="number" class="form-control" id="" name="totalCamera" placeholder="Total Camera ">
           </div>
         </div>
         <!-- /.card-body -->
@@ -58,10 +58,6 @@
       </form>
     </div>
     <!-- /.card -->
-
-
   </div>
   <!-- /.content -->
-    
-  
 @endsection

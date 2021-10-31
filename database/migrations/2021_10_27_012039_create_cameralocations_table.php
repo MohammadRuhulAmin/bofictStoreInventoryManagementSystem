@@ -16,7 +16,7 @@ class CreateCameralocationsTable extends Migration
         Schema::create('cameralocations', function (Blueprint $table) {
             $table->id();
             $table->string("locationName",50);
-            $table->string("locationDetails",50);
+            $table->string("locationDetails",50)->nullable();
             $table->integer("totalCamera")->nullable();
             $table->timestamps();
         });

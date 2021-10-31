@@ -42,13 +42,13 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Camera Location Details  </label>
             <input type="text" class="form-control" id="" name="locationDetails" placeholder="Location Details " value="{{$cameralocation->locationDetails}}">
-            @if($errors->has('locationDetails'))
+            {{-- @if($errors->has('locationDetails'))
                 <span class="text-danger"> {{$errors->first('locationDetails')}}</span>
-            @endif
+            @endif --}}
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Total Camera  </label>
-            <input type="text" class="form-control" id="" name="totalCamera" placeholder="Location Details " value="{{$cameralocation->totalCamera}}">
+            <input type="text" class="form-control" id="" name="totalCamera" placeholder="Total Camera " value="{{$cameralocation->totalCamera}}">
           </div>
         </div>
         <!-- /.card-body -->

@@ -44,7 +44,6 @@
 
  </body>
 </html>
-
 <script>
     $(document).ready(function(){
         searchCameraInformation()
@@ -55,13 +54,9 @@
                 data:{query:query},
                 dataType:'json',
                 success:function(response){
-                   // console.log(response)
                     $('tbody').html(response.productsInformation)
                     $('#totalRecords').text(response.totalProductInformation)
-
-                   
                 }
-
             })
         }
         $(document).on('keyup','#search_camera',function(){

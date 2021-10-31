@@ -179,12 +179,10 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
      Route::resource('technician_complaints',ComplaintsController::class);
      Route::post('/complaints/complaints-list-byDate',[ComplaintsController::class,'listByDate'])->name('technician_complaints.listByDate');    
     // for Hardware maintance & Data entry operator the dashboard will be added ! 
-
-    
    });
 });
 
-//Route for quick access :: 
+//Route for quick access
 
 // Route::get('allProducts/allProductsList',[QuiceAccessController::class,'allProductsList'])->name('QuickAccess.allProductsList');
 // Route::get('/QuickAccess/productsList/Index',[QuiceAccessController::class,'allProductsListIndex'])->name('QuickAccess.allProductsListIndex');
@@ -192,8 +190,6 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
 // Searching All Type of Products 
 Route::get('searchAnyProduct/ajaxJquery',[QuiceAccessController::class,'searchAnyProduct'])->name('QuickAccess.searchAnyProduct');
 Route::get('/QuickAccess/SearchProductsList/Index',[QuiceAccessController::class,'AnyProductsListSearchIndex'])->name('QuickAccess.searchProductsIndex');
-
-
 //Searching All Camera information 
 Route::get('searchAnyCamera/ajaxJquery',[QuiceAccessController::class,'searchAnyCamera'])->name('QuickAccess.searchAnyCamera');
 Route::get('/QuickAccess/SearchCamerasList/Index',[QuiceAccessController::class,'AnyCamerasListSearchIndex'])->name('QuickAccess.searchCamerasIndex');
