@@ -48,8 +48,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="https://www.bof.gov.bd">BOF Website</a></li>
-          <li> <a class="nav-link scrollto active" href="{{route('QuickAccess.searchProductsIndex')}}"> Search Products  </a> </li>
+          {{-- <li><a class="nav-link scrollto active" href="https://www.bof.gov.bd">BOF Website</a></li> --}}
+          <li> <a class="nav-link scrollto active" href="{{route('QuickAccess.searchCamerasIndex')}}"> Camera Information </a> </li>
+          <li> <a class="nav-link scrollto active" href="{{route('QuickAccess.searchProductsIndex')}}"> Products Information  </a> </li>
           <li class="dropdown"><a href="#"><span>Access</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
                 @if (Route::has('login'))
@@ -58,15 +59,12 @@
                      <li>   <a href="{{ route('dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a></li>
                     @else
                       <li>  <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a></li>
-
                         @if (Route::has('register'))
                           <li>  <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
                         @endif
                     @endauth
                 </div>
             @endif
- 
-              
             </ul>
           </li>
           
@@ -102,9 +100,9 @@
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1">
             <h3>Stock Inventory Management System </h3>
             <p class="fst-italic">
-               
             </p>
             <ul>
+              <li><i class="bi bi-check2-circle"></i> List of Camera in Dynamic Search </li>
               <li><i class="bi bi-check2-circle"></i> List of Products in Dynamic Search </li>
               <li><i class="bi bi-check2-circle"></i> Report of Products dynamic </li>
               <li><i class="bi bi-check2-circle"></i> Report of a Specific Product & User </li>

@@ -194,7 +194,9 @@ Route::get('searchAnyProduct/ajaxJquery',[QuiceAccessController::class,'searchAn
 Route::get('/QuickAccess/SearchProductsList/Index',[QuiceAccessController::class,'AnyProductsListSearchIndex'])->name('QuickAccess.searchProductsIndex');
 
 
-
+//Searching All Camera information 
+Route::get('searchAnyCamera/ajaxJquery',[QuiceAccessController::class,'searchAnyCamera'])->name('QuickAccess.searchAnyCamera');
+Route::get('/QuickAccess/SearchCamerasList/Index',[QuiceAccessController::class,'AnyCamerasListSearchIndex'])->name('QuickAccess.searchCamerasIndex');
 
 
 
