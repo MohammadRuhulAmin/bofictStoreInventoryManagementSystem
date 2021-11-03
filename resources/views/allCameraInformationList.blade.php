@@ -7,6 +7,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  </head>
  <body>
+    <div>
+        
+    </div>
     <div style="text-align:center">
         <img width="200px" src="{{asset('website_template/assets/img/BOF_LOGIN_LOGO.jpg')}}" class="img-fluid" alt="">
         <h3> Bangladesh Ordnance Factories (ICT CELL) </h3>
@@ -41,7 +44,6 @@
             </div>
          </div>
      </div>
-
  </body>
 </html>
 <script>
