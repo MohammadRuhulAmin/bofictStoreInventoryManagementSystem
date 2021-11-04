@@ -72,7 +72,6 @@ class QuiceAccessController extends Controller
             $output = '';
             $query = $request->get('query');
             if($query !=''){
-                
                 $data = DB::table('cameradetails')
                 ->where('ictNo','like','%'.$query.'%')
                 ->orWhere('cameraParentLoccation','like','%'.$query.'%')
@@ -81,6 +80,7 @@ class QuiceAccessController extends Controller
                 ->orWhere('defaultIpAddress','like','%'.$query.'%')
                 ->orWhere('usedIpAddress','like','%'.$query.'%')
                 ->orWhere('remarks','like','%'.$query.'%')
+                ->orWhere('nvr','like','%'.$query.'%')
                 ->get();
             }
             else{
@@ -100,6 +100,7 @@ class QuiceAccessController extends Controller
                         <td>'.$row->cameraType.'</td>
                         <td>'.$row->defaultIpAddress.'</td>
                         <td>'."<a href='http://$row->usedIpAddress''>$row->usedIpAddress</a>".'</td>
+                        <td>'.$row->nvr.'</td>
                         <td>'.$row->remarks.'</td>
                     </tr>';
                 }

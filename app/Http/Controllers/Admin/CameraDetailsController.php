@@ -15,6 +15,7 @@ class CameraDetailsController extends Controller
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $cameraDetailsList = CameraDetail::orderBy('created_at','DESC')->get();
@@ -55,6 +56,7 @@ class CameraDetailsController extends Controller
         $cameraDetail->defaultIpAddress = $request->defaultIpAddress;
         $cameraDetail->usedIpAddress = $request->usedIpAddress;
         $cameraDetail->remarks = $request->remarks;
+        $cameraDetail->nvr = $request->nvr;
         $cameraDetail->save();
         flash('Camera Details is Added Successfully')->success();
         return back();
@@ -77,6 +79,7 @@ class CameraDetailsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function edit($id)
     {
         $cameraLocationsList = Cameralocation::orderby('created_at','DESC')->get();
@@ -99,6 +102,7 @@ class CameraDetailsController extends Controller
         $cameraDetail->defaultIpAddress = $request->defaultIpAddress;
         $cameraDetail->usedIpAddress = $request->usedIpAddress;
         $cameraDetail->remarks = $request->remarks;
+        $cameraDetail->nvr = $request->nvr;
         $cameraDetail->save();
         flash("Camera Information is Updated Successfully !")->success();
         return redirect()->route('cameradetails.index');

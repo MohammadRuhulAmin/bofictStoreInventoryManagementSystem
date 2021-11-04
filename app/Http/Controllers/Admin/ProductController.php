@@ -221,8 +221,6 @@ class ProductController extends Controller
         session()->put(['categoryName'=>$request->SearchByCategory]);
         return Excel::download(new ProductExportByCategory(),'productListByCategory.xlsx');
     }
-    
-    
     public function repeatedProductList(){
         $productsList = Product::orderby('name')->get();
         $TrackedRepeatedProduct = array();

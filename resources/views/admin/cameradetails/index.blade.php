@@ -37,6 +37,7 @@
                 <th> Camera Type</th>
                 <th> Default IP Address </th>
                 <th> Used IP Address </th>
+                <th> NVR </th>
                 <th>Remarks</th>
                 <th> Action </th>
             </tr>
@@ -52,6 +53,7 @@
                         <td>{{$cameraDetails->cameraType ??''}}</td>
                         <td>{{$cameraDetails->defaultIpAddress ??''}}</td>
                         <td>{{$cameraDetails->usedIpAddress ??''}}</td>
+                        <td>{{$cameraDetails->nvr ??''}} </td>
                         <td>{{$cameraDetails->remarks ??''}}</td>
                         <td>
                             <a  href="{{route('cameradetails.edit',$cameraDetails->id)}}" class="btn btn-sm btn-info">

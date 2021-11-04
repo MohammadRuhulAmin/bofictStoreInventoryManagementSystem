@@ -56,7 +56,7 @@ return [
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'strict' => true,
+            'strict' => true, // has to be true default!
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
@@ -103,14 +103,14 @@ return [
     | the migrations on disk haven't actually been run in the database.
     |
     */
-
+    
     'migrations' => 'migrations',
 
     /*
     |--------------------------------------------------------------------------
     | Redis Databases
     |--------------------------------------------------------------------------
-    |
+    
     | Redis is an open source, fast, and advanced key-value store that also
     | provides a richer body of commands than a typical key-value system
     | such as APC or Memcached. Laravel makes it easy to dig right in.
@@ -133,7 +133,6 @@ return [
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_DB', '0'),
         ],
-
         'cache' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),
@@ -141,7 +140,6 @@ return [
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_CACHE_DB', '1'),
         ],
-
     ],
 
 ];

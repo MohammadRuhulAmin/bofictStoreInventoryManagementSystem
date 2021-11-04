@@ -103,13 +103,13 @@
                 <span class="text-danger">{{$errors->first('usedIpAddress')}}</span>
             @endif
           </div>
-
+          <div class="form-group">
+            <label for="exampleInputEmail1"> NVR   </label>
+            <input type="text" class="form-control" id="" name="nvr"  placeholder="nvr">
+          </div>
           <div class="form-group">
             <label for="exampleInputEmail1"> Remarks  </label>
             <input type="text" class="form-control" id="" name="remarks" placeholder="Any Remarks ">
-            @if($errors->has('remarks'))
-                <span class="text-danger">{{$errors->first('remarks')}}</span>
-            @endif
           </div>
         </div>
         <!-- /.card-body -->

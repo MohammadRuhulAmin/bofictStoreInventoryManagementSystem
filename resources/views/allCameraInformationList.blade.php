@@ -34,6 +34,7 @@
                             <th>Camera Type </th>
                             <th>Default IP Address </th>
                             <th>Used IP Address</th>
+                            <th>NVR</th>
                             <th>Remarks</th>
                         </tr>
                     </thead>

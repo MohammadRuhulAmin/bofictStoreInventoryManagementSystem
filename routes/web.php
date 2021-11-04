@@ -184,8 +184,7 @@ Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
 
 //Route for quick access
 
-// Route::get('allProducts/allProductsList',[QuiceAccessController::class,'allProductsList'])->name('QuickAccess.allProductsList');
-// Route::get('/QuickAccess/productsList/Index',[QuiceAccessController::class,'allProductsListIndex'])->name('QuickAccess.allProductsListIndex');
+
 
 // Searching All Type of Products 
 Route::get('searchAnyProduct/ajaxJquery',[QuiceAccessController::class,'searchAnyProduct'])->name('QuickAccess.searchAnyProduct');
