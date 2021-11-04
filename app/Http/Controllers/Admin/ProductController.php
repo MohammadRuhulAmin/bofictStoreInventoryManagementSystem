@@ -171,7 +171,7 @@ class ProductController extends Controller
             
             $image = $request->file('image');
             $fileName = time().'.'.$image->getClientOriginalExtension();
-            $request->image->move('storage/',$fileName); 
+            $request->image->move('storage/',$fileName);
             $product->image = $fileName; 
             
         }

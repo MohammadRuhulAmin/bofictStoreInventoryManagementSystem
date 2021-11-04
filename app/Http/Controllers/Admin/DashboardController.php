@@ -37,11 +37,7 @@ class DashboardController extends Controller
         $productsList = Product::orderby('created_at','DESC')->get();
         $usersIdList = Productissued::orderby('created_at','DESC')->get();
         //----------------------------------------------------------------
-
-
-       
-
-       return view('dashboard')->with(
+        return view('dashboard')->with(
            [
                 'total_department'=>$total_department,
                 'total_brand' =>$total_brand,
@@ -58,9 +54,8 @@ class DashboardController extends Controller
                 'brandList' => $brandList,
                 'productsList' =>$productsList,
                 'usersIdList' =>$usersIdList,
-
+                
            ]
            );
-     
     }
 }

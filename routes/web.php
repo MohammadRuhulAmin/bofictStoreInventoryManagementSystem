@@ -125,7 +125,8 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
 
        // Report Generator for Specific User
        Route::post('/reports/user',[ReportGeneratorController::class,'reportForSpecificUser'])->name('admin.report.byBofID');
-
+         // Report Generator for specific camera location 
+       Route::post('/reports/cameralocation',[ReportGeneratorController::class,'reportForCameraInfo'])->name('admin.report.camerainformation');
        // Information Generator for Specific Product
        Route::post('/information/product',[InformationGeneratorController::class,'informationForSpecificProduct'])->name('admin.information.specificProduct');
        
@@ -145,7 +146,6 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        // Stock Report Generator Controller 
       Route::get('/stocks/stockReport/index',[StockReportGeneratorController::class ,'index'])->name('stockReport.index');
       Route::post('/stocks/stockReport/ReportGenerateToPDF',[StockReportGeneratorController::class,'StockReportGeneratorAllStuff'])->name('stockReport.generateReport');
-      
    });
 });
 // Routes for users 

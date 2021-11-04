@@ -87,7 +87,6 @@
                 <span class="text-danger">{{$errors->first('cameraType')}}</span>
             @endif
           </div>
-
           <div class="form-group">
             <label for="exampleInputEmail1"> Default IP Address <span class="text-danger">*</span>  </label>
             <input type="text" class="form-control" id="" name="defaultIpAddress" placeholder="Default IP Address  ">

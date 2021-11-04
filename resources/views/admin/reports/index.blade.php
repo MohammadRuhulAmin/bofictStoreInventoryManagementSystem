@@ -101,7 +101,7 @@
             @csrf 
          <div class="card card-primary">
             <div class="card-header">
-             
+              <h3 class="card-title">Product Information</h3>
             </div>
               <div class="card-body">
                 <div class="form-group">
@@ -143,8 +143,30 @@
                 </div>
               </div>
           </form>
-           
         </div>
+        <div class="card card-primary">
+          <form action="{{route('admin.report.camerainformation')}}" method="post">
+            @csrf 
+          <div class="card-header">
+            <h3 class="card-title">Camera Information</h3>
+          </div>
+          <div class="card-body">
+            <label class="form-control"> Camera Parent Location </label>
+            <select class="form-control" name="parentLocation" id="SelectCameraLocation">
+              <option></option>
+              @foreach ($cameraLocationList as  $clist)
+                <option>{{$clist->locationName}}</option>
+              @endforeach
+            </select>
+            @if($errors->has('parentLocation'))
+                    <span class="text-danger">Please Select a Location   </span>
+            @endif
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-search"></i> Search </button>
+          </div>
+        </div>
+        </form>
           </div>
         </div>
     

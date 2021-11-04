@@ -18,6 +18,8 @@ use PDF;
 // use Excel;
 use Maatwebsite\Excel\Excel;
 use App\Exports\ProductExport;
+use App\Models\Admin\Cameralocation;
+use App\Models\Admin\Cameradetail;
 class ReportGeneratorController extends Controller
 {
     public function index(){
@@ -31,7 +33,7 @@ class ReportGeneratorController extends Controller
         $brandList = Brand::orderby('created_at','DESC')->get();
         $productsList = Product::orderby('created_at','DESC')->get();
         $usersIdList = Productissued::orderby('created_at','DESC')->get();
-        
+        $cameraLocationList = Cameralocation::orderby('created_at','DESC')->get();
        return view('admin.reports.index')->with(
            [
                 'categoryList' =>$categoryList,
@@ -42,6 +44,7 @@ class ReportGeneratorController extends Controller
                 'departmentList' =>$departmentList,
                 'productsList' =>$productsList,
                 'usersIdList' =>$usersIdList ,
+                'cameraLocationList' =>$cameraLocationList,
            ]
            );
 
@@ -54,9 +57,7 @@ class ReportGeneratorController extends Controller
         $brand = $request->brand;
         $item = $request->item;
         $type = $request->type;
-        
         // if input field is 1
-
         //for department
         if($department !== null && $category === null && $subcategory === null && $brand === null && $item === null && $type === null){
             $productList = Product::where(['department'=>$department])->get();
@@ -71,7 +72,7 @@ class ReportGeneratorController extends Controller
             return $pdf->download('productList.pdf'); 
            
         }
-        //for category
+        //for category 
         else if($category !== null &&  $department === null   &&  $subcategory === null && $brand === null && $item === null && $type === null){
             $productList = Product::where(['category'=>$category])->get();
             $totalProduct = count($productList);
@@ -85,13 +86,11 @@ class ReportGeneratorController extends Controller
                 ];
                 $pdf = PDF::loadView('admin.reports.pdf.cat',$data);
                 return $pdf->download('productList.pdf');
-
             }
             else{
                 flash('No Data Has found for '. $category . " Category")->error();
                 return back();
             }
-            
         }
         //for subcategory
         else if($subcategory !== null &&   $department === null   &&  $category === null && $brand === null && $item === null &&  $type === null){
@@ -1220,13 +1219,28 @@ class ReportGeneratorController extends Controller
             ];
             $pdf = PDF::loadView('admin.reports.pdf.productReport.repeatedProductsList',$data);
             return $pdf->download('productList.pdf');
-            
+    }
+    // This is for dynamic Function Any type of query may execute here! 
+    public function DynamicReportFunction(){
         
     }
 
-    
-    // This is for dynamic Function Any type of query may execute here! 
-    public function DynamicReportFunction(){
+    // report for camera information 
+    public function reportForCameraInfo(Request $request){
+        $this->validate($request,[
+            'parentLocation' =>'required',
+        ]);
+        $cameraInformation = Cameradetail::where(['cameraParentLoccation' => $request->parentLocation])->get();
+        $totalCamera =  count($cameraInformation);
+        $data = [
+            'Title' =>'BOF',
+            'Dept' =>'ICT CELL',
+            'cameraInformation' =>$cameraInformation,
+            'totalCamera' =>$totalCamera,
+            'parentLocation' =>$request->parentLocation,
+        ];
+        $pdf = PDF::loadView('admin.reports.pdf.cameraReport.cameraInfoReport',$data);
+        return $pdf->download('productList.pdf');
         
     }
 
