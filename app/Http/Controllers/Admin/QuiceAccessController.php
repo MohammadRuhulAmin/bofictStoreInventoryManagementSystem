@@ -28,6 +28,7 @@ class QuiceAccessController extends Controller
                 ->orWhere('brand','like','%'.$query.'%')
                 ->orWhere('item','like','%'.$query.'%')
                 ->orWhere('type','like','%'.$query.'%')
+                ->orWhere('description','like','%'.$query.'%')
                 ->get();
             }
             else{
@@ -86,8 +87,7 @@ class QuiceAccessController extends Controller
             else{
                 $data = DB::table('cameradetails')->get();
             }
-            // <td>{!!  $task->completed? 'Yes' : '<a href="/task/complete/'.$task->id.'" >Mark as complete</a>' !!}</td>
-            //$link_head = "<a href='http://172.20.1.14/'>";
+           
             
             $totalRow = $data->count();
             if($totalRow>0){
@@ -125,3 +125,4 @@ class QuiceAccessController extends Controller
 
     
 }
+

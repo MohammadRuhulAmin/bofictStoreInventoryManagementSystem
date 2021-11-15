@@ -85,6 +85,8 @@
                     </a>
                   </li>
                  @endif
+                 
+
                  @if(auth()->user()->role === "admin")
                  <li class="nav-item">
                    <a href="{{route('types.index')}}" class="nav-link {{request()->is('types*')? 'active': ''}}">
