@@ -22,7 +22,7 @@
             <b>Report Name : Camera list of {{$parentLocation}} Location   </b>
             <br>
         </div>
-        <table  >
+        <table>
             <tr>
                 <td>Date : </td>
                 <td> {{\Carbon\Carbon::now()->format('d-m-Y')}}</td>
@@ -32,13 +32,13 @@
                 <td>{{$totalCamera}}</td>
             </tr>
         </table>
-        <h1 align="center">Location:  {{$parentLocation}}</h1>
+        <h3 align="center">Location:  {{$parentLocation}}</h3>
         <br>
         <table  align="center" style="border-spacing: 0;" border="1px"  >
             <tr>
                 <td>SL</td>
                 <td>ICT No </td>
-                <td>Camera Parent Location </td>
+                {{-- <td>Camera Parent Location </td> --}}
                 <td>Specific Camera Location </td>
                 <td>Camera Type </td>
                 <td>Default IP Address </td>
@@ -50,7 +50,7 @@
                 <tr> 
                     <td>{{++$key}}</td>
                     <td>{{$clist->ictNo}}</td>
-                    <td>{{$clist->cameraParentLoccation}}</td>
+                    {{-- <td>{{$clist->cameraParentLoccation}}</td> --}}
                     <td>{{$clist->specificLocationOfCamera}}</td>
                     <td>{{$clist->cameraType}}</td>
                     <td>{{$clist->defaultIpAddress}}</td>

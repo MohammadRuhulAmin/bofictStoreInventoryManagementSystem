@@ -40,8 +40,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- jQuery -->
 
     @include('layouts.partials._footer-script')
-    @include('layouts.jquery.productsInformationList')
     @include('layouts.partials._DynamicUserSelectOptions')
+    @include('layouts.jquery.productsInformationList')
     
     
 </body>

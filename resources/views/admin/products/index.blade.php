@@ -1,18 +1,13 @@
 @extends('layouts.master')
-
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          
-    
           <h1 class="m-0">Products</h1>
           <br>
           <a href="{{route('products.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add New Product Item</a>
           <a href="{{route('products.repeatedProductsList')}}" class="btn btn-sm btn-danger" > <i class="fa fa-delete"></i> Repeated Product </a>
-          
-          
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -29,10 +24,9 @@
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Product  List  </h3>
+        <h3 class="card-title">Product  List   </h3>
       </div>
       <br>
-      
       <br>
       <div class="row">
         <div class="col-sm-6">
@@ -46,69 +40,39 @@
             </div>
           </div>
         </div>
-       
       </div>
       <br>
-      <table  class="table table-bordered datatable table-sm" id="productTable" >
-        <thead>
-            <tr>
-                <th>#SL</th>
-                <th>Image</th>
-                <th>Dept</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Sub Category</th>
-                <th>Brand  </th>
-                <th>Type</th>
-                <th>Item</th>
-                <th>Action</th>
-            </tr>
-
-        </thead>
-        <tbody>
-            @if($products)
-                @foreach ($products as $key=> $product)
-                    <tr>
-                      {{-- {{asset('storage/product_images/'.$product->image)}} --}}
-                        <td>{{++$key}}</td>
-                        <td>
-                          @if($product->image !== null)
-                          <img width="64px" src="{{url('storage/'.$product->image)}}"/>
-                          @else 
-                            <p class="text-danger">No Img </p>
-                           @endif
-                          
-                        </td>
-                        <td>{{$product->department ?? ''}}</td>
-                        <td>{{$product->name ?? ''}}</td>
-                        <td>{{$product->category ?? ''}}</td>
-                        <td>{{$product->subcategory ?? ''}}</td>
-                        <td>{{$product->brand ?? ''}}</td>
-                        <td>{{$product->type ?? ''}}</td>
-                        <td>{{$product->item ?? ''}}</td>
-                        <td>
-                            <a  href="{{route('products.edit',$product->id)}}" class="btn btn-sm btn-info">
-                                <i class="fa fa-edit"></i>   
-                            </a>
-                            <a href="{{route('products.show',$product->id)}}" class="btn btn-sm btn-success">
-                              <i class="fa fa-info-circle"></i> 
-                            </a>
-                            <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="product-delete-{{$product->id}}">
-                              <i class="fa fa-trash"></i> 
-                            </a>
-                            <form id="product-delete-{{$product->id}}" action="{{route('products.destroy',$product->id)}}" method="post">
-                                @csrf 
-                                @method('DELETE')
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            @endif
-        </tbody>
-      </table>
       <br>
+     <div class="card">
+        <div class="card-header">
+          <b> Search Information # </b> 
+          <input type="text" class="form-control" id="search_product">
+          <label class="card-title" align='center' id="totalRecords">  </label>
+          
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <th>SL</th>
+              <th>Department</th>
+              <th>ProductName</th>
+              <th>Category</th>
+              <th>SubCategory</th>
+              <th>Brand</th>
+              <th>Item</th>
+              <th>Type</th>
+              <Th>Description</Th>
+            </thead>
+            <tbody id="tbody-productsTable">
+               
+            </tbody>
+        </table>
+        </div>
+        <div class="card-footer"></div>
+     </div>
     </div>
     <!-- /.card -->
   </div>
   <!-- /.content -->    
 @endsection
+

@@ -109,7 +109,7 @@
                    <select id="selectProductForProductReport"  class="form-control" name="productName">
                      <option></option>
                      @foreach ($productsList as $pList)
-                       <option>{{$pList->name}}</option>
+                       <option> {{$pList->name}} </option>
                      @endforeach
                    </select>
                    @if($errors->has('productName'))
@@ -125,7 +125,7 @@
           <div class="card-header">
           </div>
           <form action="{{route('admin.report.byBofID')}}" method="post">
-            @csrf 
+            @csrf
             <div class="card-body">
               <div class="form-group">
                 <label class="form-control" for="productName"> Report By BOF User ID /   </label>
@@ -140,7 +140,7 @@
                  @endif
                  <div class="card-footer">
                   <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-search"></i> Search </button>
-                </div>
+                 </div>
               </div>
           </form>
         </div>
@@ -154,12 +154,12 @@
             <label class="form-control"> Camera Parent Location </label>
             <select class="form-control" name="parentLocation" id="SelectCameraLocation">
               <option></option>
-              @foreach ($cameraLocationList as  $clist)
-                <option>{{$clist->locationName}}</option>
-              @endforeach
+                @foreach ($cameraLocationList as  $clist)
+                  <option>{{$clist->locationName}}</option>
+                @endforeach
             </select>
             @if($errors->has('parentLocation'))
-                    <span class="text-danger">Please Select a Location   </span>
+                <span class="text-danger"> Please Select a Location </span>
             @endif
           </div>
           <div class="card-footer">
@@ -169,10 +169,7 @@
         </form>
           </div>
         </div>
-    
     </div>
 </div>
-
-
 </div>
 @endsection

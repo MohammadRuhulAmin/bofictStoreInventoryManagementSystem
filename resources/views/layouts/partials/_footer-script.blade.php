@@ -183,9 +183,6 @@
     $('#myInput').trigger('focus')
 })
 </script>
-<script> 
-    $('#productTable').DataTable();
-</script>
 <script type="text/javascript">
     $("#SelectCameraLocation").select2({
         placeholder:"Select Camera Location ",

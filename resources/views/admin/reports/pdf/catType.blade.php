@@ -21,7 +21,7 @@
             <b>Report Name : Products List of  {{$Category}} Category   {{$Type}} Type </b>
             <br>
         </div>
-        <table  >
+        <table>
             <tr>
                 <td>Date : </td>
                 <td> {{\Carbon\Carbon::now()->format('d-m-Y')}}</td>

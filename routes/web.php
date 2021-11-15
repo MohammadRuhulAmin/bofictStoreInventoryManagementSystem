@@ -164,7 +164,6 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
       Route::get('/export-excel/csv',[ProductController::class,'exportIntoCSV'])->name('user.product.csv');
       Route::post('/product/search',[ViewerController::class,'searchProduct'])->name('user.search.products');
       Route::post('/product/search/name',[ViewerController::class,'searchProductName'])->name('user.search.specificProduct');
-
     });
 });
 
@@ -193,9 +192,7 @@ Route::get('/QuickAccess/SearchProductsList/Index',[QuiceAccessController::class
 Route::get('searchAnyCamera/ajaxJquery',[QuiceAccessController::class,'searchAnyCamera'])->name('QuickAccess.searchAnyCamera');
 Route::get('/QuickAccess/SearchCamerasList/Index',[QuiceAccessController::class,'AnyCamerasListSearchIndex'])->name('QuickAccess.searchCamerasIndex');
 
-
-
-
-
+// problems list in web.php
+//admin.reports.pdf.catSubcatItem was not found.
 
 

@@ -1188,8 +1188,6 @@ class ReportGeneratorController extends Controller
         ];
         $pdf = PDF::loadView('admin.reports.pdf.userReport.userReports',$data);
         return $pdf->download('productList.pdf');
-       
-
     }
     public function ReportRepeatedFile(){
             $productsList = Product::all();
@@ -1198,7 +1196,7 @@ class ReportGeneratorController extends Controller
             for ($i = 0;$i<$totalProducts;$i++){
                 $productItemName = $productsList[$i]->name;
                 for($j = 0;$j<$totalProducts;$j++){
-                    if($i != $j){   
+                    if($i != $j){  
                         if($productsList[$j]->name === $productItemName){
                             array_push($TrackedRepeatedProduct, $productsList[$j]);
                         }
@@ -1239,12 +1237,10 @@ class ReportGeneratorController extends Controller
             'totalCamera' =>$totalCamera,
             'parentLocation' =>$request->parentLocation,
         ];
+        
         $pdf = PDF::loadView('admin.reports.pdf.cameraReport.cameraInfoReport',$data);
         return $pdf->download('productList.pdf');
         
     }
 
-
-   
-    
 }

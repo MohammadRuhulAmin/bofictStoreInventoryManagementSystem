@@ -45,6 +45,7 @@ class QuiceAccessController extends Controller
                         <td>'.$row->brand.'</td>
                         <td>'.$row->item.'</td>
                         <td>'.$row->type.'</td>
+                        <td>'.$row->description.'</td>
                     </tr>';
                 }
             }
@@ -61,7 +62,6 @@ class QuiceAccessController extends Controller
             );
             echo json_encode($data);
         }
-
     }
 
     public function AnyCamerasListSearchIndex(){
