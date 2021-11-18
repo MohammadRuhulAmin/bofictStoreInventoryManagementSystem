@@ -19,10 +19,10 @@ class QuiceAccessController extends Controller
             $output = '';
             $query = $request->get('query');
             if($query !=''){
-                
                 $data = DB::table('products')
                 ->where('department','like','%'.$query.'%')
                 ->orWhere('category','like','%'.$query.'%')
+                ->orWhere('productStatus','like','%'.$query.'%')
                 ->orWhere('name','like','%'.$query.'%')
                 ->orWhere('subcategory','like','%'.$query.'%')
                 ->orWhere('brand','like','%'.$query.'%')
@@ -39,6 +39,7 @@ class QuiceAccessController extends Controller
                 foreach($data as $row){
                     $output .='<tr>
                         <td>'.$row->id.'</td>
+                        <td>'.$row->productStatus.'</td>
                         <td>'.$row->department.'</td>
                         <td>'.$row->name.'</td>
                         <td>'.$row->category.'</td>

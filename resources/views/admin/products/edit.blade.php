@@ -49,7 +49,6 @@
                     <option>{{$category->name}}</option>
                 @endforeach
             </select>
-            
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Select Brand   </label>
@@ -109,7 +108,22 @@
               <option>{{$department->name ?? ''}}</option>
             @endforeach
            </select>
-      
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1"> Product Status <span class="text-danger">*</span> </label>
+           <select  class="form-control" name="productStatus">
+             <option>{{$product->productStatus}}</option>
+              <option>In Stock</option>
+              <option>Issued</option>
+              <option>Repair Cell</option>
+              <option>Out Of Order</option>
+              <option>Unservivable</option>
+              <option>Dispose</option>
+              <option>Expire</option>
+           </select>
+            @if($errors->has('productStatus'))
+                <span class="text-danger">Product Status must be  provided {{$errors->first('productStatus')}} </span>
+            @endif
           </div>
 
         </div>

@@ -70,6 +70,7 @@ class ProductController extends Controller
           //validation 
           $this->validate($request,[
             'name'=>'required|min:2|max:50|unique:products',
+            'productStatus'=>'required'
         ]);        
         $productID =  preg_replace('/\s+/', '', $request->name);
         $product = new Product();
@@ -81,7 +82,7 @@ class ProductController extends Controller
         $product->brand = $request->brand;
         $product->department = $request->department;
         $product->description = $request->description;
-
+        $product->productStatus = $request->productStatus;
         //=================
         if($request->hasFile('image')){
             
@@ -89,13 +90,8 @@ class ProductController extends Controller
             $fileName = time().'.'.$image->getClientOriginalExtension();
             $request->image->move('storage/',$fileName);
             $product->image = $fileName;
-
-            
         }
-
-
-        //==================
-       
+        //=================
         // saving images 
         
        
@@ -104,7 +100,6 @@ class ProductController extends Controller
         flash('Product is Created Successfully!')->success();
         return back();
     }
-
     /**
      * Display the specified resource.
      *
@@ -121,7 +116,6 @@ class ProductController extends Controller
        $complaintsOfProduct = Product::findOrFail($id)->complaints;
        return view('admin.products.show',compact('product','complaintsOfProduct','productUserList'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -137,8 +131,7 @@ class ProductController extends Controller
         $items = Item::orderby('created_at','DESC')->get();
         $departments = Department::orderby('created_at','DESC')->get();
         $product = Product::findOrFail($id);
-        return view('admin.products.edit',compact('product','categories','subcategories','types','items','brands','departments'));
-       
+        return view('admin.products.edit',compact('product','categories','subcategories','types','items','brands','departments')); 
     }
 
     /**
@@ -153,7 +146,7 @@ class ProductController extends Controller
            //validation 
            $this->validate($request,[
             'name'=>'required|min:2|max:50',
-            
+            'productStatus'=>'required'
             
         ]);
         $product =  Product::findOrFail($id);
@@ -165,6 +158,7 @@ class ProductController extends Controller
         $product->brand = $request->brand;
         $product->department = $request->department;
         $product->description = $request->description;
+        $product->productStatus = $request->productStatus;
 
         //=================
         if($request->hasFile('image')){

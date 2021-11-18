@@ -48,12 +48,12 @@
           <b> Search Information # </b> 
           <input type="text" class="form-control" id="search_product">
           <label class="card-title" align='center' id="totalRecords">  </label>
-          
         </div>
         <div class="card-body">
           <table class="table table-striped">
             <thead>
               <th>SL</th>
+              <th>Status</th>
               <th>Department</th>
               <th>ProductName</th>
               <th>Category</th>

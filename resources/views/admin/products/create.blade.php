@@ -7,7 +7,8 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0">Products</h1>
-        </div><!-- /.col -->
+        </div>
+        <!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}"> Home </a></li>
@@ -18,6 +19,7 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
+
   <!-- /.content-header -->
 
   <!-- Main content -->
@@ -61,7 +63,7 @@
         @csrf 
         <div class="card-body">
           <div class="form-group">
-            <label for="exampleInputEmail1">Product Name </label>
+            <label for="exampleInputEmail1">Product Name  <span class="text-danger">*</span> </label>
             <input type="text" class="form-control" id="" name="name" placeholder="Product Name ">
             @if($errors->has('name'))
                 <span class="text-danger">Product Name must be Provided! &  {{$errors->first('name')}} </span>
@@ -88,7 +90,7 @@
            
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Select Sub category   </label>
+            <label for="exampleInputEmail1"> Select Sub category   </label>
             <select id="selectSubCategory" name="subcategory" class="form-control">
                 <option></option>
                 @foreach($subcategories as $subcategory)
@@ -132,12 +134,29 @@
           <div class="form-group">
             <label for="exampleInputEmail1"> Department  </label>
            <select id="selectDepartment" class="form-control" name="department">
-            <option></option> 
+            <option></option>
             @foreach($departments as $department)
               <option>{{$department->name ?? ''}}</option>
             @endforeach
            </select>
       
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1"> Product Status <span class="text-danger">*</span> </label>
+           <select  class="form-control" name="productStatus">
+             <option></option>
+              <option>In Stock</option>
+              <option>Issued</option>
+              <option>Repair Cell</option>
+              <option>Out Of Order</option>
+              <option>Unservivable</option>
+              <option>Dispose</option>
+              <option>Expire</option>
+           </select>
+
+            @if($errors->has('productStatus'))
+                <span class="text-danger">Product Status must be  provided {{$errors->first('productStatus')}} </span>
+            @endif
           </div>
         </div>
         <!-- /.card-body -->

@@ -25,6 +25,7 @@
                     <thead>
                         <tr>
                             <th>SL</th>
+                            <th> Status </th>
                             <th>Department</th>
                             <th>Product Name</th>
                             <th>Category</th>
@@ -36,13 +37,11 @@
                         </tr>
                     </thead>
                     <tbody>
-
                     </tbody>
                 </table>
             </div>
          </div>
      </div>
-
  </body>
 </html>
 
@@ -56,13 +55,9 @@
                 data:{query:query},
                 dataType:'json',
                 success:function(response){
-                   // console.log(response)
                     $('tbody').html(response.productsInformation)
                     $('#totalRecords').text(response.totalProductInformation)
-
-                   
                 }
-
             })
         }
         $(document).on('keyup','#search_product',function(){
