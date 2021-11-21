@@ -18,7 +18,6 @@ class ProductissuedController extends Controller
         $productIssuesUsers = Productissued::orderby('created_at','DESC')->get();
         return view('admin.issues.index',compact('productIssuesUsers'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +58,7 @@ class ProductissuedController extends Controller
      */
     public function show(Productissued $productissued)
     {
-        //
+        
     }
 
     /**
@@ -70,7 +69,6 @@ class ProductissuedController extends Controller
      */
     public function edit($id)
     {
-     
         $productIssueUser = Productissued::findOrFail($id);
         return view('admin.issues.edit',compact('productIssueUser'));
     }
@@ -82,15 +80,16 @@ class ProductissuedController extends Controller
      * @param  \App\Models\Productissued  $productissued
      * @return \Illuminate\Http\Response
      */
+
+
     public function update(Request $request, $id)
     {
-        
-          //validation 
           $this->validate($request,[
             'name'=>'required|min:2|max:50',
             'bofid' =>'required',
             'designation'=>'required',
         ]);
+
         $productIssueUser = Productissued::findOrFail($id);
         $productIssueUser->name = $request->name;
         $productIssueUser->bofId = $request->bofid;
@@ -98,7 +97,6 @@ class ProductissuedController extends Controller
         $productIssueUser->save();
         flash('Existing Product User , updated  Successfully!')->success();
         return redirect()->route('productIssuesUsers.index');
-
     }
 
     /**
@@ -113,7 +111,6 @@ class ProductissuedController extends Controller
         $productIssueUser->delete();
         flash('Existing Product User is Deleted !')->success();
         return redirect()->route('productIssuesUsers.index');
-
     }
     
     // import data from excel  
@@ -124,7 +121,6 @@ class ProductissuedController extends Controller
             'cvsFile'=>'required',
         ]);
         Excel::import(new Productissueuser,$request->cvsFile);
-      
         flash('Excel File is Imported ,   Successfully!')->success();
        return redirect()->route('productIssuesUsers.index');
     }

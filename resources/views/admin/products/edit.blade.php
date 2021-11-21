@@ -88,16 +88,13 @@
                     <option>{{$item->name}}</option>
                 @endforeach
             </select>
-           
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1"> Upload Image   </label>
             <input type="file" name="image" value="{{$product->image}}" placeholder="{{$product->image}}" class="form-control">
-           
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1"> Description  </label>
-           
             <textarea type="text" name="description"  class="form-control">{{$product->description}}</textarea>
           </div>
           <div class="form-group">
@@ -125,7 +122,6 @@
                 <span class="text-danger">Product Status must be  provided {{$errors->first('productStatus')}} </span>
             @endif
           </div>
-
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

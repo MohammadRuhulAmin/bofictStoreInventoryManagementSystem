@@ -17,7 +17,6 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
-
   <!-- Main content -->
   <div class="col-md-12">
     <!-- general form elements -->
@@ -28,7 +27,7 @@
       <!-- /.card-header -->
       <!-- form start -->
       <form role="form" action="{{route('productIssuesUsers.update',$productIssueUser->id)}}" method="post">
-        @csrf 
+        @csrf
         @method('PUT')
         <div class="card-body">
           <div class="form-group">

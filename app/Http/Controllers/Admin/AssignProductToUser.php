@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Product;
 use App\Models\Admin\Productissued;
 use App\Models\Technician\Complaint;
-
+use App\Models\Admin\ProductIssueToUserDetail;
 use Illuminate\Http\Request;
 
 class AssignProductToUser extends Controller
@@ -39,22 +39,34 @@ class AssignProductToUser extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-       $this->validate($request,[
+        
+       // This is many to many relation for product with user
+
+        $this->validate($request,[
             'BofUserId'=>'required',
             'ProductId'=>'required',
+            'issueDate'=>'required'
        ]);
-
+       
        $userInfo = Productissued::where(['bofid'=>$request->BofUserId])->first();
        $productInfo = Product::where(['name'=>$request->ProductId])->first();
        $userInfo->products()->attach($productInfo->id);
-       flash('User is Assigned with a Product  Successfully!')->success();
+       // end 
+       // details for using product and issue date and return date !
+       // issueDate ,  returnDate ,  shortDescription , ProductId !
+        $productIssueTo =  new  ProductIssueToUserDetail();
+        $productIssueTo->BofUserId = $request->BofUserId;
+        $productIssueTo->productId = $request->ProductId;
+        $productIssueTo->issueDate = $request->issueDate;
+        $productIssueTo->returnDate = $request->returnDate;
+        $productIssueTo->shortDescription = $request->shortDescription;
+        $productIssueTo->save();
+        flash('User is Assigned with a Product  Successfully!')->success();
         return back();
-      
-
     }
-
     /**
      * Display the specified resource.
      *

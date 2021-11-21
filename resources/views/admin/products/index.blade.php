@@ -35,7 +35,7 @@
               <h5 class="card-title">Download All Products List </h5>
             </div>
             <div class="card-body">
-              <a href="{{route('admin.product.excel')}}" class="btn btn-warning">Download as Excel File </a>
+              <a href="{{route('admin.product.excel')}}" class="btn btn-warning">Download as Excel File  </a>
               <a href="{{route('admin.product.csv')}}" class="btn btn-primary">Download as CSV FIle  </a>
             </div>
           </div>

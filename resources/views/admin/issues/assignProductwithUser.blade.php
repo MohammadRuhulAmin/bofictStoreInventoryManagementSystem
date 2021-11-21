@@ -20,7 +20,7 @@
   <!-- /.content-header -->
  
   <!-- Main content -->
-  <div class="col-md-12">
+  {{-- <div class="col-md-12">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
@@ -43,9 +43,6 @@
                 <span class="text-danger">Bof Id  must be Provided! </span>
             @endif
           </div>
-
-         
-
           <div class="form-group">
             <label for="exampleInputEmail1">Product Id   </label>
             <select class="form-control" id="selectProductId" name="ProductId">
@@ -71,8 +68,58 @@
     <!-- /.card -->
 
 
-  </div>
+  </div> --}}
   <!-- /.content -->
-    
-  
+  <div class="card">
+    <form role="form" action="{{route('assignProductWithUsers.store')}}" method="post">
+      @csrf 
+      <div class="card-header">
+          <h3 class="card-title"> Assign Product to the User  </h3>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+            <label>BOF Employee ID <span class="text-danger">*</span> </label>
+            <select class="form-control" id="selectProductUserId" name="BofUserId">
+              <option></option>
+              @foreach($productIssuers as $pis) 
+                  <option>{{ $pis->bofid }}</option>
+              @endforeach
+          </select>
+          @if($errors->has('BofUserId'))
+            <span class="text-danger"> Bof Id  must be Provided!</span>
+          @endif
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Product Id <span class="text-danger">*</span>  </label>
+          <select class="form-control" id="selectProductId" name="ProductId">
+              <option></option>
+              @foreach($products as $prd) 
+              <option>{{$prd->name }}</option>
+              @endforeach
+          </select>
+          @if($errors->has('ProductId'))
+              <span class="text-danger">Product Id  must be Provided!</span>
+          @endif
+        </div>
+        <div class="form-group">
+            <label> Issue Date   :  <span class="text-danger"> * </span> </label>
+            <input type="date" class="form-control" name="issueDate">
+            @if($errors->has('ProductId'))
+              <span class="text-danger">Issue Date   must be Provided!</span>
+            @endif 
+            
+        </div>
+        <div class="form-group">
+          <label>   Return Date  : </label> 
+          <input type="date" class="form-control" name="returnDate">
+        </div>
+        <div class="form-group">
+          <label>  Short Description  </label>
+          <input type="text" class="form-control" name="shortDescription">
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class= "btn btn-primary btn-sm"><i class="fa fa-save"></i>Submit</button>
+      </div>
+  </div>
 @endsection

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DataTables;
@@ -12,9 +11,9 @@ class QuiceAccessController extends Controller
 {
     public function AnyProductsListSearchIndex(){
         return view('allProductsInfoSearch');
-    }       
+    }
+
     public function searchAnyProduct(Request $request){
-        
         if($request->ajax()){
             $output = '';
             $query = $request->get('query');
@@ -75,6 +74,7 @@ class QuiceAccessController extends Controller
             $query = $request->get('query');
             if($query !=''){
                 $data = DB::table('cameradetails')
+                
                 ->where('ictNo','like','%'.$query.'%')
                 ->orWhere('cameraParentLoccation','like','%'.$query.'%')
                 ->orWhere('specificLocationOfCamera','like','%'.$query.'%')

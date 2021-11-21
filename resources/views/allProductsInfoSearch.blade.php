@@ -9,7 +9,7 @@
  <body>
     <div style="text-align:center">
         <img width="200px" src="{{asset('website_template/assets/img/BOF_LOGIN_LOGO.jpg')}}" class="img-fluid" alt="">
-        <h3> Bangladesh Ordnance Factories (ICT CELL) </h3>
+        <h3> Bangladesh Ordnance Factories (ICT CELL) </h3> 
         <h4>Products List </h4>
         <br>
      </div>
@@ -20,11 +20,12 @@
                 <label>Result := </label>
                 <b class="card-title" align='center' id="totalRecords"> </b>
             </div>
+
             <div class="card-body">
                 <table class="table table-sm table-striped">
                     <thead>
                         <tr>
-                            <th>SL</th>
+                            <th> SL </th>
                             <th> Status </th>
                             <th>Department</th>
                             <th>Product Name</th>
@@ -33,7 +34,7 @@
                             <th>Brand</th>
                             <th>Item</th>
                             <th>Type</th>
-                            <th>Description</th>
+                            <th> Description </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,7 +45,6 @@
      </div>
  </body>
 </html>
-
 <script>
     $(document).ready(function(){
         searchProductsInformation()

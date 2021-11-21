@@ -20,6 +20,7 @@ use Maatwebsite\Excel\Excel;
 use App\Exports\ProductExport;
 use App\Models\Admin\Cameralocation;
 use App\Models\Admin\Cameradetail;
+use App\Models\Admin\ProductIssueToUserDetail;
 class ReportGeneratorController extends Controller
 {
     public function index(){
@@ -1166,29 +1167,51 @@ class ReportGeneratorController extends Controller
         ];
         $pdf = PDF::loadView('admin.reports.pdf.productReport.productReports',$data);
         return $pdf->download('productList.pdf');
-        
         //return view('admin.reports.pdf.productReport.productReports',compact('product','complaintsOfProduct','productUserList'));
-
     }
     public function reportForSpecificUser(Request $request){ 
         $this->validate($request,[
             'BofUserID' =>'required',
         ]);
+        $result = array();
         $userInfo = Productissued::where(['bofid' => $request->BofUserID])->first();
-        $productUserInfo = Productissued::where(['id'=>$userInfo->id ])->first();
-        $productInfo = $productUserInfo->products;
-        $totalProductUsed =  $productUserInfo->products->count();
+        $productInfo = ProductIssueToUserDetail::where(['BofUserId'=>$userInfo->bofid])->get();
+        
+        for($i = 0;$i<count($productInfo);$i++){
+            $productId = $productInfo[$i]->ProductId;
+            $productDetail = Product::where(['name'=>$productId])->get();
+            
+            $result[$i] = [
+                // 'productIssueDetail' =>ProductIssueToUserDetail::where(['BofUserId'=>$userInfo->bofid])->get(),
+                 'productId'=> $productInfo[$i]->ProductId,
+                 'productIssueDate' =>$productInfo[$i]->issueDate,
+                 'productReturnDate'=>$productInfo[$i]->returnDate,
+                'productDetail'=> Product::where(['name'=>$productInfo[$i]->ProductId])->get(),
+            ];
+           
+            
+            
+            
+        }
+       
+      
+    
+        $totalProductUsed =  $productInfo->count();
+       
         $data = [
             'Title' =>'BOF',
             'Dept' =>'ICT CELL',
-            'productUserInfo' =>$productUserInfo,
-            'productInfo' =>$productInfo,
+            'productUserInfo' =>$userInfo,
             'totalProductUsed' =>$totalProductUsed,
-
+            'informationDetails' =>$result,
         ];
+        
+        //return $result[0]['productDetail'][0]["name"];
         $pdf = PDF::loadView('admin.reports.pdf.userReport.userReports',$data);
         return $pdf->download('productList.pdf');
     }
+
+
     public function ReportRepeatedFile(){
             $productsList = Product::all();
             $TrackedRepeatedProduct = array();
@@ -1237,7 +1260,7 @@ class ReportGeneratorController extends Controller
             'totalCamera' =>$totalCamera,
             'parentLocation' =>$request->parentLocation,
         ];
-        
+
         $pdf = PDF::loadView('admin.reports.pdf.cameraReport.cameraInfoReport',$data);
         return $pdf->download('productList.pdf');
         

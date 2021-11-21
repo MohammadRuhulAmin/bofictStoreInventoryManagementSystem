@@ -23,7 +23,7 @@
         <div style="text-align:center">
             <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
             <h3>{{$Title }}  ({{$Dept}})</h3>
-            <b>Report Name :  </b>
+            <b> Product Issued Of   {{$productUserInfo->name}} Sir  </b>
             <br>
             <table>
                 <tr>
@@ -51,8 +51,109 @@
                 <td><span class="badge badge-info">{{$totalProductUsed}}</span></td>
             </tr>   
           </table>
+          
           <h3>Products List </h3>
-            @foreach($productInfo as $pif)
+        
+            @for ($i = 0;$i<count($informationDetails);$i++)
+            <table align="center" style="border-spacing: 0; width:100%" border="1px"  >
+                    <tr>
+                        <td>
+                            Product Id : 
+                        </td>
+                        <td>
+                            {{$informationDetails[$i]['productId']}}
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>Issue Date : </td>
+                        <td>{{$informationDetails[$i]['productIssueDate']}}</td>
+                    </tr>
+                    <tr>
+                        <td> Return Date  : </td>
+                        <td>
+                            @if (!empty($informationDetails[$i]['productReturnDate']) )
+                            {{$informationDetails[$i]['productReturnDate']}}
+                            @elseif (empty($informationDetails[$i]['productReturnDate']))
+                                Not Returned Yet 
+                            @endif
+                        </td>
+                    </tr>
+
+                    @if (!empty($informationDetails[$i]['productDetail'][0]["category"]))
+                    <tr>
+                        <td>Category </td>
+                        <td>{{$informationDetails[$i]['productDetail'][0]["category"]}}</td>
+                    </tr>
+                    @endif
+                    @if (!empty($informationDetails[$i]['productDetail'][0]["subcategory"]))
+                    <tr>
+                        <td>Subcategory </td>
+                        <td>{{$informationDetails[$i]['productDetail'][0]["subcategory"]}}</td>
+                    </tr>
+                    @endif
+                    
+                    @if (!empty($informationDetails[$i]['productDetail'][0]["brand"]))
+                        <tr>
+                            <td>Brand </td>
+                            <td>{{$informationDetails[$i]['productDetail'][0]["brand"]}}</td>
+                        </tr>
+                    @endif
+                    
+                    @if (!empty($informationDetails[$i]['productDetail'][0]["item"]))
+                        <tr>
+                            <td>Item </td>
+                            <td>{{$informationDetails[$i]['productDetail'][0]["item"]}}</td>
+                        </tr>
+                    @endif
+                    
+                    @if ($informationDetails[$i]['productDetail'][0]["type"])
+                    <tr>
+                        <td>Type </td>
+                        <td>{{$informationDetails[$i]['productDetail'][0]["type"]}}</td>
+                    </tr>
+                    @endif
+                    
+                    @if ($informationDetails[$i]['productDetail'][0]["department"])
+                    <tr>
+                        <td> Department </td>
+                        <td>{{$informationDetails[$i]['productDetail'][0]["department"]}}</td>
+                    </tr>
+                    @endif
+                </table>
+                <br>
+            @endfor
+        
+                        
+                
+              
+           
+            
+        
+   
+   
+   
+  
+   
+       
+</body>
+</html>
+
+
+{{-- <td>{{$combineAllWeeklyInformation_shift_1[$i]['dayName']}}</td>
+<td>{{$combineAllWeeklyInformation_shift_1[$i]['date']}}</td>
+<td><img width="64px" src="{{url('storage/'.$combineAllWeeklyInformation_shift_1[$i]['employeeImage']->image)}}"/></td>
+<td>{{$combineAllWeeklyInformation_shift_1[$i]['employeeName']}}</td>
+<td>{{$combineAllWeeklyInformation_shift_1[$i]['employeeDesignation']->designation}}</td>
+<td>{{$combineAllWeeklyInformation_shift_1[$i]['location']}}</td>
+<td>{{$combineAllWeeklyInformation_shift_1[$i]['employeeTask']}}</td>
+<td>{{$combineAllWeeklyInformation_shift_1[$i]['startTime']}}</td>
+<td>{{$combineAllWeeklyInformation_shift_1[$i]['endTime']}}</td>
+<td>{{$combineAllWeeklyInformation_shift_1[$i]['totalTime']}}</td>
+</tr> --}}
+
+
+  {{-- @foreach($productInfo as $pif)
                     <br>
                     <table style="width:100% ;border-spacing: 0;" border="1px" >
                         @if($pif->category !== null)
@@ -73,7 +174,6 @@
                           <td>{{$pif->type}}</td>
                       </tr>
                       @endif 
-
                       @if($pif->item !==null)
                       <tr>
                           <td> item   </td>
@@ -92,28 +192,11 @@
                           <td>{{$pif->department}}</td>
                       </tr>
                       @endif
-                     
-          
                       <tr>
-                          <td> Repairement Life cycle </td>
-                          <td><a href="{{route('assignProductWithUsers.repairmentHistoryProduct',$pif->id)}}" class=" btn btn-sm btn-warning"> <i class="fas fa-info"></i> Details </a></td> 
-                      </tr>
+                          {{-- <td> Repairement Life cycle </td> --}}
+                          {{-- <td><a href="{{route('assignProductWithUsers.repairmentHistoryProduct',$pif->id)}}" class=" btn btn-sm btn-warning"> <i class="fas fa-info"></i> Details </a></td>  --}}
+                      {{-- </tr>
                   </table>
             
-            @endforeach
-    
-     
-                        
-                
-              
-           
-            
-        
+            @endforeach --}}
    
-   
-   
-  
-   
-       
-</body>
-</html>

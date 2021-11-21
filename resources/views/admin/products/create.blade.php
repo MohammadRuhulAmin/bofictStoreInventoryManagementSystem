@@ -77,7 +77,6 @@
                     <option>{{$category->name}}</option>
                 @endforeach
             </select>
-            
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Select Brand   </label>
@@ -87,7 +86,6 @@
                     <option>{{$brand->name}}</option>
                 @endforeach
             </select>
-           
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1"> Select Sub category   </label>
@@ -97,7 +95,6 @@
                     <option>{{$subcategory->name}}</option>
                 @endforeach
             </select>
-           
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Select Type   </label>
