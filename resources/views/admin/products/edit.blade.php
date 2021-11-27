@@ -35,7 +35,7 @@
         @csrf 
         <div class="card-body">
           <div class="form-group">
-            <label for="exampleInputEmail1">Product Name </label>
+            <label for="exampleInputEmail1">Product Code  </label>
             <input type="text" class="form-control" id="" name="name" placeholder="Product Name " value="{{$product->name}}">
             @if($errors->has('name'))
                 <span class="text-danger">Product Name must be Provided! &  {{$errors->first('name')}} </span>

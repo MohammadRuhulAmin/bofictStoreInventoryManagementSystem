@@ -55,7 +55,7 @@
               <th>SL</th>
               <th>Status</th>
               <th>Department</th>
-              <th>ProductName</th>
+              <th> ProductCode </th>
               <th>Category</th>
               <th>SubCategory</th>
               <th>Brand</th>

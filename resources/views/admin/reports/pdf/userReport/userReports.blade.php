@@ -21,9 +21,8 @@
 </head>
 <body>
         <div style="text-align:center">
-            <img src="{{public_path('bof-logo/bof-logo.png')}}" style = "width: 100px; height :100px"/>
-            <h3>{{$Title }}  ({{$Dept}})</h3>
-            <b> Product Issued Of   {{$productUserInfo->name}} Sir  </b>
+            <b>{{$Title }}  ({{$Dept}})</b>
+            <b> Products issued  List  </b>
             <br>
             <table>
                 <tr>
@@ -46,6 +45,7 @@
                 <td> Designation  </td>
                 <td><span class="badge badge-success">{{$productUserInfo->designation  }}</span></td>
             </tr>
+
             <tr>
                 <td>Total Products Used  </td>
                 <td><span class="badge badge-info">{{$totalProductUsed}}</span></td>
@@ -53,17 +53,16 @@
           </table>
           
           <h3>Products List </h3>
-        
             @for ($i = 0;$i<count($informationDetails);$i++)
-            <table align="center" style="border-spacing: 0; width:100%" border="1px"  >
+            <table align="center" style="border-spacing: 0; width:100%" border="1px">
                     <tr>
                         <td>
                             Product Id : 
+
                         </td>
                         <td>
                             {{$informationDetails[$i]['productId']}}
                         </td>
-
                     </tr>
                     <tr>
                         <td>Issue Date : </td>
@@ -99,21 +98,18 @@
                             <td>{{$informationDetails[$i]['productDetail'][0]["brand"]}}</td>
                         </tr>
                     @endif
-                    
                     @if (!empty($informationDetails[$i]['productDetail'][0]["item"]))
                         <tr>
                             <td>Item </td>
                             <td>{{$informationDetails[$i]['productDetail'][0]["item"]}}</td>
                         </tr>
                     @endif
-                    
                     @if ($informationDetails[$i]['productDetail'][0]["type"])
                     <tr>
                         <td>Type </td>
                         <td>{{$informationDetails[$i]['productDetail'][0]["type"]}}</td>
                     </tr>
                     @endif
-                    
                     @if ($informationDetails[$i]['productDetail'][0]["department"])
                     <tr>
                         <td> Department </td>
@@ -121,8 +117,9 @@
                     </tr>
                     @endif
                 </table>
-                <br>
             @endfor
+            
+
         
                         
                 

@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\InformationGeneratorController;
 use App\Http\Controllers\Admin\StockReportGeneratorController;
 use App\Http\Controllers\Admin\CameraDetailsController;
 use App\Http\Controllers\Admin\QuiceAccessController;
+use App\Http\Controllers\Admin\DemandController;
 // for user 
 use App\Http\Controllers\User\ViewerController;
 // for technicians 
@@ -146,8 +147,12 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        // Stock Report Generator Controller 
       Route::get('/stocks/stockReport/index',[StockReportGeneratorController::class ,'index'])->name('stockReport.index');
       Route::post('/stocks/stockReport/ReportGenerateToPDF',[StockReportGeneratorController::class,'StockReportGeneratorAllStuff'])->name('stockReport.generateReport');
+      
+      // Demand Information
+      Route::resource('demands',DemandController::class);   
    });
 });
+
 // Routes for users 
 
 Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){

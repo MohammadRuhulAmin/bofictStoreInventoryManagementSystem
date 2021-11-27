@@ -191,7 +191,17 @@
                   <p>Camera Location</p>
                 </a>
               </li>
+              @endif 
+
+              @if(auth()->user()->role === "admin")
+              <li class="nav-item">
+                <a href="{{route('demands.index')}}" class="nav-link">
+                  <i class="fas fa-align-right nav-icon"></i>
+                  <p>Demands</p>
+                </a>
+              </li>
               @endif
+
 
               
            
@@ -203,10 +213,6 @@
                 </a>
               </li>
               @endif
-              
-
-              
-
               @if(auth()->user()->role === "user")
               <li class="nav-item">
                 <a href="{{route('user.dashboard')}}" class="nav-link {{request()->is('dashboard*')? 'active': ''}}">
@@ -220,7 +226,7 @@
               <li class="nav-item">
                 <a href="{{route('technician.dashboard')}}" class="nav-link {{request()->is('technician.dashboard')? 'active': ''}}">
                   <i class="fa fa-list nav-icon"></i>
-                  <p> Dashboard </p>
+                  <p> Dashboard  </p>
                 </a>
               </li>
               @endif
@@ -233,8 +239,6 @@
                 </a>
               </li>
               @endif
-              
-              
             </ul>
           </li>
          
