@@ -18,7 +18,7 @@ class CreateDemandsTable extends Migration
             $table->string('department',50);
             $table->string('demandPerpousDescription',500);
             $table->date('demandDate');
-            $table->date('issueDate');
+            $table->date('issueDate')->nullable();
             $table->string('specification',100)->nullable();
             $table->string('item',100);
             $table->string('demandQuantity');

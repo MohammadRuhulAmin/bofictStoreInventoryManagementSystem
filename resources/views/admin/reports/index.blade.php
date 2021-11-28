@@ -132,7 +132,7 @@
                  <select id="selectUserForUserReport"  class="form-control" name="BofUserID">
                    <option></option>
                    @foreach ($usersIdList as $bList)
-                     <option>{{$bList->bofid}}</option>
+                     <option>{{$bList}}</option>
                    @endforeach
                  </select>
                  @if($errors->has('BofUserID'))

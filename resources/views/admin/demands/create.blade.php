@@ -48,16 +48,13 @@
             @endif
           </div>
           <div class="form-group">
-            <label>Date of Issue :   <span class="text-danger">*</span> </label> 
+            <label>Date of Issue :  </label> 
             <input class="form-control" type="date" name="issueDate">
-            @if($errors->has('issueDate'))
-              <span class="text-danger">Issue Date Must Be Provided {{$errors->first('issueDate')}} </span>
-            @endif
+            
           </div>
           <div class="form-group">
             <label>Any Specifications :  </label> 
             <input class="form-control" type="text" name="specification">
-            
           </div>
           <div class="form-group">
             <button class="btn btn-success" id="addDynamicItemQuantityInput"> + Add Item & Quantity</button>
@@ -68,8 +65,6 @@
           <input type="submit" value="Save Demand">
         </div>
       </form>
-      
-
     </div>
     <!-- /.card -->  
   </div>

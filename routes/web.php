@@ -149,6 +149,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::post('/stocks/stockReport/ReportGenerateToPDF',[StockReportGeneratorController::class,'StockReportGeneratorAllStuff'])->name('stockReport.generateReport');
       
       // Demand Information
+     
       Route::resource('demands',DemandController::class);   
    });
 });

@@ -16,11 +16,9 @@ class DemandController extends Controller
      */
     public function index()
     {
-        
         $demandsList = Demand::orderBy('created_at','DESC')->get();
         return view('admin.demands.index',compact('demandsList'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -43,10 +41,7 @@ class DemandController extends Controller
         
         $this->validate($request,[
             'department'=>'required',
-            
-            'demandDate' =>'required',
-            'issueDate' =>'required',
-            
+            'demandDate' =>'required', 
         ]);
         
         $itemList = $request->itemList;
@@ -63,7 +58,6 @@ class DemandController extends Controller
             $demand->demandQuantity = $quantityList[$i];
             $demand->demandPerpousDescription = $perpousList[$i];
             $demand->save();
-
         }
         flash('New Demand  is Created  Successfully!')->success();
         return redirect()->route('demands.index');

@@ -33,9 +33,18 @@ class ReportGeneratorController extends Controller
         $itemList = Item::orderby('created_at','DESC')->get();
         $brandList = Brand::orderby('created_at','DESC')->get();
         $productsList = Product::orderby('created_at','DESC')->get();
-        $usersIdList = Productissued::orderby('created_at','DESC')->get();
         $cameraLocationList = Cameralocation::orderby('created_at','DESC')->get();
-       return view('admin.reports.index')->with(
+
+
+        $usersInfoList = Productissued::orderby('created_at','DESC')->get();
+       // return $usersIdList[0]->bofid;
+        $userNameAndIdList = array();
+        $totalEmployeeList = Productissued::count();
+        for($i = 0;$i<$totalEmployeeList;$i++){
+            $userNameAndIdList[$i] = $usersInfoList[$i]->bofid.' '.$usersInfoList[$i]->name;
+        }
+      
+        return view('admin.reports.index')->with(
            [
                 'categoryList' =>$categoryList,
                 'subcategoryList' =>$subcategoryList,
@@ -44,7 +53,7 @@ class ReportGeneratorController extends Controller
                 'brandList' =>$brandList,
                 'departmentList' =>$departmentList,
                 'productsList' =>$productsList,
-                'usersIdList' =>$usersIdList ,
+                'usersIdList' =>$userNameAndIdList ,
                 'cameraLocationList' =>$cameraLocationList,
            ]
            );
@@ -1174,7 +1183,15 @@ class ReportGeneratorController extends Controller
             'BofUserID' =>'required',
         ]);
         $result = array();
-        $userInfo = Productissued::where(['bofid' => $request->BofUserID])->first();
+        $employeeId = '';
+        $tempBofId = $request->BofUserID;
+        for($i = 0;$i<strlen($tempBofId);$i++){
+            if($tempBofId[$i] !== ' ')$employeeId.=$tempBofId[$i];
+            else break;
+            
+
+        }
+        $userInfo = Productissued::where(['bofid' => $employeeId])->first();
         $productInfo = ProductIssueToUserDetail::where(['BofUserId'=>$userInfo->bofid])->get();
         
         for($i = 0;$i<count($productInfo);$i++){

@@ -8,6 +8,7 @@
           <h1 class="m-0">Demands </h1>
           <br>
           <a href="{{route('demands.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add  New Demand</a>
+          {{-- <a href="{{''}}">Issue Demand </a> --}}
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">

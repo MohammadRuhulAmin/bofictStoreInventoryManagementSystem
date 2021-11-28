@@ -132,8 +132,6 @@
                    </a>
                  </li>
               @endif
-             
-              
               @if(auth()->user()->role ==="admin")
               <li class="nav-item">
                 <a href="{{route('departments.index')}}" class="nav-link {{request()->is('departments*')? 'active': ''}}">
@@ -176,29 +174,57 @@
                 </a>
               </li>
               @endif
-              @if(auth()->user()->role === "admin")
               <li class="nav-item">
-                <a href="{{route('cameradetails.index')}}" class="nav-link">
-                  <i class="fas fa-align-right nav-icon"></i>
-                  <p> Camera Information </p>
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-tree"></i>
+                  <p>
+                    Camera Information
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
                 </a>
+                <ul class="nav nav-treeview">
+                   @if(auth()->user()->role === "admin")
+                <li class="nav-item">
+                  <a href="{{route('cameradetails.index')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Camera Details </p>
+                  </a>
+                </li>
+                @endif
+                @if(auth()->user()->role === "admin")
+                <li class="nav-item">
+                  <a href="{{route('cameralocations.index')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Camera Location</p>
+                  </a>
+                </li>
+                @endif 
+                </ul>
               </li>
-              @endif
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
-                <a href="{{route('cameralocations.index')}}" class="nav-link">
-                  <i class="fas fa-align-right nav-icon"></i>
-                  <p>Camera Location</p>
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-tree"></i>
+                  <p>
+                    Demand Information
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
                 </a>
-              </li>
-              @endif 
-
-              @if(auth()->user()->role === "admin")
-              <li class="nav-item">
-                <a href="{{route('demands.index')}}" class="nav-link">
-                  <i class="fas fa-align-right nav-icon"></i>
-                  <p>Demands</p>
-                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('demands.index')}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Demands</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Issue demands</p>
+                    </a>
+                  </li>
+                   
+                </ul>
               </li>
               @endif
 
