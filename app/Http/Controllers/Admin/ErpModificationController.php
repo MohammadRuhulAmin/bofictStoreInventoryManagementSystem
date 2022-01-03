@@ -40,13 +40,13 @@ class ErpModificationController extends Controller
 
     public function store(Request $request)
     {
+      
        $this->validate($request,[
         'problemFindingDate' =>'required',
         'form_link' =>'required',
         'problemDescription' =>'required',
         'status' =>'required',
         'problem_detected_by' =>'required',
-        'problemSolutionDate' =>'required',
         'module' =>'required'
        ]);
        $erpProblem = new Erpmodification();
@@ -68,9 +68,13 @@ class ErpModificationController extends Controller
             $erpProblem->image = $fileName; 
         }
         //==================
+        // return $request;
         $erpProblem->save();
+    
         flash('New Problem is Inserted Successfully')->success();
         return redirect()->route('erpmodification.index');
+        
+        
     }
 
     /**
@@ -113,7 +117,7 @@ class ErpModificationController extends Controller
             'problemDescription' =>'required',
             'status' =>'required',
             'problem_detected_by' =>'required',
-            'problemSolutionDate' =>'required',
+          
             'module' =>'required'
            ]);
            $erpProblem =  Erpmodification::findOrFail($id);

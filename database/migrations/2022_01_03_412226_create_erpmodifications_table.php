@@ -17,7 +17,7 @@ class CreateErpmodificationsTable extends Migration
             $table->id();
             $table->string("problem_id")->nullable();
             $table->date("problemFindingDate");
-            $table->date('problemSolutionDate');
+            $table->date('problemSolutionDate')->nullable();
             $table->string("form_link",400);
             $table->string("image",500)->nullable();
             $table->longText("problemDescription");
