@@ -34,7 +34,7 @@
                 <th>#SL</th>
                 <th>Problem Link</th>
                 <th>Problem Finding Date </th>
-                <th>Problem Solution Date </th>
+                <th>Module </th>
                 <th>Problem Detected By </th>
                 <th>Problem Status</th>
                 <th>Action </th>
@@ -47,7 +47,7 @@
                         <td>{{++$key}}</td>
                         <td><a href="{{$erp->form_link}}">{{$erp->form_link}}</a></td>
                         <td>{{$erp->problemFindingDate}}</td>
-                        <td>{{$erp->problemSolutionDate}}</td>
+                        <td>{{$erp->module}}</td>
                         <td>{{$erp->problem_detected_by}}</td>
                         <td>{{$erp->status}}</td>
                         <td>

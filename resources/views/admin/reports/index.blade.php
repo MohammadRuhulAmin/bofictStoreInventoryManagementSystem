@@ -166,6 +166,30 @@
         </div>
     </div>
 </div>
+  <div class="row">
+    <div class="col-6">
+      <form action="{{route('admin.report.erpmodification')}}" method="post">
+        @csrf
+        <div class="card card-primary">
+          <div class="card-header"><h3 class="card-title">ERP Solution's Error Report </h3></div>
+          <div class="card-body">
+              <div class="form-group">
+                <label class="form-control">Select Module</label>
+                <select class="form-control" name="module">
+                  <option>ICT</option>
+                  <option>Administration</option>
+                  <option>Security</option>
+                  <option>Common Dashboard</option>
+                </select>
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Search</button>
+              </div>
+          </div>
+       </form>
+    </div>
+    <div class="col-6">
+    </div>
+  </div>
 </div>
 @endsection
-

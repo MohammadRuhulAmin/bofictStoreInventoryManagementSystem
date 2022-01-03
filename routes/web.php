@@ -130,6 +130,9 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        Route::post('/reports/user',[ReportGeneratorController::class,'reportForSpecificUser'])->name('admin.report.byBofID');
          // Report Generator for specific camera location 
        Route::post('/reports/cameralocation',[ReportGeneratorController::class,'reportForCameraInfo'])->name('admin.report.camerainformation');
+        // Report for ERP Errors 
+        Route::post('/reports/erp-errors',[ReportGeneratorController::class,'reportForEPRErrors'])->name('admin.report.erpmodification');
+       
        // Information Generator for Specific Product
        Route::post('/information/product',[InformationGeneratorController::class,'informationForSpecificProduct'])->name('admin.information.specificProduct');
        
@@ -137,7 +140,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
        Route::post('/information/user',[InformationGeneratorController::class,'informationForSpecificUser'])->name('admin.information.specificUser');
        // Information Generator for All Stuff 
        Route::post('/information/generateAllStuff',[InformationGeneratorController::class,'informationGenerateReportAllStuff'])->name('information.generateAllStuff'); 
-       
+      
        // Camera Location
        Route::resource('cameralocations',CameraLocationController::class);
        //Camera Details 

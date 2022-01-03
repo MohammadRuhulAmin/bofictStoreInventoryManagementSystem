@@ -14,6 +14,7 @@ use App\Models\Admin\Department;
 use App\Models\Admin\Item;
 use App\Models\Admin\Brand;
 use App\Models\Admin\Productissued;
+use App\Models\Admin\Erpmodification;
 use PDF; 
 // use Excel;
 use Maatwebsite\Excel\Excel;
@@ -1267,6 +1268,21 @@ class ReportGeneratorController extends Controller
         $pdf = PDF::loadView('admin.reports.pdf.cameraReport.cameraInfoReport',$data);
         return $pdf->download('productList.pdf');
         
+    }
+    // Report for ERP Modifications 
+    public function reportForEPRErrors(Request $request){
+       
+        $erpProblem = Erpmodification::where(['module'=>$request->module ,'status'=>'Unsolved'])->get();
+        $totalError = count($erpProblem);
+        $data = [
+            'Title'=>'BOF',
+            'Dept' => 'ICT CELL',
+            'Module' =>$request->module,
+            'erpProblem'=>$erpProblem,
+            'totalError' =>$totalError,
+        ];
+        $pdf = PDF::loadView('admin.reports.pdf.erperrors.erpErrorListByModule',$data);
+        return $pdf->download('ERPERRORLIST.pdf');
     }
 
 }

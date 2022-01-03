@@ -50,6 +50,7 @@
                 <option>ICT</option>
                 <option>Administration</option>
                 <option>Security</option>
+                <option>Common Dashboard</option>
             </select>
             @if($errors->has('module'))
                 <span class="text-danger">{{$errors->first('module')}} </span>
