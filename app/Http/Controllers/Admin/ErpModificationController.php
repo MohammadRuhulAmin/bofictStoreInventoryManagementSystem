@@ -79,7 +79,7 @@ class ErpModificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function show($id)
     {
         $erpProblem = Erpmodification::find($id);
@@ -94,7 +94,8 @@ class ErpModificationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $erpProblem = Erpmodification::find($id);
+        return view('admin.erpmodifications.edit',compact('erpProblem'));
     }
 
     /**
@@ -106,7 +107,37 @@ class ErpModificationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'problemFindingDate' =>'required',
+            'form_link' =>'required',
+            'problemDescription' =>'required',
+            'status' =>'required',
+            'problem_detected_by' =>'required',
+            'problemSolutionDate' =>'required',
+            'module' =>'required'
+           ]);
+           $erpProblem =  Erpmodification::findOrFail($id);
+           $erpProblem->problem_id = $request->problem_id;
+           $erpProblem->problemFindingDate = $request->problemFindingDate;
+           $erpProblem->form_link = $request->form_link;
+           $erpProblem->problemDescription = $request->problemDescription;
+           $erpProblem->status = $request->status;
+           $erpProblem->problem_detected_by = $request->problem_detected_by;
+           $erpProblem->problemSolutionDate = $request->problemSolutionDate;
+           $erpProblem->remarks = $request->remarks;
+           $erpProblem->suggation = $request->suggation;
+           $erpProblem->module = $request->module;
+            //=================
+            if($request->hasFile('image')){
+                $image = $request->file('image');
+                $fileName = time().'.'.$image->getClientOriginalExtension();
+                $request->image->move('storage/',$fileName);
+                $erpProblem->image = $fileName; 
+            }
+            //==================
+            $erpProblem->save();
+            flash('Problem is Updated Successfully')->success();
+            return redirect()->route('erpmodification.index');
     }
 
     /**
@@ -117,6 +148,9 @@ class ErpModificationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $erpProblem = Erpmodification::findOrFail($id);
+        $erpProblem->delete();
+        flash('Problem  is Deleted  Successfully!')->success();
+        return redirect()->route('erpmodification.index');
     }
 }

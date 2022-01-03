@@ -24,7 +24,7 @@
   <div class="row">
     <div class="col-6">
         <div class="card card-primary m-2">
-            <div class="card-header"> <h5 class="card-title"> Screen Shot Image  </h5></div>
+            <div class="card-header"> <h5 class="card-title"> Problem Details  </h5></div>
             <div class="card-body">
                 <table class="table table-sm">
                     <tr>

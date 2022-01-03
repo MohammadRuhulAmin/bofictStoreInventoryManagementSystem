@@ -61,7 +61,7 @@
                               <i class="fa fa-trash"></i> 
                             </a>
                          
-                            <form id="brand-delete-{{$erp->id}}" action="{{route('erpmodification.destroy',$erp->id)}}" method="post">
+                            <form id="erp-delete-{{$erp->id}}" action="{{route('erpmodification.destroy',$erp->id)}}" method="post">
                                 @csrf 
                                 @method('DELETE')
                             </form>
