@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
@@ -10,7 +9,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{route('demands.index')}}"> Demand List    </a></li>
+            <li class="breadcrumb-item"><a href="{{route('demands.index')}}"> Demand List  </a></li>
             <li class="breadcrumb-item active">Create Demand</li>
           </ol>
         </div><!-- /.col -->
@@ -23,13 +22,13 @@
     <!-- general form elements -->
     <div class="card card-primary">
       <form action="{{route('demands.store')}}" method="post">
-        @csrf 
+        @csrf
         <div class="card-header">
           <h3 class="card-title">Create a New Demand  </h3>
         </div>
         <div class="card-body">
           <div class="form-group">
-            <label>Department / Section <span class="text-danger">*</span> </label> 
+            <label>Department / Section <span class="text-danger">*</span></label>
             <select class="form-control" id="selectDepartment" name="department">
               <option></option>
               @foreach ($departments as $department)
@@ -48,9 +47,8 @@
             @endif
           </div>
           <div class="form-group">
-            <label>Date of Issue :  </label> 
+            <label>Date of Issue : </label> 
             <input class="form-control" type="date" name="issueDate">
-            
           </div>
           <div class="form-group">
             <label>Any Specifications :  </label> 
@@ -66,9 +64,8 @@
         </div>
       </form>
     </div>
-    <!-- /.card -->  
+    <!-- /.card --> 
   </div>
   <!-- /.content -->
-    
-  
 @endsection
+

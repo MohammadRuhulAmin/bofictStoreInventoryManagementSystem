@@ -12,7 +12,6 @@ class QuiceAccessController extends Controller
     public function AnyProductsListSearchIndex(){
         return view('allProductsInfoSearch');
     }
-
     public function searchAnyProduct(Request $request){
         if($request->ajax()){
             $output = '';
@@ -27,9 +26,10 @@ class QuiceAccessController extends Controller
                 ->orWhere('brand','like','%'.$query.'%')
                 ->orWhere('item','like','%'.$query.'%')
                 ->orWhere('type','like','%'.$query.'%')
-                ->orWhere('description','like','%'.$query.'%')
+               ->orWhere('description','like','%'.$query.'%')
                 ->get();
             }
+            
             else{
                 $data = DB::table('products')->get();
             }
@@ -64,7 +64,6 @@ class QuiceAccessController extends Controller
             echo json_encode($data);
         }
     }
-
     public function AnyCamerasListSearchIndex(){
         return view('allCameraInformationList');
     }
@@ -74,7 +73,6 @@ class QuiceAccessController extends Controller
             $query = $request->get('query');
             if($query !=''){
                 $data = DB::table('cameradetails')
-                
                 ->where('ictNo','like','%'.$query.'%')
                 ->orWhere('cameraParentLoccation','like','%'.$query.'%')
                 ->orWhere('specificLocationOfCamera','like','%'.$query.'%')
@@ -88,8 +86,6 @@ class QuiceAccessController extends Controller
             else{
                 $data = DB::table('cameradetails')->get();
             }
-           
-            
             $totalRow = $data->count();
             if($totalRow>0){
                 foreach($data as $row){
@@ -112,7 +108,6 @@ class QuiceAccessController extends Controller
                     <td align="center" colspan="5">No Data Found</td>
                 </tr>';
             }
-
             $data = array(
                 'productsInformation'=>$output,
                 'totalProductInformation' =>$totalRow
@@ -126,4 +121,8 @@ class QuiceAccessController extends Controller
 
     
 }
+
+
+
+
 

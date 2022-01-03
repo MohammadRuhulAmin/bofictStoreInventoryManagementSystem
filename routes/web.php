@@ -31,6 +31,8 @@ use App\Http\Controllers\Technician\ComplaintsController;
 use App\Models\Admin\Product;
 use App\Http\Controllers\TestProductController;
 use App\Http\Controllers\Admin\CameraLocationController;
+// for erp modification 
+use App\Http\Controllers\Admin\ErpModificationController;
 
 // use DataTables;
 /*
@@ -149,13 +151,13 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::post('/stocks/stockReport/ReportGenerateToPDF',[StockReportGeneratorController::class,'StockReportGeneratorAllStuff'])->name('stockReport.generateReport');
       
       // Demand Information
-     
-      Route::resource('demands',DemandController::class);   
+      Route::resource('demands',DemandController::class);
+      // ERP Modification Controller 
+      Route::resource('erpmodification',ErpModificationController::class);
    });
 });
 
 // Routes for users 
-
 Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
   // user prefix
    Route::prefix('user')->group(function(){

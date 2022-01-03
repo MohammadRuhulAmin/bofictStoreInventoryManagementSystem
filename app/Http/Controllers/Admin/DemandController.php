@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Demand;
 use App\Models\Admin\Department;
-
 class DemandController extends Controller
 {
     /**
@@ -15,7 +12,7 @@ class DemandController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {  
         $demandsList = Demand::orderBy('created_at','DESC')->get();
         return view('admin.demands.index',compact('demandsList'));
     }
@@ -29,21 +26,17 @@ class DemandController extends Controller
         $departments = Department::orderBy('created_at','DESC')->get();
         return view('admin.demands.create',compact('departments'));
     }
-    /**
+    /*
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request.
      * @return \Illuminate\Http\Response
      */
-
     public function store(Request $request)
     {
-        
         $this->validate($request,[
             'department'=>'required',
-            'demandDate' =>'required', 
+            'demandDate' =>'required',
         ]);
-        
         $itemList = $request->itemList;
         $quantityList = $request->quantityList;
         $perpousList = $request->perpousList;
@@ -73,7 +66,6 @@ class DemandController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -84,7 +76,6 @@ class DemandController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -105,6 +96,6 @@ class DemandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

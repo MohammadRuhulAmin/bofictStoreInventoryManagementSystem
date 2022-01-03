@@ -64,7 +64,6 @@
               <Th>Description</Th>
             </thead>
             <tbody id="tbody-productsTable">
-               
             </tbody>
         </table>
         </div>

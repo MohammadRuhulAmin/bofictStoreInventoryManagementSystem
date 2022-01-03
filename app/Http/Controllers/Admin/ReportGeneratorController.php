@@ -1188,33 +1188,21 @@ class ReportGeneratorController extends Controller
         for($i = 0;$i<strlen($tempBofId);$i++){
             if($tempBofId[$i] !== ' ')$employeeId.=$tempBofId[$i];
             else break;
-            
-
         }
         $userInfo = Productissued::where(['bofid' => $employeeId])->first();
         $productInfo = ProductIssueToUserDetail::where(['BofUserId'=>$userInfo->bofid])->get();
-        
         for($i = 0;$i<count($productInfo);$i++){
             $productId = $productInfo[$i]->ProductId;
             $productDetail = Product::where(['name'=>$productId])->get();
-            
             $result[$i] = [
-                // 'productIssueDetail' =>ProductIssueToUserDetail::where(['BofUserId'=>$userInfo->bofid])->get(),
                  'productId'=> $productInfo[$i]->ProductId,
                  'productIssueDate' =>$productInfo[$i]->issueDate,
                  'productReturnDate'=>$productInfo[$i]->returnDate,
                 'productDetail'=> Product::where(['name'=>$productInfo[$i]->ProductId])->get(),
-            ];
-           
-            
-            
-            
+            ]; 
         }
-       
-      
-    
+
         $totalProductUsed =  $productInfo->count();
-       
         $data = [
             'Title' =>'BOF',
             'Dept' =>'ICT CELL',
@@ -1227,8 +1215,6 @@ class ReportGeneratorController extends Controller
         $pdf = PDF::loadView('admin.reports.pdf.userReport.userReports',$data);
         return $pdf->download('productList.pdf');
     }
-
-
     public function ReportRepeatedFile(){
             $productsList = Product::all();
             $TrackedRepeatedProduct = array();
@@ -1243,7 +1229,6 @@ class ReportGeneratorController extends Controller
                     }
                 }
             }
-            
             $data = [
                 'productsList' =>$TrackedRepeatedProduct,
                 'Title' =>'BOF',
@@ -1255,6 +1240,7 @@ class ReportGeneratorController extends Controller
                 'Type' =>$type,
                 'TotalProduct' =>$totalProduct,
             ];
+            
             $pdf = PDF::loadView('admin.reports.pdf.productReport.repeatedProductsList',$data);
             return $pdf->download('productList.pdf');
     }

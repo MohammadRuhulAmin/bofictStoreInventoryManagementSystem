@@ -20,7 +20,6 @@
                 <label>Result := </label>
                 <b class="card-title" align='center' id="totalRecords"> </b>
             </div>
-
             <div class="card-body">
                 <table class="table table-sm table-striped">
                     <thead>

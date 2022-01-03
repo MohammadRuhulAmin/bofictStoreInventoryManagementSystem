@@ -199,6 +199,7 @@
                   </a>
                 </li>
                 @endif 
+               
                 </ul>
               </li>
               @if(auth()->user()->role === "admin")
@@ -227,10 +228,14 @@
                 </ul>
               </li>
               @endif
-
-
-              
-           
+              @if(auth()->user()->role === "admin")
+              <li class="nav-item">
+                <a href="{{route('erpmodification.index')}}" class="nav-link">
+                  <i class="fas fa-align-right nav-icon"></i>
+                  <p class="text-success"> ERP Modification </p>
+                </a>
+              </li>
+              @endif
               @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="{{route('report.index')}}" class="nav-link">
@@ -247,7 +252,6 @@
                 </a>
               </li>
               @endif
-             
               @if(auth()->user()->role === "technician" || auth()->user()->role === "officeHd.Mant.Tech")
               <li class="nav-item">
                 <a href="{{route('technician.dashboard')}}" class="nav-link {{request()->is('technician.dashboard')? 'active': ''}}">
@@ -256,7 +260,6 @@
                 </a>
               </li>
               @endif
-
               @if(auth()->user()->role === "technician" || auth()->user()->role === "officeHd.Mant.Tech" )
               <li class="nav-item">
                 <a href="{{route('technician_complaints.index')}}" class="nav-link {{request()->is('complaint*')? 'active': ''}}">

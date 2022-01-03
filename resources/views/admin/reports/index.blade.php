@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
@@ -16,9 +15,7 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
-    <div class="content">
-       
-           
+  <div class="content">
     <div class="row">
         <div class="card card-primary col-md-6">
           <div class="card-header">
@@ -82,7 +79,6 @@
                     @endforeach
                   </select>
                 </div>
-
             </div>
             <div class="card-footer">
               <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i>Submit</button>
@@ -91,7 +87,6 @@
       </form>
         {{-- another card --}}
         <div class="card card-primary col-md-4 ml-3 h-40">
-         
           <div class="card-header">
             <h3 class="card-title"> Report By  Product ID / BOF User ID   </h3>
           </div>
@@ -101,7 +96,7 @@
             @csrf 
          <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Product Information</h3>
+              <h3 class="card-title">Product Information </h3>
             </div>
               <div class="card-body">
                 <div class="form-group">
@@ -128,7 +123,7 @@
             @csrf
             <div class="card-body">
               <div class="form-group">
-                <label class="form-control" for="productName"> Report By BOF User ID /   </label>
+                <label class="form-control" for="productName"> Report By BOF User ID /</label>
                  <select id="selectUserForUserReport"  class="form-control" name="BofUserID">
                    <option></option>
                    @foreach ($usersIdList as $bList)
@@ -173,3 +168,4 @@
 </div>
 </div>
 @endsection
+
