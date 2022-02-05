@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Category;
@@ -15,7 +13,7 @@ use App\Models\Admin\Item;
 use App\Models\Admin\Brand;
 use App\Models\Admin\Productissued;
 use App\Models\Admin\Erpmodification;
-use PDF; 
+use PDF;
 // use Excel;
 use Maatwebsite\Excel\Excel;
 use App\Exports\ProductExport;
@@ -25,8 +23,6 @@ use App\Models\Admin\ProductIssueToUserDetail;
 class ReportGeneratorController extends Controller
 {
     public function index(){
-
-        
         $departmentList = Department::orderby('created_at','DESC')->get();
         $categoryList = Category::orderby('created_at','DESC')->get();
         $subcategoryList =Subcategory::orderby('created_at','DESC')->get();
@@ -35,8 +31,6 @@ class ReportGeneratorController extends Controller
         $brandList = Brand::orderby('created_at','DESC')->get();
         $productsList = Product::orderby('created_at','DESC')->get();
         $cameraLocationList = Cameralocation::orderby('created_at','DESC')->get();
-
-
         $usersInfoList = Productissued::orderby('created_at','DESC')->get();
        // return $usersIdList[0]->bofid;
         $userNameAndIdList = array();
@@ -68,7 +62,59 @@ class ReportGeneratorController extends Controller
         $brand = $request->brand;
         $item = $request->item;
         $type = $request->type;
+        $AccessoriesQuantity = $request->AccessoriesQuantity;
         // if input field is 1
+        // for all accessores
+        if($AccessoriesQuantity!== null && $department === null && $category === null && $subcategory === null && $brand === null && $item === null && $type === null ){
+            
+            $data = [
+            'desktop' => Product::where(['Category'=>'Desktop'])->count(),
+            'laptop' => Product::where(['Category'=>'Laptop'])->count(),
+            'printer' => Product::where(['Category'=>'Printer'])->count(),
+            'workstationpc' => Product::where(['Category'=>'Workstation PC'])->count(),
+            'Router' => Product::where(['Category'=>'Router'])->count(),
+            'portableHardDisk' => Product::where(['Category'=>'Portable Hard Disk'])->count(),
+            'internalHardDisk' => Product::where(['Category' =>'Internal Hard Disk'])->count(),
+            'firewall' => Product::where(['Category'=>'Firewall'])->count(),
+            'switch' => Product::where(['Category'=>'Switch'])->count(),
+            'server' => Product::where(['Category'=>'Server'])->count(),
+            'rack' => Product::where(['Category'=>'Rack'])->count(),
+            'monitor' => Product::where(['Category'=>'Monitor'])->count(),
+            'pendrive' => Product::where(['Category'=>'Pendrive'])->count(),
+            'pointer' => Product::where(['Category'=>'Pointer'])->count(),
+            'webcam' => Product::where(['Category'=>'Webcamera'])->count(),
+            'mouse' => Product::where(['Category'=>'Mouse'])->count(),
+            'ssd'  => Product::where(['Category'=>'SSD'])->count(),
+            'hddinclosoure' => Product::where(['Category'=>'HDD Inclosoure'])->count(),
+            'motherboard' => Product::where(['Category'=>'Mother Board'])->count(),
+            'projector' => Product::where(['Category'=>'Projector'])->count(),
+            'projectorScreen' => Product::where(['Category'=>'Projector-Screen'])->count(),
+            'ram' => Product::where(['Category'=>'RAM'])->count(),
+            'keyboard' => Product::where(['Category'=>'Keyboard'])->count(),
+            'dvdcddisk' => Product::where(['Category'=>'DVD/CD Disk'])->count(),
+            'ups' => Product::where(['Category'=>'UPS'])->count(),
+            'multisocket' => Product::where(['Category'=>'Multi Socket'])->count(),
+            'powersupply' => Product::where(['Category'=>'Power Supply'])->count(),
+            'cccameraHighResulation' => Product::where(['Category'=>'CC Camera (High Resolution)'])->count(),
+            'cameraip' => Product::where(['Category'=>'Camera (IP)'])->count(),
+            'speaker'  => Product::where(['Category'=>'Speaker (Wired)'])->count(),
+            'photocopier' => Product::where(['Category'=>'Photocopier'])->count(),
+            'cable' => Product::where(['Category'=>'Cable'])->count(),
+            'fan' => Product::where(['Category'=>'Fan(Cabling,Colling-Fan)'])->count(),
+            'processor' => Product::where(['Category'=>'Processor'])->count(),
+            'phone' => Product::where(['Category'=>'Phone'])->count(),
+            'microprocessor' => Product::where(['Category'=>'Microprocessor'])->count(),
+            'cordlessPhone' => Product::where(['SubCategory'=>'CordlessPhone'])->count(),
+            'onlineups' => Product::where(['SubCategory'=>'Online UPS'])->count(),
+            'wirelessPocketMicrophone' => Product::where(['SubCategory'=>'Wireless Pocket Microphone'])->count(),
+            'wirelesskeyboard' => Product::where(['SubCategory'=>'Wireless Keyboard'])->count(),
+            'mobilephone' => Product::where(['SubCategory'=>'Mobile Phone'])->count(),
+            'powercable' => Product::where(['SubCategory'=>'Power Cable'])->count(),
+            ];
+
+           $pdf = PDF::loadView('admin.reports.pdf.allAccessoriesQuantity',$data);
+           return $pdf->download('productQuantity.pdf');
+        }
         //for department
         if($department !== null && $category === null && $subcategory === null && $brand === null && $item === null && $type === null){
             $productList = Product::where(['department'=>$department])->get();
@@ -137,10 +183,8 @@ class ReportGeneratorController extends Controller
                     'Brand' =>$brand,
                     'TotalProduct' =>$totalProduct,
                 ];
-
                 $pdf = PDF::loadView('admin.reports.pdf.brand',$data);
                 return $pdf->download('productList.pdf'); 
-               
             }
             else{
                 flash('No Data Has found for '. $brand. " brand")->error();
@@ -215,8 +259,6 @@ class ReportGeneratorController extends Controller
                 flash('No Data Has found for '. $department ."Department &". $category." Category")->error();
                 return back();
             }
-
-          
         }
          //for department & Subcategory 
         else if($department !== null && $category === null && $subcategory !== null && $brand === null && $item === null && $type === null){
@@ -1153,21 +1195,17 @@ class ReportGeneratorController extends Controller
             flash("No Data is Match for this pattern ! we will work on it!" )->error();
             return back();
         }
-    } 
-
-
+    }
     public function reportForSpecificProduct(Request $request){
         $this->validate($request,[
             'productName'=>'required',
         ]);
-        
         $productInfo = Product::where(['name' =>$request->productName])->first();
         $product = Product::findOrFail($productInfo->id);
         $productUserList = $product->productissueds;
         $complaintsOfProduct = Product::findOrFail($productInfo->id)->complaints;
         // $pdf = PDF::loadView('admin.reports.pdf.catSubCatBrandItemType',$data);
         // return $pdf->download('productList.pdf');
-
         $data = [
             'Title' =>'BOF',
             'Dept' =>'ICT CELL',
@@ -1264,14 +1302,11 @@ class ReportGeneratorController extends Controller
             'totalCamera' =>$totalCamera,
             'parentLocation' =>$request->parentLocation,
         ];
-
         $pdf = PDF::loadView('admin.reports.pdf.cameraReport.cameraInfoReport',$data);
         return $pdf->download('productList.pdf');
-        
     }
     // Report for ERP Modifications 
     public function reportForEPRErrors(Request $request){
-       
         $erpProblem = Erpmodification::where(['module'=>$request->module ,'status'=>'Unsolved'])->get();
         $totalError = count($erpProblem);
         $data = [
@@ -1284,5 +1319,4 @@ class ReportGeneratorController extends Controller
         $pdf = PDF::loadView('admin.reports.pdf.erperrors.erpErrorListByModule',$data);
         return $pdf->download('ERPERRORLIST.pdf');
     }
-
 }

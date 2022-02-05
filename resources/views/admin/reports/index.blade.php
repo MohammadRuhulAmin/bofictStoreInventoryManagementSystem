@@ -26,6 +26,13 @@
             @csrf 
             <div class="card-body">
               <div class="form-group">
+                <label class="form-control" for="category"> All ICT Accessories Quantity </label>
+                <select  class="form-control"  name="AccessoriesQuantity">
+                  <option></option>
+                  <option>Accessories Quantity</option>
+                </select>
+              </div>
+              <div class="form-group">
                 <label class="form-control" for="category"> Department  </label>
                 <select  class="form-control" id="userSelectDepartment" name="department">
                   <option></option>
@@ -88,7 +95,7 @@
         {{-- another card --}}
         <div class="card card-primary col-md-4 ml-3 h-40">
           <div class="card-header">
-            <h3 class="card-title"> Report By  Product ID / BOF User ID   </h3>
+            <h3 class="card-title"> Report By  Product ID / BOF User ID  </h3>
           </div>
           <br>
           <br>
@@ -141,7 +148,7 @@
         </div>
         <div class="card card-primary">
           <form action="{{route('admin.report.camerainformation')}}" method="post">
-            @csrf 
+            @csrf
           <div class="card-header">
             <h3 class="card-title">Camera Information</h3>
           </div>

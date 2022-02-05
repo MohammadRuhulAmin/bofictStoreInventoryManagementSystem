@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
@@ -19,7 +18,6 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
- 
   <!-- Main content -->
   <div class="col-md-12">
     <!-- general form elements -->
@@ -32,6 +30,7 @@
         <thead>
             <tr>
                 <th>#SL</th>
+                <th>Problem ID </th>
                 <th>Problem Link</th>
                 <th>Problem Finding Date </th>
                 <th>Module </th>
@@ -45,11 +44,20 @@
                 @foreach ($erpProblems as $key=> $erp)
                     <tr>
                         <td>{{++$key}}</td>
+                        <td>{{$erp->problem_id}}</td>
                         <td><a href="{{$erp->form_link}}">{{$erp->form_link}}</a></td>
                         <td>{{$erp->problemFindingDate}}</td>
                         <td>{{$erp->module}}</td>
                         <td>{{$erp->problem_detected_by}}</td>
-                        <td>{{$erp->status}}</td>
+                        <td>
+                          @if($erp->status === "Unsolved")
+                            <span class="badge badge-danger">Unsolved </span>
+                          @elseif ($erp->status === "Solved")
+                            <span class="badge badge-success">Solved </span>
+                          @else
+                            <span class="badge badge-warning">{{$erp->status}}</span>
+                            @endif 
+                        </td>
                         <td>
                           <a  href="{{route('erpmodification.show',$erp->id)}}" class="btn btn-sm btn-success">
                             <i class="fa fa-info"></i>
@@ -60,7 +68,6 @@
                             <a  href="javascript:;" class="btn btn-sm btn-danger sa-delete" data-form-id="erp-delete-{{$erp->id}}">
                               <i class="fa fa-trash"></i> 
                             </a>
-                         
                             <form id="erp-delete-{{$erp->id}}" action="{{route('erpmodification.destroy',$erp->id)}}" method="post">
                                 @csrf 
                                 @method('DELETE')

@@ -7,7 +7,6 @@
         <div class="col-sm-6">
           <h1 class="m-0">ERP Modification </h1>
           <br>
-       
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -51,6 +50,7 @@
                         <td>Problem Solution Date </td>
                         <td>{{$erpProblem->problemSolutionDate}}</td>
                     </tr>
+                    
                     <tr>
                         <td>Problem Detected  By </td>
                         <td>{{$erpProblem->problem_detected_by}}</td>
@@ -66,7 +66,6 @@
         
                 </table>
             </div>
-          
         </div>
     </div>
     <div class="col-6">
@@ -75,9 +74,8 @@
             <div class="card-body text-center">
                   @if($erpProblem->image !== null)
                   <img width="600px" src="{{url('storage/'.$erpProblem->image)}}"/>
-                     
                   @else 
-                    <p class="text-danger">No Img </p>
+                    <p class="text-danger">No Img  </p>
                    @endif
             </div>
         </div>

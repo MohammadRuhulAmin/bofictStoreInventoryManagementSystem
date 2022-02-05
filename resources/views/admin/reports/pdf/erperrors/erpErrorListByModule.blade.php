@@ -12,7 +12,7 @@
           text-align: justify;
             text-justify: inter-word;
             font-family: :'Times New Roman', Times, serif;
-            
+            font-size:20px;
         }
         a{
             text-align:justify;
@@ -23,7 +23,7 @@
 <body>
         <div style="text-align:center">
             <h3>{{$Title }}  ({{$Dept}})</h3>
-            <b>Report Name : Modification List of {{$Module}}  </b>
+            <b>Report Name : Modification List of {{$Module}} Module  </b>
             <br>
         </div>
         <table >
@@ -40,11 +40,16 @@
         @for ($i = 0;$i<$totalError;$i++)
         <table  style="border-spacing: 0; width:100%"  border="1px">
             <tr>
-                <td style="width: 30%">Index</td><td>{{$i+1}}</td>
+                <td style="width: 30%">Index</td>
+                <td>{{$i+1}} </td>
             </tr>
             <tr>
-                <td style="width: 30%">Status</td>
-                <td >{{$erpProblem[$i]->status}}</td>
+                <td style="width:3 0%">Problem ID </td>
+                <td><p>{{$erpProblem[$i]->problem_id}}</p></td>
+            </tr>
+            <tr>
+                <td style="width: 30%">status</td>
+                <td>{{$erpProblem[$i]->status}}</td>
             </tr>
             <tr>
                 <td style="width: 30%">Module</td>
@@ -62,7 +67,6 @@
                 <td style="width: 30%">Problem Found  Date </td>
                 <td >{{$erpProblem[$i]->problemFindingDate}}</td>
             </tr>
-
             <tr>
                 <td style="width: 30%">Problem Solution Date </td>
                 <td >{{$erpProblem[$i]->problemSolutionDate}}</td>

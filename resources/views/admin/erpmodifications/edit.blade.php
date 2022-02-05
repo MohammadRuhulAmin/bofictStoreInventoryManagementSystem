@@ -46,7 +46,7 @@
             @endif
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Select Module   </label>
+            <label for="exampleInputEmail1">Select Module</label>
             <select class="form-control" name="module">
                 <option>{{$erpProblem->module}}</option>
                 <option>ICT</option>

@@ -40,9 +40,11 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Problem Link / Form Link   </label>
             <input type="text" class="form-control" id="" name="form_link" placeholder="Form Link / Problem Link ">
+            
             @if($errors->has('form_link'))
                 <span class="text-danger"> {{$errors->first('form_link')}} </span>
             @endif
+
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Select Module   </label>
@@ -52,6 +54,7 @@
                 <option>Security</option>
                 <option>Common Dashboard</option>
             </select>
+            
             @if($errors->has('module'))
                 <span class="text-danger">{{$errors->first('module')}} </span>
             @endif
