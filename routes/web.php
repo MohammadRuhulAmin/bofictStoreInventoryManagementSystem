@@ -33,6 +33,7 @@ use App\Http\Controllers\TestProductController;
 use App\Http\Controllers\Admin\CameraLocationController;
 // for erp modification 
 use App\Http\Controllers\Admin\ErpModificationController;
+use App\Http\Controllers\Admin\BookNoteSheetController;
 
 // use DataTables;
 /*
@@ -157,6 +158,8 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::resource('demands',DemandController::class);
       // ERP Modification Controller 
       Route::resource('erpmodification',ErpModificationController::class);
+      //Book Notesheet
+      Route::resource('booknotesheet',BookNoteSheetController::class);
    });
 });
 

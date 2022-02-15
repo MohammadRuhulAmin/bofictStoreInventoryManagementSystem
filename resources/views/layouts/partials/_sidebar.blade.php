@@ -64,6 +64,28 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-tree"></i>
                   <p>
+                    Book & Note sheet
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  @if(auth()->user()->role === "admin")
+                  <li class="nav-item">
+                    <a href="{{route('booknotesheet.index')}}" class="nav-link {{request()->is('booknotesheet*')? 'active': ''}}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Book</p>
+                    </a>
+                  </li>
+                  @endif
+                </ul>
+              </li>
+              @endif 
+              
+              @if(auth()->user()->role === "admin")
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-tree"></i>
+                  <p>
                     Product Information
                     <i class="fas fa-angle-left right"></i>
                   </p>
@@ -103,6 +125,7 @@
                    </a>
                  </li> 
                  @endif 
+                 
                  
                  @if(auth()->user()->role === "user")
                  <li class="nav-item">
@@ -268,6 +291,7 @@
                 </a>
               </li>
               @endif
+              
             </ul>
           </li>
          
