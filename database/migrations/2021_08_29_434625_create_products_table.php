@@ -24,10 +24,10 @@ class CreateProductsTable extends Migration
             $table->string('image',300)->nullable();
             $table->string('description',300)->nullable();
             $table->string('department',50)->nullable();
-            
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

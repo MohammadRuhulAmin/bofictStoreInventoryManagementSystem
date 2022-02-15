@@ -66,8 +66,6 @@
                     <span class="text-danger">{{$errors->first('bookDescription')}}</span>
                 @endif
               </div>
-
-
         </div>
         <!-- /.card-body -->
 
@@ -77,8 +75,6 @@
       </form>
     </div>
     <!-- /.card -->
-
-
   </div>
   <!-- /.content -->
     

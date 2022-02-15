@@ -23,6 +23,7 @@ class BookNoteSheetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function create()
     {
         return view('admin.BookNoteSheet.create');
@@ -40,7 +41,6 @@ class BookNoteSheetController extends Controller
            'bookName' => 'required',
            'bookNumber'=>'required',
            'bookOpenDate' =>'required',
-        //    'bookCloseDate' =>'required',
            'bookDescription' =>'required'
 
         ]);
@@ -94,9 +94,8 @@ class BookNoteSheetController extends Controller
             'bookNumber'=>'required',
             'bookOpenDate' =>'required',
             'bookDescription' =>'required'
- 
-         ]);
 
+         ]);
          $book =  Booknotesheet::findOrFail($id);
          $book->bookName = $request->bookName;
          $book->bookNumber = $request->bookNumber;
@@ -107,7 +106,6 @@ class BookNoteSheetController extends Controller
          flash('Book Updated Successfully!')->success();
          return redirect()->route('booknotesheet.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *

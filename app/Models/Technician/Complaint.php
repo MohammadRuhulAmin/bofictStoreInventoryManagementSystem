@@ -8,7 +8,6 @@ use App\Models\Admin\Product;
 class Complaint extends Model
 {
     use HasFactory;
-     protected $table="complaints";
     public function products(){
         return $this->belongsTo(Product::class);
     }

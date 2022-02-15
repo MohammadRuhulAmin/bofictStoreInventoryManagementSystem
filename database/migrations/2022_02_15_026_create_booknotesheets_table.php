@@ -18,7 +18,7 @@ class CreateBooknotesheetsTable extends Migration
             $table->string('bookName');
             $table->string('bookNumber');
             $table->date('bookOpenDate');
-            $table->date('bookCloseDate');
+            $table->date('bookCloseDate')->nullable();
             $table->string('bookDescription',200);
             $table->timestamps();
         });
