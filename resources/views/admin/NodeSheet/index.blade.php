@@ -27,9 +27,7 @@
       <div class="card-header">
         <h3 class="card-title">Notesheet List  </h3>
       </div>
-      
       <br>
-      
       <table class="table table-bordered datatable">
         <thead>
             <tr>
@@ -74,7 +72,6 @@
                             <form id="notesheet-delete-{{$notesheet->id}}" action="{{route('notesheets.destroy',$notesheet->id)}}" method="post">
                                 @csrf 
                                 @method('DELETE')
-
                             </form>
                         </td>
                     </tr>

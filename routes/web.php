@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\CameraLocationController;
 use App\Http\Controllers\Admin\ErpModificationController;
 use App\Http\Controllers\Admin\BookNoteSheetController;
 use App\Http\Controllers\Admin\NoteSheetController;
+use App\Http\Controllers\Admin\NotesheetDetailsController;
 
 // use DataTables;
 /*
@@ -163,6 +164,8 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::resource('booknotesheet',BookNoteSheetController::class);
       // Note sheet
       Route::resource('notesheets',NoteSheetController::class);
+      // Note sheet details 
+      Route::resource('notesheetdetails',NotesheetDetailsController::class);
    });
 });
 

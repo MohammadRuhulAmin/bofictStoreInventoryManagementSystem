@@ -77,11 +77,20 @@
                     </a>
                   </li>
                   @endif
+                  
                   @if(auth()->user()->role === "admin")
                   <li class="nav-item">
                     <a href="{{route('notesheets.index')}}" class="nav-link {{request()->is('notesheets*')? 'active': ''}}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Note sheets</p>
+                    </a>
+                  </li>
+                  @endif
+                  @if(auth()->user()->role === "admin")
+                  <li class="nav-item">
+                    <a href="{{route('notesheetdetails.create')}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p> Notesheet Item </p>
                     </a>
                   </li>
                   @endif
