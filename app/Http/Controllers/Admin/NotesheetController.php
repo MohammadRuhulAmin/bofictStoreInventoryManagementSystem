@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Notesheet;
 use App\Models\Admin\Booknotesheet;
+use App\Models\Admin\Notesheetdetails;
 class NotesheetController extends Controller
 {
     /**
@@ -40,17 +41,18 @@ class NotesheetController extends Controller
     {
         $this->validate($request,[
             'booknotesheet_id' => 'required',
+            // 'titleDescription'=>'required',
             'notesheetDate'=>'required',
             'notesheet_no' =>'required',
             'reasonForTheNoteSheet' =>'required',
             'amount'=>'required'
          ]);
          $book  = BooknoteSheet::where(['id'=>$request->booknotesheet_id])->first();
-
          $bookName = $book->bookName;
          $notesheet = new Notesheet();
          $notesheet->booknotesheet_id = $request->booknotesheet_id;
          $notesheet->bookName = $bookName;
+        //  $notesheet->titleDescription = $request->titleDescription;
          $notesheet->notesheetDate = $request->notesheetDate;
          $notesheet->notesheet_no = $request->notesheet_no;
          $notesheet->reasonForTheNoteSheet = $request->reasonForTheNoteSheet;
@@ -97,9 +99,11 @@ class NotesheetController extends Controller
  
         $this->validate($request,[
             'booknotesheet_id' => 'required',
+            // 'titleDescription'=>'required',
             'notesheetDate'=>'required',
             'notesheet_no' =>'required',
             'reasonForTheNoteSheet' =>'required',
+        
             'amount'=>'required'
          ]);
          $book  = BooknoteSheet::where(['id'=>$request->booknotesheet_id])->first();
@@ -108,6 +112,7 @@ class NotesheetController extends Controller
          $notesheet = Notesheet::findOrFail($id);
          $notesheet->booknotesheet_id = $request->booknotesheet_id;
          $notesheet->bookName = $bookName;
+        //  $notesheet->titleDescription = $request->titleDescription;
          $notesheet->notesheetDate = $request->notesheetDate;
          $notesheet->notesheet_no = $request->notesheet_no;
          $notesheet->reasonForTheNoteSheet = $request->reasonForTheNoteSheet;

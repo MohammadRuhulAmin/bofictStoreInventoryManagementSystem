@@ -38,6 +38,13 @@
                 <span class="text-danger">  {{$errors->first('reasonForTheNoteSheet')}}</span>
             @endif
           </div>
+          {{-- <div class="form-group">
+            <label for="exampleInputEmail1">  Title Description  </label>
+            <input type="text" class="form-control" id="" name="titleDescription" value="{{$notesheet->titleDescription}}">
+            @if($errors->has('titleDescription'))
+                <span class="text-danger">  {{$errors->first('titleDescription')}}</span>
+            @endif
+          </div> --}}
           <div class="form-group">
             <label for="exampleInputEmail1">Note sheet Date  </label>
             <input type="date" class="form-control" id="" name="notesheetDate" value="{{$notesheet->notesheetDate}}">

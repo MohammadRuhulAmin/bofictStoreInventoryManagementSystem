@@ -14,6 +14,7 @@ class Notesheet extends Model
         'notesheet_no',
         'reasonForTheNoteSheet',
         'amount',
+        'titleDescription'
     ];
     public function booknotesheet(){
         return $this->belongsTo(Notesheet::class);

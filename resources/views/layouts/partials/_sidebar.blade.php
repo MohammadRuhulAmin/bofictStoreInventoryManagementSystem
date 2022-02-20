@@ -90,7 +90,15 @@
                   <li class="nav-item">
                     <a href="{{route('notesheetdetails.create')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p> Notesheet Item </p>
+                      <p> Notesheet Ledger </p>
+                    </a>
+                  </li>
+                  @endif
+                  @if(auth()->user()->role === "admin")
+                  <li class="nav-item">
+                    <a href="{{route('balancesheet.index')}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p> Balance Sheet </p>
                     </a>
                   </li>
                   @endif

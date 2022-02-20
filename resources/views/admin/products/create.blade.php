@@ -115,13 +115,10 @@
                     <option>{{$item->name}}</option>
                 @endforeach
             </select>
-           
           </div>
-
           <div class="form-group">
             <label for="exampleInputEmail1"> Upload Image   </label>
             <input type="file" name="image" class="form-control">
-           
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1"> Description  </label>
@@ -150,7 +147,6 @@
               <option>Dispose</option>
               <option>Expire</option>
            </select>
-
             @if($errors->has('productStatus'))
                 <span class="text-danger">Product Status must be  provided {{$errors->first('productStatus')}} </span>
             @endif

@@ -188,6 +188,18 @@
         placeholder:"Select Camera Location ",
         allowClear:true 
     })
+</script>
+<script type="text/javascript">
+    $("#selectNotesheet").select2({
+        placeholder:"Select Notesheets ",
+        allowClear:true 
+    })
+</script> 
+<script type="text/javascript">
+    $("#selectBooknotesheet").select2({
+        placeholder:"Select Book ",
+        allowClear:true 
+    })
 </script> 
 
 

@@ -64,7 +64,6 @@
           <select id="selectItem" name="booknotesheet_id" class="form-control">
               <option></option>
               @foreach($books as $book)
-                  {{-- <option >{{$book->bookName}} </option> --}}
                   <option value="{{$book->id}}">{{$book->bookName}} </option>
               @endforeach
           </select>

@@ -16,11 +16,12 @@ class CreateNotesheetdetailsTable extends Migration
         Schema::create('notesheetdetails', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('notesheet_id');
+            $table->unsignedBigInteger('book_id');
             $table->string("PVRV");
             $table->date("date");
             $table->longText("details");
-            $table->bigInteger('credit')->default(12);
-            $table->bigInteger('debit')->default(12);
+            $table->bigInteger('credit')->default(12)->nullable();
+            $table->bigInteger('debit')->default(12)->nullable();
             $table->bigInteger('cashbalance')->nullable()->default(12);
             $table->string("ic")->nullable();
             $table->string("oic")->nullable();
@@ -29,6 +30,7 @@ class CreateNotesheetdetailsTable extends Migration
             $table->string("comments")->nullable();
             //$table->string("bookName")->nullable();
             $table->foreign('notesheet_id')->references('id')->on('notesheets')->onDelete('cascade');
+            $table->foreign('book_id')->references('id')->on('booknotesheets')->onDelete('cascade');
             $table->timestamps();
         });
     }

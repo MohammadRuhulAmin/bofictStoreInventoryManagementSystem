@@ -20,6 +20,7 @@ class CreateNotesheetsTable extends Migration
             $table->date('notesheetDate');
             $table->string('notesheet_no');
             $table->string('reasonForTheNoteSheet');
+            // $table->string('titleDescription',200);
             $table->string('bookName');
             $table->bigInteger('amount')->default(12);
             $table->foreign('booknotesheet_id')->references('id')->on('booknotesheets')->onDelete('cascade');

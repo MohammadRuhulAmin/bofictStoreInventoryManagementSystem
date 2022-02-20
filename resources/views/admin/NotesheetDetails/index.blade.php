@@ -41,7 +41,7 @@
                 <th>IC</th>
                 <th>OIC</th>
                 <th>Erp Indent Voucher No</th>
-                <th>Entry Date</th>
+                <th>ERP Entry Date</th>
                 <th>Comments </th>
             </tr>
         </thead>
@@ -83,7 +83,5 @@
     <!-- /.card -->
   </div>
   <!-- /.content -->
-    
-  
 @endsection
 

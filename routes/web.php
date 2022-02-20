@@ -36,6 +36,7 @@ use App\Http\Controllers\Admin\ErpModificationController;
 use App\Http\Controllers\Admin\BookNoteSheetController;
 use App\Http\Controllers\Admin\NoteSheetController;
 use App\Http\Controllers\Admin\NotesheetDetailsController;
+use App\Http\Controllers\Admin\BalanceSheetController;
 
 // use DataTables;
 /*
@@ -166,9 +167,11 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::resource('notesheets',NoteSheetController::class);
       // Note sheet details 
       Route::resource('notesheetdetails',NotesheetDetailsController::class);
+      // balance sheet backend
+      Route::get('/balancesheet/index',[BalanceSheetController::class,'balanceSheetIndex'])->name('balancesheet.index');
+      Route::get('/balancesheet/search',[BalanceSheetController::class,'balanceSheetSearch'])->name('balancesheet.search');
    });
 });
-
 // Routes for users 
 Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
   // user prefix
