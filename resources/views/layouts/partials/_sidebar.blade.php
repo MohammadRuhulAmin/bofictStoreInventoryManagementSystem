@@ -102,6 +102,14 @@
                     </a>
                   </li>
                   @endif
+                  @if(auth()->user()->role === "admin")
+                  <li class="nav-item">
+                    <a href="{{route('balanceDashboard.index')}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p> B.S. Authorization </p>
+                    </a>
+                  </li>
+                  @endif
                 </ul>
               </li>
               @endif 
