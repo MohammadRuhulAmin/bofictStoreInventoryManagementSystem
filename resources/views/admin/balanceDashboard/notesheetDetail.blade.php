@@ -12,6 +12,12 @@
             <h3 style="text-align: right"><a href="{{route('users.logout')}}">Log out</a></h3>
             
         </div>
+        <div class="clearfix">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}"> Home </a></li>
+              <li class="breadcrumb-item active"> Notesheet List </a></li>
+              <li class="breadcrumb-item active"> Balance sheet  </li>
+            </ol>
         <div>
             <h3 >BOOK ID :{{$notesheetDetails[0]["book_id"]}} </h3>
             <h3>Notesheet ID  : {{$notesheetDetails[0]["notesheet_id"]}} </h3>
