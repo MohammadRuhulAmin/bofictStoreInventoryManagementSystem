@@ -203,10 +203,10 @@ Route::middleware(['auth:sanctum','VerifyAuthorizer'])->group(function(){
       // Balance Dashboard
       
       Route::get('/balanceDashboard/index',[BalanceDashboardController::class,'index'])->name('balanceDashboard.index');
-      
       Route::get('/balanceDashboard/index/{id}/notesheetsList',[BalanceDashboardController::class,'notesheetsList'])->name('balanceDashboard.notesheetsList');
       Route::get('/balanceDashboard/notesheet/{id}/',[BalanceDashboardController::class,'notesheetDetails'])->name('balanceDashboard.notesheetDetails');
-     });
+      Route::post('/balanceDashboard/notesheet/item',[BalanceDashboardController::class,'notesheetAuthorization'])->name('balanceDashboard.authorization');
+   });
  });
 
 //  Routes for technicians

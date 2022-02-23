@@ -1,9 +1,10 @@
 <html>
 <head>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <meta name="csrf-token" content="{{csrf_token()}}">
 </head>
 <body>
     <div class="m-3">
@@ -14,7 +15,7 @@
         </div>
         <div class="clearfix">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}"> Home </a></li>
+              <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}"> Book </a></li>
               <li class="breadcrumb-item active"> Notesheet List </a></li>
               <li class="breadcrumb-item active"> Balance sheet  </li>
             </ol>
@@ -47,9 +48,8 @@
                     @foreach ($notesheetDetails as $key=>$notesheetDetail )
                     @if ($notesheetDetail->oic === NULL)
                         <tr style="background-color: #FF7F7F;" id="{{$notesheetDetail->id}}">
-                           
                             <td><input type="checkbox"  style="width: 40px; height: 40px;" class="checkbox"    data-id="{{$notesheetDetail->id}}"   ></td>
-                            <td>{{++$key}}</td>
+                            <td><h5>{{++$key}}</h5></td>
                             <td><h5>{{$notesheetDetail->PVRV}}</h5></td>
                             <td><h5>{{$notesheetDetail->date}}</h5></td>
                             <td><h5>{{$notesheetDetail->details}}</h5></td>
@@ -66,9 +66,8 @@
                             <td><h5>{{$notesheetDetail->oic}}</h5></td>
                             
                         </tr>
-                    
                     @else
-                        <tr style="background-color: #90EE90" >
+                        <tr style="background-color: #90EE90" id="{{$notesheetDetail->id}}">
                             <td><input type="hidden" name="{{$notesheetDetail->id}}" id="" ></td>
                             <td>{{++$key}}</td>
                             <td><h5>{{$notesheetDetail->PVRV}}</h5></td>
@@ -89,45 +88,59 @@
             </div>
           
             <div class="card-footer"> 
-                <a href="#" id="" class="authorization_link btn btn-warning" > Click For Authorization </a>
+                <button class="btn btn-warning" id="authorization_link" > Click For Authorization </button>
             </div>
         </div>
     
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function(){
+           
+          $('#check_all').on('click',function(){
+              if($(this).is(":checked",true)){
+                  $('.checkbox').prop('checked',true);
+              }
+              else{
+                  $('.checkbox').prop('checked',false);
+              }
+          });
+          $('.checkbox').on('click',function(){
+              if($('.checkbox:checked').length == $('.checkbox').length){
+                  $('#check_all').prop('checked',true);
+              }
+              else{
+                  $('#check_all').prop('checked',false);
+              }
+          });
+          function selectAuthorizedItem(){
+              console.log("I AM WOERIKNGKNDF");
+          }
+          $('#authorization_link').on('click',function(e){
+              var idsArr = [];
+              $('.checkbox:checked').each(function(e){
+                  idsArr.push($(this).attr('data-id'));
+              });
+              if(idsArr.length  ==  0)alert("Please select a Row for authorization");
+              else{
+                  if(confirm("Are You Sure ? ")){
+                      var strIds = idsArr.join(",");
+                      $.ajax({
+                          url:"{{route('balanceDashboard.authorization')}}",
+                          type:'POST',
+                          headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')},
+                          data: 'ids='+strIds,
+                          success:function(data){
+                            
+                          }
+                      });
+                  }
+              }
+          });
+      
+        });
+        // https://www.youtube.com/watch?v=ab4xFUUHM9g&t=1706s
+      </script>
 </body>
 </html>
-
-
-<script>
-  $(document).ready(function(){
-    $('#check_all').on('click',function(){
-        if($(this).is(":checked",true)){
-            $('.checkbox').prop('checked',true);
-        }
-        else{
-            $('.checkbox').prop('checked',false);
-        }
-    });
-    $('.checkbox').on('click',function(){
-        if($('.checkbox:checked').length == $('.checkbox').length){
-            $('#check_all').prop('checked',true);
-        }
-        else{
-            $('#check_all').prop('checked',false);
-        }
-    });
-  
-    $('.authorization_link').on('click',function(e){
-        var idsArr = [];
-        $('.checkbox:checked').each(function(){
-            idsArr.push($(this).attr('data-id'));
-            console.log("ok");
-        });
-        if(idsArr.length < 0){
-            alert('Plaese select atlease one item to authorized');
-        }
-    });
-
-  });
-
-</script>

@@ -18,7 +18,7 @@
         </div>
         <div class="clearfix">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}"> Home </a></li>
+              <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}"> Book </a></li>
               <li class="breadcrumb-item active"> Notesheet List </a></li>
             </ol>
           </div>

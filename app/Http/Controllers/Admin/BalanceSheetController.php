@@ -23,4 +23,7 @@ class BalanceSheetController extends Controller
         $ledger = Notesheetdetail::where(['book_id'=>$bookId,'notesheet_id'=>$notesheetId])->get();
         return view('admin.BalanceSheet.balanceSheetLadger',compact('ledger','notesheetInfo','bookInfo'));
     }
+    public function notesheetAuthorization(Request $request){
+        return $request;
+    }
 }
