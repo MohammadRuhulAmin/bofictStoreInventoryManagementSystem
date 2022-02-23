@@ -9,6 +9,7 @@
 <body>
     <div style="text-align: center">
         <h1 style="text-align: center">BOF ICT CELL</h1>
+        <h3 style="text-align: right"><a href="{{route('users.logout')}}">Log out</a></h3>
     </div>
     <div>
         <table align="center" style="width: 100%" border="1px">

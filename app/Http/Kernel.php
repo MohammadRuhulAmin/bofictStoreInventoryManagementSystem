@@ -53,6 +53,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'VerifyAuthorizer'=>\App\Http\Middleware\VerifyAuthorizer::class,
         'VerifyTechnician' =>\App\Http\Middleware\VerifyTechnician::class,
         'VerifyAdmin' =>\App\Http\Middleware\VerifyAdmin::class,
         'VerifyUser' =>\App\Http\Middleware\VerifyUser::class,

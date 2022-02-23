@@ -1,9 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 class LandingPageController extends Controller
 {
     public function redirectUser(){
@@ -19,6 +16,9 @@ class LandingPageController extends Controller
         
         if($role  ===  "technician" ){
             return redirect('technician/dashboard');
+        }
+        if($role === "authorizer"){
+            return redirect('authorizer/balanceDashboard/index');
         }
         
 

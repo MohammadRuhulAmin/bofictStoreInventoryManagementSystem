@@ -195,6 +195,19 @@ Route::middleware(['auth:sanctum','VerifyUser'])->group(function(){
     });
 });
 
+// Routes for Authorizer
+Route::middleware(['auth:sanctum','VerifyAuthorizer'])->group(function(){
+   // user prefix
+    Route::prefix('authorizer')->group(function(){
+       // user dashboard
+      // Balance Dashboard
+      
+      Route::get('/balanceDashboard/index',[BalanceDashboardController::class,'index'])->name('balanceDashboard.index');
+      Route::get('/balanceDashboard/index/{id}/notesheetsList',[BalanceDashboardController::class,'notesheetsList'])->name('balanceDashboard.notesheetsList');
+      Route::get('/balanceDashboard/notesheet/{id}/',[BalanceDashboardController::class,'notesheetDetails'])->name('balanceDashboard.notesheetDetails');
+     });
+ });
+
 //  Routes for technicians
 
 Route::middleware(['auth:sanctum','VerifyTechnician'])->group(function(){
