@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Booknotesheet;
 use App\Models\Admin\Notesheet;
 use App\Models\Admin\Notesheetdetail;
-
+use Session;
 class BalanceSheetController extends Controller
 {
     public function balanceSheetIndex(){
@@ -24,6 +24,17 @@ class BalanceSheetController extends Controller
         return view('admin.BalanceSheet.balanceSheetLadger',compact('ledger','notesheetInfo','bookInfo'));
     }
     public function notesheetAuthorization(Request $request){
-        return $request;
+        $ids = $request->ids;
+        $book_id =  Session::get('book_id');
+        $notesheet_id = Session::get('notesheet_id');
+        $idArray = explode(',',$ids);
+        
+        for($i = 0;$i<count($idArray);$i++){
+            $id = $idArray[$i];
+            $notesheet_row  = Notesheetdetail::where(['book_id'=>$book_id ,'notesheet_id'=>$notesheet_id,'id'=>$id])->first();
+            $notesheet_row->oic = "Authorized";
+            $notesheet_row->save();
+        }
+        return response()->json(['status'=>true,'message'=>"Message Updated Successfully!"]);
     }
 }

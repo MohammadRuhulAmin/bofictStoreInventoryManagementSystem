@@ -4,13 +4,6 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-     table{
-        text-align: center;
-
-    
-    }
-</style>
 </head>
 <body>
     <div class="m-3">
@@ -20,9 +13,8 @@
         </div>
         <div class=" clearfix">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}"> Book </a></li>
+              <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}">  Book </a></li>
               <li class="breadcrumb-item active">  Notesheet List  </a></li>
-              {{-- <li class="breadcrumb-item active"> </li> --}}
             </ol>
         <div>
             <table align="center" style="width: 100%" border="1px">

@@ -20,15 +20,15 @@
               <li class="breadcrumb-item active"> Balance sheet  </li>
             </ol>
         <div>
-            <h3 >BOOK ID :{{$notesheetDetails[0]["book_id"]}} </h3>
-            <h3>Notesheet ID  : {{$notesheetDetails[0]["notesheet_id"]}} </h3>
+            <h3 >BOOK ID :  {{ session()->put('book_id',$notesheetDetails[0]["book_id"])}}</h3>
+            <h3>Notesheet ID  : {{ session()->put('notesheet_id',$notesheetDetails[0]["notesheet_id"])}}</h3>
         </div>
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title"></h3>
             </div>
             <div class="card-body">
-                <table align="center" class="table table-sm" style="width: 100%" border="1px">
+                <table align="center" class="table table-sm border" style="width: 100%" border="4px">
                     <thead class="bg-primary text-white">
                      
                         <th> <input type="checkbox"  id="check_all"  style="width: 40px; height: 40px;" > </th>
@@ -47,7 +47,7 @@
                     </thead>
                     @foreach ($notesheetDetails as $key=>$notesheetDetail )
                     @if ($notesheetDetail->oic === NULL)
-                        <tr style="background-color: #FF7F7F;" id="{{$notesheetDetail->id}}">
+                        <tr style="background-color: #FF7F7F; border:3px;" id="{{$notesheetDetail->id}}">
                             <td><input type="checkbox"  style="width: 40px; height: 40px;" class="checkbox"    data-id="{{$notesheetDetail->id}}"   ></td>
                             <td><h5>{{++$key}}</h5></td>
                             <td><h5>{{$notesheetDetail->PVRV}}</h5></td>
@@ -114,9 +114,6 @@
                   $('#check_all').prop('checked',false);
               }
           });
-          function selectAuthorizedItem(){
-              console.log("I AM WOERIKNGKNDF");
-          }
           $('#authorization_link').on('click',function(e){
               var idsArr = [];
               $('.checkbox:checked').each(function(e){
@@ -124,7 +121,7 @@
               });
               if(idsArr.length  ==  0)alert("Please select a Row for authorization");
               else{
-                  if(confirm("Are You Sure ? ")){
+                  if(confirm("Are You Sure, Do you want to authorize the Data? ")){
                       var strIds = idsArr.join(",");
                       $.ajax({
                           url:"{{route('balanceDashboard.authorization')}}",
@@ -132,7 +129,11 @@
                           headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')},
                           data: 'ids='+strIds,
                           success:function(data){
-                            
+                            console.log(data);
+                            location.reload();
+                          },
+                          error:function(error){
+                              console.log(error)
                           }
                       });
                   }
