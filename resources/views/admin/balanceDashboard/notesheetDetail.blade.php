@@ -11,7 +11,6 @@
         <div style="text-align: center">
             <h1 style="text-align: center">BOF ICT CELL</h1>
             <h3 style="text-align: right"><a href="{{route('users.logout')}}">Log out</a></h3>
-            
         </div>
         <div class="clearfix">
             <ol class="breadcrumb float-sm-right">
@@ -19,9 +18,9 @@
               <li class="breadcrumb-item active"> Notesheet List </a></li>
               <li class="breadcrumb-item active"> Balance sheet  </li>
             </ol>
-        <div>
-            <h3 >BOOK ID :  {{ session()->put('book_id',$notesheetDetails[0]["book_id"])}}</h3>
-            <h3>Notesheet ID  : {{ session()->put('notesheet_id',$notesheetDetails[0]["notesheet_id"])}}</h3>
+        <div >
+            <h5 > Authorizer : OIC ICT CELL   {{ session()->put('book_id',$notesheetDetails[0]["book_id"])}}</h5>
+            <h5> Authorization Date : {{  now()->toDateTimeString() }}{{ session()->put('notesheet_id',$notesheetDetails[0]["notesheet_id"])}}</h5>
         </div>
         <div class="card">
             <div class="card-header">

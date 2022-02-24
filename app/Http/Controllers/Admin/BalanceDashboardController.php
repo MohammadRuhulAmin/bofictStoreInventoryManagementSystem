@@ -11,7 +11,31 @@ class BalanceDashboardController extends Controller
 {
     public function index(){
         $books = Booknotesheet::all();
-        return view('admin.balanceDashboard.index',compact('books'));
+        $combineAllBookInformation = [];
+        for($i = 0;$i<count($books);++$i){
+            $bid = $books[$i]["id"];
+            $totalCredit = 0;
+            $totalDebit = 0;
+            $allRows = Notesheet::where(['booknotesheet_id'=>$bid])->get();
+
+            for($j = 0;$j<count($allRows);++$j){
+                $totalCredit +=$allRows[$j]->amount;
+            }
+            for($j = 0;$j<count($allRows);++$j){
+                $nid = $allRows[$j]['id'];
+                $query = Notesheetdetail::where(['notesheet_id'=>$nid ,'book_id'=>$bid])->orderBy('created_at','DESC')->first();
+                $totalDebit+=$query->debit;
+            }
+            //array_push($totalMoney,$totalAmount);
+            $combineAllBookInformation[$i] = [
+                'book'=>$books[$i],
+                'totalCredit'=>$totalCredit,
+                'totalDebit'=>$totalDebit,
+                'totalBalance' => $totalCredit - $totalDebit,
+            ];
+        }
+        //return $combineAllBookInformation;
+        return view('admin.balanceDashboard.index',compact('combineAllBookInformation'));
     }
     public function notesheetsList($id){
        $notesheetList = Notesheet::where(['booknotesheet_id'=>$id])->get();
