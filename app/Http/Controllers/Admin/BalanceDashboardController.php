@@ -39,7 +39,16 @@ class BalanceDashboardController extends Controller
     }
     public function notesheetsList($id){
        $notesheetList = Notesheet::where(['booknotesheet_id'=>$id])->get();
-       return view('admin.balanceDashboard.notesheetIndex',compact('notesheetList'));
+       $combineAllNoteSheetInformation = [];
+       for($i = 0;$i<count($notesheetList);++$i){ 
+          $query = Notesheetdetail::where(['notesheet_id'=>$notesheetList[$i]->id])->orderBy('created_at','DESC')->first();
+          $cashbalance = $query->cashbalance;
+          $combineAllNoteSheetInformation[$i] = [
+            'notesheet' => $notesheetList[$i],
+            'cashbalance' =>$cashbalance
+          ];
+       }
+       return view('admin.balanceDashboard.notesheetIndex',compact('combineAllNoteSheetInformation'));
     }
     public function notesheetDetails($id){
         $notesheetDetails = Notesheetdetail::where(['notesheet_id'=>$id])->get();

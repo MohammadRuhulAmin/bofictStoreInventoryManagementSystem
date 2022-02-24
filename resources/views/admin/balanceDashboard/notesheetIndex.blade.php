@@ -24,25 +24,34 @@
                     <th><h5>Note sheet No </h5></th>
                     <th><h5>Note sheet Date  </h5></th>
                     <th><h5>Note sheet Details </h5></th>
-                    <th><h5> </h5></th>
-                    <th><h5>Total Credit</h5></th>
-                    <th><h5>Total Debit</h5></th>
-                    <th><h5>Total Balance</h5></th>
+                    <th><h5>Credit</h5></th>
+                    <th><h5>Balance</h5></th>
     
                 </thead>
-                @foreach ($notesheetList as $key=>$nList )
+                @for ($i = 0;$i<count($combineAllNoteSheetInformation);++$i)
+                <tr>
+                    <td>{{$i+1}}</td>
+                    <td><h5>{{$combineAllNoteSheetInformation[$i]["notesheet"]["bookName"]}}</h5></td>
+                    <td><h5><a href="{{route('balanceDashboard.notesheetDetails',$combineAllNoteSheetInformation[$i]["notesheet"]["id"])}}">{{$combineAllNoteSheetInformation[$i]["notesheet"]["notesheet_no"]}}</a></h5></td>
+                    <td><h5>{{$combineAllNoteSheetInformation[$i]["notesheet"]["notesheetDate"]}}</h3></td>
+                    <td><h5>{{$combineAllNoteSheetInformation[$i]["notesheet"]["reasonForTheNoteSheet"]}}</h5></td> 
+                    <td><h5>{{$combineAllNoteSheetInformation[$i]["notesheet"]["amount"]}}</h5></td>
+                    <td><h5>{{$combineAllNoteSheetInformation[$i]["cashbalance"]}}</h5></td>
+    
+                </tr>
+                @endfor
+                {{-- @foreach ($notesheetList as $key=>$nList )
                     <tr>
                         <td>{{$key++}}</td>
                         <td><h5>{{$nList->bookName}}</h5></td>
                         <td><h5><a href="{{route('balanceDashboard.notesheetDetails',$nList->id)}}">{{$nList->notesheet_no}}</a></h5></td>
                         <td><h5>{{$nList->notesheetDate}}</h5></td>
                         <td><h5>{{$nList->reasonForTheNoteSheet}}</h3></td>
-                        <td><h5></h5></td>
-                        <td><h5>-</h5></td>
+                        <td><h5>{{$nList->amount}}</h5></td>
                         <td><h5>-</h5></td>
                         <td><h5>-</h5></td>
                     </tr>
-                @endforeach
+                @endforeach --}}
             </table>
         </div>
     </div>

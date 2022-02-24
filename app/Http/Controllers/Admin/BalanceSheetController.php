@@ -28,7 +28,6 @@ class BalanceSheetController extends Controller
         $book_id =  Session::get('book_id');
         $notesheet_id = Session::get('notesheet_id');
         $idArray = explode(',',$ids);
-        
         for($i = 0;$i<count($idArray);$i++){
             $id = $idArray[$i];
             $notesheet_row  = Notesheetdetail::where(['book_id'=>$book_id ,'notesheet_id'=>$notesheet_id,'id'=>$id])->first();
