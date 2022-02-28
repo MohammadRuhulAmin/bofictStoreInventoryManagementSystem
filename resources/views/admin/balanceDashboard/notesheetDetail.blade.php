@@ -63,7 +63,6 @@
                             <td><h5>{{$notesheetDetail->erp_entry_date}}</h5></td>
                             <td><h5>{{$notesheetDetail->comments}}</h5></td>
                             <td><h5>{{$notesheetDetail->oic}}</h5></td>
-                            
                         </tr>
                     @else
                         <tr style="background-color: #90EE90" id="{{$notesheetDetail->id}}">

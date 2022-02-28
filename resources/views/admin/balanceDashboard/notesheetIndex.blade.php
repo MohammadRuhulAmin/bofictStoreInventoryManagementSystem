@@ -26,7 +26,6 @@
                     <th><h5>Note sheet Details </h5></th>
                     <th><h5>Credit</h5></th>
                     <th><h5>Balance</h5></th>
-    
                 </thead>
                 @for ($i = 0;$i<count($combineAllNoteSheetInformation);++$i)
                 <tr>
@@ -37,21 +36,8 @@
                     <td><h5>{{$combineAllNoteSheetInformation[$i]["notesheet"]["reasonForTheNoteSheet"]}}</h5></td> 
                     <td><h5>{{$combineAllNoteSheetInformation[$i]["notesheet"]["amount"]}}</h5></td>
                     <td><h5>{{$combineAllNoteSheetInformation[$i]["cashbalance"]}}</h5></td>
-    
                 </tr>
                 @endfor
-                {{-- @foreach ($notesheetList as $key=>$nList )
-                    <tr>
-                        <td>{{$key++}}</td>
-                        <td><h5>{{$nList->bookName}}</h5></td>
-                        <td><h5><a href="{{route('balanceDashboard.notesheetDetails',$nList->id)}}">{{$nList->notesheet_no}}</a></h5></td>
-                        <td><h5>{{$nList->notesheetDate}}</h5></td>
-                        <td><h5>{{$nList->reasonForTheNoteSheet}}</h3></td>
-                        <td><h5>{{$nList->amount}}</h5></td>
-                        <td><h5>-</h5></td>
-                        <td><h5>-</h5></td>
-                    </tr>
-                @endforeach --}}
             </table>
         </div>
     </div>
