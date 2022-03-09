@@ -1,23 +1,38 @@
-<html>
-<head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-    <div class="m-3">
-        <div style="text-align: center">
-            <h1 style="text-align: center">BOF ICT CELL</h1>
-            <h3 style="text-align: right"><a href="{{route('users.logout')}}">Log out</a></h3>
-        </div>
-        <div class=" clearfix">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}">  Book </a></li>
-              <li class="breadcrumb-item active">  Notesheet List  </a></li>
-            </ol>
-        <div>
-            <table align="center" style="width: 100%" border="1px">
+@extends('layouts.master')
+
+@section('content')
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          
+    
+          <h1 class="m-0">Notesheet List </h1>
+          <br>
+       
+          
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}">  Budget  </a></li>
+            <li class="breadcrumb-item active">Notesheet List  </li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+ 
+  <!-- Main content -->
+  <div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card ">
+      <div class="card-header">
+        <h3 class="card-title">  </h3>
+      </div>
+      <br>
+        <div class="card-body">
+            <table id="example1" class="table table-bordered datatable">
                 <thead class="bg-primary text-white">
                     <th><h5>#SL</h5></th>
                     <th><h5>BOOK</h5></th>
@@ -38,8 +53,15 @@
                     <td><h5>{{$combineAllNoteSheetInformation[$i]["cashbalance"]}}</h5></td>
                 </tr>
                 @endfor
-            </table>
-        </div>
+              </table>
+        </div>         
+
     </div>
-</body>
-</html>
+    <!-- /.card -->
+
+
+  </div>
+  <!-- /.content -->
+    
+  
+@endsection

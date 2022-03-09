@@ -1,7 +1,5 @@
 @extends('layouts.master')
-
 @section('content')
-
 <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -10,9 +8,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#"> Home </a></li>
-            
-           
+            <li class="breadcrumb-item"><a href="#"> Budget  </a></li>
           </ol>
         </div>
       </div>
@@ -33,15 +29,13 @@
                         </tr>
                         <tr>
                             <td><label>Current Balance :</label></td>
-                            <td><b>{{$combineAllBookInformation[0]["currentBalance"]}} <span>&#2547;</span></b></b></td>
+                            <td><b>{{$combineAllBookInformation[0]["currentBalance"]}} <span>&#2547;</span></b></td>
                         </tr>
                     </table>
-                   
                 </div>
                 <div class="card-footer">
-                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[0]["book"]["id"])}}">{{$combineAllBookInformation[0]["book"]["bookName"]}}</a>
+                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[0]["book"]["id"])}}"> <i class="fa fa-info-circle" aria-hidden="true"></i> {{$combineAllBookInformation[0]["book"]["bookName"]}}</a>
                 </div>
-    
             </div>
         </td>
         <td>
@@ -63,7 +57,7 @@
                    
                 </div>
                 <div class="card-footer">
-                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[1]["book"]["id"])}}">{{$combineAllBookInformation[1]["book"]["bookName"]}}</a>
+                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[1]["book"]["id"])}}"><i class="fa fa-info-circle" aria-hidden="true"></i>{{$combineAllBookInformation[1]["book"]["bookName"]}}</a>
                 </div>
     
             </div>
@@ -89,7 +83,7 @@
                    
                 </div>
                 <div class="card-footer">
-                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[2]["book"]["id"])}}">{{$combineAllBookInformation[2]["book"]["bookName"]}}</a>
+                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[2]["book"]["id"])}}"><i class="fa fa-info-circle" aria-hidden="true"></i>{{$combineAllBookInformation[2]["book"]["bookName"]}}</a>
                 </div>
     
             </div>
@@ -114,7 +108,7 @@
                    
                 </div>
                 <div class="card-footer">
-                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[3]["book"]["id"])}}">{{$combineAllBookInformation[3]["book"]["bookName"]}}</a>
+                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[3]["book"]["id"])}}"><i class="fa fa-info-circle" aria-hidden="true"></i>{{$combineAllBookInformation[3]["book"]["bookName"]}}</a>
                 </div>
     
             </div>

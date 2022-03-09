@@ -29,7 +29,6 @@
             <div class="card-body">
                 <table align="center" class="table table-sm border" style="width: 100%" border="4px">
                     <thead class="bg-primary text-white">
-                     
                         <th> <input type="checkbox"  id="check_all"  style="width: 40px; height: 40px;" > </th>
                         <th>#SL</th>
                         <th>PV/RV </th>
@@ -78,20 +77,16 @@
                             <td>{{$notesheetDetail->erp_indent_voucher_no}}</td>
                             <td>{{$notesheetDetail->erp_entry_date}}</td>
                             <td>{{$notesheetDetail->comments}}</td>
-                            
                             <td>{{$notesheetDetail->oic}}</td>
                         </tr>
                     @endif
-                        
                     @endforeach
                 </table>
             </div>
-          
             <div class="card-footer"> 
-                <button class="btn btn-warning" id="authorization_link" > Click For Authorization </button>
+                <button class="btn btn-warning" id="authorization_link"> Click For Authorization </button>
             </div>
         </div>
-    
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
