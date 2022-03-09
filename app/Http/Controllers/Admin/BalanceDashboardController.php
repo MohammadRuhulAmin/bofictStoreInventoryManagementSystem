@@ -10,7 +10,6 @@ use App\Models\Admin\Notesheetdetail;
 class BalanceDashboardController extends Controller
 {
     public function index(){
-        
         $books = Booknotesheet::all();
         $testArray = array();
         $combineAllBookInformation = [];
@@ -33,7 +32,6 @@ class BalanceDashboardController extends Controller
                 'book'=>$books[$i],
                 'totalCredit'=>$totalCredit,
                 'currentBalance'=>$totalBalance,
-               
             ];
         }
         //return $combineAllBookInformation;

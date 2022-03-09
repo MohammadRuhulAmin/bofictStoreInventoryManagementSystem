@@ -1,54 +1,129 @@
-<html>
-<head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-     table{
-        text-align: center;
-    }
-</style>
-</head>
-<body>
-   <div class="m-3">
-        <div style="text-align: center">
-            <h1 style="text-align: center">BOF ICT CELL</h1>
-            <h3 style="text-align: right"><a href="{{route('users.logout')}}">Log out</a></h3>
-        </div>
-        <div class="clearfix">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}"> Book </a></li>
-              <li class="breadcrumb-item active"> Notesheet List </a></li>
-            </ol>
-          </div>
-        <div>
-            <table align="center" style="width: 100%" border="1px">
-                <thead class="bg-primary text-white">
-                    <th><h5>#SL</h5></th>
-                    <th><h5>Book Name </h5></th>
-                    <th><h5>Book Number </h5></th>
-                    <th><h5>Book Open Date </h5></th>
-                    <th><h5>Book Closing Date </h5></th>
-                    <th><h5>Total Credit</h5></th>
-                    {{-- <th><h5>Total Debit</h5></th> --}}
-                    <th><h5>Cash Balance</h5></th>
-                </thead>
-                @for ($i = 0;$i<count($combineAllBookInformation);++$i)
-                <tr>
-                    <td>{{$i+1}}</td>
-                    <td><a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[$i]["book"]["id"])}}">{{$combineAllBookInformation[$i]["book"]["bookName"]}}</a></h5></td>
-                    <td>{{$combineAllBookInformation[$i]["book"]["bookNumber"]}}</td>
-                    <td>{{$combineAllBookInformation[$i]["book"]["bookOpenDate"]}}</td>
-                    <td>{{$combineAllBookInformation[$i]["book"]["bookCloseDate"]}}</td>
-                    <td>{{$combineAllBookInformation[$i]["totalCredit"]}}</td>
-                    {{-- <td><h5>{{$combineAllBookInformation[$i]["totalDebit"]}}</h5></td> --}}
-                    <td>{{$combineAllBookInformation[$i]["currentBalance"]}}</td>
-                </tr>
-                @endfor
-            </table>
-        </div>
-   </div>
+@extends('layouts.master')
 
-</body>
-</html>
+@section('content')
+
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Budget Information</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#"> Home </a></li>
+            
+           
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <tr>
+        <td>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <b class="title">{{$combineAllBookInformation[0]["book"]["bookName"]}}</b>
+                </div>
+                <div class="card-body">
+                    <table  class="table table-sm" style="width: 400px">
+                        <tr>
+                            <td><label>Total Credit </label></td>
+                            <td><b>{{$combineAllBookInformation[0]["totalCredit"]}}<span>&#2547;</span></b> </td>
+                        </tr>
+                        <tr>
+                            <td><label>Current Balance :</label></td>
+                            <td><b>{{$combineAllBookInformation[0]["currentBalance"]}} <span>&#2547;</span></b></b></td>
+                        </tr>
+                    </table>
+                   
+                </div>
+                <div class="card-footer">
+                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[0]["book"]["id"])}}">{{$combineAllBookInformation[0]["book"]["bookName"]}}</a>
+                </div>
+    
+            </div>
+        </td>
+        <td>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <b class="title">{{$combineAllBookInformation[1]["book"]["bookName"]}}</b>
+                </div>
+                <div class="card-body">
+                    <table  class="table table-sm" style="width: 400px">
+                        <tr>
+                            <td><label>Total Credit </label></td>
+                            <td><b>{{$combineAllBookInformation[1]["totalCredit"]}}<span>&#2547;</span></b> </td>
+                        </tr>
+                        <tr>
+                            <td><label>Current Balance :</label></td>
+                            <td><b>{{$combineAllBookInformation[1]["currentBalance"]}} <span>&#2547;</span></b></b></td>
+                        </tr>
+                    </table>
+                   
+                </div>
+                <div class="card-footer">
+                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[1]["book"]["id"])}}">{{$combineAllBookInformation[1]["book"]["bookName"]}}</a>
+                </div>
+    
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <b class="title">{{$combineAllBookInformation[2]["book"]["bookName"]}}</b>
+                </div>
+                <div class="card-body">
+                    <table  class="table table-sm" style="width: 400px">
+                        <tr>
+                            <td><label>Total Credit </label></td>
+                            <td><b>{{$combineAllBookInformation[2]["totalCredit"]}}<span>&#2547;</span></b> </td>
+                        </tr>
+                        <tr>
+                            <td><label>Current Balance :</label></td>
+                            <td><b>{{$combineAllBookInformation[2]["currentBalance"]}} <span>&#2547;</span></b></b></td>
+                        </tr>
+                    </table>
+                   
+                </div>
+                <div class="card-footer">
+                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[2]["book"]["id"])}}">{{$combineAllBookInformation[2]["book"]["bookName"]}}</a>
+                </div>
+    
+            </div>
+        </td>
+        <td>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <b class="title">{{$combineAllBookInformation[3]["book"]["bookName"]}}</b>
+                </div>
+                <div class="card-body">
+                    <table  class="table table-sm" style="width: 400px">
+                        <tr>
+                            <td><label>Total Credit </label></td>
+                            <td><b>{{$combineAllBookInformation[3]["totalCredit"]}}<span>&#2547;</span></b> </td>
+                        </tr>
+                        <tr>
+                            <td><label>Current Balance :</label></td>
+                            <td><b>{{$combineAllBookInformation[3]["currentBalance"]}} <span>&#2547;</span></b></b></td>
+                        </tr>
+                    </table>
+                   
+                   
+                </div>
+                <div class="card-footer">
+                    <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[3]["book"]["id"])}}">{{$combineAllBookInformation[3]["book"]["bookName"]}}</a>
+                </div>
+    
+            </div>
+        </td>
+    </tr>
+  </table>
+   <div class="container">
+        
+   </div>
+    
+  
+@endsection
