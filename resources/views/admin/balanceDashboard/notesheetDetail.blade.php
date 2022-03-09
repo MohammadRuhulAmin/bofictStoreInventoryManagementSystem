@@ -31,53 +31,55 @@
                     <thead class="bg-primary text-white">
                      
                         <th> <input type="checkbox"  id="check_all"  style="width: 40px; height: 40px;" > </th>
-                        <th><h5>#SL</h3></th>
-                        <th><h5>PV/RV </h3></th>
-                        <th><h5>Date </h5></th>
-                        <th><h5>Details </h5></th>
-                        <th><h5>Credit </h5></th>
-                        <th><h5>Debit</h5></th>
-                        <th><h5>Balance</h5></th>
-                        <th><h5>ERP Indent Voucher NO</h3></th>
-                        <th><h5>ERP Entry Date</h5></th>
-                        <th><h5>Comments</h5></th>
+                        <th>#SL</th>
+                        <th>PV/RV </th>
+                        <th>Date </th>
+                        <th>Details </th>
+                        <th>Credit </th>
+                        <th>Debit</th>
+                        <th>Balance</th>
+                        <th>ERP Indent Voucher NO</th>
+                        <th>ERP Entry Date</th>
+                        <th>Comments</th>
                         {{-- <td><h3>IC</h3></td> --}}
-                        <th><h5>OIC</h5></th>
+                        <th>OIC</th>
                     </thead>
                     @foreach ($notesheetDetails as $key=>$notesheetDetail )
                     @if ($notesheetDetail->oic === NULL)
                         <tr style="background-color: #FF7F7F; border:3px;" id="{{$notesheetDetail->id}}">
                             <td><input type="checkbox"  style="width: 40px; height: 40px;" class="checkbox"    data-id="{{$notesheetDetail->id}}"   ></td>
-                            <td><h5>{{++$key}}</h5></td>
-                            <td><h5>{{$notesheetDetail->PVRV}}</h5></td>
-                            <td><h5>{{$notesheetDetail->date}}</h5></td>
-                            <td><h5>{{$notesheetDetail->details}}</h5></td>
-                            <td><h5>{{$notesheetDetail->credit}}</h5></td>
-                            <td><h5>{{$notesheetDetail->debit}}</h5></td>
+                            <td>{{++$key}}</td>
+                            <td>{{$notesheetDetail->PVRV}}</td>
+                            <td>{{$notesheetDetail->date}}</td>
+                            <td>{{$notesheetDetail->details}}</td>
+                            <td>{{$notesheetDetail->credit}}</td>
+                            <td>{{$notesheetDetail->debit}}</td>
                             @if ($notesheetDetail->cashbalance == 0)
                                     <td style="color: green"><h3>NILL</h3></td>
                             @else
-                                    <td><h5>{{$notesheetDetail->cashbalance}}</h5></td>
+                                    <td>{{$notesheetDetail->cashbalance}}</td>
                             @endif
-                            <td><h5>{{$notesheetDetail->erp_indent_voucher_no}}</h5></td>
-                            <td><h5>{{$notesheetDetail->erp_entry_date}}</h5></td>
-                            <td><h5>{{$notesheetDetail->comments}}</h5></td>
-                            <td><h5>{{$notesheetDetail->oic}}</h5></td>
+                            <td>{{$notesheetDetail->erp_indent_voucher_no}}</td>
+                            <td>{{$notesheetDetail->erp_entry_date}}</td>
+                            <td>{{$notesheetDetail->comments}}</td>
+                            {{-- <td>{{$notesheetDetail->oic}}</td> --}}
+                            <td>Pending</td>
                         </tr>
                     @else
                         <tr style="background-color: #90EE90" id="{{$notesheetDetail->id}}">
                             <td><input type="hidden" name="{{$notesheetDetail->id}}" id="" ></td>
                             <td>{{++$key}}</td>
-                            <td><h5>{{$notesheetDetail->PVRV}}</h5></td>
-                            <td><h5>{{$notesheetDetail->date}}</h5></td>
-                            <td><h5>{{$notesheetDetail->details}}</h5></td>
-                            <td><h5>{{$notesheetDetail->credit}}</h5></td>
-                            <td><h5>{{$notesheetDetail->debit}}</h5></td>
-                            <td><h5>{{$notesheetDetail->cashbalance}}</h5></td>
-                            <td><h5>{{$notesheetDetail->erp_indent_voucher_no}}</h5></td>
-                            <td><h5>{{$notesheetDetail->erp_entry_date}}</h5></td>
-                            <td><h5>{{$notesheetDetail->comments}}</h5></td>
-                            <td><h5>{{$notesheetDetail->oic}}</h5></td>
+                            <td>{{$notesheetDetail->PVRV}}</td>
+                            <td>{{$notesheetDetail->date}}</td>
+                            <td>{{$notesheetDetail->details}}</td>
+                            <td>{{$notesheetDetail->credit}}</td>
+                            <td>{{$notesheetDetail->debit}}</td>
+                            <td>{{$notesheetDetail->cashbalance}}</td>
+                            <td>{{$notesheetDetail->erp_indent_voucher_no}}</td>
+                            <td>{{$notesheetDetail->erp_entry_date}}</td>
+                            <td>{{$notesheetDetail->comments}}</td>
+                            
+                            <td>{{$notesheetDetail->oic}}</td>
                         </tr>
                     @endif
                         

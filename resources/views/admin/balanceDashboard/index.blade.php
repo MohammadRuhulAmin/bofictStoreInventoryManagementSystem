@@ -31,33 +31,21 @@
                     <th><h5>Book Open Date </h5></th>
                     <th><h5>Book Closing Date </h5></th>
                     <th><h5>Total Credit</h5></th>
-                    <th><h5>Total Debit</h5></th>
-                    <th><h5>Total Balance</h5></th>
+                    {{-- <th><h5>Total Debit</h5></th> --}}
+                    <th><h5>Cash Balance</h5></th>
                 </thead>
                 @for ($i = 0;$i<count($combineAllBookInformation);++$i)
                 <tr>
                     <td>{{$i+1}}</td>
-                    <td><h5><a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[$i]["book"]["id"])}}">{{$combineAllBookInformation[$i]["book"]["bookName"]}}</a></h5></td>
-                    <td><h5>{{$combineAllBookInformation[$i]["book"]["bookNumber"]}}</h5></td>
-                    <td><h5>{{$combineAllBookInformation[$i]["book"]["bookOpenDate"]}}</h5></td>
-                    <td><h5>{{$combineAllBookInformation[$i]["book"]["bookCloseDate"]}}</h5></td>
-                    <td><h5>{{$combineAllBookInformation[$i]["totalCredit"]}}</h5></td>
-                    <td><h5>{{$combineAllBookInformation[$i]["totalDebit"]}}</h5></td>
-                    <td><h5>{{$combineAllBookInformation[$i]["totalBalance"]}}</h5></td>
+                    <td><a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[$i]["book"]["id"])}}">{{$combineAllBookInformation[$i]["book"]["bookName"]}}</a></h5></td>
+                    <td>{{$combineAllBookInformation[$i]["book"]["bookNumber"]}}</td>
+                    <td>{{$combineAllBookInformation[$i]["book"]["bookOpenDate"]}}</td>
+                    <td>{{$combineAllBookInformation[$i]["book"]["bookCloseDate"]}}</td>
+                    <td>{{$combineAllBookInformation[$i]["totalCredit"]}}</td>
+                    {{-- <td><h5>{{$combineAllBookInformation[$i]["totalDebit"]}}</h5></td> --}}
+                    <td>{{$combineAllBookInformation[$i]["currentBalance"]}}</td>
                 </tr>
                 @endfor
-                 {{-- @foreach ($books as $key=>$book )
-                    <tr>
-                        <td>{{$key++}}</td>
-                        <td><h5><a href="{{route('balanceDashboard.notesheetsList',$book->id)}}">{{$book->bookName}}</a></h5></td>
-                        <td><h5>{{$book->bookNumber}}</h5></td>
-                        <td><h5>{{$book->bookOpenDate}}</h5></td>
-                        <td><h5>{{$book->bookCloseDate}}</h5></td>
-                        <td><h5>-</h5></td>
-                        <td><h5>-</h5></td>
-                        <td><h5>-</h5></td>
-                    </tr>
-                @endforeach  --}}
             </table>
         </div>
    </div>
