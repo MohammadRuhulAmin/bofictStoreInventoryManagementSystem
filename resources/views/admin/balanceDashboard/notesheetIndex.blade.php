@@ -5,12 +5,8 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          
-    
           <h1 class="m-0">Notesheet List </h1>
           <br>
-       
-          
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -35,12 +31,13 @@
             <table id="example1" class="table table-bordered datatable">
                 <thead class="bg-primary text-white">
                     <th><h5>#SL</h5></th>
-                    <th><h5>BOOK</h5></th>
+                    <th><h5>Budget </h5></th>
                     <th><h5>Note sheet No </h5></th>
                     <th><h5>Note sheet Date  </h5></th>
                     <th><h5>Note sheet Details </h5></th>
                     <th><h5>Credit</h5></th>
-                    <th><h5>Balance</h5></th>
+                    <th><h5> Balance </h5></th>
+                    <th> Action   </th>
                 </thead>
                 @for ($i = 0;$i<count($combineAllNoteSheetInformation);++$i)
                 <tr>
@@ -51,6 +48,7 @@
                     <td><h5>{{$combineAllNoteSheetInformation[$i]["notesheet"]["reasonForTheNoteSheet"]}}</h5></td> 
                     <td><h5>{{$combineAllNoteSheetInformation[$i]["notesheet"]["amount"]}}</h5></td>
                     <td><h5>{{$combineAllNoteSheetInformation[$i]["cashbalance"]}}</h5></td>
+                    <td><a href="{{route('balanceDashboard.notesheetDetails_report',$combineAllNoteSheetInformation[$i]["notesheet"]["id"])}}" class="btn btn-success"> <i class="fa fa-print" aria-hidden="true"></i> </a></td>
                 </tr>
                 @endfor
               </table>

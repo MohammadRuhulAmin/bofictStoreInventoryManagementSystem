@@ -206,6 +206,8 @@ Route::middleware(['auth:sanctum','VerifyAuthorizer'])->group(function(){
       Route::get('/balanceDashboard/index/{id}/notesheetsList',[BalanceDashboardController::class,'notesheetsList'])->name('balanceDashboard.notesheetsList');
       Route::get('/balanceDashboard/notesheet/{id}/',[BalanceDashboardController::class,'notesheetDetails'])->name('balanceDashboard.notesheetDetails');
       Route::post('/balanceDashboard/notesheet/item',[BalanceSheetController::class,'notesheetAuthorization'])->name('balanceDashboard.authorization');
+      //PDF report 
+      Route::get('/balanceDashboard/notesheet/{id}/pdf_report',[BalanceDashboardController::class,'budgetLadger'])->name('balanceDashboard.notesheetDetails_report');
    });
  });
 //  Routes for technicians
@@ -232,5 +234,4 @@ Route::get('/QuickAccess/SearchCamerasList/Index',[QuiceAccessController::class,
 
 // problems list in web.php
 //admin.reports.pdf.catSubcatItem was not found.
-
 

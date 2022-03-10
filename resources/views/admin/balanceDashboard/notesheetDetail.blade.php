@@ -14,13 +14,14 @@
         </div>
         <div class="clearfix">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}"> Book </a></li>
+              <li class="breadcrumb-item"><a href="{{route('balanceDashboard.index')}}"> Budget </a></li>
               <li class="breadcrumb-item active"> Notesheet List </a></li>
               <li class="breadcrumb-item active"> Balance sheet  </li>
             </ol>
         <div >
             <h5 > Authorizer : OIC ICT CELL   {{ session()->put('book_id',$notesheetDetails[0]["book_id"])}}</h5>
-            <h5> Authorization Date : {{  now()->toDateTimeString() }}{{ session()->put('notesheet_id',$notesheetDetails[0]["notesheet_id"])}}</h5>
+            <h5> Last  Authorization Date : {{  now()->toDateTimeString() }}{{ session()->put('notesheet_id',$notesheetDetails[0]["notesheet_id"])}}</h5>
+          
         </div>
         <div class="card">
             <div class="card-header">
@@ -37,8 +38,8 @@
                         <th>Credit </th>
                         <th>Debit</th>
                         <th>Balance</th>
-                        <th>ERP Indent Voucher NO</th>
-                        <th>ERP Entry Date</th>
+                        <th>Indent Voucher NO</th>
+                        <th>Entry Date</th>
                         <th>Comments</th>
                         {{-- <td><h3>IC</h3></td> --}}
                         <th>OIC</th>

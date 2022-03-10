@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Booknotesheet;
 use App\Models\Admin\Notesheet;
 use App\Models\Admin\Notesheetdetail;
-
+use PDF;
+use Maatwebsite\Excel\Excel;
+use App\Exports\ProductExport;
 class BalanceDashboardController extends Controller
 {
     public function index(){
@@ -53,6 +55,22 @@ class BalanceDashboardController extends Controller
     }
     public function notesheetDetails($id){
         $notesheetDetails = Notesheetdetail::where(['notesheet_id'=>$id])->get();
+        
         return view('admin.balanceDashboard.notesheetDetail',compact('notesheetDetails'));
     }
+    public function budgetLadger($id){
+        $notesheetDetails = Notesheetdetail::where(['notesheet_id'=>$id])->get();
+        //return $notesheetDetails[0]->book_id;
+         $budgetInfo = Booknotesheet::where(['id'=>$notesheetDetails[0]->book_id])->first();
+         $notesheetInfo = Notesheet::where(['id' =>$notesheetDetails[0]->notesheet_id])->first();
+        $budgetDescription = $budgetInfo->bookDescription;
+        $notesheetDescription = $notesheetInfo->reasonForTheNoteSheet;
+        $data = [
+          'budgetDescription' =>$budgetDescription,
+          'notesheetDescription' =>$notesheetDescription, 
+          'notesheetDetails' => $notesheetDetails
+       ];
+       $pdf = PDF::loadView('admin.reports.pdf.budget.ladger',$data);
+       return $pdf->download('ladger_info.pdf');
+   }
 }

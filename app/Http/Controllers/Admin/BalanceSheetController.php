@@ -7,6 +7,7 @@ use App\Models\Admin\Booknotesheet;
 use App\Models\Admin\Notesheet;
 use App\Models\Admin\Notesheetdetail;
 use Session;
+
 class BalanceSheetController extends Controller
 {
     public function balanceSheetIndex(){
@@ -35,4 +36,5 @@ class BalanceSheetController extends Controller
         }
         return response()->json(['status'=>true,'message'=>"Message Updated Successfully!"]);
     }
+
 }

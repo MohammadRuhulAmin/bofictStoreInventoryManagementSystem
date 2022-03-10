@@ -229,6 +229,7 @@
                 </a>
               </li>
               @endif
+              @if(auth()->user()->role === "admin")
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-tree"></i>
@@ -279,7 +280,7 @@
                       <p>Issue demands</p>
                     </a>
                   </li>
-                   
+                   @endif 
                 </ul>
               </li>
               @endif
@@ -323,7 +324,14 @@
                 </a>
               </li>
               @endif
-              
+              {{-- @if(auth()->user()->role === "authorizer")
+              <li class="nav-item">
+                <a href="{{route('balanceDashboard.index')}}">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p> BOF Budget </p>
+                </a>
+              </li>
+              @endif  --}}
             </ul>
           </li>
          

@@ -20,6 +20,12 @@ use App\Exports\ProductExport;
 use App\Models\Admin\Cameralocation;
 use App\Models\Admin\Cameradetail;
 use App\Models\Admin\ProductIssueToUserDetail;
+
+use App\Models\Admin\Booknotesheet;
+use App\Models\Admin\Notesheet;
+use App\Models\Admin\Notesheetdetail;
+
+
 class ReportGeneratorController extends Controller
 {
     public function index(){
@@ -1319,4 +1325,19 @@ class ReportGeneratorController extends Controller
         $pdf = PDF::loadView('admin.reports.pdf.erperrors.erpErrorListByModule',$data);
         return $pdf->download('ERPERRORLIST.pdf');
     }
+
+    //Report jenerator for Budget Ledger !! 
+    public function budgetLadger($id){
+        
+         $notesheetDetails = Notesheetdetail::where(['notesheet_id'=>$id])->get();
+         $data = [
+           'notesheetDetails' => $notesheetDetails
+        ];
+        $pdf = PDF::loadView('admin.reports.pdf.budget.ladger',$data);
+        return $pdf->download('ladger_info.pdf');
+       
+    }
+
+
+
 }
