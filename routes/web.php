@@ -175,6 +175,7 @@ Route::middleware(['auth:sanctum','VerifyAdmin'])->group(function(){
       Route::get('/balanceDashboard/index',[BalanceDashboardController::class,'index'])->name('balanceDashboard.index');
       Route::get('/balanceDashboard/index/{id}/notesheetsList',[BalanceDashboardController::class,'notesheetsList'])->name('balanceDashboard.notesheetsList');
       Route::get('/balanceDashboard/notesheet/{id}/',[BalanceDashboardController::class,'notesheetDetails'])->name('balanceDashboard.notesheetDetails');
+      Route::post('/balanceDashboard/notesheet/Edit',[BalanceDashboardController::class,'editNotesheet'])->name('balanceDashboard.edit');
    });
 });
 // Routes for users 

@@ -21,7 +21,6 @@
         <div >
             <h5 > Authorizer : OIC ICT CELL   {{ session()->put('book_id',$notesheetDetails[0]["book_id"])}}</h5>
             <h5> Last  Authorization Date : {{  now()->toDateTimeString() }}{{ session()->put('notesheet_id',$notesheetDetails[0]["notesheet_id"])}}</h5>
-          
         </div>
         <div class="card">
             <div class="card-header">

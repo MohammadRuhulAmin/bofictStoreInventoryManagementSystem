@@ -54,7 +54,6 @@
                             <td><b>{{$combineAllBookInformation[1]["currentBalance"]}} <span>&#2547;</span></b></b></td>
                         </tr>
                     </table>
-                   
                 </div>
                 <div class="card-footer">
                     <a href="{{route('balanceDashboard.notesheetsList',$combineAllBookInformation[1]["book"]["id"])}}"><i class="fa fa-info-circle" aria-hidden="true"></i>{{$combineAllBookInformation[1]["book"]["bookName"]}}</a>

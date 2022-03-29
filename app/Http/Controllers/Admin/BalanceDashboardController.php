@@ -55,22 +55,28 @@ class BalanceDashboardController extends Controller
     }
     public function notesheetDetails($id){
         $notesheetDetails = Notesheetdetail::where(['notesheet_id'=>$id])->get();
-        
         return view('admin.balanceDashboard.notesheetDetail',compact('notesheetDetails'));
     }
     public function budgetLadger($id){
         $notesheetDetails = Notesheetdetail::where(['notesheet_id'=>$id])->get();
-        //return $notesheetDetails[0]->book_id;
          $budgetInfo = Booknotesheet::where(['id'=>$notesheetDetails[0]->book_id])->first();
          $notesheetInfo = Notesheet::where(['id' =>$notesheetDetails[0]->notesheet_id])->first();
         $budgetDescription = $budgetInfo->bookDescription;
         $notesheetDescription = $notesheetInfo->reasonForTheNoteSheet;
-        $data = [
-          'budgetDescription' =>$budgetDescription,
+        $data = 
+        [
+           'budgetDescription' =>$budgetDescription,
+        // 'budgetDescription' =>"ABCDEFG",
           'notesheetDescription' =>$notesheetDescription, 
           'notesheetDetails' => $notesheetDetails
        ];
+    //    return $data;
        $pdf = PDF::loadView('admin.reports.pdf.budget.ladger',$data);
        return $pdf->download('ladger_info.pdf');
    }
+   public function editNotesheet(Request $request){
+       $notesheetDetails = Notesheetdetail::where(['notesheet_id' =>$request->notesheet_id,'book_id' =>$request->book_id])->get();
+       return view('admin.BalanceSheet.edit',compact('notesheetDetails'));
+   }
 }
+

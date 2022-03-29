@@ -7,7 +7,6 @@ use App\Models\Admin\Booknotesheet;
 use App\Models\Admin\Notesheet;
 use App\Models\Admin\Notesheetdetail;
 use Session;
-
 class BalanceSheetController extends Controller
 {
     public function balanceSheetIndex(){
@@ -21,8 +20,16 @@ class BalanceSheetController extends Controller
         $notesheetInfo = Notesheet::where(['id'=>$notesheetId])->first();
         $bookInfo = Booknotesheet::where(['id'=>$bookId])->first();
         $ledger = Notesheetdetail::where(['book_id'=>$bookId,'notesheet_id'=>$notesheetId])->get();
-        return view('admin.BalanceSheet.balanceSheetLadger',compact('ledger','notesheetInfo','bookInfo'));
+        $hasAuthorization = false;
+        for($i = 0;$i<count($ledger);$i++){
+            if($ledger[$i]["oic"] === "authorized"){
+                $hasAuthorization = true;
+                break;
+            }
+        }
+        return view('admin.BalanceSheet.balanceSheetLadger',compact('ledger','notesheetInfo','bookInfo','hasAuthorization'));
     }
+
     public function notesheetAuthorization(Request $request){
         $ids = $request->ids;
         $book_id =  Session::get('book_id');

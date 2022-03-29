@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bangladesh Ordnance Factories</title>
+    {{-- <link href="https://fonts.maateen.me/adorsho-lipi/font.css" rel="stylesheet"> --}}
     <style>
+      
         table, th, td {
           border: 1px solid black;
           border-collapse: collapse;
           text-align: center;
+        }
+        body {
+            font-family: 'AdorshoLipi';
         }
         </style>
 </head>
@@ -26,13 +31,14 @@
         <table>
             <tr>
                 <td>Date : </td>
-                <td> {{\Carbon\Carbon::now()->format('d-m-Y')}}</td>
+                <td > {{\Carbon\Carbon::now()->format('d-m-Y')}}</td>
             </tr>
         </table>
         <table>
             <tr>
                 <td>Budget Description  : </td>
-                <td>{{$budgetDescription}}</td>
+                <td style="font-family: 'AdorshoLipi';"><?php print($budgetDescription)  ?></td>
+                {{-- <td>{{$budgetDescription}}</td> --}}
             </tr>
             <tr>
                 <td>Notesheet : </td>
